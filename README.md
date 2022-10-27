@@ -1,5 +1,5 @@
 # NDSU-Thesis-Class
-This is the ndsu-thesis-2022 document class. This is an upgraded version of ndsu-thesis document class. Copyright 2022, Aaron Feickert, Jonathan Totushek, and Igathinathane Cannayen.
+This is the latest class file named "ndsu-thesis-2022" document class. This is an upgraded version of ndsu-thesis document class. Copyright 2022, Aaron Feickert, Jonathan Totushek, and Igathinathane Cannayen.
 
 This work may be distributed and/or modified under the conditions of the LaTeX Project Public License; LPPL Version 1.3c 2008-05-04 or  (at your option) any later version. 
 
