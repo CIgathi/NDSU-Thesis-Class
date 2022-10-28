@@ -554,10 +554,16 @@
 % e.g., 1.1.1.1. Third level subheading
 
 \titleformat{\paragraph}
-    {\normalfont\itshape}{\theparagraph.}{0.3em}{} 
+    {\normalfont}{\theparagraph.}{0.3em}{} 
     \titlespacing*{\paragraph}{0pt}{*0}{0pt}
-% Not in NDSU - Fourth level subheading  - Left aligned, italics, Sentence case, 
+% Not in NDSU - Fourth level subheading  - Left aligned, normal, Sentence case, 
 %e.g., 1.1.1.1.1. Fourth level subheading
+
+\titleformat{\subparagraph}
+    {\normalfont\itshape}{\thesubparagraph.}{0.3em}{} 
+    \titlespacing*{\subparagraph}{0pt}{*0}{0pt}
+% Not in NDSU - Fifth level subheading  - Left aligned, italics, Sentence case, 
+%e.g., 1.1.1.1.1.1. Fifth level subheading 
     
 \newcommand\bibtocsubstart{ % used in latter command
 \newpage
@@ -581,6 +587,15 @@
 \bibtocsubstart
 \bibliographystyle{#1} 		% *.bst file
 \bibliography{#2}    			% *.bib file 
+\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+\end{spacing}
+\end{document}
+}
+
+% Usage: \tend the \makebib was recursively passed
+\newcommand\tend{ 
+\bibtocsubstart
+\makebib
 \addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
 \end{spacing}
 \end{document}

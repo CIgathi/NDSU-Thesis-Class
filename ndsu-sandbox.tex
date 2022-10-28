@@ -1,0 +1,38 @@
+%******************* START *******************
+\documentclass[12pt,mathdesign]{ndsu-thesis-2022}
+
+%----------------------------------------------------
+\usepackage[sort&compress]{natbib}
+\citestyle{egu} % agms, agu, arms, egu, cospar, dcu, kluwer, plain, nature
+\newcommand{\makebib}{\biblio{apalike}{mybib}} % shortcut for bibliography
+\newcommand\myspacing{1.9} % 23 lines/page needs 1.9 for thesis
+%----------------------------------------------------
+
+
+\title{My NDSU Thesis --- Sandbox}
+
+
+%************ Document start ************
+\begin{document}
+\begin{spacing}{\myspacing}      % New line spacing - 23 lines per page
+
+%----------------------------------------------------
+\myheading{Test Chapter for NDSU Thesis Class Sandbox}
+
+This ``\texttt{ndsu-sandbox.tex}'' file can be used as a sandbox to try out things in the actual NDSU thesis environment. \textcolor{gray}{Things tested here (including the bibliography) can be readily inserted into the original thesis/dissertation document. Therefore, this lightweight source will be convenient to test things out.} So, go for it --- and remember anything is possible by \LaTeX{} (almost!?).
+
+%----------------------------------------------------
+\section{Section}
+\subsection{Sub-Section}
+\subsubsection{Sub-Sub-Section}
+
+\textcolor{gray}{Dummy text from kantlipsum[9]. Reference listing on the next page.} I refer to \citep{lamport94,kopka2004guide}. 
+\kant[9]
+
+%----------------------------------------------------
+\makebib
+
+
+\end{spacing}
+\end{document}
+%******************* END *******************

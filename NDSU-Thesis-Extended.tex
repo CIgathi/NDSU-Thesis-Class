@@ -42,7 +42,10 @@
 %-----------------------------------------------------------------------------
 %--------------------Load specific packages--------------------------
 \usepackage[sort&compress]{natbib}
-\citestyle{arms} % plain, agu, egu, agms, dcu, kluwer, cospar, nature
+\citestyle{arms} % agms, agu, arms, egu, cospar, dcu, kluwer, plain, nature
+\newcommand{\makebib}{\biblio{apalike}{mybib}} % shortcut for bibliography
+\newcommand\myspacing{1.9} % 23 lines/page needs 1.9 for thesis
+
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{corollary}{Corollary}[theorem]
 \newtheorem{lemma}{Lemma}[corollary]
@@ -50,10 +53,8 @@
 
 %-----------------------------------------------------------------------------
 %\AtBeginDocument{\raggedright}   % No justification - NDSU template; justification also okay
-\newcommand\myspacing{1.9}      % 23 lines/page needs 1.9 for thesis; 1.5 for proposal
 \newcommand\italk[1]{\textcolor{blue}{#1}}  % for my texts
 \newcommand\cmd[1]{\textbackslash\texttt{#1}}  % for commands
-\newcommand\tend{\tempend{apalike}{my-bib-file}} % shortcut for tempend{bst}{bib}
 %\captionsetup[figure]{labelformat=simple, labelsep=colon, labelfont=it,textfont={bf,it}}
 %\captionsetup[table]{labelformat=simple, labelsep=colon, labelfont=it,textfont={bf,it}}
 
@@ -1517,8 +1518,8 @@ Theorems, corollaries, lemmas, and other elements can be referenced after defini
 % Compatible natbib styles: plainnat, abbrvnat, unsrtnat, rusnat, agsm, chicago, apalike
 
 %bibtex used here
-\biblio{apalike}{mybib}\label{biblio}
-
+\makebib  % Shortcut command using style and bib defined in the preamble
+\label{biblio}
 
 %-----------------------------------------------------------------------------
 %-----------------------------------------------------------------------------
