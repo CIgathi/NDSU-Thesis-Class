@@ -777,6 +777,36 @@
 
 \RequirePackage{subfiles} % Best loaded last in the preamble
 
+% ==============================================================
+% These commands are to support ASABE style (reference + captions)
+% Others may ignore these commands and will not interfere with other styles
+% ==============================================================
+% 
+%*************** ASABE style references and captions  ****************
+% Works with biblatex - Can be commented for other styles
+\newcommand\setbiblatexASABE{%
+\AtBeginBibliography{%
+  \renewcommand*{\finalnamedelim}{%
+    \ifnumgreater{\value{liststop}}{2}{\finalandcomma}{}%
+    \addspace\&\space}%
+}
+\DeclareDelimFormat*{finalnamedelim} % replacing & with "and" in citation & in listing 
+{\ifnum\value{liststop}>2 \finalandcomma\fi\addspace\bibstring{and}\space}
+}
+
+% New command for setting up the captions
+\newcommand\setcapASABE{%
+\captionsetup[table]
+{labelfont={normalsize,bf},font={normalsize,bf},labelsep=period,justification=raggedright,aboveskip=10pt,belowskip=0pt, singlelinecheck=true} %specifying floats caption options (options of labelsep = period, newline, and dash)
+\captionsetup[figure]{labelfont={normalsize},font={normalsize,bf},labelsep=period,justification=raggedright,aboveskip=10pt,belowskip=-5pt,singlelinecheck=true} %specifying floats caption options 
+
+%Appendix tables and figures in bold - for tables > 9 use [lot] directly
+\captionsetup[appendixtable]{font={normalsize,bf}} %bold for tables 
+\captionsetup[appendixfigure]{font={normalsize,bf}}%bold for figures
+}
+%*************** ASABE style references and captions  ****************
+% ==============================================================
+
 \widowpenalty=10000
 \clubpenalty=10000
 
