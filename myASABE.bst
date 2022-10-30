@@ -36,6 +36,7 @@
 %			apalike now sorts by author, then year, then title;
 %			THIS `apalike' VERSION DOES NOT WORK WITH BIBTEX 0.98i.
 % Local modifications 10/89 -- Brian Reiser
+% Modification to reflect ASABE journals -- 10/2022 -- C. Igathinathane
 
 ENTRY
   { address
@@ -515,7 +516,7 @@ FUNCTION {format.pages}
 }
 
 FUNCTION {format.vol.num.pages}
-{ volume field.or.null
+{ volume emphasize field.or.null     % Volume italicized - C.Igathi 10/19/2022
   number empty$
     'skip$
     { "(" number * ")" * *
