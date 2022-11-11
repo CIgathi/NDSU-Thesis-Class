@@ -72,6 +72,7 @@
 %              Documentation and sandbox samples updated (2022-10-24)
 %              Chemical symbols support chemformula package (2022-11-10)
 %
+%
 %  Last updated: 2022-11-10
 %  Last updated: 2022-10-24
 %  Last updated: 2022-10-07
