@@ -69,8 +69,10 @@
 % 		Figure & table caption (#>9) horizontal space adjustment
 % 		Full-width tables with tabularray package tblr environment
 %              Package soul was replaced by ulem
-%              Documentation and samples updated (2022-10-24)
+%              Documentation and sandbox samples updated (2022-10-24)
+%              Chemical symbols support chemformula package (2022-11-10)
 %
+%  Last updated: 2022-11-10
 %  Last updated: 2022-10-24
 %  Last updated: 2022-10-07
 %  Last updated: 2022-07-10
@@ -93,12 +95,15 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage[obeyspaces,spaces,hyphens]{url}
 \RequirePackage[linktocpage,breaklinks,linktoc=all,hidelinks]{hyperref}
+
+\setlength{\marginparwidth}{2cm}
 \RequirePackage[colorinlistoftodos,prependcaption,textsize=scriptsize]{todonotes}
 \RequirePackage{lineno}
 \RequirePackage{setspace}
 \RequirePackage{amsmath}
 \RequirePackage{amsfonts}
-\RequirePackage{amssymb}
+%\RequirePackage{amssymb}
+\RequirePackage{chemformula} % chemicals easy typesetting
 \RequirePackage{titling}
 \RequirePackage{ifthen}
 \RequirePackage{titlesec}

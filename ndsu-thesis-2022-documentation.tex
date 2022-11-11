@@ -21,6 +21,7 @@
 \usepackage{tabularray}
 \usepackage{caption}
 \usepackage{enumitem}
+\usepackage{chemformula}
 \usepackage[hidelinks]{hyperref}
 
 %--------------------------------------------------------------
@@ -392,7 +393,7 @@ The \texttt{\ix{natbib}} package for bibliography management is widely used and 
 It is convenient to load the \texttt{natbib} package with minimal options, as shown above, and choose predefined \cmd{citestyle\{option\}} options producing several styles defined in the package. For \texttt{IEEEtran} family of styles (\texttt{-N, -S, -SA, -SN}) that are numeric bibliography styles, use option ``plain'' in ``citestyle'' command as \cmd{citestyle\{plain\}}. It is also possible to load the package with the options directly as well in one command.
 
 %--------------------------------------------------------------
-\subsubsection{Bibliography generation and files handling}
+\subsubsection{Bibliography generation and files handling}\label{makebib}
 The two basic commands that is required to implement BibTeX system are:
 \ccmd{
 \cmd{bibliographystyle\{\textit{style}\} \% See list of styles (Sec.~\hspace{-1ex}11.1.1)}\\
@@ -402,7 +403,7 @@ The two basic commands that is required to implement BibTeX system are:
 However, a single new command ``\cmd{makebib}'' (direct shortcut with no arguments) developed, replacing the above commands, sets up the bibliography style and *.bib file arguments that are being utilized in other shortcuts is: 
 \ccmd{
 \cmd{newcommand\{\cmd{makebib}\}\ixm{bibliography}\{\cmd{biblio}\{\textit{style}\}\{\textit{name-of-bib-file}\}\}}
-}
+}\index{makebib}
 
 Now, simply issuing the \cmd{makebib} will generate the references listing based on the style and bib file input in the above command. The ``style'' of bibliography (\texttt{*.bst}) entries (typically \texttt{plainnat} or \texttt{apalike}), is controlled by the first argument; the user is referred to the BibTeX manual for formatting details and other available styles, such as those provided by the peer-reviewed journals related to the specialization. The ``name'' used in the second argument must be the same as the name of the bibliography (\texttt{*.bib}) file, but with the extension removed. Once correct citation commands (\cmd{\ix{citep}\{\ldots\}}  and/or \cmd{\ix{citet}\{\ldots\}}) are issued following CWYW, the citation with proper reference number or entry will appear in the text and listings in the proper style (based on *.bst) will be generated. The above shortcut generates an unnumbered chapter with the title REFERENCES (accepted by NDSU) and also a corresponding TOC entry.
 
@@ -747,13 +748,24 @@ This \texttt{spacing} command should immediately follow \cmd{begin\{document\}} 
 However, for the front matter, the {\tt spacing} environment should be enclosed within the front matter component. For example, the abstract with different spacing (than the default 27 lines per page) should be coded as:
 
 \begin{center}
-\cmd{abstract\{} \hspace{0.05cm}
+\cmd{abstract}\{
 \cmd{begin\{spacing\}\{\tb myspacing\}} \hspace{0.15cm}
 \ldots Abstract text \ldots \hspace{0.15cm}
-\cmd{end\{spacing\}} \}
+\cmd{end\{spacing\}}\}
 \end{center}
 
 A similar approach should be followed for other components such as acknowledgments, dedication, and preface.
+
+
+%-------------------------------------------
+\subsection{Chemical symbols}\index{chemical symbols}\index{chemical formula}
+Chemical symbols and chemical equations can be coded easily in a natural manner using the \cmd{ch\{\ldots\}} command using the \texttt{chemformula} package --- rather than using the math mode. The following chemicals: \ch{H2O}, \ch{H2SO4}, \ch{CrO4^2-}, \ch{[AgCl2]-}, \ch{(NH4)2S}, \ch{^{227}_{90}Th+}, and \ch{KCr(SO4)2 * 12 H2O} were coded through: \cmd{ch\{H2O\}}, \cmd{ch\{H2SO4\}}, \cmd{ch\{CrO4\textasciicircum2-\}}, \cmd{ch\{[AgCl2]-\}}, \cmd{ch\{(NH4)2S\}}, \cmd{ch\{\textasciicircum\{227\}\textunderscore\{90\}Th+\}}, and \cmd{ch\{KCr(SO4)2 * 12 H2O\}}.
+\vspace{-2ex}
+\begin{center}
+\cmd{ch\{A + B ->[a] C\}} \hspace{1cm} gives \hspace{1cm} \ch{A + B ->[a] C}\\
+\cmd{ch\{N2 + 3 H2 -> 2 NH3\}} \hspace{0.65cm} gives \hspace{1cm} \ch{N2 + 3 H2 -> 2 NH3}
+\end{center}
+Refer to \texttt{chemformula} documentation for more options and details. 
 
 %-------------------------------------------
 \subsection{Annotation commands}
@@ -787,7 +799,7 @@ gives: \dt{\ldots text\ldots (Daly, 2010) \ldots text \ldots}
 
 %--------------------------------------------------------------
 \subsection{Flowchart - \ix{tikz} package}
-Flowcharts, schemes, geometrical diagrams, circuit diagrams, and data visualization graphs are common in technical writing. These elements can be created elsewhere and included in the dissertation as an image or high-quality (vector graphics) can be created using codes directly. The Ti\emph{k}Z package, based on \TeX\ is an excellent and elaborate package (manual having $>1300$ pages) that can be used for creating high-quality graphics that serve the needs of any technical documentation (Example Fig.~\ref{fig:fc}). Going through the manual of Ti\emph{k}Z and the gallery will give information on the package capabilities and how that can be used in the dissertation. An example of a \ix{flowchart} created through Ti\emph{k}Z code is shown below:  \index{tikzpicture}
+Flowcharts, schemes, geometrical diagrams, circuit diagrams, and data visualization graphs are common in technical writing. These elements can be created elsewhere and included in the dissertation as an image or high-quality (vector graphics) can be created using codes directly. An example of a \ix{flowchart} created through Ti\emph{k}Z code is shown below:  \index{tikzpicture}
 
 \usetikzlibrary{shapes,arrows,shadows}
 
@@ -814,6 +826,8 @@ Flowcharts, schemes, geometrical diagrams, circuit diagrams, and data visualizat
 \label{fig:fc}
 \end{figure}
 
+The Ti\emph{k}Z package, based on \TeX\ is an excellent and elaborate package (manual having $>1300$ pages) that can be used for creating high-quality graphics that serve the needs of any technical documentation (Example Fig.~\ref{fig:fc}). Going through the manual of Ti\emph{k}Z and the gallery will give information on the package capabilities and how that can be used in the dissertation. 
+
 %--------------------------------------------------------------
 \subsection{Clever reference --- \ix{cross-referencing} items and labels}
 Referring to items automatically using the defined labels is a common activity in \LaTeX\ and is called cross-reference. Although there are basic commands available to refer (e.g., fig.~\cmd{ref\{label\}}), the use of \texttt{\ix{cleveref}} package is an efficient way to achieve this task. This package enhances \LaTeX's cross-referencing to automatically detect the ``type'' of the item cross-referenced (e.g., equation, section, tables, figures, etc.) based on the context of the cross-reference. This means a single command of \cmd{cref\{label\}} or \cmd{Cref\{label\}} with the label will produce the correct output (e.g., fig.~1.1, eq.~3, Figure~1.1, Equation~3, etc.). Refer to this package for more details and customization. However, \texttt{cleveref} commands will not work with the appendix tables and appendix figures only, where the basic commands (\cmd{ref\{\ldots\}}) should be used. \index{cref} \index{Cref}
@@ -836,9 +850,9 @@ The common issues [and proposed solution] while working with bibliographies, esp
 
 %--------------------------------------------------------------
 \subsection{Temporary ending}
-While reviewing/revising a large document, it will be efficient to compile only the chapter/section that was currently working. Rather than simply ending the document, it will be helpful to generate the citations in the text and a list of references at the \ix{temporary end}. As the commands that generate the reference listing need two files (style: \texttt{*.bst} and bibliography database: \texttt{*.bib}), which will be varying with users, it is better to code this command in the preamble.
+While reviewing/revising a large document, it will be efficient to compile only the chapter/section that was currently working. Rather than simply ending the document, it will be helpful to generate the citations in the text and a list of references at the \ix{temporary end}. As the commands that generate the reference listing need two files (style: \texttt{*.bst} and bibliography database: \texttt{*.bib}), which will be varying with users, it is better to code this command in the preamble (\cmd{makebib}) as given in Sec.~\ref{makebib}. 
 
-For this purpose, a shortcut \cmd{tend} defined by \cmd{newcommand\tb tend\{\cmd{tempend\{*.bst\}\{*.bib\}\}}} should be placed in the preamble of the source code (\texttt{*.tex}) with suitable names of \texttt{*.bst} and \texttt{*.bib} files (no extension required). Once this is done, the \cmd{tend} can be issued inside any chapter to activate this temporary ending feature.
+For this purpose, a shortcut \cmd{tend}\index{tend} is already defined in the class. Once \cmd{tend} is issued at any stage inside the source code will activate this temporary ending feature and end the document with a reference listing of all the cited references.
 
 %-------------------------------------------
 \subsection{Spacing adjustment around non-textual elements}
