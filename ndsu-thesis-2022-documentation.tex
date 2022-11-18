@@ -78,7 +78,7 @@
 \section{Introductions}
 The \texttt{ndsu-thesis-2022} \LaTeX\ is an updated version of the previous \texttt{ndsu-thesis} \ix{class} file. This class generates disquisitions intended to comply with the disquisition requirements of the North Dakota State University (NDSU) Graduate School. This class is not officially endorsed by NDSU or the NDSU Graduate School, but efforts are underway toward that goal. It should be noted that several theses and dissertations were made and got approved by the Graduate School using the NDSU \LaTeX\ thesis class in the past. Since disquisition requirements are subject to change at any time, the user is advised that the most current disquisition style policies supersede this class. However, following the Graduate School approved template and collected experience from several previously approved dissertations, this \LaTeX\ class was coded to incorporate the various required features and lessons learned, while preparing theses/dissertations using the previous class, in developing this version of the class. To ensure compliance with all NDSU Graduate School requirements, the user is encouraged to consult the NDSU Graduate School webpage and the links provided for detailed requirements and guidance on disquisition formatting guidelines, templates, section formatting, and examples (\url{https://www.ndsu.edu/gradschool/current_students/graduation/theses_dissertations_papers/disquisition_formatting}).
 
-The bundled \ix{template} or the \ix{example} given (Section~\ref{example}) can be used as an easy starting point for using the class. Modification of the class file's code may result in unexpected behavior and is at the user's own risk. We recommend including additional packages and commands in the source file (*.tex) itself for the desired customization as required by the departments and the users. 
+The bundled \ix{template} or the thesis example given (Section~\ref{example}) can be used as an easy starting point for using the class. Modification of the class file's code may result in unexpected behavior and is at the user's own risk. We recommend including additional packages and scommands in the source file (*.tex) itself for the desired customization as required by the departments and the users. 
 
 %--------------------------------------------------------------
 %--------------------------------------------------------------
@@ -280,7 +280,7 @@ xxxx\= \kill
 \subsection{List of appendix tables and figures}\label{sloat}
 The \ix{list of appendix tables} (\ix{LOAT}) and \ix{list of appendix figures} (\ix{LOAF}) will be generated based on the appendix table and figure full captions in the \texttt{appendixtable} and \texttt{appendixfigure} environments. New commands such as \cmd{myfigap\{5 arguments\}} and \cmd{myfigapls\{5 arguments\}} plus one \texttt{[optional]} argument for adjusting the caption placement for regular and landscape figures were defined.
 
-The \cmd{\ix{closeappendices}} command should be issued at the end of the last appendix, which ensures the automatic creation of the LOAT and LOAF when the appendices had tables and figures. If the appendices had only tables or only figures then the commands \cmd{closeappendixtables} or \cmd{closeappendixfigures} should be used to avoid blank entries.
+The \cmd{\ix{closeappendices}} command should be issued at the end of the last appendix, which ensures the automatic creation of the LOAT and LOAF when the appendices had tables and figures. If the appendices had only tables or only figures then the commands \cmd{\ix{closeappendixtables}} or \cmd{\ix{closeappendixfigures}} should be used to avoid blank entries, and if no tables are figures used in appendices then these commands should not be used or commented out. 
 
 %--------------------------------------------------------------
 %--------------------------------------------------------------
@@ -377,7 +377,7 @@ About handling \ix{equation}s, the NDSU's guidelines state ``When coding equatio
 %--------------------------------------------------------------
 %--------------------------------------------------------------
 \section{References/Bibliography}\index{bibliography}
-The two most common bibliography management systems are \ixm{bibliography}{BibTeX} and \ixm{bibliography}{Bib\LaTeX\/}; the former being simpler and the latter being modern and highly versatile. Reference or bibliography chapter or section can be combined into a \ixm{bibliography}{stand-alone chapter} (whole) or the reference listing can be included in all \ixm{bibliography}{individual chapters}. The bibliography listing in individual chapters sometimes desired by the user can be easily coded using the advanced Bib\LaTeX, which is also coded in the class. Both systems (individual or whole) use the same reference data in the form of \texttt{*.bib} file. The authors recommend using any of the systems by appropriately employing the system-specific commands. \index{bibliography!individual chapter} \index{bibliography!whole} For bibliography compilation issues see Sec.~\ref{bibissue}. 
+The two most common bibliography management systems are \ixm{bibliography}{BibTeX} and \ixm{bibliography}{Bib\LaTeX\/}; the former being simpler and the latter being modern and highly versatile. Reference or bibliography chapter or section can be combined into a \ixm{bibliography}{stand-alone chapter} (whole) or the reference listing can be included in all individual chapters. The bibliography listing in individual chapters sometimes desired by the user can be easily coded using the advanced Bib\LaTeX, which is also coded in the class. Both systems (individual or whole) use the same reference data in the form of \texttt{*.bib} file. The authors recommend using any of the systems by appropriately employing the system-specific commands. \index{bibliography!individual chapter} \index{bibliography!whole} For bibliography compilation issues see Sec.~\ref{bibissue}. 
 
 %--------------------------------------------------------------
 \subsection{Using \ix{BibTeX}}
@@ -402,7 +402,7 @@ The two basic commands that is required to implement BibTeX system are:
 
 However, a single new command ``\cmd{makebib}'' (direct shortcut with no arguments) developed, replacing the above commands, sets up the bibliography style and *.bib file arguments that are being utilized in other shortcuts is: 
 \ccmd{
-\cmd{newcommand\{\cmd{makebib}\}\ixm{bibliography}\{\cmd{biblio}\{\textit{style}\}\{\textit{name-of-bib-file}\}\}}
+\cmd{newcommand\{\cmd{makebib}\{\cmd{biblio}\{\textit{style}\}\{\textit{name-of-bib-file}\}\}}
 }\index{makebib}
 
 Now, simply issuing the \cmd{makebib} will generate the references listing based on the style and bib file input in the above command. The ``style'' of bibliography (\texttt{*.bst}) entries (typically \texttt{plainnat} or \texttt{apalike}), is controlled by the first argument; the user is referred to the BibTeX manual for formatting details and other available styles, such as those provided by the peer-reviewed journals related to the specialization. The ``name'' used in the second argument must be the same as the name of the bibliography (\texttt{*.bib}) file, but with the extension removed. Once correct citation commands (\cmd{\ix{citep}\{\ldots\}}  and/or \cmd{\ix{citet}\{\ldots\}}) are issued following CWYW, the citation with proper reference number or entry will appear in the text and listings in the proper style (based on *.bst) will be generated. The above shortcut generates an unnumbered chapter with the title REFERENCES (accepted by NDSU) and also a corresponding TOC entry.
@@ -483,8 +483,10 @@ Similar to figures handled in the regular chapters (Sec.~\ref{figs}), for append
 \end{flushleft}
 
 %--------------------------------------------------------------
-\subsection{Closing appendices}\label{apfigtab}
- When the last appendix does not contain the appendix table and figure, for the automatic creation of \ixm{appendix}{LOAT} and \ixm{appendix}{LOAF}, the \cmd{closeappendices} command should be issued in the overall code somewhere before \cmd{end\{document\}} after the last appendix. If the last appendix had both table(s) and figure(s), then issuing this command is not necessary but okay to issue it anyhow for completeness.
+\subsection{Closing appendices and creating TOC, LOAT, and LOAF}\label{apfigtab}
+In the class, the creation of \ixm{appendix}{LOAT} and \ixm{appendix}{LOAF} as well as their TOC entries requires special consideration. When the last appendix has got at least one table and one figure, the TOC, LOAT, and LOAF will be automatically generated without intervention. However, when the last appendix does not have at least a table, or figure, or both (even though the previous appendices had them) the corresponding LOAT or LOAF and relevant TOC entries will not appear. The solution for the automatic creation of these items, irrespective of the contents of the last appendix is issuing the command \cmd{\ix{closeappendices}} in the overall code somewhere before \cmd{end\{document\}} and after the last appendix code. 
+
+When the last appendix had both table(s) and figure(s), then issuing this command is not necessary but okay to use it anyhow for completeness. Furthermore, if the other appendices had only tables and the last does not then use \cmd{\ix{closeappendixtables}}, similarly for figures then use \cmd{\ix{closeappendixfigures}} for exclusive creation of LOAT or LOAF with relevant TOC (See Sec.~\ref{sloat}). In case when a thesis had no tables or figures in the appendices or no appendices in the thesis, then the aforementioned \cmd{closeappendi\ldots} commands should not be issued or commented, to avoid the generation of LOAT, LOAF, and TOC entries. 
 
 %--------------------------------------------------------------
 %--------------------------------------------------------------
@@ -723,7 +725,7 @@ Number & Square        & Cubes          & Fourth power\\
 \subsection{Appendix B Subsection}
 \kant[11]
 
-\closeappendices   % Closing appendices for LOAT and LOAF generation
+\closeappendices   % Automatic LOAT and LOAF generation; remove or comment if not required  
 
 \end{spacing}
 \end{document}
@@ -1051,7 +1053,8 @@ It is safe to assume that students who came this far should have ``cared enough'
 The authors gratefully appreciate the leadership and inputs from Danjel Nygard, Dissertation and Thesis Coordinator, NDSU, Fargo, ND, in developing this ``ndsu-thesis-2022'' \LaTeX\/ class. The support and involvement of James Thorne, Ph.D. Student, Department of Mathematics, NDSU, Fargo, ND, the maintainer of the previous version of this class in CTAN, is also highly appreciated. 
 
 %--------------------------------------------------------------
-{\footnotesize
+\newpage
+{\small %\footnotesize
 %\setlength{columnsep}{3cm}
 \printindex
 }
