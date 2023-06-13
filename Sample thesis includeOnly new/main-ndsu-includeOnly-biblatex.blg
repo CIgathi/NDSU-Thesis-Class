@@ -1,5 +1,0 @@
-[0] Config.pm:307> INFO - This is Biber 2.19
-[0] Config.pm:310> INFO - Logfile is 'main-ndsu-includeOnly-biblatex.blg'
-[91] biber-darwin:340> INFO - === Thu May 25, 2023, 12:32:23
-[113] Utils.pm:410> ERROR - main-ndsu-includeOnly-biblatex.bcf is malformed, last biblatex run probably failed. Deleted main-ndsu-includeOnly-biblatex.bbl
-[113] Biber.pm:136> INFO - ERRORS: 1
