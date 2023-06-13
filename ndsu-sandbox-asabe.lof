@@ -1,0 +1,8 @@
+\noindent \underline {Figure}\hfill \underline {Page}\par 
+\babel@toc {american}{}\relax 
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Figure short caption is centered. Use of myfig command.\relax }}{3}{figure.caption.6}%
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Figure short caption is centered. Use of myfig command; Now long caption that will be left-justified.\relax }}{3}{figure.caption.7}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Short caption is centered. Use of myfig command.\relax }}{25}{figure.caption.8}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Figure from the figures folder. Short caption is centered. Use of myfig command; Now long caption that will be left-justified.\relax }}{26}{figure.caption.9}%

@@ -1,0 +1,6 @@
+\noindent \underline {Table}\hfill \underline {Page}\par 
+\babel@toc {american}{}\relax 
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {1.1}{\ignorespaces Table captions go at the top of the table. This was long caption of the table included in the first chapter --- so that we see how it breaks into another line and having a single spacing. Usually tables are of full-width and are demonstrated subsequently.\relax }}{4}{table.caption.12}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {2.1}{\ignorespaces Table spanning entire width (full-width) using \texttt {setlength} and \texttt {tabcolsep}\relax }}{7}{table.caption.14}%

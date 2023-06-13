@@ -71,8 +71,10 @@
 %              Package soul was replaced by ulem
 %              Documentation and sandbox samples updated (2022-10-24)
 %              Chemical symbols support chemformula package (2022-11-10)
+%              Chapters subfolder command included (2023-02-22) 
 %
 %
+%  Last updated: 2023-02-22
 %  Last updated: 2022-11-10
 %  Last updated: 2022-10-24
 %  Last updated: 2022-10-07
@@ -103,7 +105,6 @@
 \RequirePackage{setspace}
 \RequirePackage{amsmath}
 \RequirePackage{amsfonts}
-%\RequirePackage{amssymb}
 \RequirePackage{chemformula} % chemicals easy typesetting
 \RequirePackage{titling}
 \RequirePackage{ifthen}
@@ -598,7 +599,7 @@
 \end{document}
 }
 
-% Usage: \tend the \makebib was recursively passed
+% Usage: \tend the for bibtex \makebib was recursively passed 
 \newcommand\tend{ 
 \bibtocsubstart
 \makebib
@@ -607,19 +608,30 @@
 \end{document}
 }
 
+% Usage: \tendb for biblatex the \makerefs was recursively passed
+\newcommand\tendb{ 
+\bibtocsubstart
+\makerefs
+\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+\end{refsection} 
+\end{spacing}
+\end{document}
+}
+
 % Generate appendices with the correct numbering - modified
 \renewcommand{\appendix}{
     \chapter*{APPENDIX}
+    \setcounter{section}{0}
+    \setcounter{equation}{0}
     \setcounter{appendixfigure}{0}
+    \setcounter{appendixtable}{0}
     \renewcommand{\appendixfigurename}{Figure}
     \renewcommand{\theappendixfigure}{A\arabic{appendixfigure}}
-    \setcounter{appendixtable}{0}
     \renewcommand{\appendixtablename}{Table}
     \renewcommand{\theappendixtable}{A\arabic{appendixtable}}
     \addtocontents{toc}{\setlength{\protect\cftchapnumwidth}{0pt}}    
     \addcontentsline{toc}{chapter}{APPENDIX}
     \renewcommand{\thesection}{A.\arabic{section}} 	
-    \setcounter{section}{0}
     \renewcommand{\theequation}{A.\arabic{equation}}
     \addtocontents{toc}{\protect\setcounter{tocdepth}{2}}% toc up to subsection
 }
@@ -627,17 +639,18 @@
 % Usage: 	\namedappendices{A}{Appendix title}
 \newcommand{\namedappendices}[2]{ % for multiple appendices
     \chapter*{APPENDIX #1. #2} 
+    \setcounter{section}{0}
+    \setcounter{equation}{0}
     \setcounter{appendixfigure}{0}
+    \setcounter{appendixtable}{0}
     \renewcommand{\appendixfigurename}{Figure}
     \renewcommand{\theappendixfigure}{#1\arabic{appendixfigure}}
-    \setcounter{appendixtable}{0}
     \renewcommand{\appendixtablename}{Table}
     \renewcommand{\theappendixtable}{#1\arabic{appendixtable}}
     \addtocontents{toc}{\setlength{\protect\cftchapnumwidth}{0pt}}    
     \addcontentsline{toc}{chapter}{APPENDIX #1.{\hspace{1.5ex}}\uppercase{#2}}
     \renewcommand{\thesection}{#1.\arabic{section}} 	
 %    \addcontentsline{toc}{section}{#1.\arabic{section}}
-    \setcounter{section}{0}
     \renewcommand{\theequation}{#1.\arabic{equation}}
     \addtocontents{toc}{\protect\setcounter{tocdepth}{2}}% toc up to subsection
 }
@@ -812,6 +825,12 @@
 }
 %*************** ASABE style references and captions  ****************
 % ==============================================================
+
+\newcommand{\chapterspath}[1]{%
+\makeatletter
+\def\input@path{{#1}} 
+\makeatother
+}
 
 \widowpenalty=10000
 \clubpenalty=10000

@@ -1,0 +1,67 @@
+%******************* START *******************
+% Multi-chapter - Working individual chapters - Chap refs (L5) or whole (L6) 
+% Contact C. Igathi; email: i.cannayen@ndsu.edu
+
+\documentclass[12pt,mathdesign,chapterrefs]{ndsu-thesis-2022}
+%\documentclass[12pt,mathdesign]{ndsu-thesis-2022}
+
+%----------------------Paths------------------------------
+\graphicspath{{./figures/}}  % figures stored in subfolder
+\chapterspath{./chapters/} % command defined in class for chapters subfolder
+%------------------------------------------------------------
+
+%----------------------BibLaTeX------------------------------
+\usepackage[style=apa,natbib=true,backend=biber]{biblatex}
+\addbibresource{mybib.bib} 
+\renewcommand{\bibtitle}{References} % activate when other title is required
+%-----------------------------------------------------------------
+
+% Caption setup: ASABE used below for ABEN.
+% Other departments comment this and make required modifications 
+\setbiblatexASABE  % biblatex only shortcut to setup ASABE references 
+\setcapASABE         % shortcut to setup ASABE captions (both bibtex and biblatex)
+\newcommand\myspacing{1.9} % 23 lines/page needs 1.9 for thesis  
+
+%----------------------------------------------------
+% first time run all chapters of \includeonly to make aux files and later
+% comment chapter to suppress - TOC may contain unincluded chapters
+
+\input{chapter0.tex} % front matter prefactory material; *.tex extension required
+
+%============================= 
+% Only Comment / Uncomment Lines from 36 to 41 for 4 chapters + 2 appendices
+% Add more chapters as required 
+
+\includeonly{ 
+%chapter1, 
+%chapter2,
+%chapter3,
+%chapter4,
+%appendixA,
+appendixB
+}
+
+%============================= 
+
+%************ Document start ************
+\begin{document}
+\begin{spacing}{\myspacing}      % New line spacing - 23 lines per page
+
+% All chapters should be present and uncommented. No (tex) extension required 
+% Add more chapters as required. Should match the \include only chapters
+
+\include{chapter1} 
+\include{chapter2}
+\include{chapter3}
+\include{chapter4}
+
+% Combined unnumbered Reference  chapter - automatically generated
+\checkMakeCombinedReferences%%% Don't delete this - can be moved last
+
+\include{appendixA}
+\include{appendixB}
+
+\end{spacing}
+\end{document}
+
+%******************* END *******************

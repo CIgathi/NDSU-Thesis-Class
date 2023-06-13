@@ -1,0 +1,6 @@
+\noindent \underline {Table}\hfill \underline {Page}\par 
+\babel@toc {american}{}\relax 
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {1.1}{\ignorespaces Professional looking fixed-width table using \texttt {booktabs} package.\relax }}{1}{table.caption.4}%
+\contentsline {table}{\numberline {1.2}{\ignorespaces Professional looking automatic full-width table using \texttt {tblr} environment and \texttt {booktabs} package.\relax }}{2}{table.caption.5}%
+\addvspace {10\p@ }

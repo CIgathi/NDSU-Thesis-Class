@@ -1,0 +1,6 @@
+\noindent \underline {Figure}\hfill \underline {Page}\par 
+\babel@toc {american}{}\relax 
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Caption for this example image in this first chapter.\relax }}{5}{figure.caption.13}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Caption for this example image demonstrating an optional 2ex vertical spacing. Compare this with a narrow caption spacing without optional argument in \cref {fig:1}.\relax }}{10}{figure.caption.15}%

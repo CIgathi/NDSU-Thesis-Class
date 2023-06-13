@@ -9,10 +9,17 @@
 \newcommand{\makebib}{\biblio{apalike}{mybib}} % shortcut for bibliography
 \newcommand\myspacing{1.9} % 23 lines/page needs 1.9 for thesis
 
+\sisetup{group-separator = {,}}% thousands separator comma; space default
+\DeclareSIUnit\gal{gallon}
+\DeclareSIUnit\ft{ft}
+\newcommand{\sqft}[1]{\SI{#1}{foot}$^2$\xspace}% have math outside of SI
+\newcommand{\cuft}[1]{\SI{#1}{\cubic\ft}\xspace}% SI standard commands
+
+
 %******************* First and second page material *******************
 \title{The Title of My M.S. Thesis}
 \author{Samuel Fargo Bison}
-\date{January 2022}
+\date{June 2023}
 \progdeptchoice{Department} % Use Department (or) Program
 \department{Mathematics}
 
@@ -135,7 +142,7 @@ Number & Name of month & Days & Season\\
 \end{table}	\kant[7-8]
 
 \subsection{Minor Results}
-This is a subsection of the thesis (1st level: 2.2. Experimental Results). 	sdfaldks;a  klasjdflkj 
+This is a subsection of the thesis (1st level: 2.2. Experimental Results). 	
 
 \kant[8]
 The \Cref{fig:2} is an example image with command showing all arguments including the optional 
@@ -225,8 +232,83 @@ Number & Square        & Cubes          & Fourth power\\
 \label{tab:ap2}
 \end{appendixtable}
 
+ 
+\subsection{Non-conventional SI Units}
+
+The SI units don't have gallon, feet, foot, inch, etc. However, these can be defined using \texttt{DeclareSIUnit} command and these units can be used in the regular manner with \texttt{si} and \texttt{SI} commands (See line numbers 12 through 16). 
+
+\noindent\emph{Regular use of SI units:}
+
+\SI{90000}{\m} and \unit{\m\per\s} and \unit{\joule\per\mole\per\kelvin} and \si{\joule\per\mole\per\kelvin} and \SI{780002233}{\joule\per\mole\per\kelvin}.
+
+\noindent\emph{Use of non-conventional but defined units:}
+
+\si{\gal}  and \SI{8.2}{\gal}. \SI{5.63}{foot}$^2$\xspace. \sqft{5.21}, and stop. \SI{9000}{\m}.
+
+\SI{24.6}{\ft}. And, \SI{56.2}{\ft\tothe{2}}, and \SI{56.2}{\ft\tothe{3}}. Also, \SI{56.2}{\ft\squared}, and \SI{56.2}{\cubic\ft} - using \texttt{squared} and \texttt{cubed} commands. Shortcut: \cuft{56.2}, and stop.
+
+\hl{Foot \emph{vs} feet.} Best way is to use ``ft'' also goes for ``in'', and ``ac''. 
+
+
+
 \subsection{Appendix B Subsection}
 \kant[11]
+
+
+
+\newpage
+\begin{landscape}
+\begin{appendixtable}[p]% p vertically centered
+\centering
+\caption{Landscape table using \texttt{tabularray} 
+packages.}
+\begin{tblr}{X[2.01] XXXX XXXX XXXXX XXXXX} 
+\toprule
+Number 	& 1st    & 2nd   & 3rd & 4th & 5th     & 6th  & 7th & 8th & 9th & 10th       & 11th & 12th  & 13th & 14th & 15th       & 16th & 17th  & 18th & 19th & 20th\\
+\midrule
+Row 1 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20\\
+Row 2 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20\\
+Row 3 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20\\
+Row 4 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20\\
+\midrule
+Row 5 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20\\
+Row 6 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20\\
+Row 7 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20\\
+Row 8 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20\\
+\bottomrule
+\end{tblr}
+\label{tab:ap2}
+\end{appendixtable}
+\end{landscape}
+
+
+\newpage
+\begin{landscape}
+\begin{appendixtable}[p]
+\centering
+\caption{Landscape table using resize box regular tabular environment} 
+\resizebox{1.35\textwidth}{!}{%
+\begin{tabular}{c lllll lllll lllll lllll lllll rrrrr}
+\toprule
+Number 	& 1st    & 2nd   & 3rd & 4th & 5th     & 6th  & 7th & 8th & 9th & 10th       & 11th & 12th  & 13th & 14th & 15th       & 16th & 17th  & 18th & 19th & 20th & 21th & 22th  & 23th & 24th & 25th\\
+\midrule
+Row 1 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20  & 21 & 22 & 23 & 24 & 25\\
+Row 2 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20  & 21 & 22 & 23 & 24 & 25\\
+Row 3 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20  & 21 & 22 & 23 & 24 & 25\\
+Row 4 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20  & 21 & 22 & 23 & 24 & 25\\
+\midrule
+Row 5 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20  & 21 & 22 & 23 & 24 & 25\\
+Row 6 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20  & 21 & 22 & 23 & 24 & 25\\
+Row 7 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20  & 21 & 22 & 23 & 24 & 25\\
+Row 8 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20  & 21 & 22 & 23 & 24 & 25\\
+\bottomrule
+\end{tabular}
+}% resize
+\label{tab:ap3}
+\end{appendixtable}
+\end{landscape}
+
+\kant[8]
 
 \closeappendices   % Automatic LOAT and LOAF generation; remove or comment if not required 
 

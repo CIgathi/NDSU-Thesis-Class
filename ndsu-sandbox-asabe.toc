@@ -1,0 +1,13 @@
+\babel@toc {american}{}\relax 
+\contentsline {chapter}{LIST OF TABLES}{iv}{chapter*.2}%
+\contentsline {chapter}{LIST OF FIGURES}{v}{chapter*.3}%
+\contentsline {chapter}{\numberline {1}\uppercase {Test Chapter for NDSU Thesis Class Sandbox}}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Section}{1}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Sub-Section}{1}{subsection.1.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.1.1}Sub-Sub-Section}{1}{subsubsection.1.1.1.1}%
+\contentsline {section}{\numberline {1.2}References}{5}{section.1.2}%
+\contentsline {chapter}{\numberline {2}\uppercase {Test Second Chapter for NDSU Thesis Class Sandbox}}{24}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Section}{25}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Sub-Section}{25}{subsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.1.1}Sub-Sub-Section}{25}{subsubsection.2.1.1.1}%
+\contentsline {section}{\numberline {2.2}Second Section}{26}{section.2.2}%

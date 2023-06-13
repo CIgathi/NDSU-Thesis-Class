@@ -1,0 +1,40 @@
+\babel@toc {american}{}\relax 
+\contentsline {chapter}{ABSTRACT}{iii}{chapter*.1}%
+\contentsline {chapter}{ACKNOWLEDGEMENTS}{iv}{chapter*.2}%
+\contentsline {chapter}{DEDICATION}{v}{chapter*.3}%
+\contentsline {chapter}{PREFACE}{vi}{chapter*.4}%
+\contentsline {chapter}{LIST OF TABLES}{ix}{chapter*.6}%
+\contentsline {chapter}{LIST OF FIGURES}{x}{chapter*.7}%
+\contentsline {chapter}{LIST OF ABBREVIATIONS}{xi}{chapter*.8}%
+\contentsline {chapter}{LIST OF SYMBOLS}{xii}{chapter*.9}%
+\contentsline {chapter}{LIST OF APPENDIX TABLES}{xiii}{chapter*.10}%
+\contentsline {chapter}{LIST OF APPENDIX FIGURES}{xiv}{chapter*.11}%
+\contentsline {chapter}{\numberline {1}\uppercase {The First Chapter - Paper Style - Long title of this technical paper}}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Abstract11}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Section12}{1}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Section13}{2}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Subsection131}{2}{subsection.1.3.1}%
+\contentsline {subsubsection}{\numberline {1.3.1.1}Subsubsection1311}{3}{subsubsection.1.3.1.1}%
+\contentsline {paragraph}{\numberline {1.3.1.1.1}Paragraph13111}{4}{paragraph.1.3.1.1.1}%
+\contentsline {section}{\numberline {1.4}Table and Figure}{4}{section.1.4}%
+\contentsline {chapter}{\numberline {2}\uppercase {The Second Chapter - Regular Style - Long title for this chapter}}{7}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Excellent Results}{7}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Minor Results}{8}{subsection.2.1.1}%
+\contentsline {section}{\numberline {2.2}Some References}{11}{section.2.2}%
+\contentsline {chapter}{REFERENCES}{12}{section*.16}%
+\setcounter {tocdepth}{-1}
+\contentsline {chapter}{REFERENCES}{12}{chapter*.17}%
+\setcounter {tocdepth}{1}
+\setlength {\cftchapnumwidth }{0pt}
+\contentsline {chapter}{APPENDIX A.{\hspace {1.5ex}}\uppercase {Named first appendix}}{14}{chapter*.18}%
+\setcounter {tocdepth}{2}
+\contentsline {section}{\numberline {A.1}Appendix A - Section With Figure}{14}{section.2.1}%
+\contentsline {section}{\numberline {A.2}Appendix A - Section With Table}{15}{section.2.2}%
+\contentsline {subsection}{\numberline {A.2.1}Appendix A Subsection}{15}{subsection.2.2.1}%
+\setlength {\cftchapnumwidth }{0pt}
+\contentsline {chapter}{APPENDIX B.{\hspace {1.5ex}}\uppercase {Named second appendix}}{16}{chapter*.21}%
+\setcounter {tocdepth}{2}
+\contentsline {section}{\numberline {B.1}Appendix B - Section With Figure}{16}{section.2.1}%
+\contentsline {section}{\numberline {B.2}Appendix B - Section With Table}{17}{section.2.2}%
+\contentsline {subsection}{\numberline {B.2.1}Non-conventional SI Units}{17}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {B.2.2}Appendix B Subsection}{17}{subsection.2.2.2}%

@@ -1,0 +1,59 @@
+%******************* Named appendix A *******************
+\namedappendices{A}{Named first appendix}
+
+\checkBeginRefsection%%% Don't delete this 
+
+Appendix material can be included here. First include a figure (fig.~\ref{fig:ap1}).
+
+%-------------------------------------------------
+\section{Appendix A - Section With Figure}
+\myfigap{H}{0.5}{example-image-golden}{A golden ratio rectangle image.}{fig:ap1}	\kant[8]
+
+%-------------------------------------------------
+\section{Appendix A - Section With Table}
+And, then including a table (table.~\ref{tab:ap1}).
+
+\begin{appendixtable}[h!]
+\centering
+\caption{Use of \texttt{tblr} environment for full-width table - applicable to both main text 
+and appendix.  Note the use of \texttt{booktabs} commands and `X' parameters to reproduce 
+Table~\ref{tab:ap1}.}
+\begin{tblr}{*4X}
+\toprule
+Number 		& Name of month 	& Days 	& Season\\
+\midrule
+\#7 			& July       			& 30 		& Spring\\ \cmidrule[lr]{2-4}
+Multicolumn 	&\SetCell[c=3]{c} The three columns combined \\ \cmidrule[lr]{2-4}
+\#8 			& August 		   	& 31 		& Summer\\
+\#9 			& September 		& 30 		& Summer\\
+\bottomrule
+\end{tblr}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item \hspace{-1ex} \emph{Note}: The \texttt{tablenotes} environment produces table footnotes.  
+Refer to \texttt{tabularray} documentation for further details.  
+\end{tablenotes}
+\label{tab:ap1}
+\end{appendixtable}
+
+%-------------------------------------------------
+\subsection{Appendix A Subsection}
+
+\textcolor{gray}{Dummy text from kantlipsum[9]. Reference listing on the next page. Check it for the intended formatting.} I refer to \citep{lamport94,kopka2004guide,baczkowski1990ndsu}, which are useful in the subject field of agricultural engineering. 
+\begin{align}
+y_1 & = m_1x + c_1 
+\label{eq:lineA1} \\
+y_2 & = m_2x + c_2 
+\label{eq:lineA2} \\
+y_3 & = m_3x + c_3 
+\label{eq:lineA3}
+\end{align}
+
+A family of straight-line equations is presented above (\cref{eq:lineA1,eq:lineA2,eq:lineA3}).
+
+
+\kant[10]
+
+\checkEndRefsection%%% Don't delete this
+
+%******************* END *******************

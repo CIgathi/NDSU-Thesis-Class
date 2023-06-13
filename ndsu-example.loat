@@ -1,0 +1,7 @@
+\noindent \underline {Table}\hfill \underline {Page}\par 
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {appendixtable}{\numberline {A1}{\ignorespaces Use of \texttt {tblr} environment for full-width table - applicable to both main text and appendix. Note the use of \texttt {booktabs} commands and `X' parameters to reproduce Table~\ref {tab:2}.\relax }}{15}{appendixtable.caption.20}%
+\contentsline {appendixtable}{\numberline {B1}{\ignorespaces Squares and cubes named appendix table using \texttt {siunitx} and \texttt {tabularray} packages.\relax }}{17}{appendixtable.caption.23}%
+\contentsline {appendixtable}{\numberline {B2}{\ignorespaces Landscape table using \texttt {tabularray} packages.\relax }}{19}{appendixtable.caption.24}%
+\contentsline {appendixtable}{\numberline {B3}{\ignorespaces Landscape table using resize box regular tabular environment\relax }}{20}{appendixtable.caption.25}%

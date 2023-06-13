@@ -1,0 +1,89 @@
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {section}{\numberline {2}Using and installing \LaTeX \ --- online and desktop environments}{2}{section.2}%
+\contentsline {section}{\numberline {3}Thesis Example}{2}{section.3}%
+\contentsline {section}{\numberline {4}Documentclass Options}{6}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Disquisition degree and type}{7}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Font size}{7}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Auto-numbered, chapter-numbered, and unnumbered styles}{7}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Paragraph text justification}{7}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Draft and display document frames}{7}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}Fonts}{8}{subsection.4.6}%
+\contentsline {subsection}{\numberline {4.7}Individual or combine reference listing}{8}{subsection.4.7}%
+\contentsline {section}{\numberline {5}Preamble Information}{8}{section.5}%
+\contentsline {subsection}{\numberline {5.1}General information - packages and shortcuts}{8}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Dissertation front pages}{9}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}Title}{9}{subsubsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2}Author}{9}{subsubsection.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.3}Major department/program choice}{9}{subsubsection.5.2.3}%
+\contentsline {subsubsection}{\numberline {5.2.4}Department or program}{9}{subsubsection.5.2.4}%
+\contentsline {subsubsection}{\numberline {5.2.5}Degree option}{9}{subsubsection.5.2.5}%
+\contentsline {subsubsection}{\numberline {5.2.6}Date}{9}{subsubsection.5.2.6}%
+\contentsline {subsubsection}{\numberline {5.2.7}Examining committee}{9}{subsubsection.5.2.7}%
+\contentsline {subsubsection}{\numberline {5.2.8}Approval information}{9}{subsubsection.5.2.8}%
+\contentsline {subsection}{\numberline {5.3}Dissertation front matter}{10}{subsection.5.3}%
+\contentsline {subsubsection}{\numberline {5.3.1}Abstract}{10}{subsubsection.5.3.1}%
+\contentsline {subsubsection}{\numberline {5.3.2}Acknowledgements}{10}{subsubsection.5.3.2}%
+\contentsline {subsubsection}{\numberline {5.3.3}Dedication}{10}{subsubsection.5.3.3}%
+\contentsline {subsubsection}{\numberline {5.3.4}Preface}{10}{subsubsection.5.3.4}%
+\contentsline {section}{\numberline {6}Automatic Components}{10}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Table of contents}{10}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}List of tables and figures}{10}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}List of abbreviations}{10}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}List of symbols}{11}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}List of appendix tables and figures}{11}{subsection.6.5}%
+\contentsline {section}{\numberline {7}Beginning the Document}{11}{section.7}%
+\contentsline {section}{\numberline {8}Headings}{11}{section.8}%
+\contentsline {section}{\numberline {9}Dummy Text and Images}{12}{section.9}%
+\contentsline {section}{\numberline {10}Tables and Figures}{12}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Tables}{12}{subsection.10.1}%
+\contentsline {subsubsection}{\numberline {10.1.1}Full-width tables --- \texttt {tblr} environment from \texttt {tabularray} package}{12}{subsubsection.10.1.1}%
+\contentsline {subsubsection}{\numberline {10.1.2}Full-width tables --- manual method}{12}{subsubsection.10.1.2}%
+\contentsline {subsection}{\numberline {10.2}Figures}{13}{subsection.10.2}%
+\contentsline {subsubsection}{\numberline {10.2.1}Shortcuts for figures --- direct and optional}{13}{subsubsection.10.2.1}%
+\contentsline {subsection}{\numberline {10.3}Captions}{13}{subsection.10.3}%
+\contentsline {section}{\numberline {11}Equations}{13}{section.11}%
+\contentsline {section}{\numberline {12}References/Bibliography}{14}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Using BibTeX\xspace }{14}{subsection.12.1}%
+\contentsline {subsubsection}{\numberline {12.1.1}Cite while you write (CWYW) using natbib}{14}{subsubsection.12.1.1}%
+\contentsline {subsubsection}{\numberline {12.1.2}Bibliography generation and files handling}{14}{subsubsection.12.1.2}%
+\contentsline {subsection}{\numberline {12.2}Using Bib\LaTeX \ }{15}{subsection.12.2}%
+\contentsline {subsubsection}{\numberline {12.2.1}Commands, cite, bibliography generation and files handling}{15}{subsubsection.12.2.1}%
+\contentsline {subsubsection}{\numberline {12.2.2}Individual chapters bibliography (multiple)}{15}{subsubsection.12.2.2}%
+\contentsline {subsection}{\numberline {12.3}Specialization specific bibliography --- ASABE and IEEE examples}{16}{subsection.12.3}%
+\contentsline {section}{\numberline {13}Appendix}{17}{section.13}%
+\contentsline {subsection}{\numberline {13.1}Single and multiple named appendices}{17}{subsection.13.1}%
+\contentsline {subsection}{\numberline {13.2}Appendix figures and tables}{17}{subsection.13.2}%
+\contentsline {subsection}{\numberline {13.3}Closing appendices and creating TOC, LOAT, and LOAF}{17}{subsection.13.3}%
+\contentsline {section}{\numberline {14}Additional Information I --- Special Commands}{18}{section.14}%
+\contentsline {subsection}{\numberline {14.1}Whole document text spacing}{18}{subsection.14.1}%
+\contentsline {subsection}{\numberline {14.2}Tables: Advanced commands}{18}{subsection.14.2}%
+\contentsline {subsubsection}{\numberline {14.2.1}Table row spacing and fonts}{18}{subsubsection.14.2.1}%
+\contentsline {subsubsection}{\numberline {14.2.2}Landscape tables}{18}{subsubsection.14.2.2}%
+\contentsline {subsubsection}{\numberline {14.2.3}Long tables}{18}{subsubsection.14.2.3}%
+\contentsline {subsubsection}{\numberline {14.2.4}Landscape long tables}{18}{subsubsection.14.2.4}%
+\contentsline {subsection}{\numberline {14.3}Figures: Advanced commands}{19}{subsection.14.3}%
+\contentsline {subsubsection}{\numberline {14.3.1}Figures in separate folder}{19}{subsubsection.14.3.1}%
+\contentsline {subsubsection}{\numberline {14.3.2}Flowchart - tikz package}{19}{subsubsection.14.3.2}%
+\contentsline {subsubsection}{\numberline {14.3.3}Subfigures}{19}{subsubsection.14.3.3}%
+\contentsline {subsubsection}{\numberline {14.3.4}Landscape subfigures}{19}{subsubsection.14.3.4}%
+\contentsline {subsubsection}{\numberline {14.3.5}Multiple page subfigures}{19}{subsubsection.14.3.5}%
+\contentsline {subsection}{\numberline {14.4}Chemical symbols}{20}{subsection.14.4}%
+\contentsline {subsection}{\numberline {14.5}Annotation commands}{20}{subsection.14.5}%
+\contentsline {subsection}{\numberline {14.6}Clever reference --- cross-referencing items and labels}{20}{subsection.14.6}%
+\contentsline {subsection}{\numberline {14.7}Bibliography compilation issues}{21}{subsection.14.7}%
+\contentsline {subsection}{\numberline {14.8}Proper development of bibliography bib file}{21}{subsection.14.8}%
+\contentsline {subsection}{\numberline {14.9}Temporary ending}{22}{subsection.14.9}%
+\contentsline {subsection}{\numberline {14.10}Spacing adjustment around non-textual elements}{23}{subsection.14.10}%
+\contentsline {subsection}{\numberline {14.11}Line numbers for the whole document}{23}{subsection.14.11}%
+\contentsline {subsection}{\numberline {14.12}Chapter styles}{24}{subsection.14.12}%
+\contentsline {subsection}{\numberline {14.13}Chapters as individual files}{24}{subsection.14.13}%
+\contentsline {subsection}{\numberline {14.14}Chapters as subfiles}{24}{subsection.14.14}%
+\contentsline {subsection}{\numberline {14.15}Defining and using specific commands, environments, and packages}{25}{subsection.14.15}%
+\contentsline {subsection}{\numberline {14.16}Thesis to journal article conversion for submission}{25}{subsection.14.16}%
+\contentsline {subsection}{\numberline {14.17}Advanced options}{26}{subsection.14.17}%
+\contentsline {subsection}{\numberline {14.18}Limitations of the class}{26}{subsection.14.18}%
+\contentsline {section}{\numberline {15}Additional Information II --- Some Tips For Customization}{27}{section.15}%
+\contentsline {subsection}{\numberline {15.1}General suggestions}{27}{subsection.15.1}%
+\contentsline {subsection}{\numberline {15.2}Voice of the \TeX \ and \LaTeX \ developers!}{28}{subsection.15.2}%
+\contentsline {section}{Acknowledgements}{28}{section*.8}%
+\contentsline {section}{Index}{28}{section*.9}%

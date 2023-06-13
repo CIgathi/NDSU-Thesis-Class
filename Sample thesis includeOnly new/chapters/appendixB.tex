@@ -1,0 +1,86 @@
+%******************* Named Appendix B *******************
+\namedappendices{B}{Named second appendix}
+
+\checkBeginRefsection%%% Don't delete this
+
+Appendix material can be included here. First include a figure (fig.~\ref{fig:ap2}).
+
+%-------------------------------------------------
+\section{Appendix B - Section With Figure}
+
+If no article is cited, no reference listing will be made. The following sentence containing citations sentence was commented, hence no reference listing was generated in this appendix chapter.  
+%\textcolor{gray}{Dummy text from kantlipsum. Reference listing on the next page. Check it for the intended formatting.} I refer to \citep{butin2009education,rudestam2014surviving}. 
+
+\kant[9] 
+Text text text text text text text text text text text text text text text text text text texts.
+
+\vspace{-8ex} 
+\begin{align}
+b_1 & = m_1x + c_1 
+\label{eq:lineB1} \\
+b_2 & = m_2x + c_2
+\label{eq:lineB2}
+\end{align}
+\vspace{-8ex} 
+
+\noindent A family of straight-line equations is presented above (\cref{eq:lineB1,eq:lineB2}). \kant[8]
+
+
+\myfigap[0.5ex]{H}{0.6}{example-grid-100x100pt}{A $10 \times 10$ grid of different
+concentric colors.}{fig:ap2}
+
+\section{Appendix B - Section With Table}
+Now coding another appendix table (table.~\ref{tab:ap2}) that spans the entire width using
+the manual method (using `tabcolsep' command; and `resize' command to fit large tables).
+
+\begin{appendixtable}[h]
+\centering
+\caption{Squares and cubes named appendix table using \texttt{siunitx} and \texttt{tabularray} 
+packages.}
+\begin{tblr}{X X[c] X[r] X[1.5,r]}
+\toprule
+Number 	& Square        		& Cubes          		& Fourth power\\
+\midrule
+11 	   	& 121   			& \num{1331} 		& \num{146412}\\
+22 	   	& 484  			& \num{10648}		& \num{234256}\\
+333 	  	& \num{110889}  	& \num{36926037}	& \num{12296370321}\\
+\bottomrule
+\end{tblr}
+\label{tab:ap2}
+\end{appendixtable}
+
+%-------------------------------------------------
+\subsection{Appendix B Subsection}
+\kant[11-13]
+
+
+\newpage
+%\vspace[1in]
+\begin{landscape}
+\begin{appendixtable}[h]
+\centering
+\caption{Landscape table using \texttt{tabularray} 
+packages.}
+\begin{tblr}{X[2.01] XXXX 15X} %XXXX XXXXX XXXXX
+\toprule
+Number 	& 1st    & 2nd   & 3rd & 4th & 5th     & 6th  & 7th & 8th & 9th & 10th       & 11th & 12th  & 13th & 14th & 15th       & 16th & 17th  & 18th & 19th & 20th\\
+\midrule
+Row 1 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 \\
+Row 2 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 \\
+Row 3 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 \\
+Row 4 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 \\
+\midrule
+Row 5 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 \\
+Row 6 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 \\
+Row 7 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 \\
+Row 8 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 \\
+\bottomrule
+\end{tblr}
+\label{tab:ap2}
+\end{appendixtable}
+\end{landscape}
+
+\kant[8]
+\checkEndRefsection%%% Don't delete this
+
+%******************* END *******************

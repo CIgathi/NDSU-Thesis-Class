@@ -2,9 +2,9 @@
 \documentclass[12pt,mathdesign]{ndsu-thesis-2022}
 
 %----------------------------------------------------
-\usepackage[style=apa,natbib=true,backend=biber]{biblatex}
-\addbibresource{mybib.bib} 
-\newcommand\myspacing{1.9} % 23 lines/page needs 1.9 for thesis
+\usepackage[style=apa,natbib=true,uniquename=false,backend=biber]{biblatex}% works well with \citep and \citet commands
+\addbibresource{see.bib}% *.bib extension is necessary 
+\newcommand\myspacing{1.9}% 23 lines/page needs 1.9 for thesis
 %----------------------------------------------------
 
 \graphicspath{{./figures/}}
@@ -33,8 +33,16 @@ This ``\texttt{ndsu-sandbox.tex}'' file can be used as a sandbox to try out thin
 \subsection{Sub-Section}
 \subsubsection{Sub-Sub-Section}
 
-\textcolor{gray}{Dummy text from kantlipsum[9]. Reference listing on the next page. Check it for the intended formatting.} I refer to \citep{lamport94,kopka2004guide,baczkowski1990ndsu}. \kant[9]
+\textcolor{gray}{Dummy text from kantlipsum[9]. Reference listing on the next page. Check it for the intended formatting.} I refer to %\citep{lamport94,kopka2004guide,baczkowski1990ndsu}. \kant[9]
 
+%\citep{chen2021effects} and 
+
+\citealp{chen2023air} and both \citep{ch2021effects,chen2023air}
+\citeauthor*{chen2023air}
+
+\textcite{chen2023air}
+
+\cite{chen2023air}
 
 \begin{table}[ht]
 \centering
@@ -55,6 +63,7 @@ Number & Our rating & Month \\
 
 \kant[9]
 
+
 \begin{table}[h!]
 \centering
 \caption{Professional looking automatic full-width table using \texttt{tblr} environment and \texttt{booktabs} package.}
@@ -73,21 +82,25 @@ Number & Our rating & Month \\
 
 \kant[9]
 
-\myfig{H}{0.4}{frog.jpg}{Figure short caption is centered. 
-Use of myfig command.}{fig2}
+\myfig{H}{0.4}{frog.jpg}{Figure short caption is centered. Use of myfig command.}{fig2}
 
 
 \kant[9]
-\myfig{H}{0.4}{frog}{Figure short caption is centered. 
-Use of myfig command; Now long caption that will be left-justified.}{fig3}
+\myfig{H}{0.4}{frog}{Figure short caption is centered. Use of myfig command; Now long caption that will be left-justified.}{fig3}
 
 %----------------------------------------------------
 \kant[2-4]
+
+\nocite{*}
+
 \makerefs % for biblatex - being first no refsection needed
+
+%\tendb
 
 %----------------------------------------------------
 %----------------------------------------------------
 \myheading{Test Second Chapter for NDSU Thesis Class Sandbox}
+
 \begin{refsection}  % for individual chapter reference (only from this chapter)
 \kant[20-21]
 
@@ -96,7 +109,7 @@ Use of myfig command; Now long caption that will be left-justified.}{fig3}
 \subsection{Sub-Section}
 \subsubsection{Sub-Sub-Section}
 
-\textcolor{gray}{Dummy text from kantlipsum. Reference listing on the next page. Check it for the intended formatting.} I refer to \citep{butin2009education, rudestam2014surviving, Goossens2008g,cassuto2010advising,pires2021teens}. \kant[9]
+\textcolor{gray}{Dummy text from kantlipsum. Reference listing on the next page. Check it for the intended formatting.} I refer to %\citep{butin2009education, rudestam2014surviving, Goossens2008g,cassuto2010advising,pires2021teens}. \kant[9]
 
 \myfig{H}{0.4}{frog}{Short caption is centered. Use of myfig command.}{fig4}
 
@@ -104,8 +117,9 @@ Use of myfig command; Now long caption that will be left-justified.}{fig3}
 \myfig{H}{0.95}{fig-LOS}{Figure from the figures folder. Short caption is centered. Use of myfig command; Now long caption that will be left-justified.}{fig5}
 
 %----------------------------------------------------
+\section{Second Section}
 \kant[2-5]
-\newpage
+%\newpage 
 \makerefs % for biblatex 
 \end{refsection} % for individual chapter reference (only from this chapter)
 %----------------------------------------------------

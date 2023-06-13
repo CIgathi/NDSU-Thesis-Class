@@ -1126,16 +1126,16 @@ placement using 5mm.}{fig5}
 \renewcommand*{\thesubfigure}{\arabic{subfigure}} % numeric
 \centering
 \subfloat[SubCap]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
-\subfloat[SubCap]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap]{\includegraphics[width=0.12\textwidth]{frog.jpg}}\hspace{0.5in}
 \subfloat[SubCap] {\includegraphics[width=0.15\textwidth]{frog.jpg}}\\
-\subfloat[SubCap]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
-\subfloat[SubCap]{\includegraphics[width=0.2\textwidth]{frog.jpg}}\hspace{0.5in}
-\subfloat[SubCap] {\includegraphics[width=0.15\textwidth]{frog.jpg}}\\
-\subfloat[SubCap]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
-\subfloat[SubCap]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
-\subfloat[SubCap] {\includegraphics[width=0.15\textwidth]{frog.jpg}}\\
+\subfloat[SubCap]{\includegraphics[width=0.12\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Small]{\includegraphics[width=0.1\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap] {\includegraphics[width=0.12\textwidth]{frog.jpg}}\\
+\subfloat[SubCap]{\includegraphics[width=0.12\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap]{\includegraphics[width=0.12\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap] {\includegraphics[width=0.12\textwidth]{frog.jpg}}\\
 \captionsetup{singlelinecheck=false} % can be given again
-\caption{Multiple page sub-figures --- General caption of the subfigure - all the captions and sub-labels were created through \cmd{subfloat[\ldots]\{\ldots\}} command of \texttt{subfig} package.} \label{fig:1gen}
+\caption{Multiple page sub-figures --- General caption of the subfigure - all the captions and sub-labels were created through \cmd{subfloat[\ldots]\{\ldots\}} command of \texttt{subfig} package. \emph{continued} \ldots} \label{fig:1gen}
 \end{figure}
 \clearpage
 
@@ -1159,7 +1159,7 @@ placement using 5mm.}{fig5}
 \subfloat[SubCap]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
 \subfloat[SubCap] {\includegraphics[width=0.2\textwidth]{frog.jpg}}\\
 \captionsetup{singlelinecheck=false} % can be given again
-\caption[]{Multiple page sub-figures --- General caption of the subfigure - all the captions and sub-labels were created through \cmd{subfloat[\ldots]\{\ldots\}} command of \texttt{subfig} package (\emph{contd\ldots}). \textcolor{magenta}{Notice the figure number included in the numbering}.} 
+\caption[]{Multiple page sub-figures --- This caption can be the same as above or abbreviated. \textcolor{magenta}{Notice the figure number included in the numbering}. \emph{continued} \ldots} 
 \end{figure}
 \clearpage
 
@@ -1174,10 +1174,106 @@ placement using 5mm.}{fig5}
 \subfloat[SubCap]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
 \subfloat[SubCap] {\includegraphics[width=0.2\textwidth]{frog.jpg}}\\
 \captionsetup{singlelinecheck=false} % can be given again
-\caption[]{Multiple page sub-figures --- General caption of the subfigure - all the captions and sub-labels were created through \cmd{subfloat[\ldots]\{\ldots\}} command of \texttt{subfig} package (\emph{contd\ldots}) \textcolor{magenta}{Notice figure number was dropped in the numbering}.} 
+\caption[]{Multiple page sub-figures --- This caption can be the same as above or abbreviated. \textcolor{magenta}{Notice figure number was dropped in the numbering}. This is the final caption.} 
 \end{figure}
 
 \italk{The \cmd{clearpage} command, which typesets all unprocessed floats, is necessary after every block of \texttt{figure} environments (3 used in this \Cref{fig:1gen}). For suppressing the TOC entries of the subsequent captions (2 on this and before page), a null TOC entry such as \cmd{caption[]\{Multiple page \ldots \}} was issued.}
+
+
+%-----------------------------------------------------------------------------
+\section{Multiple figures in landscape}
+
+\begin{landscape}
+\begin{figure}[p]
+\captionsetup{singlelinecheck=true} % can be given in figure env.
+\renewcommand*{\thesubfigure}{\arabic{subfigure}} % numeric
+\centering
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog] {\includegraphics[width=0.15\textwidth]{frog.jpg}}
+\\
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.2\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog] {\includegraphics[width=0.15\textwidth]{frog.jpg}}
+\\
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog] {\includegraphics[width=0.15\textwidth]{frog.jpg}}
+\\
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.2\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog] {\includegraphics[width=0.15\textwidth]{frog.jpg}}\\
+\captionsetup{singlelinecheck=false} % can be given again
+\caption{Landscape multiple page sub-figures --- General caption of the subfigure - all the captions and sub-labels were created through \cmd{subfloat[\ldots]\{\ldots\}} command of \texttt{subfig} package. \emph{continued} \ldots} \label{fig:1gen}
+\end{figure}
+\clearpage
+
+\begin{figure}[p]\ContinuedFloat
+\vspace{-6ex}% Whole content vertical adjustment 
+\captionsetup{singlelinecheck=true} % can be given in figure env.
+\renewcommand*{\thesubfigure}{\thefigure.\arabic{subfigure}} 
+\centering
+\subfloat[Pet-Frog]{\includegraphics[width=0.20\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.2\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.20\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog] {\includegraphics[width=0.15\textwidth]{frog.jpg}}
+\\
+\subfloat[Pet-Frog]{\includegraphics[width=0.20\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.2\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.20\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog] {\includegraphics[width=0.15\textwidth]{frog.jpg}}
+\\
+\subfloat[Pet-Frog]{\includegraphics[width=0.20\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.2\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.20\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog] {\includegraphics[width=0.15\textwidth]{frog.jpg}}
+\\
+\subfloat[Pet-Frog]{\includegraphics[width=0.1\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.1\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.1\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog] {\includegraphics[width=0.1\textwidth]{frog.jpg}}
+\\
+\captionsetup{singlelinecheck=false} % can be given again
+\caption[]{Landscape multiple page sub-figures ---  This caption can be the same as above or abbreviated. \textcolor{magenta}{Notice the figure number included in the numbering}. \emph{continued} \ldots} 
+\end{figure}
+\clearpage
+
+\begin{figure}[t]\ContinuedFloat
+\captionsetup{singlelinecheck=true} % can be given in figure env.
+\renewcommand*{\thesubfigure}{\arabic{subfigure}} % numeric
+\centering
+\subfloat[Pet-Frog]{\includegraphics[width=0.20\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.2\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.20\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog] {\includegraphics[width=0.2\textwidth]{frog.jpg}}
+\\
+\subfloat[Pet-Frog]{\includegraphics[width=0.20\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.2\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.20\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog] {\includegraphics[width=0.2\textwidth]{frog.jpg}}
+\\
+\captionsetup{singlelinecheck=false} % can be given again
+\caption[]{Landscape multiple page sub-figures --- This caption can be the same as above or abbreviated.  \textcolor{magenta}{Notice figure number was dropped in the numbering}. This is the final caption.} 
+\end{figure}
+
+\end{landscape}
+
+
+
 
 
 %-----------------------------------------------------------------------------
