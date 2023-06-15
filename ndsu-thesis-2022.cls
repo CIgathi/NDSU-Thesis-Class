@@ -72,8 +72,9 @@
 %              Documentation and sandbox samples updated (2022-10-24)
 %              Chemical symbols support chemformula package (2022-11-10)
 %              Chapters subfolder command included (2023-02-22) 
+%              Individual chapter- and combibed-references for BibLaTeX (2023-03-20)
 %
-%
+%  Last updated: 2023-03-20
 %  Last updated: 2023-02-22
 %  Last updated: 2022-11-10
 %  Last updated: 2022-10-24
@@ -105,6 +106,7 @@
 \RequirePackage{setspace}
 \RequirePackage{amsmath}
 \RequirePackage{amsfonts}
+%\RequirePackage{amssymb}
 \RequirePackage{chemformula} % chemicals easy typesetting
 \RequirePackage{titling}
 \RequirePackage{ifthen}
@@ -178,6 +180,9 @@
 \setbool{biblatexused}{false} % false produces refs individual subfiles - default
 \newbool{subcomp}  % to be used with main and subfiles
 \setbool{subcomp}{false} % false produces refs individual subfiles - default
+\newbool{chapref}  % to be used with main 
+\setbool{chapref}{false} %  produces no individual chapter references - default
+
 
 % Spacing between number and captions (table and figures) 
 \setlength{\cfttabnumwidth}{2.5em} % table - tocloft package
@@ -260,6 +265,9 @@
 \ifthenelse{\equal{\frameshow}{showframe}}
 {\RequirePackage[top=1in,bottom=1.25in,left=1in,right=1in,letterpaper,showframe]{geometry}}{\RequirePackage[top=1in,bottom=1.25in,left=1in,right=1in,letterpaper]{geometry}}
 
+% References title References or Bibliography
+%\newcommand{\referencetitile}{references}
+
 % ChapterBibliography 
 \newcommand{\chapbib}{none4}
 \DeclareOption{chaptersbib}{\renewcommand{\chapbib}{chaptersbib}}
@@ -270,8 +278,16 @@
 {\setbool{whole}{true}
 \setbool{biblatexused}{false}}
 
+% ChapterReferences - To be used with BibLaTeX
+\newcommand{\chaprefs}{none5}
+\DeclareOption{chapterrefs}{\renewcommand{\chaprefs}{chapterrefs}}
+\ProcessOptions
+\ifthenelse{\equal{\chaprefs}{chapterrefs}}
+{\setbool{chapref}{true}}
+{\setbool{chapref}{false}}
+
 % Subfile compilation 
-\newcommand{\subcom}{none5}
+\newcommand{\subcom}{none6}
 \DeclareOption{subfileref}{\renewcommand{\subcom}{subfileref}}
 \ProcessOptions
 \ifthenelse{\equal{\subcom}{subfileref}}
@@ -571,8 +587,9 @@
     \titlespacing*{\subparagraph}{0pt}{*0}{0pt}
 % Not in NDSU - Fifth level subheading  - Left aligned, italics, Sentence case, 
 %e.g., 1.1.1.1.1.1. Fifth level subheading 
+
     
-\newcommand\bibtocsubstart{ % used in latter command
+\newcommand{\bibtocsubstart}{ % used in latter command
 \newpage
 \phantomsection
 \addcontentsline{toc}{chapter}{REFERENCES}
@@ -582,7 +599,7 @@
 }
 
 % Usage: \biblio{reference-styleFile}{reference-bibFile}  -  Command to have references
-\newcommand\biblio[2]{
+\newcommand{\biblio}[2]{
 \bibtocsubstart
 \bibliographystyle{#1} 	% *.bst file  
 \bibliography{#2}    		% *.bib file 
@@ -590,7 +607,7 @@
 }  
 
 % Usage: \tempend{reference-styleFile}{reference-bibFile}  - Command to end temporarily 
-\newcommand\tempend[2]{ 
+\newcommand{\tempend}[2]{ 
 \bibtocsubstart
 \bibliographystyle{#1} 		% *.bst file
 \bibliography{#2}    			% *.bib file 
@@ -600,7 +617,7 @@
 }
 
 % Usage: \tend the for bibtex \makebib was recursively passed 
-\newcommand\tend{ 
+\newcommand{\tend}{ 
 \bibtocsubstart
 \makebib
 \addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
@@ -608,8 +625,17 @@
 \end{document}
 }
 
+% Defined to handle BibLaTeX reference commands (individual and combined)
+\newcommand{\bibtitle}{References} % for BibLaTeX
+
+\newcommand{\makerefs}{
+\ifbool{chapref}
+{\printbibliography[heading=subbibnumbered, title={\bibtitle}]}
+{\printbibliography[heading=bibintoc, title=\uppercase{\bibtitle}]}
+} % shortcut - section numbered; subbibintoc - unnumbered
+
 % Usage: \tendb for biblatex the \makerefs was recursively passed
-\newcommand\tendb{ 
+\newcommand{\tendb}{ 
 \bibtocsubstart
 \makerefs
 \addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
@@ -617,6 +643,18 @@
 \end{spacing}
 \end{document}
 }
+
+% Checking [chapterrefs] option and creating refsection environment
+\newcommand{\checkBeginRefsection}{\ifbool{chapref}{\begin{refsection}}{}}
+\newcommand{\checkEndRefsection}{\ifbool{chapref}{\makerefs\end{refsection}}{}}
+\newcommand{\checkMakeCombinedReferences}{\ifbool{chapref}{}{\newpage\makerefs}}
+
+% Generate appendices
+\newcommand{\myheadingref}[1]{ 
+    \chapter*{\uppercase{#1}}
+   \addcontentsline{toc}{chapter}{\uppercase{#1}}
+}
+
 
 % Generate appendices with the correct numbering - modified
 \renewcommand{\appendix}{
@@ -675,6 +713,7 @@
 \begin{appendixtable}[H]
 \caption[]{}
 \end{appendixtable}
+\let\clearpage\relax
 \vspace{-25ex}
 }
 
