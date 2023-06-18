@@ -1259,9 +1259,52 @@ placement using 5mm.}{fig5}
 \subfloat[frog6.\label{fig6:1f}] {\includegraphics[width=0.145\textwidth]{frog.jpg}}
 
 \captionsetup{singlelinecheck=false} % can be given again
-\caption{General caption of the subfigure - all the captions and sub-labels were created through \cmd{subfloat[\ldots]\{\ldots\}} command of \texttt{subfig} package.} \label{fig6}
+\caption{Multiple sub-images figure with general and sub-captions  --- all the captions and sub-labels were created through \cmd{subfloat[\ldots]\{\ldots\}} command of \texttt{subfig} package.} \label{fig6}
 \end{figure}
 \clearpage
+
+%-----------------------------------------------------------------------------
+\section{Unnumbered Subfigures}
+\italk{If the optional argument of \cmd{subfloat[\ldots]\{\ldots\}} command is dropped, the subfigures will be arranged without their sub-captions (\cref{fig6a}). This may be required in certain situations. It is also possible to change the size and spacing of individual subfigures as well as insert the sub-caption again for any of the sub-floats. Note in \Cref{fig6a} the subfigures are vertically arranged in a compact manner as the space taken by the sub-captions is eliminated. However, if required, this vertical space can be adjusted by the usual \cmd{vspace} or \textbackslash\textbackslash [optional spacing] commands.  
+}
+
+\begin{figure}[H]
+\captionsetup{singlelinecheck=true} % can be given in figure env.
+\centering
+\subfloat{\includegraphics[width=0.14\textwidth]{frog.jpg}}\hspace{0.25in}
+\subfloat{\includegraphics[width=0.14\textwidth]{frog.jpg}}\hspace{0.25in}
+\subfloat{\includegraphics[width=0.14\textwidth]{frog.jpg}}\hspace{0.25in}
+\subfloat{\includegraphics[width=0.14\textwidth]{frog.jpg}}\hspace{0.25in}
+\subfloat{\includegraphics[width=0.14\textwidth]{frog.jpg}}\hspace{0.25in}\\
+
+\subfloat{\includegraphics[width=0.14\textwidth]{frog.jpg}}\hspace{0.25in}
+\subfloat{\includegraphics[width=0.14\textwidth]{frog.jpg}}\hspace{0.25in}
+\subfloat{\includegraphics[width=0.14\textwidth]{frog.jpg}}\hspace{0.25in}
+\subfloat{\includegraphics[width=0.14\textwidth]{frog.jpg}}\hspace{0.25in}
+\subfloat{\includegraphics[width=0.14\textwidth]{frog.jpg}}\hspace{0.25in}\\
+
+\subfloat{\includegraphics[width=0.14\textwidth]{frog.jpg}}\hspace{0.25in}
+\subfloat{\includegraphics[width=0.14\textwidth]{frog.jpg}}\hspace{0.25in}
+\subfloat{\includegraphics[width=0.14\textwidth]{frog.jpg}}\hspace{0.25in}
+\subfloat{\includegraphics[width=0.14\textwidth]{frog.jpg}}\hspace{0.25in}
+\subfloat{\includegraphics[width=0.14\textwidth]{frog.jpg}}\hspace{0.25in}\\
+
+\subfloat{\includegraphics[width=0.14\textwidth]{frog.jpg}}\hspace{0.25in}
+\subfloat{\includegraphics[width=0.14\textwidth]{frog.jpg}}\hspace{0.25in}
+\subfloat{\includegraphics[width=0.14\textwidth]{frog.jpg}}\hspace{0.25in}
+\subfloat{\includegraphics[width=0.14\textwidth]{frog.jpg}}\hspace{0.25in}
+\subfloat{\includegraphics[width=0.14\textwidth]{frog.jpg}}\hspace{0.25in}\\
+
+\subfloat{\includegraphics[width=0.14\textwidth]{frog.jpg}}\hspace{0.25in}
+\subfloat{\includegraphics[width=0.14\textwidth]{frog.jpg}}\hspace{0.25in}
+\subfloat{\includegraphics[width=0.14\textwidth]{frog.jpg}}\hspace{0.25in}
+\subfloat{\includegraphics[width=0.14\textwidth]{frog.jpg}}\hspace{0.25in}
+\subfloat{\includegraphics[width=0.14\textwidth]{frog.jpg}}\hspace{0.25in}\\
+
+\captionsetup{singlelinecheck=false} % can be given again
+\caption{Multiple sub-images figure with general caption only  --- the sub-captions were omitted by dropping the optional argument as \cmd{subfloat\{\ldots\}} command.} \label{fig6a}
+\end{figure}
+
 
 %-----------------------------------------------------------------------------
 \section{Subfigures Spanning Multiple Pages}
@@ -1412,14 +1455,18 @@ As any dedicated reader can clearly see, the Ideal of practical reason is a repr
 \subfloat[Pet-Frog]{\includegraphics[width=0.20\textwidth]{frog.jpg}}\hspace{0.5in}
 \subfloat[Pet-Frog] {\includegraphics[width=0.2\textwidth]{frog.jpg}}
 \\
+\subfloat{\includegraphics[width=0.20\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat{\includegraphics[width=0.2\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat{\includegraphics[width=0.20\textwidth]{frog.jpg}}\hspace{0.5in}
+\\
 \subfloat[Pet-Frog]{\includegraphics[width=0.20\textwidth]{frog.jpg}}\hspace{0.5in}
 \subfloat[Pet-Frog]{\includegraphics[width=0.2\textwidth]{frog.jpg}}\hspace{0.5in}
 \subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
 \subfloat[Pet-Frog]{\includegraphics[width=0.20\textwidth]{frog.jpg}}\hspace{0.5in}
 \subfloat[Pet-Frog] {\includegraphics[width=0.2\textwidth]{frog.jpg}}
-\\
 \captionsetup{singlelinecheck=false} % can be given again
-\caption[]{Landscape multiple page sub-figures --- This caption can be the same as above or abbreviated.  \textcolor{magenta}{Notice figure number was dropped in the numbering}. This is the final caption.} 
+\caption[]{Landscape multiple page sub-figures --- This caption can be the same as above or abbreviated.  \textcolor{magenta}{Notice figure number was dropped in the numbering}. \textcolor{teal}{Note the last but one row is coded without the subfloat caption by dropping its optional argument --- this arrangement may be required sometimes.} This is the final caption.} 
 \end{figure}
 
 \end{landscape}

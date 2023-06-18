@@ -51,4 +51,6 @@ Files included are:
   frog.jpg - free sample image file used in thesis example
   
   figures - subfolder holding the images of documentation 
+  
+  
 %==================================================================
