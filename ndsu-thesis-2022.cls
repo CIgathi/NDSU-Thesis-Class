@@ -72,8 +72,13 @@
 %              Documentation and sandbox samples updated (2022-10-24)
 %              Chemical symbols support chemformula package (2022-11-10)
 %              Chapters subfolder command included (2023-02-22) 
-%              Individual chapter- and combibed-references for BibLaTeX (2023-03-20)
+%              Individual chapter- and combined-references for BibLaTeX (2023-03-20)
+%              Updated 2nd page 1st line (NDSU) to be regular from bold  (2023-07-17)
+%              Grid display through showgrid command option in the class (2023-07-17)
 %
+%  Update history
+%  Last updated: 2023-07-17
+%  Last updated: 2023-07-12
 %  Last updated: 2023-03-20
 %  Last updated: 2023-02-22
 %  Last updated: 2022-11-10
@@ -182,7 +187,6 @@
 \setbool{subcomp}{false} % false produces refs individual subfiles - default
 \newbool{chapref}  % to be used with main 
 \setbool{chapref}{false} %  produces no individual chapter references - default
-
 
 % Spacing between number and captions (table and figures) 
 \setlength{\cfttabnumwidth}{2.5em} % table - tocloft package
@@ -293,6 +297,19 @@
 \ifthenelse{\equal{\subcom}{subfileref}}
 {\setbool{subcomp}{true}}
 {\setbool{subcomp}{false}}
+
+% Grid option for the whole document. Use showgrid in class
+\newcommand{\gridshow}{none7}
+\DeclareOption{showgrid}{\renewcommand{\gridshow}{showgrid}}
+\ProcessOptions
+\ifthenelse{\equal{\gridshow}{showgrid}}
+{\RequirePackage[contents={},opacity=0]{background}
+\backgroundsetup{position={0,0},opacity=0.1,placement=bottom,angle=0,scale=1,
+contents={\begin{tikzpicture}
+   \fill[white] (0in,0in) rectangle (\paperwidth,\paperheight);
+   \filldraw[help lines, step = 0.1in, line width=0.5pt, blue] (0in,0in) grid (\paperwidth,\paperheight);
+\end{tikzpicture}}
+}}{}
 
 % Table of contents tweaks
 \addto\captionsamerican{\renewcommand{\contentsname}{TABLE OF CONTENTS}}
@@ -442,7 +459,7 @@
 \doublespacing
 \vfill
 \begingroup
-    \centering {\Large \textbf{NORTH DAKOTA STATE UNIVERSITY}} \\
+    \centering {\Large North Dakota State University} \\
     {\large Graduate School} \\
     \vspace{.1in}
     \hrule height 1pt
