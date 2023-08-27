@@ -7,14 +7,14 @@ Copyright 1999 2002-2008 LaTeX3 Project
     Everyone is allowed to distribute verbatim copies of this
     license document, but modification of it is not allowed.
 
-The latest version of this license is in: https://www.latex-project.org/lppl.txt 
+The latest version of this license is at: https://www.latex-project.org/lppl.txt 
 
 This work has the LPPL maintenance status `maintained'.
 
 The current maintainer of this work is Igathinathane Cannayen.
-Contact: i.cannayen@ndsu for bug reports and enquires.
+Contact: i.cannayen@ndsu for bug reports and inquiries.
 
-This new class or the old can be used independently, and these classes are appropriately invoked through the documentclass command with required options. It can be used to produce disquisitions (MS and PhD) for submission to the NDSU Graduate School and the final acceptance rests with the University Dissertation and Thesis Coordinator, and the Graduate Committee. Documentation and other fields were updated (24-10-2022). 
+This new class or the old can be used independently, and these classes are appropriately invoked through the documentclass command with required options. It can be used to produce disquisitions (MS and PhD) for submission to the NDSU Graduate School and the final acceptance rests with the University Dissertation and Thesis Coordinator, and the Graduate Committee. Documentation and other files were updated (27-08-2023). 
 
 Files included are:
 
@@ -51,6 +51,8 @@ Files included are:
   frog.jpg - free sample image file used in thesis example
   
   figures - subfolder holding the images of documentation 
+  
+  sample-thesis-IncludeOnly - subfolder for include only demo contains other subfolders (chapters, figures) and files. 
   
   
 %==================================================================

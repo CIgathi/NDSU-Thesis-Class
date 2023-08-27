@@ -1,20 +1,18 @@
 %******************* START *******************
-\documentclass[12pt,mathdesign]{ndsu-thesis-2022}
+%\documentclass[12pt,mathdesign]{ndsu-thesis-2022}
+%\documentclass[12pt,mathdesign,chapterrefs,showgrid]{ndsu-thesis-2022}
+\documentclass[12pt,mathdesign,chapterrefs]{ndsu-thesis-2022}
 
 %----------------------------------------------------
 \usepackage[style=apa,natbib=true,uniquename=false,backend=biber]{biblatex}% works well with \citep and \citet commands
-\addbibresource{see.bib}% *.bib extension is necessary 
+\addbibresource{mybib.bib}% *.bib extension is necessary 
+
 \newcommand\myspacing{1.9}% 23 lines/page needs 1.9 for thesis
 %----------------------------------------------------
 
 \graphicspath{{./figures/}}
 \setbiblatexASABE  % biblatex only shortcut to setup ASABE references 
 \setcapASABE         % shortcut to setup ASABE captions (both bibtex and biblatex)
-
-\newcommand\makerefs{
-\printbibliography[heading=subbibnumbered, title={References}]
-} % shortcut - section numbered; subbibintoc - unnumbered
-
 
 \title{My NDSU Thesis --- Sandbox}
 
@@ -33,16 +31,7 @@ This ``\texttt{ndsu-sandbox.tex}'' file can be used as a sandbox to try out thin
 \subsection{Sub-Section}
 \subsubsection{Sub-Sub-Section}
 
-\textcolor{gray}{Dummy text from kantlipsum[9]. Reference listing on the next page. Check it for the intended formatting.} I refer to %\citep{lamport94,kopka2004guide,baczkowski1990ndsu}. \kant[9]
-
-%\citep{chen2021effects} and 
-
-\citealp{chen2023air} and both \citep{ch2021effects,chen2023air}
-\citeauthor*{chen2023air}
-
-\textcite{chen2023air}
-
-\cite{chen2023air}
+\textcolor{gray}{Dummy text from kantlipsum[9]. Reference listing on the next page. Check it for the intended formatting.} I refer to \citep{lamport94,kopka2004guide,baczkowski1990ndsu}. \kant[9]
 
 \begin{table}[ht]
 \centering
@@ -81,6 +70,7 @@ Number & Our rating & Month \\
 \end{table}
 
 \kant[9]
+Firstfootnote\footnote{One - this is our first footnote. We can have our text here.} And second\footnote{The second footnote! Important as we have used 2 footnotes the next chapter footnote, if required, should be manually input as 3. Check how it is done on the chapter title in Page \# \pageref{my2chap}.}
 
 \myfig{H}{0.4}{frog.jpg}{Figure short caption is centered. Use of myfig command.}{fig2}
 
@@ -91,7 +81,7 @@ Number & Our rating & Month \\
 %----------------------------------------------------
 \kant[2-4]
 
-\nocite{*}
+%\nocite{*}
 
 \makerefs % for biblatex - being first no refsection needed
 
@@ -99,7 +89,7 @@ Number & Our rating & Month \\
 
 %----------------------------------------------------
 %----------------------------------------------------
-\myheading{Test Second Chapter for NDSU Thesis Class Sandbox}
+\mypaperheading{Test Second Chapter for NDSU Thesis Class Sandbox}{$^3$}{This paper footnote}\label{my2chap}
 
 \begin{refsection}  % for individual chapter reference (only from this chapter)
 \kant[20-21]
@@ -109,7 +99,12 @@ Number & Our rating & Month \\
 \subsection{Sub-Section}
 \subsubsection{Sub-Sub-Section}
 
-\textcolor{gray}{Dummy text from kantlipsum. Reference listing on the next page. Check it for the intended formatting.} I refer to %\citep{butin2009education, rudestam2014surviving, Goossens2008g,cassuto2010advising,pires2021teens}. \kant[9]
+\textcolor{gray}{Dummy text from kantlipsum. Reference listing on the next page. Check it for the intended formatting.} I refer to \citep{butin2009education, rudestam2014surviving, Goossens2008g,cassuto2010advising,pires2021teens}. \kant[9]
+
+A new footnote\footnote{The footnote next of the new tootnote!}.
+
+As is proven in the ontological manuals, it is obvious that the transcendental unity of apperception proves the validity of the Antinomies; what we have alone been able to show is that, our understanding. Let us suppose that the noumena have nothing to do with necessity, since knowledge of the complexnessivity\footnote{Is that a word?}
+
 
 \myfig{H}{0.4}{frog}{Short caption is centered. Use of myfig command.}{fig4}
 
@@ -117,13 +112,69 @@ Number & Our rating & Month \\
 \myfig{H}{0.95}{fig-LOS}{Figure from the figures folder. Short caption is centered. Use of myfig command; Now long caption that will be left-justified.}{fig5}
 
 %----------------------------------------------------
-\section{Second Section}
-\kant[2-5]
-%\newpage 
+\section{Second Section - NDSU Style Equation Spacing}
+%\setlength{\abovedisplayskip}{-0.2in}
+%\setlength{\belowdisplayskip}{0pt}
+
+Let us suppose that the noumena have nothing to do with necessity, since knowledge of the Categories is a posteriori. Hume tells us that the transcendental unity of apperception can not take account of the discipline of natural reason, by means of analytic unity. As is proven in the ontological manuals, it is obvious that the transcendental unity of apperception proves the validity of the Antinomies; what we have alone been able to show is that, our understanding. Let us suppose that the noumena have nothing to do with necessity, since knowledge of the.
+
+\myeqn{\text{Parameter} = ax^2 + bx + c \label{eq21}}
+
+\noindent \cref{eq21} is one equation. As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. Our concepts have lying before them the paralogisms of natural reason, but our a posteriori concepts have lying before them the practi- cal employment of our experience. Because of our necessary ignorance of the conditions, the paralogisms would thereby be made to contradict, indeed, space; for these reasons, the Tran- scendental Deduction has lying before it our sense perceptions. (Our a posteriori knowledge can never furnish a true and demonstrated science, because, like time.
+
+\myeqn{
+P = ax^2 + b 
+\label{eqn:22}
+}
+
+\myeqn{P = ax^2 + bx + c + d^3 \label{eqn:23}}
+
+As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. Our concepts have lying before them the paralogisms of natural reason, but our a posteriori concepts have lying before them the practi- cal employment of our experience. Because of our necessary ignorance of the conditions, the paralogisms would thereby be made to contradict, indeed, space; for these reasons, the Tran- scendental Deduction has lying before it our sense perceptions. (Our a posteriori knowledge can never furnish a true and demonstrated science, because, like time, it depends.
+
+\myalign{
+R & = 7.25 x \times \alpha \label{eq24}\\
+Q & = 8.8 y \times \gamma \label{eq25}\\
+Q & = 8.8 y \times \frac{\beta}{3.6} \label{eq26}\\
+Q & = 8.8 y \times \Delta \label{eq27}
+}
+
+\noindent \Cref{eq27} is the last one. As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. Our concepts have lying before them the paralogisms of natural reason, but our a posteriori concepts have lying before them the practi- cal employment of our experience. Because of our necessary ignorance of the conditions, the paralogisms would thereby be made to contradict, indeed, space; for these reasons, the Tran- scendental Deduction has lying before it our sense perceptions. (Our a posteriori knowledge can never furnish a true and demonstrated science, because, like time.
+
+\myfraceqn{y = \frac{2}{3} \times x \label{28}}
+
+\noindent As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. Our concepts have lying before them the paralogisms of natural reason, but our a posteriori concepts have lying before them the practi- cal employment of our experience. Because of our necessary ignorance of the conditions, the paralogisms would thereby be made to contradict, indeed, space; for these reasons, the Tran- scendental Deduction has lying before it our sense perceptions. (Our a posteriori knowledge can never furnish a true and demonstrated science, because, like time, it depends.
+
+\noindent \Cref{eq27} is the last one. As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. Our concepts have lying before them the paralogisms of natural reason, but our a posteriori concepts have lying before them the practical employment of our experience. Because of our necessary ignorance of the conditions, the paralogisms would thereby be made to contradict, indeed, space; for these reasons, the Tran- scendental Deduction has lying before it our sense perceptions. (Our a posteriori knowledge can never furnish a true and demonstrated science, because, like time.
+
+\myfracalign{
+y & = \frac{2}{3} \times x b \label{29} \\
+Q & = 8.8 y \times \gamma \label{eq25}\\
+Q & = 8.8 y \times \frac{\beta}{3.6} \label{eq26}\\
+\text{Rate} & = 8.8 y \times \frac{\gamma}{\delta} \label{eq25}
+}
+
+\noindent As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. Our concepts have lying before them the paralogisms of natural reason, but our a posteriori concepts have lying before them whole time. 
+
+\vspace{-2ex}
+\begin{equation}
+X(\omega) = 
+\begin{cases}
+	1 		&\text{se $\omega\in A$}\\
+	1250 	&\text{se $\omega \in A^c$}
+\end{cases}
+\end{equation}
+
+\noindent As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. Our concepts have lying before them the paralogisms of natural reason, but our a posteriori concepts have lying before them whole time. 
+
+
+
+% for individual chapter reference (from now on) otherwise once for the document
 \makerefs % for biblatex 
-\end{refsection} % for individual chapter reference (only from this chapter)
+\end{refsection} 
 %----------------------------------------------------
 
+% for whole doc references - remove all refsections 
+%\makerefs % for biblatex 
 
 \end{spacing}
 \end{document}

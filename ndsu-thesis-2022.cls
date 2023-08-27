@@ -75,8 +75,12 @@
 %              Individual chapter- and combined-references for BibLaTeX (2023-03-20)
 %              Updated 2nd page 1st line (NDSU) to be regular from bold  (2023-07-17)
 %              Grid display through showgrid command option in the class (2023-07-17)
+%              New equation commands for right vertical spacing with text (2023-07-28)
+%              New equation* commands for right vertical spacing with text (2023-08-27)
 %
 %  Update history
+%  Last updated: 2023-08-27
+%  Last updated: 2023-07-28
 %  Last updated: 2023-07-17
 %  Last updated: 2023-07-12
 %  Last updated: 2023-03-20
@@ -136,6 +140,7 @@
 \RequirePackage{xtab}
 \RequirePackage{siunitx}   % [binary-units = true]   
 \RequirePackage{float}
+\RequirePackage[stable]{footmisc}% footnote in section and beyond
 \RequirePackage{booktabs}
 \RequirePackage{pdflscape} 
 \RequirePackage{booktabs}
@@ -150,6 +155,7 @@
 \RequirePackage{comment}
 \RequirePackage{enumitem}
 \RequirePackage[american]{babel} % english
+\RequirePackage{suffix}% star version newcommands 
 \RequirePackage{csquotes}
 \RequirePackage[export]{adjustbox}
 \RequirePackage[nameinlink]{cleveref} %capitalise, noabbrev 
@@ -303,13 +309,9 @@
 \DeclareOption{showgrid}{\renewcommand{\gridshow}{showgrid}}
 \ProcessOptions
 \ifthenelse{\equal{\gridshow}{showgrid}}
-{\RequirePackage[contents={},opacity=0]{background}
-\backgroundsetup{position={0,0},opacity=0.1,placement=bottom,angle=0,scale=1,
-contents={\begin{tikzpicture}
-   \fill[white] (0in,0in) rectangle (\paperwidth,\paperheight);
-   \filldraw[help lines, step = 0.1in, line width=0.5pt, blue] (0in,0in) grid (\paperwidth,\paperheight);
-\end{tikzpicture}}
-}}{}
+{\RequirePackage[pattern=std, colorset=plumpad, patternsize=0.1in]
+{gridpapers}
+}{}
 
 % Table of contents tweaks
 \addto\captionsamerican{\renewcommand{\contentsname}{TABLE OF CONTENTS}}
@@ -558,15 +560,16 @@ contents={\begin{tikzpicture}
 \newcommand{\myheading}[1]{\chapter[\uppercase{#1}]{\thechapter.~{#1}}}
 }
 
+% Only the footnote text with number hard-coded
 \newcommand\blfootnote[1]{  
   \begingroup
   \renewcommand\thefootnote{}\footnote{#1}%
-  \addtocounter{footnote}{-1}%
+%  \addtocounter{footnote}{-1}% now continuous numbers
   \endgroup
 }
 
-% Usage: \mypaperheading{Title}{footnote mark}{footnote text}  - 3 arguments
-
+% Usage: \mypaperheading{Title}{footnote mark}{footnote text}  - 3 arguments 
+% Not a regular footnote - especially in chapter headings
 \ifthenelse{\equal{\numbertype}{nonumber}}{  
 \newcommand{\mypaperheading}[3]{\chapter[\uppercase{#1}]{{#1\,#2}\vspace{-3.2ex}}\blfootnote{\raggedright#2\,#3}} 
 }{
@@ -651,6 +654,15 @@ contents={\begin{tikzpicture}
 {\printbibliography[heading=bibintoc, title=\uppercase{\bibtitle}]}
 } % shortcut - section numbered; subbibintoc - unnumbered
 
+% Usage: \tendx for biblatex the \makerefs was recursively passed
+\newcommand\tendx{ 
+\bibtocsubstart
+\makerefs
+\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+\end{spacing}
+\end{document}
+}
+
 % Usage: \tendb for biblatex the \makerefs was recursively passed
 \newcommand{\tendb}{ 
 \bibtocsubstart
@@ -660,6 +672,8 @@ contents={\begin{tikzpicture}
 \end{spacing}
 \end{document}
 }
+
+\counterwithout{footnote}{chapter}% for continuous footnote
 
 % Checking [chapterrefs] option and creating refsection environment
 \newcommand{\checkBeginRefsection}{\ifbool{chapref}{\begin{refsection}}{}}
@@ -824,6 +838,123 @@ contents={\begin{tikzpicture}
 \end{landscape}
 }
 
+
+% Equations command for better vertical alignment with text 
+% myeqn, myfraceqn (different spacing), myalign, 
+% and myfracalign (different spacing, when frac as first or last equation)
+\newcommand{\myeqn}[1]{
+\vspace{-0.35in}
+\begin{equation}
+#1
+\end{equation}
+\par\vspace{-0.15in}
+}
+\WithSuffix\newcommand\myeqn*[1]{% no brackets around \myeqnt*
+\vspace{-0.35in}
+\begin{equation*}
+#1
+\end{equation*}
+\par\vspace{-0.15in}
+}
+
+\newcommand{\myfraceqn}[1]{
+\vspace{-0.325in}
+\begin{equation}
+#1
+\end{equation}
+\par\vspace{-0.125in}
+}
+\WithSuffix\newcommand\myfraceqn*[1]{
+\vspace{-0.325in}
+\begin{equation*}
+#1
+\end{equation*}
+\par\vspace{-0.125in}
+}
+
+\newcommand{\myalign}[1]{
+\vspace{-0.67in}
+\addtolength{\jot}{-0.05in}
+\begin{align}
+#1
+\end{align}
+\par\vspace{-0.295in}
+}
+\WithSuffix\newcommand\myalign*[1]{
+\vspace{-0.67in}
+\addtolength{\jot}{-0.05in}
+\begin{align*}
+#1
+\end{align*}
+\par\vspace{-0.295in}
+}
+
+\newcommand{\myfracalign}[1]{
+\vspace{-0.645in}
+\addtolength{\jot}{-0.05in}
+\begin{align}
+#1
+\end{align}
+\par\vspace{-0.27in}
+}
+\WithSuffix\newcommand\myfracalign*[1]{
+\vspace{-0.645in}
+\addtolength{\jot}{-0.05in}
+\begin{align*}
+#1
+\end{align*}
+\par\vspace{-0.27in}
+}
+
+\newcommand{\mygather}[1]{
+\vspace{-0.7in}
+\addtolength{\jot}{-0.05in}
+\begin{gather}
+#1
+\end{gather}
+\par\vspace{-0.315in}
+}
+\WithSuffix\newcommand\mygather*[1]{
+\vspace{-0.7in}
+\addtolength{\jot}{-0.05in}
+\begin{gather*}
+#1
+\end{gather*}
+\par\vspace{-0.315in}
+}
+
+\newcommand{\myfracgather}[1]{
+\vspace{-0.645in}
+\addtolength{\jot}{-0.05in}
+\begin{gather}
+#1
+\end{gather}
+\par\vspace{-0.27in}
+}
+\WithSuffix\newcommand\myfracgather*[1]{
+\vspace{-0.645in}
+\addtolength{\jot}{-0.05in}
+\begin{gather*}
+#1
+\end{gather*}
+\par\vspace{-0.27in}
+}
+
+\newcommand{\mydisp}[1]{
+\vspace{-0.35in}
+\[
+#1
+\]
+\par\vspace{-0.15in}
+}
+\newcommand{\myfracdisp}[1]{
+\vspace{-0.325in}
+\[
+#1
+\]
+\par\vspace{-0.125in}
+}
+
 % Highlight command defined
 \newcommand\hl{\bgroup\markoverwith
   {\textcolor{yellow}{\rule[-.5ex]{.1pt}{2.5ex}}}\ULon}
@@ -843,6 +974,9 @@ contents={\begin{tikzpicture}
 \newcommand\SU[2]{\qty[mode = text]{#1}{#2}\xspace} % redefined using qty
 \newcommand\su[1]{\unit[mode = text]{#1}\xspace} % redefined using qty
 \newcommand\no[1]{\num[mode = text]{#1}\xspace} % redefined using qty
+
+
+
 
 
 \setlength\abovedisplayskip{6pt plus 3pt minus 3pt}

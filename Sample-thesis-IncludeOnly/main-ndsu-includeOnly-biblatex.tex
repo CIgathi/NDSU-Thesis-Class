@@ -1,6 +1,6 @@
 %******************* START *******************
 % Multi-chapter - Working individual chapters - Chap refs (L5) or whole (L6) 
-% Contact C. Igathi; email: i.cannayen@ndsu.edu
+% Contact C. Igathinathane; email: i.cannayen@ndsu.edu
 
 \documentclass[12pt,mathdesign,chapterrefs]{ndsu-thesis-2022}
 %\documentclass[12pt,mathdesign]{ndsu-thesis-2022}
@@ -23,22 +23,22 @@
 \newcommand\myspacing{1.9} % 23 lines/page needs 1.9 for thesis  
 
 %----------------------------------------------------
-% first time run all chapters of \includeonly to make aux files and later
-% comment chapter to suppress - TOC may contain unincluded chapters
+% First time run all chapters of \includeonly to make aux files and later
+% comment chapters/appendices to suppress them.  TOC will contain all chapters
 
 \input{chapter0.tex} % front matter prefactory material; *.tex extension required
 
 %============================= 
 % Only Comment / Uncomment Lines from 36 to 41 for 4 chapters + 2 appendices
-% Add more chapters as required 
+% Add more chapters as required in includeonly and document environment
 
 \includeonly{ 
-%chapter1, 
+chapter1, 
 %chapter2,
 %chapter3,
-%chapter4,
-%appendixA,
-appendixB
+chapter4,
+appendixA,
+%appendixB
 }
 
 %============================= 
@@ -56,7 +56,7 @@ appendixB
 \include{chapter4}
 
 % Combined unnumbered Reference  chapter - automatically generated
-\checkMakeCombinedReferences%%% Don't delete this - can be moved last
+\checkMakeCombinedReferences%%% Don't delete this - can be moved down as reqd.
 
 \include{appendixA}
 \include{appendixB}

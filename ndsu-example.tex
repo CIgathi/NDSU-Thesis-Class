@@ -4,16 +4,17 @@
 %Refer documentation (ndsu-thesis-2022-documentation.pdf) for various options and commands
 
 %******************* Packages, newcommands, and other customization *******************
-\usepackage[sort&compress]{natbib}
-\citestyle{egu} % agms, agu, arms, egu, cospar, dcu, kluwer, plain, nature
-\newcommand{\makebib}{\biblio{apalike}{mybib}} % shortcut for bibliography
+\usepackage[style=apa,natbib=true,backend=biber]{biblatex}% works with \citep and \citet commands
+\addbibresource{mybib.bib}% *.bib extension is necessary 
+
 \newcommand\myspacing{1.9} % 23 lines/page needs 1.9 for thesis
 
+%***** SI units setup and few commands *****
 \sisetup{group-separator = {,}}% thousands separator comma; space default
 \DeclareSIUnit\gal{gallon}
 \DeclareSIUnit\ft{ft}
-\newcommand{\sqft}[1]{\SI{#1}{foot}$^2$\xspace}% have math outside of SI
-\newcommand{\cuft}[1]{\SI{#1}{\cubic\ft}\xspace}% SI standard commands
+\newcommand{\sqft}[1]{\qty{#1}{foot}$^2$\xspace}% have math outside of SI
+\newcommand{\cuft}[1]{\qty{#1}{\cubic\ft}\xspace}% SI standard commands
 
 
 %******************* First and second page material *******************
@@ -31,65 +32,62 @@
 \approver{Prof. James Garfield}
 
 %******************* Front matter *******************
-\abstract{This is the abstract for my thesis. \\ \emph{Abstracts for doctoral
-dissertations must use 350 words or less. Abstracts for master's papers or master's
-theses must use 150 words or less.}\\ \kant[16]} % dummy text
+\abstract{This is the abstract for my thesis. \\ \emph{Abstracts for doctoral dissertations must use 350 words or less. Abstracts for master's papers or master's theses must use 150 words or less.}\\ \kant[16]} % dummy text
 
-\acknowledgements{I acknowledge people here. \\ \emph{Acknowledgements text should be
-placed here.} \\ \kant[15]}
+\acknowledgements{I acknowledge people here. \\ \emph{Acknowledgements text should be placed here.} \\ \kant[15]}
 
-\dedication{This thesis is dedicated to my cat, Mr. Fluffles.\\ \emph{This section
-dedicates the disquisition to a few significant people. The text must be double-spaced
-and aligned center to the page.} \\ Which is already taken care of by this \LaTeX\ class.}
+\dedication{This thesis is dedicated to my cat, Mr. Fluffles.\\ \emph{This section dedicates the disquisition to a few significant people. The text must be double-spaced and aligned center to the page.} \\ Which is already taken care of by this \LaTeX\ class.}
 
 \preface{You can put a preface here. \\ \emph{This section is optional!} \\ \kant[14]}
 
 \listofabbreviations{% may use title case
-AC       & Alternating Current \\
-NDSU     & North Dakota State University \\
-ZL       & Zeta Level}
+AC          	& alternating current \\
+NDSU     	& North Dakota State University \\
+ZL       	& zeta level}
 
 \listofsymbols{% may use sentence case
-$A$     & Area (\si{\m\squared})\\
-$e$     & Euler's constant (\num{2.718281828}) \\
-$R^2$   & Coefficient of determination}
+$A$     	& area (\unit{\m\squared})\\
+$e$     	& Euler's constant (\num{2.718281828}) \\
+$R^2$   	& coefficient of determination}
 
 %******************* Document start *******************
 \begin{document}
 \begin{spacing}{\myspacing}      % New line spacing - 23 lines per page
 
 %******************* First chapter - paper style *******************
-\mypaperheading{The First Chapter - Paper Style - Long title of this technical paper}{*}
-{This paper is planned to be submitted as a peer-reviewed article \ldots\ more information 
-about the author(s),  title,  \emph{journal},  to be added.}
+\mypaperheading{The First Chapter - Paper Style - Long title of this technical paper}{$^1$}{This paper is planned to be submitted as a peer-reviewed article \ldots\ more information about the author(s),  title,  \emph{journal},  to be added.}
 
+%------------------------------------------------------
 \section{Abstract11}
 Paper-styled chapters will have abstracts. Abstract of this chapter goes here. \kant[1]
 
+%------------------------------------------------------
 \section{Section12}
 This is the first section of the thesis (1st level: 1.2. Section). \kant[2]
 
+%------------------------------------------------------
 \section{Section13}
 This is the second section of the thesis (1st level: 1.3. Section). \kant[3]
 
+%------------------------------------------------------
 \subsection{Subsection131}
 This is the subsection text (2nd level: 1.3.1. Subsection). \kant[4]
 
+%------------------------------------------------------
 \subsubsection{Subsubsection1311}
 This is the subsection text (3rd level: 1.3.1.1. Subsubsection). \kant[5]
 
+%------------------------------------------------------
 \paragraph{Paragraph13111}
 This is the subsection text (4th level: 1.3.1.1.1. Paragraph). \kant[6]
 
+%------------------------------------------------------
 \section{Table and Figure}
-This is the third section of the thesis (1st level: 1.4. Section). This section
-illustrates the inclusion of a simple table (\cref{tab:1}) and a figure shown later.
+This is the third section of the thesis (1st level: 1.4. Section). This section illustrates the inclusion of a simple table (\cref{tab:1}) and a figure shown later.
 
 \begin{table}[h]
 \centering
-\caption{Table captions go at the top of the table. This was long caption of the table
-included in the first chapter --- so that we see how it breaks into another line and
-having a single spacing. Usually tables are of full-width and are demonstrated subsequently.}
+\caption{Table captions go at the top of the table. This was a long caption of the table included in the first chapter --- so that we see how it breaks into another line and has a single spacing. Usually, tables are of full-width and are demonstrated subsequently.}
 \vspace{-1ex}
 \begin{tabular}{clr}
 \toprule
@@ -105,19 +103,17 @@ Number & Month & Days\\
 
 Now the figure (\cref{fig:1}) illustrates an example figure from the \texttt{mwe} package.
 
-\myfig{H}{0.525}{example-image-duck}{Caption for this example image in this first chapter.}
-{fig:1}	\kant[8-9]
+\myfig{H}{0.525}{example-image-duck}{Caption for this example image in this first chapter.}{fig:1}	
+\kant[8-9]
 
 %******************* Second chapter - regular *******************
 \myheading{The Second Chapter - Regular Style - Long title for this chapter}
 
-Regular style chapters will not have abstracts. General information or outline of the
-chapter is given here --- before breaking into sections.
+Regular style chapters will not have abstracts. General information or outline of the chapter is given here --- before breaking into sections. 
 
+%------------------------------------------------------
 \section{Excellent Results}
-This is another section of the thesis (1st level: 2.1. Experimental Results).
-\Cref{tab:2} presents the results in a tabular form that spans the entire width.
-Please note the results shown (\cref{tab:2}) are preliminary.
+This is another section of the thesis (1st level: 2.1. Experimental Results).\Cref{tab:2} presents the results in a tabular form that spans the entire width. Please note the results shown (\cref{tab:2}) are preliminary.
 
 \begin{table}[ht]
 \centering
@@ -141,36 +137,45 @@ Number & Name of month & Days & Season\\
 \label{tab:2}
 \end{table}	\kant[7-8]
 
+%------------------------------------------------------
 \subsection{Minor Results}
 This is a subsection of the thesis (1st level: 2.2. Experimental Results). 	
 
 \kant[8]
-The \Cref{fig:2} is an example image with command showing all arguments including the optional 
-caption placement. The example figure (\cref{fig:2}) is included in the \texttt{mwe} package.
+The \Cref{fig:2} is an example image with command showing all arguments including the optional caption placement. The example figure (\cref{fig:2}) is included in the \texttt{mwe} package.
 
-\myfig[2ex]{H}{0.45}{example-image}{Caption for this example image demonstrating an optional 
-2ex vertical spacing. Compare this with a narrow caption spacing without optional argument in 
+\myfig[2ex]{H}{0.35}{example-image}{Caption for this example image demonstrating an optional 2ex vertical spacing. Compare this with a narrow caption spacing without optional argument in 
 \cref{fig:1}.}{fig:2}
 \kant[8]
 
-\section{Some References}
-Referring to all entries in the ``\texttt{mybib.bib}'' file to generate the citations here
-and the listing using the \texttt{\textbackslash citep\{\ldots\}} ``natbib'' command
-(cite parenthesis)\citep{texbook,lcompanion,latex2e,knuth1984,lesk1977,amsthm2017,
-calvo2004using,cannayen2011latex,kopka2004guide,notso2021,bari2016identification}.
+%------------------------------------------------------
+\section{Equations}
+\kant[2]
 
-The same using \texttt{\textbackslash citet\{\ldots\}} command (cite text) in the running
-text as: The authors \citet{texbook,lcompanion,latex2e,knuth1984,lesk1977,amsthm2017,
-calvo2004using,cannayen2011latex,kopka2004guide,notso2021,bari2016identification} have something to do with \LaTeX. For most bibliography citation and 
-list creation, these two commands are sufficient.
+\myeqn{% shortcut for equation vertically spaced
+y = (mx + c) \times \text{NCF} \times S_\text{factor} \times c_p \times M_\text{p}
+\label{eq:lin}
+}
+
+\noindent where $y$ is the dependent variable, $m$ is the slope, $x$ is the independent variable, $c$ is the $y$ intercept, NCF is the normalized conversion factor, $S_\text{factor}$ is the scale factor, $c_p$ is the specific heat capacity at constant pressure ($p$, variable), and $M_\text{p}$ is the mass of a proton (p, descriptive). 
+
+Note how variables, abbreviations, and subscripts are coded in \cref{eq:lin}. Refer Extended Thesis to know more about equations and shortcuts. 
+
+%------------------------------------------------------
+\section{Some References}
+Referring to all entries in the ``\texttt{mybib.bib}'' file to generate the citations here and the listing using the \texttt{\textbackslash citep\{\ldots\}} ``natbib'' command (cite parenthesis \citep{texbook,lcompanion,latex2e,knuth1984,lesk1977,amsthm2017,calvo2004using,cannayen2011latex,kopka2004guide,notso2021,bari2016identification}.
+
+The same using \texttt{\textbackslash citet\{\ldots\}} command (cite text) in the running text as: The authors \citet{texbook,lcompanion,latex2e,knuth1984,lesk1977,amsthm2017,calvo2004using,cannayen2011latex,kopka2004guide,notso2021,bari2016identification} have something to do with \LaTeX. For most bibliography citations and list creation, these two commands are sufficient.
 
 %******************* Bibliography handling *******************
-\makebib  % Shortcut command using style and bib defined in the preamble
+\makerefs %For individual chapter references - command should be inside refsection environment
+
 
 %******************* Named appendix A *******************
 \namedappendices{A}{Named first appendix}
 Appendix material can be included here. First including a figure (fig.~\ref{fig:ap1}).
 
+%------------------------------------------------------
 \section{Appendix A - Section With Figure}
 \myfigap{H}{0.5}{example-image-golden}{A golden ratio rectangle image.}{fig:ap1}	\kant[8]
 
@@ -200,25 +205,29 @@ Refer to \texttt{tabularray} documentation for further details.
 \label{tab:ap1}
 \end{appendixtable}
 
+For other types of \hl{tables and figures}, such as landscape tables, long tables, landscape long tables, landscape figures, subfigures, subfigures spanning multiple pages, and multiple figures in landscape see NDSU-Thesis-Extended code and output. 
+
+%------------------------------------------------------
 \subsection{Appendix A Subsection}
 \kant[10]
+
 
 %******************* Named Appendix B *******************
 \namedappendices{B}{Named second appendix}
 Appendix material can be included here. First including a figure (fig.~\ref{fig:ap2}).
 
+%------------------------------------------------------
 \section{Appendix B - Section With Figure}
 \kant[9]
-\myfigap[0.5ex]{H}{0.6}{example-grid-100x100pt}{A $10 \times 10$ grid of different
-concentric colors.}{fig:ap2}
+\myfigap[0.5ex]{H}{0.6}{example-grid-100x100pt}{A $10 \times 10$ grid of different concentric colors.}{fig:ap2}
 
+%------------------------------------------------------
 \section{Appendix B - Section With Table}
-Now coding another appendix table (table.~\ref{tab:ap2}) that spans the entire width using
-the manual method (using `tabcolsep' command; and `resize' command to fit large tables).
+Now coding another appendix table (table.~\ref{tab:ap2}) that spans the entire width using the manual method (using `tabcolsep' command; and `resize' command to fit large tables).
 
 \begin{appendixtable}[h]
 \centering
-\caption{Squares and cubes named appendix table using \texttt{siunitx} and \texttt{tabularray} 
+\caption{Squares and cubes in named appendix table using \texttt{siunitx} and \texttt{tabularray} 
 packages.}
 \begin{tblr}{X X[c] X[r] X[1.5,r]}
 \toprule
@@ -231,84 +240,27 @@ Number & Square        & Cubes          & Fourth power\\
 \end{tblr}
 \label{tab:ap2}
 \end{appendixtable}
-
  
-\subsection{Non-conventional SI Units}
+%------------------------------------------------------
+\subsection{SI Units --- Regular and non-conventional}
 
-The SI units don't have gallon, feet, foot, inch, etc. However, these can be defined using \texttt{DeclareSIUnit} command and these units can be used in the regular manner with \texttt{si} and \texttt{SI} commands (See line numbers 12 through 16). 
+\subsubsection{Regular use of SI units}
+The latest \texttt{siunitx} package (2023) defines \texttt{\textbackslash unit\{\ldots\}} for displaying units and \\\texttt{\textbackslash qty\{\ldots\}\{\ldots\}} for deploying both numbers and units. Another useful command is \texttt{\textbackslash num\{\ldots\}} for proper display of numbers. The / instead of negative exponents and space for ``thousands'' separator (default; comma was set - see this source line 13) can be  set by \texttt{\textbackslash sisetup\{\ldots\}} commands (see siunitx documentation for details). 
 
-\noindent\emph{Regular use of SI units:}
-
-\SI{90000}{\m} and \unit{\m\per\s} and \unit{\joule\per\mole\per\kelvin} and \si{\joule\per\mole\per\kelvin} and \SI{780002233}{\joule\per\mole\per\kelvin}.
-
-\noindent\emph{Use of non-conventional but defined units:}
-
-\si{\gal}  and \SI{8.2}{\gal}. \SI{5.63}{foot}$^2$\xspace. \sqft{5.21}, and stop. \SI{9000}{\m}.
-
-\SI{24.6}{\ft}. And, \SI{56.2}{\ft\tothe{2}}, and \SI{56.2}{\ft\tothe{3}}. Also, \SI{56.2}{\ft\squared}, and \SI{56.2}{\cubic\ft} - using \texttt{squared} and \texttt{cubed} commands. Shortcut: \cuft{56.2}, and stop.
-
-\hl{Foot \emph{vs} feet.} Best way is to use ``ft'' also goes for ``in'', and ``ac''. 
+\hl{Some regular example outputs:} \qty{90000}{\m}, \qty{780002233}{\joule\per\mole\per\kelvin}; Unit: \unit{\m\per\s}, \unit{\joule\per\mole\per\kelvin}, and \unit{\joule\per\mole\per\kelvin}; and Number: \num{2.73e23}, \num{10121314}, and \num{1e-12}.  
 
 
+\subsubsection{Use of non-conventional but defined units}
+The SI units don't have gallon, feet, foot, inch, etc. --- commonly used in US. However, these can be defined using \texttt{DeclareSIUnit} command and these units can be used in the regular manner with \texttt{\textbackslash unit\{\ldots\}} and \texttt{\textbackslash qty\{\ldots\}\{\ldots\}} commands (see source lines 14 through 14). 
 
+\hl{Some non-conventional example outputs:} \unit{\gal}, \qty{8.2}{\gal}, \qty{2.78e6}{\gal}, \qty{24.6}{\ft}, direct \qty{8.63}{foot}$^2$\xspace, and newcommand \sqft{8.63}. Also, \qty{56.2}{\ft\tothe{2}}, \qty{56.2}{\ft\tothe{3}}, \qty{56.2}{\ft\squared}, and \qty{56.2}{\cubic\ft} - using \texttt{squared}, \texttt{cubed}, and shortcut: \cuft{56.2} commands. Further, thought not recommended, it is possible to use unconventional units directly as: \verb|\qty{123}{xyz}| produces \qty{123}{xyz} --- where units are directly typed as text. 
+
+\hl{foot \emph{vs} feet.} Rather than using them as words, the best way is to use as unit symbols ``ft'' also goes for ``in'', and ``ac''. 
+
+
+%------------------------------------------------------
 \subsection{Appendix B Subsection}
 \kant[11]
-
-
-
-\newpage
-\begin{landscape}
-\begin{appendixtable}[p]% p vertically centered
-\centering
-\caption{Landscape table using \texttt{tabularray} 
-packages.}
-\begin{tblr}{X[2.01] XXXX XXXX XXXXX XXXXX} 
-\toprule
-Number 	& 1st    & 2nd   & 3rd & 4th & 5th     & 6th  & 7th & 8th & 9th & 10th       & 11th & 12th  & 13th & 14th & 15th       & 16th & 17th  & 18th & 19th & 20th\\
-\midrule
-Row 1 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20\\
-Row 2 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20\\
-Row 3 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20\\
-Row 4 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20\\
-\midrule
-Row 5 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20\\
-Row 6 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20\\
-Row 7 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20\\
-Row 8 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20\\
-\bottomrule
-\end{tblr}
-\label{tab:ap2}
-\end{appendixtable}
-\end{landscape}
-
-
-\newpage
-\begin{landscape}
-\begin{appendixtable}[p]
-\centering
-\caption{Landscape table using resize box regular tabular environment} 
-\resizebox{1.35\textwidth}{!}{%
-\begin{tabular}{c lllll lllll lllll lllll lllll rrrrr}
-\toprule
-Number 	& 1st    & 2nd   & 3rd & 4th & 5th     & 6th  & 7th & 8th & 9th & 10th       & 11th & 12th  & 13th & 14th & 15th       & 16th & 17th  & 18th & 19th & 20th & 21th & 22th  & 23th & 24th & 25th\\
-\midrule
-Row 1 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20  & 21 & 22 & 23 & 24 & 25\\
-Row 2 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20  & 21 & 22 & 23 & 24 & 25\\
-Row 3 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20  & 21 & 22 & 23 & 24 & 25\\
-Row 4 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20  & 21 & 22 & 23 & 24 & 25\\
-\midrule
-Row 5 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20  & 21 & 22 & 23 & 24 & 25\\
-Row 6 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20  & 21 & 22 & 23 & 24 & 25\\
-Row 7 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20  & 21 & 22 & 23 & 24 & 25\\
-Row 8 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20  & 21 & 22 & 23 & 24 & 25\\
-\bottomrule
-\end{tabular}
-}% resize
-\label{tab:ap3}
-\end{appendixtable}
-\end{landscape}
-
-\kant[8]
 
 \closeappendices   % Automatic LOAT and LOAF generation; remove or comment if not required 
 

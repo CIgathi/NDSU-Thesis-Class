@@ -10,7 +10,7 @@
 \usepackage{tocloft}
 \usepackage{xparse}
 \usepackage{xspace}
-\usepackage{xcolor}
+\usepackage[dvipsnames]{xcolor}
 \usepackage{booktabs}
 \usepackage{graphicx}
 \usepackage{siunitx}
@@ -22,11 +22,28 @@
 \usepackage{caption}
 \usepackage{enumitem}
 \usepackage{chemformula}
+\usepackage{sectsty}
 \usepackage[hidelinks]{hyperref}
 
 %--------------------------------------------------------------
 %--------------------------------------------------------------
 \graphicspath{{./figures/}}
+
+\definecolor{sec}{HTML}{1E2761} % Indigo
+\definecolor{ssec}{HTML}{7A2048} % Maroon
+\definecolor{sssec}{HTML}{408EC6} % Blue
+
+\sectionfont{\sffamily\color{sec}}  % sets colour of sections
+\subsectionfont{\sffamily\color{sec!60!sssec}}  % sets colour of subsections
+\subsubsectionfont{\sffamily\color{sssec}}  % sets colour of subsubsections
+
+\makeatletter
+%\newcommand\notsotiny{\@setfontsize\notsotiny\@vipt\@viipt}
+%\newcommand\notsotiny{\@setfontsize\notsotiny{6}{7}}
+%\newcommand\notsotiny{\@setfontsize\notsotiny{6.31415}{7.1828}}
+\newcommand\notsotiny{\@setfontsize\notsotiny{6.44}{7.54}}
+%\newcommand\notsotiny{\@setfontsize\notsotiny{6.693}{7.614}}
+\makeatother
 
 \newcommand\cmd[1]{\textbackslash\texttt{#1}}
 \newcommand\tb\textbackslash
@@ -60,7 +77,7 @@
 \author{Aaron Feickert$\,^{a}$, Jonathan Totushek$\,^{a}$, and C. Igathinathane$\,^{b,\,*}$ \\ *\,Maintainer, Bug Reports and Enquires:  Igathinathane Cannayen (\texttt{i.cannayen@ndsu.edu})\\ {\small Github: \url{https://github.com/CIgathi/NDSU-Thesis-Class.git}}
 }
 \date{{\small $^{a}$\emph{Department of Mathematics, NDSU} \\ $^{b}$\emph{Department of Agricultural and Biosystems Engineering, NDSU}\\[2ex]}
-12 June 2023}
+27 August 2023}
 
 %--------------------------------------------------------------
 %--------------------------------------------------------------
@@ -68,19 +85,20 @@
 \begin{document}
 \maketitle
 
-\vspace{-2ex}
+\vspace{-3.5ex}
 \hrule
+\vspace{-1.5ex}
 \begin{multicols}{2}
-\scriptsize
+\notsotiny%\scriptsize
 \tableofcontents
 \end{multicols}
-%\vspace{-0ex}
+\vspace{-0ex}
 \hrule
 
 %--------------------------------------------------------------
 %--------------------------------------------------------------
 \section{Introduction}
-The \texttt{ndsu-thesis-2022} \LaTeX\ is an updated version of the previous \texttt{ndsu-thesis} \ix{class} file. This class generates disquisitions intended to comply with the disquisition requirements of the North Dakota State University (NDSU) Graduate School. This class is not officially endorsed by NDSU or the NDSU Graduate School, but efforts are underway toward that goal. It should be noted that several theses and dissertations were made and got approved by the Graduate School using the NDSU \LaTeX\ thesis class in the past. Since disquisition requirements are subject to change at any time, the user is advised that the most current disquisition style policies supersede this class. However, following the Graduate School approved template and collected experience from several previously approved dissertations, this \LaTeX\ class was coded to incorporate the various required features and lessons learned. To ensure compliance with all NDSU Graduate School requirements, the user is encouraged to consult the NDSU Graduate School webpage and the links provided for detailed requirements and guidance on disquisition formatting guidelines, templates, section formatting, and examples (\url{https://www.ndsu.edu/gradschool/current_students/graduation/theses_dissertations_papers/disquisition_formatting}).
+The \texttt{ndsu-thesis-2022} \LaTeX\ is an updated version of the previous \texttt{ndsu-thesis} \ix{class} file. This class generates disquisitions intended to comply with the disquisition requirements of the North Dakota State University (NDSU) Graduate School. This class is not officially endorsed by NDSU or the NDSU Graduate School, but efforts are underway toward that goal. It should be noted that several theses and dissertations were made and got approved by the Graduate School using the NDSU \LaTeX\ thesis class in the past. Since disquisition requirements are subject to change at any time, the user is advised that the most current disquisition style policies supersede this class. However, following the Graduate School approved template and collected experience from several previously approved dissertations, this \LaTeX\ class was coded to incorporate the various required features and lessons learned. To ensure compliance with all NDSU Graduate School requirements, the user is encouraged to consult the NDSU Graduate School webpage and the links provided for detailed requirements and guidance on disquisition formatting guidelines, templates, section formatting, and examples (\url{https://www.ndsu.edu/gradschool/current_students/graduation/theses_dissertations_papers/disquisition_formatting}). ssss
 
 The bundled \ix{template} or the thesis example given (Section~\ref{example}) can be used as an easy starting point for using the class. Modification of the class file's code may result in unexpected behavior and is at the user's own risk. We recommend including additional packages and commands in the source file (*.tex) itself for the desired customization as required by the departments and the users. 
 
@@ -105,15 +123,14 @@ With \LaTeX, the users type some commands and texts that are specific to their t
 %Refer documentation (ndsu-thesis-2022-documentation.pdf) for various options and commands
 
 %******************* Packages, newcommands, and other customization *******************
-\usepackage[sort&compress]{natbib}
-\citestyle{egu} % agms, agu, arms, egu, cospar, dcu, kluwer, plain, nature
-\newcommand{\makebib}{\biblio{apalike}{mybib}} % shortcut for bibliography
+\usepackage[style=apa,natbib=true,backend=biber]{biblatex}% works with \citep and \citet commands
+\addbibresource{mybib.bib}% *.bib extension is necessary 
 \newcommand\myspacing{1.9} % 23 lines/page needs 1.9 for thesis
 
 %******************* First and second page material *******************
 \title{The Title of My M.S. Thesis}
 \author{Samuel Fargo Bison}
-\date{January 2022}
+\date{June 2023}
 \progdeptchoice{Department} % Use Department (or) Program
 \department{Mathematics}
 
@@ -143,15 +160,15 @@ to a few significant people. The text must be double-spaced and aligned center t
 \kant[14]}
 
 \listofabbreviations{% may use title case
-AC       & Alternating Current \\
+AC       & alternating current \\
 NDSU     & North Dakota State University \\
-ZL       & Zeta Level % last item does not need \\  but okay to use
+ZL       & zeta Level % last item does not need \\  but okay to use
 }
 
 \listofsymbols{% may use sentence case
-$A$     & Area (\si{\m\squared})\\
+$A$     & area (\unit{\m\squared})\\
 $e$     & Euler's constant (\num{2.718281828}) \\
-$R^2$   & Coefficient of determination % last item does not need \\  but okay to use
+$R^2$   & coefficient of determination % last item does not need \\  but okay to use
 }
 
 %******************* Document start *******************
@@ -159,7 +176,7 @@ $R^2$   & Coefficient of determination % last item does not need \\  but okay to
 \begin{spacing}{\myspacing}      % New line spacing - 23 lines per page
 
 %******************* First chapter - paper style *******************
-\mypaperheading{The First Chapter - Paper Style - Long title of this technical paper}{*}
+\mypaperheading{The First Chapter - Paper Style - Long title of this technical paper}{$^1$}
 {This paper is planned to be submitted as a peer-reviewed article \ldots\ more information 
 about the author(s),  title,  \emph{journal},  to be added.}
 
@@ -189,7 +206,7 @@ illustrates the inclusion of a simple table (\cref{tab:1}) and a figure shown la
 \centering
 \caption{Table captions go at the top of the table. This was a long caption of the table
 included in the first chapter --- so that we see how it breaks into another line and
-having a single spacing. Usually, tables are of full-width and are demonstrated subsequently.}
+has a single spacing. Usually, tables are of full-width and are demonstrated subsequently.}
 \vspace{-1ex}
 \begin{tabular}{clr}
 \toprule
@@ -249,6 +266,19 @@ caption placement. The example figure (\cref{fig:2}) is included in the \texttt{
 spacing. Compare this with a narrow caption spacing without optional argument in \cref{fig:1}.}{fig:2}    
 \kant[8]
 
+\section{Equations}
+\kant[2]
+
+\myeqn{% shortcut for equation vertically spaced
+y = (mx + c) \times \text{NCF} \times S_\text{factor} \times c_p \times M_\text{p}
+\label{eq:lin}
+}
+
+\noindent where $y$ is the dependent variable, $m$ is the slope, $x$ is the independent variable, $c$ is the $y$ intercept, 
+NCF is the normalized conversion factor, $S_\text{factor}$ is the scale factor, $c_p$ is the specific heat capacity at 
+constant pressure ($p$, variable), and $M_\text{p}$ is the mass of a proton (p, descriptive). Note how variables, abbreviations, 
+and subscripts are coded in \cref{eq:lin}. Refer Extended Thesis to know more about equations and shortcuts. 
+
 \section{Some References}
 Referring to all entries in the ``\texttt{mybib.bib}'' file to generate the citations here and the listing 
 using the \texttt{\textbackslash citep\{\ldots\}} ``natbib'' command (cite parenthesis) \citep{texbook,
@@ -261,7 +291,7 @@ notso2021,bari2016identification} have something to do with \LaTeX. For most bib
 creation, these two commands are sufficient.
 
 %******************* Bibliography handling *******************
-\makebib  % Shortcut command using style and bib defined in the preamble
+\makerefs %For individual chapter references - command should be inside refsection environment
 
 %******************* Named appendix A *******************
 \namedappendices{A}{Named first appendix}
@@ -312,7 +342,7 @@ Now coding another appendix table (table.~\ref{tab:ap2}) that spans the entire w
 
 \begin{appendixtable}[h]
 \centering
-\caption{Squares and cubes named appendix table using \texttt{siunitx} and \texttt{tabularray} 
+\caption{Squares and cubes in named appendix table using \texttt{siunitx} and \texttt{tabularray} 
 packages.}
 \begin{tblr}{X X[c] X[r] X[1.5,r]}
 \toprule
@@ -354,7 +384,7 @@ A lightweight source file named ``\texttt{ndsu-sandbox.tex},'' which can be used
 \section{Documentclass Options}
 These are the \ix{options} passed to the \ix{documentclass} command while calling the class. These options essentially affect the whole document and a \ix{default behavior} (no options specified, shown below) was also valid.
 \ccmd{\cmd{documentclass\{ndsu-thesis-2022\}}}
-The above default behavior with no \texttt{[options]} specified produces a Ph.D. dissertation in 12 pt font size with auto-numbered heading and justified text in computer modern font. However the command:\vspace{-2ex}\ccmd{\cmd{documentclass[ms-thesis,11pt,nonumber,nojustify,draft,showframe,times]\{ndsu-thesis-2022\}}} produces an M.S thesis in 11 pt font size unjustified paragraphs text with unnumbered heading in draft mode in Times Roman font and shows the frame using the set margins. The order in which these options are passed does not matter. The various options are briefly discussed subsequently.
+The above default behavior with no \texttt{[options]} specified produces a Ph.D. dissertation in \qty{12}{pt} font size with auto-numbered heading and justified text in computer modern font. However the command:\vspace{-2ex}\ccmd{\cmd{documentclass[ms-thesis,11pt,nonumber,nojustify,draft,showframe,times]\{ndsu-thesis-2022\}}} produces an M.S thesis in \qty{11}{pt} font size unjustified paragraphs text with unnumbered heading in draft mode in Times Roman font and shows the frame using the set margins. The order in which these options are passed does not matter. The various options are briefly discussed subsequently.
 
 %--------------------------------------------------------------
 \subsection{Disquisition degree and type}
@@ -379,47 +409,6 @@ Option & Degree & Disquisition type \\
 \label{degree}
 \end{table}
 
-%--------------------------------------------------------------
-\subsection{Font size}
-The general \ix{font sizes} used with thesis are 10, 11, and 12 points and they vary with the selected font. The available options (any of these used) are:
-\ccmd{\cmd{documentclass[10pt (or) 11pt (or) 12pt]\{ndsu-thesis-2022\}}}
-The default was set as {\tt{12pt}}.
-
-%--------------------------------------------------------------
-\subsection{Auto-numbered, chapter-numbered, and unnumbered styles}
-The three possible NDSU thesis styles with options included are: (i) Auto-numbered [default option] --- where chapters, sections, subsections, and so on will be numbered; (ii) Chapter-numbered [\ix{chapternumber}] --- where only chapters are numbered, while sections, subsections, and so on will not be numbered; and (iii) Unnumbered [\ix{nonumber}] --- where all headings such as chapters, sections, subsections, and so on will not be numbered.
-
-As the default is the numbered style, the chapter-numbered and unnumbered styles were produced by the ``chapternumber'' and ``nonumber'' options respectively as: \ccmd{\cmd{\ix{documentclass}[chapternumber (or) nonumber]\{ndsu-thesis-2022\}}} The default was the ``Auto-numbered'' style. These options will have their specific effect on the numbering scheme of the tables and figures.
-
-%--------------------------------------------------------------
-\subsection{Paragraph text justification}
-Based on their preference students can follow \ix{fully-justified} (with hyphenated words and word wrapping) or unjustified (no word breaking but right margin ragged, aka left-justified). As the default is justified, the \ix{left-justified} passages were produced by the \texttt{[\ix{nojustify}]} option. For justified style, nothing needs to be specified. NDSU approves both styles.
-
-%--------------------------------------------------------------
-\subsection{Draft and display \ix{document frames}}
-You can use the \texttt{[\ix{draft}]} option to place the disquisition into draft mode. In this mode, \ix{margin overflows} are marked with a heavy black box to draw your attention to them; additionally, images are replaced by a \ix{placeholder} (see Fig.~\ref{fig:frame}). If you import other packages in your disquisition, they may also change their behavior when in draft mode.
-
-\begin{figure}[h!]
-\centering
-\vspace{-0.8ex}
-\includegraphics[width=0.525\textwidth]{fig-draftmargin.pdf}
- \caption{Use of \texttt{draft} and \texttt{showframe} options in \texttt{documentclass} producing image placeholder for quicker processing, document frames, and margin overflows.}
-\label{fig:frame}
-\end{figure}
-
-\indent The \texttt{[\ix{showframe}]} option (based on \texttt{\ix{geometry}} package) produces a frame around the text area which can be used to check how the text aligns with the margins (left, right, top, and bottom; see figure above). The illustration alongside displays the result of these options showing the overflowing text, bottom \ix{margin frame}, right margin frame, margin notes frames, and the \ix{overflow} heavy black box. The default behavior is these options were inactive.
-
-%--------------------------------------------------------------
-\subsection{Fonts}\index{font}
-The following \ix{font options} \texttt{[\ixm{font}{bookman}, \ixm{font}{charter}, \ixm{font}{gentium}, \ixm{font}{kpfonts}, \ixm{font}{libertine}, \ixm{font}{mathdesign}, \ixm{font}{mathptmx}, \ixm{font}{newcent}, \ixm{font}{palatino}, \ixm{font}{tgtermes}, \ixm{font}{times}, \ixm{font}{tgbonum}, \ixm{font}{tgpagella}, \ixm{font}{tgschola}, \ixm{font}{utopia}, \ixm{font}{zlmtt}]} are compatible with the class, and anyone can be used. The default was \LaTeX\ computer modern font. Users are urged to check the NDSU-approved fonts and select those that resemble them and use them with appropriate font sizes.
-
-%%--------------------------------------------------------------
-\subsection{Individual or combine reference listing}\index{reference listing}
-The two types of reference listings are in the individual chapters added that end or a combined reference listing for all chapters as a standalone unnumbered chapter. 
-
-
-******
-%
 
 %--------------------------------------------------------------
 %--------------------------------------------------------------
@@ -527,16 +516,17 @@ xxxx\= \kill
 \subsection{List of appendix tables and figures}\label{sloat}
 The \ix{list of appendix tables} (\ix{LOAT}) and \ix{list of appendix figures} (\ix{LOAF}) will be generated based on the appendix table and figure full captions in the \texttt{appendixtable} and \texttt{appendixfigure} environments. New commands such as \cmd{myfigap\{5 arguments\}} and \cmd{myfigapls\{5 arguments\}} plus one \texttt{[optional]} argument for adjusting the caption placement for regular and landscape figures were defined.
 
-The \cmd{\ix{closeappendices}} command should be issued at the end of the last appendix, which ensures the automatic creation of the LOAT and LOAF when the appendices had tables and figures. If the appendices had only tables or only figures then the commands \cmd{\ix{closeappendixtables}} or \cmd{\ix{closeappendixfigures}} should be used to avoid blank entries, and if no tables are figures used in appendices then these commands should not be used or commented out. 
+The \cmd{\ix{closeappendices}} command should be issued at the end of the last appendix, which ensures the automatic creation of the LOAT and LOAF when the appendices have tables and figures. If the appendices had only tables or only figures then the commands \cmd{\ix{closeappendixtables}} or \cmd{\ix{closeappendixfigures}} should be used to avoid blank entries, and if no tables are figures used in appendices then these commands should not be used or commented out. 
 
 %--------------------------------------------------------------
 %--------------------------------------------------------------
-\section{Beginning the Document}
+\section{Basic Components and Commands}
+\subsection{Beginning the Document}
 After including the necessary preamble information, use \cmd{begin\{document\}} to start the \ix{document}. This command automatically generates the necessary cover pages and other automatic components. The usual \cmd{\ix{maketitle}} command should not be used, as it was already issued in the class.
 
 %--------------------------------------------------------------
 %--------------------------------------------------------------
-\section{Headings}\label{heading}\index{heading}
+\subsection{Headings}\label{heading}\index{heading}
 Major headings (e.g. chapters) are issued using the \cmd{myheading\{\ldots\}} command. This command supersedes the usual \cmd{\ix{chapter}} command, which should not be used. The following shows the hierarchy of headings:
 \ccmd{
 \cmd{\ixm{heading}{myheading}\{\ldots\}} \hspace{0.6in} Produces all-caps chapter headings automatically - 0th level\\
@@ -556,24 +546,21 @@ Instances of \cmd{subsubsection\{\ldots\}} and \cmd{paragraph\{\ldots\}} do not 
 
 %--------------------------------------------------------------
 %--------------------------------------------------------------
-\section{Dummy Text and Images}\index{dummy text} \index{dummy images}
+\subsection{Dummy Text and Images}\index{dummy text} \index{dummy images}
 Users will be curious to see what their thesis/dissertation will look like quickly without using the actual texts and figures. The class comes loaded with necessary packages such as \texttt{kantlipsum}\index{kantlipsum} (for dummy text --- philosophical prose paragraphs in English) and \texttt{mwe}\index{mwe} (``minimal working examples'' for dummy images). These will help visualize the whole document (fonts, spacings, and layout) with minimal effort, and this is a common practice among typesetters to use such dummy text and images. Commands from these packages are used in the thesis example (Sec.~\ref{example}).
 
 Commands like \cmd{kant[1]} or \cmd{kant[4-8]} will produce single or multiple dummy text paragraphs. Similarly, dummy images included in the \texttt{mwe} package can be accessed using their specific names and can be used as the image argument in the \cmd{includegraphics} command, which means that the user need not use their images. Some of the commonly used examples images are: \texttt{example-image}, \texttt{example-image-a}, \texttt{example-image-b}, \texttt{example-image-c}, \texttt{example-image-16x10}, \texttt{example-image-golden}, \texttt{example-image-pl} \texttt{ain}, \texttt{example-image-duck}, \texttt{example-image-empty}, and \texttt{example-} \texttt{grid-100x100pt}\index{example images}. Refer to the documentation of these packages for further information.
 
 %--------------------------------------------------------------
 %--------------------------------------------------------------
-\section{Tables and Figures}
+%\section{Tables and Figures}
 \subsection{Tables}
 Different kinds of tables, such as simple table without caption (\texttt{\ixm{table}{tabular}}), table with \ixm{table}{caption} (\texttt{table}), table with \ixm{table}{footnote} (\texttt{\ixm{table}{threeparttable}}), table spanning entire text width (\texttt{\ixm{table}{tblr}}), table spanning multiple pages (\texttt{\ixm{table}{longtable}}), and table in \ixm{table}{landscape} page (\texttt{\ixm{table}{pdflscape}}) can be coded following the documentation of respective packages, and no shortcuts were defined as they were not practical. Using \texttt{\ixm{table}{booktabs}} package professional quality tables (Sec.~\ref{degtype}) can be created.
 
 %--------------------------------------------------------------
 \subsubsection{Full-width tables --- \texttt{tblr} environment from \texttt{tabularray} package}\index{table!full-width}
-Full-width tables are suggested for NDSU theses/dissertations. A quick and efficient method of creating tables that automatically span the entire textwidth is the use of \texttt{tblr} (short for \texttt{top-bottom-left-right} or \texttt{tabularray}) environment instead of the usual \texttt{tabular} inside the \texttt{table} environment. The \texttt{tblr} environment (from \texttt{tabularray} package) uses a special column justification code X (default \& options). This X code allots fixed column width based on the number of columns specified (default) and customizes individual columns' proportional width using coefficients with options. The \texttt{tblr} also takes the usual \texttt{l, c, r,} and \texttt{p} justification codes as well as the commands of \texttt{booktab} in the usual manner. The \texttt{tblr} environment is from the latest package and has several special features such as, specifying exclusive \texttt{math} mode column (no \$ symbols required for individual items); SI~units features; colored rows, cells, and lines; and so on (See \texttt{tabularray} package documentation).
+Full-width tables are suggested for NDSU theses/dissertations. A quick and efficient method of creating tables that automatically span the entire textwidth is the use of \texttt{tblr} (short for \texttt{top-bottom-left-right} or \texttt{tabularray}) environment instead of the usual \texttt{tabular} inside the \texttt{table} environment. The \texttt{tblr} environment (from \texttt{tabularray} package) uses a special column justification code X (default \& options). This X code allots fixed column width based on the number of columns specified (default) and customizes individual columns' proportional width using coefficients with options. The \texttt{tblr} also takes the usual \texttt{l, c, r,} and \texttt{p} justification codes as well as the commands of \texttt{booktab} in the usual manner. The \texttt{tblr} environment is from the latest package and has several special features such as, specifying exclusive \texttt{math} mode column (no \$ symbols required for individual items); SI~units features; colored rows, cells, and lines; and so on (see \texttt{tabularray} package documentation).
 
-%--------------------------------------------------------------
-\subsubsection{Full-width tables --- manual method} \index{table!full-width}
-However, for the best control of tables, especially with more columns, a combination of \cmd{resizebox} (resizing the entire table - mostly for scaling down) and \cmd{tabcolsep} (maintaining the column separation space) works the best. Thus, the command \cmd{\ixm{table}{resizebox}\{\cmd{\ixm{table}{columnwidth}}\}}\{!\} makes the table to span the entire text width of the page. This will expand or shrink the contents of the table to fit the entire width. It should be fine with the fonts shrink to fit the width, but will not be when the fonts enlarge (especially when the table is small and has only a few columns). In such situations, the space between the columns can be adjusted using the \cmd{\ixm{table}{tabcolsep}\{\ldots\}} command, where increased spacing reduces the font size and \emph{vice versa}. Thus, by using these commands (including \texttt{tblr}) in combination the tables and the font size can be scaled down to fit the page with the proper font size.
 
 %--------------------------------------------------------------
 \subsection{Figures}\label{figs}
@@ -605,7 +592,7 @@ Because of the way spacing is handled, \ix{caption}s in \texttt{table} environme
 
 %--------------------------------------------------------------
 %--------------------------------------------------------------
-\section{Equations}
+\subsection{Equations}
 About handling \ix{equation}s, the NDSU's guidelines state ``When coding equations, the guidelines call for the equation to be center-aligned, with the equation number aligned flush with the right margin.'' The strong suit of \LaTeX\ is the professional manner it typesets the equations and mathematical elements. Show below is the distance formula that was defined and referred (eq.~\ref{eq:1dist}), which satisfies NDSU's guidelines:
 \begin{equation}
 \text{Distance formula:} \quad d = \sqrt{(y_2-y_1)^2+(x_2-x_1)^2}
@@ -614,114 +601,43 @@ About handling \ix{equation}s, the NDSU's guidelines state ``When coding equatio
 \noindent where, $d$ is the distance; and $x_1, y_1, x_2$ and $y_2$ are the coordinates of the two points. The equations can be displayed (e.g., eq.~\ref{eq:1dist}) produced by \$\$\ldots\$\$ or \textbackslash[\ldots\textbackslash] or \texttt{equation} environment; and the inline as: $ax^2 + bx + c = 0$ produced by \$\ldots\$ or \textbackslash(\ldots\textbackslash). There exist several other commands are available to produce the equations through several packages (e.g., \texttt{align, array, eqnarray, gather, split}), and any imaginable mathematical information can be coded. Also, \LaTeX\ supports a huge list of symbols (Refer: The Comprehensive \LaTeX\ Symbol List; 18,150 symbols; 449 pages) that can be used in general text or equations.
 
 %--------------------------------------------------------------
-%--------------------------------------------------------------
-\section{References/Bibliography}\index{bibliography}
-The two most common bibliography management systems are \ixm{bibliography}{BibTeX} and \ixm{bibliography}{BibLaTeX}; the former being simpler and the latter being modern and highly versatile. Reference or bibliography chapter or section can be combined into a \ixm{bibliography}{stand-alone chapter} (whole) or the reference listing can be included in all individual chapters. The bibliography listing in individual chapters sometimes desired by the user can be easily coded using the advanced Bib\LaTeX, which is also coded in the class. Both systems (individual or whole) use the same reference data in the form of \texttt{*.bib} file. The authors recommend using any of the systems by appropriately employing the system-specific commands. \index{bibliography!individual chapter} \index{bibliography!whole} For bibliography compilation issues see Sec.~\ref{bibissue}. 
+\subsubsection{Shortcuts for equations --- properly spaced vertically}
+\LaTeX\/ engine sets a little vertical spacing around equations and non-textual elements (e.g., tables, figures) to make them stand out from the regular text; which is an expected and normal behavior. However, the NDSU's guidelines require no additional vertical spacing (same double line spacing) around equations. This additional spacing can be manually corrected by using a $-$ve \cmd{\ix{vspace}\{\ldots\}} command before and after the elements as required (see Sec. \ref{spacearound} for details). 
 
+For convenient and automatic correct vertical spacing around equations, the following direct and starred versions of shortcut commands were coded: 
+ \cmd{myeqn\{\:\}},  \cmd{myeqn*\{\:\}}, 
+ \cmd{myfraceqn\{\:\}},  \cmd{myfraceqn*\{\:\}}, 
+ \cmd{myalign\{\:\}},  \cmd{myalign*\{\:\}}, 
+ \cmd{myfracalign\{\:\}},  \cmd{myfracalign*\{\:\}}, 
+ \cmd{mygather\{\:\}},  \cmd{mygather*\{\:\}}, \\
+ \cmd{myfracgather\{\:\}},  \cmd{myfracgather*\{\:\}}, 
+ \cmd{mydisp\{\:\}}, and 
+ \cmd{myfracdisp\{\:\}}.  The arguments in these commands are the actual codes of the equation(s) without their environment as they were already included in these shortcuts (shown below).  
+\begin{tabbing}
+xxxxx\= xxxxxxxxxxxxxxxxxxxxx\=xxxxxxxxxxxxxxxxxxxxxxxxx\= xxxxxxxxxxxxxxxxxxxxx\=\kill
+\> \textcolor{sssec}{\underline{Code}} \> \textcolor{sssec}{\underline{Output}} \> \textcolor{sssec}{\underline{Code}} \> \textcolor{sssec}{\underline{Output}} \\
+\> \cmd{myeqn\{} \>\> \cmd{myalign*\{} \\
+\> \texttt{E = m \tb times c\textasciicircum2}  \> $E = m \times c^2\qquad$ (1.1)  \> \texttt{E \&= m \tb times c\textasciicircum2}  \> $E_i = m_i \times c^2\qquad$\\
+\> \texttt{\}} \>\> \texttt{y \&= Ax + B} \> $\:\:\,y = Ax + B$\\
+\>\>\>\texttt{\}}
+\end{tabbing}
+
+As known, the direct versions of the shortcuts will produce the equation number while the * versions will not. A similar coding applies to all the aforementioned defined shortcuts and the produced output will fit well with proper vertical spacing with text around them. For other specialized equation environments, other requirements, or when not things do not fit well, the manual method of issuing the $-$ve \cmd{\ix{vspace}\{\ldots\}} command can be followed.  
+ 
 %--------------------------------------------------------------
-\subsection{Using \ix{\bt}}
+%--------------------------------------------------------------
+\subsection{References/Bibliography}\index{bibliography}
+The two most common bibliography management systems (BMS) are \ixm{bibliography}{BibLaTeX} and \ixm{bibliography}{BibTeX}; the former being modern and highly versatile and the latter being simpler. BibLaTeX is recommended as the BMS of choice because of its direct usage, versatility, and future-proof capabilities. Reference or bibliography chapter or section can be combined into a \ixm{bibliography}{stand-alone chapter} (whole) or the reference listing can be included in all individual chapters. The bibliography listing in individual chapters sometimes desired by the user can be easily coded using the advanced Bib\LaTeX, which is also coded in the class. Both systems (individual or whole) use the same reference data in the form of \texttt{*.bib} file. The authors recommend using any of the systems by appropriately employing the system-specific commands. \index{bibliography!individual chapter} \index{bibliography!whole} Various details of handling bibliography is presented in Sec.~\ref{bibdetails} and for bibliography compilation issues see Sec.~\ref{bibissue}. 
 
 %--------------------------------------------------------------
 \subsubsection{Cite while you write (CWYW) using natbib}\label{cwyw}\index{bibliography!natbib}
-The \texttt{\ix{natbib}} package for bibliography management is widely used and very stable and follows the CWYW paradigm. The package produces both author-year and numerical citations. The commands like \cmd{citep\{\ldots\}} citation in parenthesis and \cmd{citet\{\ldots\}} citation in running text are quite useful in particular. These commands will produce the following outputs, for example: ``(Author et al., 2022)'' and ``Author et al. (2022) found \ldots''. The compatible styles (\texttt{*.bst}) with \texttt{natbib} and NDSU class that work with standard \LaTeX{} installation are:  \texttt{abbrvnat, agsm, agu, apalike, apalike2, authordate1, authordate3, cell, chicago, chicagoa, dcu, dinat, IEEEtran (family;  numerical styles), kluwer, plainnat, rusnat, unsrtnat}, and so on\index{natbib styles}. For other styles, users can able to download the specific style (\texttt{*.bst}) files and have them in the local folder. As \texttt{natbib} is an optional bibliography system, it was not coded in the class, and to use \texttt{natbib}  the following code should be in the preamble:
-\ccmd{
-\cmd{usepackage[sort\&compress]\{natbib\}}\\
-\cmd{\ixm{bibliography}{citestyle}\{arms\} \% agms, agu, arms, egu, cospar, dcu, kluwer, plain, nature}
-}
-
-It is convenient to load the \texttt{natbib} package with minimal options, as shown above, and choose predefined \cmd{citestyle\{option\}} options producing several styles defined in the package. 
-
-%--------------------------------------------------------------
-\subsubsection{Bibliography generation and files handling}\label{makebib}
-The two basic commands that are required to implement \bt system are:
-\ccmd{
-\cmd{bibliographystyle\{\textit{style}\} \% See list of styles (Sec.~\hspace{-1ex}11.1.1)}\\
-\cmd{bibliography\{\textit{name-of-bib-file}\}}
-}
-
-However, a single new command ``\cmd{makebib}'' (direct shortcut with no arguments) developed, replacing the above commands, sets up the bibliography style and *.bib file arguments that are being utilized in other shortcuts is: 
-\ccmd{
-\cmd{newcommand\{\cmd{makebib}\{\cmd{biblio}\{\textit{style}\}\{\textit{name-of-bib-file}\}\}}
-}\index{makebib}
-
-Now, simply issuing the \cmd{makebib} will generate the references listing based on the style and bib file input in the above command. The ``style'' of bibliography (\texttt{*.bst}) entries (typically \texttt{plainnat} or \texttt{apalike}), is controlled by the first argument; the user is referred to the \bt manual for formatting details and other available styles, such as those provided by the peer-reviewed journals related to the specialization. The ``name'' used in the second argument must be the same as the name of the bibliography (\texttt{*.bib}) file, but with the extension removed. Once correct citation commands (\cmd{\ix{citep}\{\ldots\}}  and/or \cmd{\ix{citet}\{\ldots\}}) are issued following CWYW, the citation with proper reference number or entry will appear in the text and listings in the proper style (based on *.bst) will be generated. The above shortcut generates an unnumbered chapter with the title REFERENCES (accepted by NDSU) and also a corresponding TOC entry.
-
-These commands (or equivalent commands if the user uses a different bibliography management system) are optional but are required if the disquisition includes references. Basic bibliography citation command is \cmd{cite\{\ldots\}}.
-\index{bibliography!citep} \index{bibliography!citet}
-
-%--------------------------------------------------------------
-\subsection{Using \ix{Bib\LaTeX\ }}
-The Bib\LaTeX\ package provides advanced bibliographic facilities for use with LaTeX. Good working knowledge in LaTeX should be sufficient to design new bibliography and citation styles using this system. The  \blt works with the backend (program) ``\ixm{Bib\LaTeX\ }{biber}'', which is used to process the bibliography data files and then performs all sorting, label generation, and many more operations. This package also supports subdivided bibliographies, multiple bibliographies within one document, customizable sorting, \ixm{Bib\LaTeX\ }{multiple bibliographies} with different sorting, customizable labels, and bibliographies may be subdivided into parts and/or segmented by topics. Users are urged to refer to the package documentation for various features (\url{https://ctan.org/pkg/biblatex?lang=en}).
-
-%--------------------------------------------------------------
-\subsubsection{Commands, cite, bibliography generation and files handling}
-
-The basic commands that invoke the \blt system, which has to be issued in the preamble, are:
-\ccmd{
-\cmd{usepackage[style=apa,natbib=true,backend=biber]\{biblatex\}}\\
-\cmd{\ixm{Bib\LaTeX\ }{addbibresource}\{\textit{name-of-bib-file.bib}\}}
-}
-
-In the above \blt command's option the bibliography information processing program ``biber'' was used as a backend program. The options also load ``apa'' style and ``natbib'' handling (allowing the \cmd{citep\{\ldots\}} and \cmd{citet\{\ldots\}} commands in  \blt ) as an example. The documentation and other resources (\url{http://tug.ctan.org/info/biblatex-cheatsheet/biblatex-cheatsheet.pdf}) may be referred for common \ixm{Bib\LaTeX\ }{options} and details of the package. The compatible styles used with \blt are: \texttt{numeric, numeric-comp, alphabetic, authoryear, authoryear-icomp, authortitle, verbose, reading, \\draft, apa, chem-acs, chem-angew, chem-biochem, chem-rsc, ieee, mla, musuos, nuture, nejm, phys, science,} and \texttt{oscola}. Users can use an appropriate style to match their specialization style guide.
-
-With the package and bib file(s) loaded and processed, the reference listing can be generated anywhere in the document by issuing:
-\ccmd{
-\cmd{\ixm{Bib\LaTeX\ }{printbibliography}[heading=bibintoc,title=REFERENCES]}
-}
-
-The options ``\texttt{heading=bibintoc}'' makes an unnumbered chapter and includes the heading in the TOC and ``\texttt{title=REFERENCES}'' changes the default title from BIBLIOGRAPHY to REFERENCES. The \cmd{printbibliography} command when issued at the end of the chapters will create a ``combined'' REFERENCES chapter. 
-
-%--------------------------------------------------------------
-\subsubsection{Individual chapters bibliography (multiple)}
-Sometimes it is desired to have a bibliography listing in every chapter, as the last unnumbered section, especially with the paper-style chapters. Chapters bibliography can be easily processed using \blt than using \ix{\bt}. For the bibliography listings only drawn from individual chapters they have to be restricted in the \texttt{refsection} environment as:
-\ccmd{
-\cmd{begin\{\ix{refsection}\}}\\[1ex]
-\hspace{0.2in}\ldots Chapter's text starting with abstract, sections/subsections, and so on, \\
-\hspace{0.2in}with citations using \cmd{cite\{\ldots\}} and other citation commands \ldots \\[1ex]
-\cmd{printbibliography[heading=subbibintoc,title=\{References\}]}\\
-\cmd{end\{refsection\}}
-}
-
-The options of the \cmd{printbibliography} command such as ``\texttt{heading=subbibintoc}'' will make the bibliography as unnumbered section and also creates a corresponding TOC entry, while ``\texttt{title=References}'' renames the default title. \index{documentclass}
-
-%--------------------------------------------------------------
-\subsection{Specialization specific bibliography --- ASABE and IEEE examples}
-The bibliography styles to be followed in thesis/dissertation will be based on the parent department and the major technical society the department subscribes to in general. For example, the NDUS's ``Agricultural and Biosystems Engineering'' department's major technical society is The American Society of Agricultural and Biological Engineers (ASABE), and the NDSU's ``Electrical and Computer Engineering'' department's technical society is The  Institute of Electrical and Electronics Engineers (IEEE). The two ways of making the bibliography are to use \bt or \blt.  
-
-The ASABE style journal references were similar to  \texttt{apalike2} style but they use \& before the last author instead of ``and''. Therefore a modified style that achieves this called \texttt{myASABE.bst} was developed and included to produce the desired outputs (however, \blt with \texttt{style=apa} produces the \& directly). For other commands, the \texttt{natbib} package documentation should be referred to. 
-
-For \texttt{IEEEtran} family of styles (\texttt{-N, -S, -SA, -SN}) that are numeric bibliography styles, use option ``plain'' in ``citestyle'' command as \cmd{citestyle\{plain\}}. It is also possible to load the package with the options directly as well in one command.
-
-\begin{verbatim}
-Option 1
-\usepackage[numbers,sort&compress]{natbib}
-\bibliographystyle{IEEEtranN}%IEEEtranN
-
-Option 2
-\usepackage[sort&compress]{natbib}
-\citestyle{plain}
-\bibliographystyle{IEEEtranN}%IEEEtranN
-
-Option 3
-% Need to spell out authors 
-\usepackage[numbers,sort&compress]{natbib}
-\bibliographystyle{IEEEtran}%IEEEtran
-
-
-Option 4
-\usepackage[sort&compress]{natbib}
-\citestyle{plain}
-\bibliographystyle{IEEEtran}%IEEEtran
-
-Option 5 
-\bibliographystyle{IEEEtran}%IEEEtran
-\end{verbatim}
+The \texttt{\ix{natbib}} package for bibliography management is widely used and very stable and follows the CWYW paradigm. The package produces both author-year and numerical citations. The commands like \cmd{citep\{\ldots\}} citation in parenthesis and \cmd{citet\{\ldots\}} citation in running text are quite useful in particular. These commands will produce the following outputs, for example: ``(Author et al., 2022)'' and ``Author et al. (2022) found \ldots''. Different reference listing styles can be loaded both for Bib\LaTeX{} and \bt BMS. 
 
 
 
 %--------------------------------------------------------------
 %--------------------------------------------------------------
-\section{Appendix}
+\subsection{Appendix}
 
 %--------------------------------------------------------------
 \subsection{Single and multiple named appendices}
@@ -738,7 +654,7 @@ These appendix commands are optional but are required if the disquisition includ
 It is necessary to generate the listing of appendices in TOC up to the subsection level (A.1.1), similar to the regular chapters. To achieve this necessary codes were included in the class.
 
 %--------------------------------------------------------------
-\subsection{Appendix figures and tables}\label{apfigtab}
+\subsubsection{Appendix figures and tables}\label{apfigtab}
 If the \ix{appendix} contains figures or tables, use the \texttt{\ixm{appendix}{appendixfigure}} and \texttt{\ixm{appendix}{appendixtable}} environments to generate them. These special environments ensure that the figures and tables appear in separate tables that appear after the table of contents. The usual \texttt{figure} and \texttt{table} environments should not be used in the appendix. The same rules for centering, captions, and labels used in normal \texttt{figure} and \texttt{table} environments apply to \texttt{appendixfigure} and \texttt{appendixtable} environments. It should be noted that the manual coding of \texttt{appendixfigure} is also possible with basic commands.
 
 Similar to figures handled in the regular chapters (Sec.~\ref{figs}), for appendix figures as well, single command shortcuts dealing with appendix figures and appendix landscape figures with necessary arguments and one optional argument for caption vertical placement, were defined to produce the figures. Following are the examples of figure shortcuts for appendix regular, and landscape figures: \index{appendix!myfigap} \index{appendix!myfigapls}
@@ -757,14 +673,78 @@ Similar to figures handled in the regular chapters (Sec.~\ref{figs}), for append
 \end{flushleft}
 
 %--------------------------------------------------------------
-\subsection{Closing appendices and creating TOC, LOAT, and LOAF}\label{apfigtab}
+\subsubsection{Closing appendices and creating TOC, LOAT, and LOAF}\label{apfigtab}
 In the class, the creation of \ixm{appendix}{LOAT} and \ixm{appendix}{LOAF} as well as their TOC entries requires special consideration. When the last appendix has got at least one table and one figure, the TOC, LOAT, and LOAF will be automatically generated without intervention. However, when the last appendix does not have at least a table, or figure, or both (even though the previous appendices had them) the corresponding LOAT or LOAF and relevant TOC entries will not appear. The solution for the automatic creation of these items, irrespective of the contents of the last appendix is issuing the command \cmd{\ix{closeappendices}} in the overall code somewhere before \cmd{end\{document\}} and after the last appendix code. 
 
-When the last appendix had both table(s) and figure(s), then issuing this command is not necessary but okay to use it anyhow for completeness. Furthermore, if the other appendices had only tables and the last does not then use \cmd{\ix{closeappendixtables}}, similarly for figures then use \cmd{\ix{closeappendixfigures}} for exclusive creation of LOAT or LOAF with relevant TOC (See Sec.~\ref{sloat}). In case when a thesis had no tables or figures in the appendices or no appendices in the thesis, then the aforementioned \cmd{closeappendi\ldots} commands should not be issued or commented, to avoid the generation of LOAT, LOAF, and TOC entries. 
+When the last appendix had both table(s) and figure(s), then issuing this command is not necessary but okay to use it anyhow for completeness. Furthermore, if the other appendices had only tables and the last does not then use \cmd{\ix{closeappendixtables}}, similarly for figures then use \cmd{\ix{closeappendixfigures}} for exclusive creation of LOAT or LOAF with relevant TOC (see Sec.~\ref{sloat}). In case when a thesis had no tables or figures in the appendices or no appendices in the thesis, then the aforementioned \cmd{closeappendi\ldots} commands should not be issued or commented, to avoid the generation of LOAT, LOAF, and TOC entries. 
 
 %--------------------------------------------------------------
 %--------------------------------------------------------------
-\section{Additional Information I --- Special Commands}
+\section{Additional Information \textrm{I} --- Special Commands}
+
+%-------------------------------------------
+\subsection{Chapter styles}\index{chapter styles}
+Two styles namely,  regular- and paper-styled chapters are generally followed. The regular is a traditional style where the whole thesis/dissertation is considered as a single document where individual chapters exclusively deal with aspects like introduction, literature review, methods, results, discussion or results and discussion, references, and appendices reflecting all studies carried in the research on these individual chapters. Even though this style produces a consolidated document and is solid in its own merit, which ties all research aspects of the study together in corresponding chapters, a good deal of rewriting will be necessary from the authors if they want to publish the contents as individual peer-reviewed journal articles.
+
+The paper-styled chapters are stand-alone chapters complete with all sections (abstract, introduction, literature review, \ldots, references) and are the modern trend. In this style, some amount of repetition among chapters is unavoidable (especially in methods, analysis, and references). However, as the chapters are already in paper-style, it is very easy to format them to suit the requirement of any peer-reviewed journal for submission. It is also possible to have individual chapter references (Bib\LaTeX) or a combined reference chapter (both Bib\TeX\ and Bib\LaTeX). With \LaTeX\ it is easy to create stand-alone papers with references for submission from a paper-styled disquisition with a combined reference chapter.  As outlined earlier,  the commands that start these chapters are 
+\cmd{myheading\{\ldots\}} or \cmd{mypaperheading\{3 args\}} (Sec.\,\ref{heading}).  It is a good idea to consult the advisor before committing to these styles,  for they are different and substantial rewriting is involved to switch back and forth. 
+
+%-------------------------------------------
+\subsection{Advanced options in documentclass}
+
+%--------------------------------------------------------------
+\subsubsection{Font size}
+The general \ix{font sizes} used with thesis are 10, 11, and 12 points and they vary with the selected font. The available options (any of these used) are:
+\ccmd{\cmd{documentclass[10pt (or) 11pt (or) 12pt]\{ndsu-thesis-2022\}}}
+The default was set as {\tt{12pt}}.
+
+%--------------------------------------------------------------
+\subsubsection{Auto-numbered, chapter-numbered, and unnumbered styles}
+The three possible NDSU thesis styles with options included are: (i) Auto-numbered [default option] --- where chapters, sections, subsections, and so on will be numbered; (ii) Chapter-numbered [\ix{chapternumber}] --- where only chapters are numbered, while sections, subsections, and so on will not be numbered; and (iii)~Unnumbered [\ix{nonumber}] --- where all headings such as chapters, sections, subsections, and so on will not be numbered.
+
+As the default is the numbered style, the chapter-numbered and unnumbered styles were produced by the ``chapternumber'' and ``nonumber'' options respectively as: \ccmd{\cmd{\ix{documentclass}[chapternumber (or) nonumber]\{ndsu-thesis-2022\}}} The default was the ``Auto-numbered'' style. These options will have their specific effect on the numbering scheme of the tables and figures.
+
+%--------------------------------------------------------------
+\subsubsection{Paragraph text justification}
+Based on their preference students can follow \ix{fully-justified} (with hyphenated words and word wrapping) or unjustified (no word breaking but right margin ragged, aka left-justified). As the default is justified, the \ix{left-justified} passages were produced by the \texttt{[\ix{nojustify}]} option. For justified style, nothing needs to be specified. NDSU approves both styles.
+
+%--------------------------------------------------------------
+\subsubsection{Draft and display \ix{document frames}}
+You can use the \texttt{[\ix{draft}]} option to place the disquisition into draft mode. In this mode, \ix{margin overflows} are marked with a heavy black box to draw your attention to them; additionally, images are replaced by a \ix{placeholder} (Fig.~\ref{fig:frame}a). If you import other packages in your disquisition, they may also change their behavior when in draft mode.
+
+\begin{figure}[h!]
+\centering
+\vspace{-0.8ex}
+\includegraphics[width=\textwidth]{fig-draftmargin-grids.pdf}
+ \caption{Use of (a) \texttt{draft} and \texttt{showframe} options in \texttt{documentclass} producing image placeholder for quicker processing, document frames, and margin overflows, and (b) use of \texttt{showgrid} option displaying grids of \qty{0.1}{in} squares spacing to help visualize the alignment (vertical and horizontal) concerns of elements.}
+\label{fig:frame}
+\end{figure}
+
+\indent The \texttt{[\ix{showframe}]} option (based on \texttt{\ix{geometry}} package) produces a frame around the text area which can be used to check how the text aligns with the margins (left, right, top, and bottom; see figure above). The illustration alongside displays the result of these options showing the overflowing text, bottom \ix{margin frame}, right margin frame, margin notes frames, and the \ix{overflow} heavy black box. The default behavior is these options were inactive.
+
+%--------------------------------------------------------------
+\subsubsection{Grids display}\index{grids}
+While alignment and spacing of elements will be automatically handled by \LaTeX, the NDSU's guidelines deviate a bit from the \LaTeX\/ engine, especially texts around non-textual elements, viz. equations, tables, and figures. Although the normal behavior of \LaTeX{} introduces a little extra space around non-textual elements, NDSU's guideline dictates a consistent double-spacing that is followed in the regular text should be around the non-textual elements. This additional spacing can be corrected by using a $-$ve \cmd{\ix{vspace}\{\ldots\}} command before and after the elements as required (see Sec. \ref{spacearound} for details). 
+
+To visualize better the spacing around textual and non-textual elements a documentclass option of \texttt{[showgrid]} was made available (Fig.~\ref{fig:frame}b). The grid was displayed underneath the elements covering the body (\texttt{textwidth} $\times$ \texttt{text height}) and the lines were spaced at \qty{0.1}{in} on both vertical and horizontal directions and the whole page is rendered on a light gray background. It can be seen that the basic text line vertical spacing is about \qty{0.4}{in} (4 grid lines between the baselines of consecutive lines of text; Fig.~\ref{fig:frame}b). This vertical spacing (\qty{0.4}{in}) should be carried throughout the document with some deviation among captions of tables and figures, table data rows, and program listings. After fixing the spacing concerns, using \cmd{\ix{vspace}\{\ldots\}} commands, the \texttt{showgrid} option should be removed for the final output. By default this option is inactive. 
+
+%--------------------------------------------------------------
+\subsubsection{Fonts}\index{font}
+The following \ix{font options} \texttt{[\ixm{font}{bookman}, \ixm{font}{charter}, \ixm{font}{gentium}, \ixm{font}{kpfonts}, \ixm{font}{libertine}, \ixm{font}{mathdesign}, \ixm{font}{mathptmx}, \ixm{font}{newcent}, \ixm{font}{palatino}, \ixm{font}{tgtermes}, \ixm{font}{times}, \ixm{font}{tgbonum}, \ixm{font}{tgpagella}, \ixm{font}{tgschola}, \ixm{font}{utopia}, \ixm{font}{zlmtt}]} are compatible with the class, and anyone can be used. The default was \LaTeX\ computer modern font. Users are urged to check the NDSU-approved fonts and select those that resemble them and use them with appropriate font sizes.
+
+
+%-------------------------------------------
+\subsection{Line numbers for the whole document}
+Sometimes using line numbers will be helpful while communicating with the advisor or others, where specific locations of the document can be pointed to. Line numbers are generated using the package \texttt{lineno}, which is coded into the class, by the following command:
+\ccmd{\cmd{\ix{linenumbers}}}
+This command can be issued at the beginning or at any point, and numbers will appear in the left margin after the command. Of course, this command should be removed or commented on while finalizing the thesis.
+
+
+
+
+
+
+
 
 %-------------------------------------------
 \subsection{Whole document text spacing}
@@ -791,11 +771,15 @@ A similar approach should be followed for other components such as acknowledgmen
 %--------------------------------------------------------------
 \subsection{Tables: Advanced commands}
 \subsubsection{Table row spacing and fonts}
-The row spacing can be adjusted, if desired, using \cmd{renewcommand}\{\cmd{\ixm{table}{arraystretch}}\}\{\ldots\} inside the table environment. For example, a value of 1.75 for the arraystretch will be similar to the double line spacing; and without this command, the row spacing will be single line spacing. Table footnotes can be added through \texttt{\ixm{table}{tablenotes}} environment placed inside \texttt{table} environment after the \texttt{tabular} and \texttt{resize} blocks. The font size can be altered by selecting the standard sizes (e.g., \cmd{footnotesize}, \cmd{small}) within the \texttt{tablenotes} environment.
+The table contents row spacing can be adjusted, if desired, using \cmd{renewcommand}\{\cmd{\ixm{table}{arraystretch}}\}\{\ldots\} inside the table environment. For example, a value of 1.75 for the arraystretch will be similar to the double line spacing; and without this command, the row spacing will be single line spacing. Table footnotes can be added through \texttt{\ixm{table}{tablenotes}} environment placed inside \texttt{table} environment after the \texttt{tabular} and \texttt{resize} blocks. The font size can be altered by selecting the standard sizes (e.g., \cmd{footnotesize}, \cmd{small}) within the \texttt{tablenotes} environment.
 
 %--------------------------------------------------------------
 \subsubsection{Landscape tables}
 When a table has more columns of information, the most common solution is the landscape orientation which is achieved through \texttt{\ixm{table}{landscape}} environment by enclosing the \texttt{table} codes (which may contain other elements) inside \texttt{landscape} environment block (between \cmd{begin\{landscape\}} and \cmd{end\{landscape\}}). With landscape usually the placement option will be [p] and the whole width should be set around 1.32 times the \cmd{\ix{columnwidth}}, or adjusted suitably to leave acceptable margins all around.
+
+%--------------------------------------------------------------
+\subsubsection{Resizing tables for full-width} \index{table!resize}\index{table!full-width}
+Sometimes while fitting more contents into a table, the table extends beyond the allowed margins. Therefore for the best control of tables, especially with more columns, a combination of \cmd{resizebox} (resizing the entire table - mostly for scaling down) and \cmd{tabcolsep} (maintaining the column separation space) works the best. Thus, the command \cmd{\ixm{table}{resizebox}\{\cmd{\ixm{table}{columnwidth}}\}}\{!\} makes the table to span the entire text width of the page. This will expand or shrink the contents of the table to fit the entire width. It should be fine with the fonts shrink to fit the width, but will not be when the fonts enlarge (especially when the table is small and has only a few columns). In such situations, the space between the columns can be adjusted using the \cmd{\ixm{table}{tabcolsep}\{\ldots\}} command, where increased spacing reduces the font size and \emph{vice versa}. Thus, by using these commands (including \texttt{tblr}) in combination the tables and the font size can be scaled down to fit the page with the proper font size.
 
 %--------------------------------------------------------------
 \subsubsection{Long tables}
@@ -859,6 +843,204 @@ Similar to landscape long tables, subfigures that span multiple pages can be enc
 Sometimes several subfigures running through multiple pages need to be used in the thesis. These are similar to long tables that span several pages.  General captions of the set of subfigures fitting in a page are coded with regular \cmd{caption}\{\ldots\} command, which can be individually controlled. These captions may be the same or abbreviated. Subfigures and their sub-captions were created through \cmd{subfloat[\ldots]\{\ldots\}} command of \texttt{subfig} package. The optional argument of \cmd{subfloat} is the individual subfigure caption and the regular argument is the \cmd{includegraphics} command with its usual optional argument. The \cmd{ContinuedFloat} with another \texttt{figure} environment will carry the numbering forward. When the number of subfigures exceeds the number of alphabets (26), the numbering system should be switched to numeric. Refer to the ``\texttt{NDSU-Thesis-Extended.tex}'' for example code showing multiple page subfigures.
 
 %-------------------------------------------
+\subsection{Spacing adjustment around non-textual elements}\label{spacearound}
+Usually, the \ix{spacing} around the non-textual elements produced by \LaTeX\ will be good and based on typography principles. The environments that create these elements (e.g., tables, figures, equations) automatically supply an additional space to set the elements apart from the regular text and this is the expected and correct behavior. However, sometimes additional space will appear above or below these elements, which may be the result of fitting the elements with respect to others of the whole chapter. However, the spacing around the non-textual elements can be altered by one or any combination of the following to produce a consistent spacing around the non-textual elements:
+\begin{itemize}[itemsep=0em, leftmargin=*]
+\item
+The blank line coded, usually left between paragraphs, might create additional space before the element (e.g.,
+\texttt{equation}, \texttt{align}) and that can be removed to reduce the space above the element.
+\item
+Proper use of vertical spacing \cmd{\ix{vspace}\{\ldots\}} command with \ix{negative spacing} arguments (e.g., \cmd{vspace
+\{-3ex\}}) can able to correct the blank space above the element. This can also be used when a blank line was issued to separate the regular text from the element. Positive vertical space can also be issued as needed.
+
+\item
+The actual space around the equations (displayed items) is controlled be the
+\cmd{\ix{abovedisplayskip}[=] glue} and \cmd{\ix{belowdisplayskip}[=] glue}.
+The \texttt{glue} is called a ``rubber'' length stating a basic length with an allowed play on both positive and negative sides. The default value for these commands was ``\texttt{12pt plus 3pt minus 9pt}'', and is also valid to use the basic length directly as:
+\ccmd{\cmd{abovedisplayskip=-12pt}}
+Another way for issuing the command is using the basic \cmd{setlength} as \cmd{setlength\{\tb abovedisplayskip\}
+\{-12pt\}}. To have the regular behavior subsequently, the default should be restored by reissuing the commands using the default values.
+\item
+In figures, the space above the caption (the space between the bottom of the image and the top of the caption) can be controlled by using the optional argument of the \texttt{myfig, myfigls, myfigap} and \texttt{myfigapls} commands. This optional argument was specifically developed to address this caption placement issue. This may be required only for necessary adjustments as the default (without option) will work well in most cases.
+\end{itemize}
+
+%--------------------------------------------------------------
+\subsection{Reference handling using \ix{Bib\LaTeX\ }}\label{refhandling}
+The Bib\LaTeX\ package provides advanced bibliographic facilities for use with LaTeX. Good working knowledge in LaTeX should be sufficient to design new bibliography and citation styles using this system. The  \blt works with the backend (program) ``\ixm{Bib\LaTeX\ }{biber}'', which is used to process the bibliography data files and then performs all sorting, label generation, and many more operations. This package also supports subdivided bibliographies, multiple bibliographies within one document, customizable sorting, \ixm{Bib\LaTeX\ }{multiple bibliographies} with different sorting, customizable labels, and bibliographies may be subdivided into parts and/or segmented by topics. Users are urged to refer to the package documentation for various features (\url{https://ctan.org/pkg/biblatex?lang=en}).
+
+%--------------------------------------------------------------
+\subsubsection{Commands, cite, bibliography generation and files handling}
+
+The basic commands that invoke the \blt system, which has to be issued in the preamble, are:
+\ccmd{
+\cmd{usepackage[style=apa,natbib=true,backend=biber]\{biblatex\}}\\
+\cmd{\ixm{Bib\LaTeX\ }{addbibresource}\{\textit{name-of-bib-file.bib}\}}
+}
+
+In the above \blt command's option the bibliography information processing program ``biber'' was used as a backend program. The options also load ``apa'' style and ``natbib'' handling (allowing the \cmd{citep\{\ldots\}} and \cmd{citet\{\ldots\}} commands in  \blt ) as an example. The documentation and other resources (\url{http://tug.ctan.org/info/biblatex-cheatsheet/biblatex-cheatsheet.pdf}) may be referred for common \ixm{Bib\LaTeX\ }{options} and details of the package. The compatible styles used with \blt are: \texttt{numeric, numeric-comp, alphabetic, authoryear, authoryear-icomp, authortitle, verbose, reading, \\draft, apa, chem-acs, chem-angew, chem-biochem, chem-rsc, ieee, mla, musuos, nuture, nejm, phys, science,} and \texttt{oscola}. Users can use an appropriate style to match their specialization style guide.
+
+With the package and bib file(s) loaded and processed, the reference listing can be generated anywhere in the document by issuing:
+\ccmd{
+\cmd{\ixm{Bib\LaTeX\ }{printbibliography}[heading=bibintoc,title=REFERENCES]}
+}
+
+The options ``\texttt{heading=bibintoc}'' makes an unnumbered chapter and includes the heading in the TOC and ``\texttt{title=REFERENCES}'' changes the default title from BIBLIOGRAPHY to REFERENCES. The \cmd{printbibliography} command when issued at the end of the chapters will create a ``combined'' REFERENCES chapter. 
+
+%--------------------------------------------------------------
+\subsubsection{Individual chapters bibliography (multiple)}
+Sometimes it is desired to have a bibliography listing in every chapter, as the last unnumbered section, especially with the paper-style chapters. Chapters bibliography can be easily processed using \blt than using \ix{\bt}. For the bibliography listings only drawn from individual chapters they have to be restricted in the \texttt{refsection} environment as:
+\ccmd{
+\cmd{begin\{\ix{refsection}\}}\\[1ex]
+\hspace{0.2in}\ldots Chapter's text starting with abstract, sections/subsections, and so on, \\
+\hspace{0.2in}with citations using \cmd{cite\{\ldots\}} and other citation commands \ldots \\[1ex]
+\cmd{printbibliography[heading=subbibintoc,title=\{References\}]}\\
+\cmd{end\{refsection\}}
+}
+
+The options of the \cmd{printbibliography} command such as ``\texttt{heading=subbibintoc}'' will make the bibliography as unnumbered section and also creates a corresponding TOC entry, while ``\texttt{title=References}'' renames the default title. \index{documentclass}
+
+
+%--------------------------------------------------------------
+\subsection{Reference handling using \ix{\bt}}
+
+%--------------------------------------------------------------
+\subsubsection{BibTeX}\label{cwyw}\index{bibliography!natbib}
+
+The compatible styles (\texttt{*.bst}) with \texttt{natbib} and NDSU class that work with standard \LaTeX{} installation are:  \texttt{abbrvnat, agsm, agu, apalike, apalike2, authordate1, authordate3, cell, chicago, chicagoa, dcu, dinat, IEEEtran (family;  numerical styles), kluwer, plainnat, rusnat, unsrtnat}, and so on\index{natbib styles}. For other styles, users can able to download the specific style (\texttt{*.bst}) files and have them in the local folder. As \texttt{natbib} is an optional bibliography system, it was not coded in the class, and to use \texttt{natbib}  the following code should be in the preamble:
+\ccmd{
+\cmd{usepackage[sort\&compress]\{natbib\}}\\
+\cmd{\ixm{bibliography}{citestyle}\{arms\} \% agms, agu, arms, egu, cospar, dcu, kluwer, plain, nature}
+}
+
+It is convenient to load the \texttt{natbib} package with minimal options, as shown above, and choose predefined \cmd{citestyle\{option\}} options producing several styles defined in the package. 
+
+%--------------------------------------------------------------
+\subsubsection{Bibliography generation and files handling}\label{makebib}
+The two basic commands that are required to implement \bt system are:
+\ccmd{
+\cmd{bibliographystyle\{\textit{style}\} \% See list of styles (Sec.~\hspace{-1ex}11.1.1)}\\
+\cmd{bibliography\{\textit{name-of-bib-file}\}}
+}
+
+However, a single new command ``\cmd{makebib}'' (direct shortcut with no arguments) developed, replacing the above commands, sets up the bibliography style and *.bib file arguments that are being utilized in other shortcuts is: 
+\ccmd{
+\cmd{newcommand\{\cmd{makebib}\{\cmd{biblio}\{\textit{style}\}\{\textit{name-of-bib-file}\}\}}
+}\index{makebib}
+
+Now, simply issuing the \cmd{makebib} will generate the references listing based on the style and bib file input in the above command. The ``style'' of bibliography (\texttt{*.bst}) entries (typically \texttt{plainnat} or \texttt{apalike}), is controlled by the first argument; the user is referred to the \bt manual for formatting details and other available styles, such as those provided by the peer-reviewed journals related to the specialization. The ``name'' used in the second argument must be the same as the name of the bibliography (\texttt{*.bib}) file, but with the extension removed. Once correct citation commands (\cmd{\ix{citep}\{\ldots\}}  and/or \cmd{\ix{citet}\{\ldots\}}) are issued following CWYW, the citation with proper reference number or entry will appear in the text and listings in the proper style (based on *.bst) will be generated. The above shortcut generates an unnumbered chapter with the title REFERENCES (accepted by NDSU) and also a corresponding TOC entry.
+
+These commands (or equivalent commands if the user uses a different bibliography management system) are optional but are required if the disquisition includes references. Basic bibliography citation command is \cmd{cite\{\ldots\}}.
+\index{bibliography!citep} \index{bibliography!citet}
+
+
+%--------------------------------------------------------------
+\subsection{Specialization specific bibliography --- Examples of ASABE and IEEE}
+The bibliography styles to be followed in thesis/dissertation will be based on the parent department and the major technical society the department subscribes to in general. For example, the NDUS's ``Agricultural and Biosystems Engineering'' department's major technical society is The American Society of Agricultural and Biological Engineers (ASABE), and the NDSU's ``Electrical and Computer Engineering'' department's technical society is The  Institute of Electrical and Electronics Engineers (IEEE). The two ways of making the bibliography are to use \blt or \bt.
+
+The ASABE style journal references can be reproduced using \cmd{usepackage[style=apa,} \texttt{natbib=true]} \texttt{\{biblatex\}}. For \texttt{IEEEtran} styles with \blt use \cmd{usepackage[style=ieee]\{biblatex\}}. With \bt \texttt{*.bst} files and \cmd{citestyle\{\ldots\}} commands are available to create the style of reference followed in various departments (see Sec.~\ref{refhandling} for details). 
+
+ %were similar to  \texttt{apalike2} style but they use \& before the last author instead of ``and''. Therefore a modified style that achieves this called \texttt{myASABE.bst} was developed and included to produce the desired outputs (however, \blt with \texttt{style=apa} produces the \& directly). For other commands, the \texttt{natbib} package documentation should be referred to. For \texttt{IEEEtran} family of styles (\texttt{-N, -S, -SA, -SN}) that are numeric bibliography styles, use option ``plain'' in ``citestyle'' command as \cmd{citestyle\{plain\}}. It is also possible to load the package with the options directly as well in one command. With \blt use \cmd{usepackage[style=ieee]{biblatex}}. 
+
+%\begin{verbatim}
+%Option 1
+%\usepackage[numbers,sort&compress]{natbib}
+%\bibliographystyle{IEEEtranN}%IEEEtranN
+%
+%Option 2
+%\usepackage[sort&compress]{natbib}
+%\citestyle{plain}
+%\bibliographystyle{IEEEtranN}%IEEEtranN
+%
+%Option 3
+%% Need to spell out authors 
+%\usepackage[numbers,sort&compress]{natbib}
+%\bibliographystyle{IEEEtran}%IEEEtran
+%
+%
+%Option 4
+%\usepackage[sort&compress]{natbib}
+%\citestyle{plain}
+%\bibliographystyle{IEEEtran}%IEEEtran
+%
+%Option 5 
+%\bibliographystyle{IEEEtran}%IEEEtran
+%\end{verbatim}
+
+
+%--------------------------------------------------------------
+\subsection{Bibliography compilation issues}\index{bibliography!compilation}\index{bibliography!issues}\label{bibissue}
+The common issues [and proposed solution] while working with bibliographies, especially in combination with \texttt{natbib} include:
+\vspace{-1ex}
+\begin{itemize}[itemsep=0em, leftmargin=*]
+
+\item The basic principle usually gets violated is that the \LaTeX{} inputs (\texttt{tex, bib, or others}) require only the ASCII characters. Anything that disregards this principle will have issues during compilation. Presence of extraneous characters (unprintable and formatting) in the \texttt{*.bib} file, which comes while copying a formatted non-ASCII text, stalls the compilation. Command line or terminal commands or online tools can be used to identify the non-ASCII characters (e.g., \url{https://pages.cs.wisc.edu/~markm/ascii.html}, \url{https://onlineasciitools.com/validate-ascii}) [remove non-ASCII text from \texttt{*.bib} file] 
+
+\item Proper title case will not appear in the output (e.g., proper nouns like country names) even though things may seem right in \texttt{*.bib} file [use additional curly braces \{\ldots\} to enclose the desired title case items or the letters] 
+
+\item Proper italics will not show in the output (\emph{Scientific names} of animals and plants; e.g., \emph{Homo sapiens, Zea mays}) [use \cmd{emph\{\ldots\}} around the entries in the \texttt{*.bib} file] 
+
+\item Proper formatting of URLs with wrapping content and clickable links does not appear [use \cmd{url\{\ldots\}} command in the \texttt{*.bib} files entries that have the URLs] 
+
+\item Outputs not formatted according to the thesis/journal requirement [select the correct \blt style option or \texttt{bst} file that matches most of the requirements and modify the code to suit our requirement might sometimes require --- most often only a few alterations are needed and have the file in the same folder as \texttt{*.bib}] 
+
+\item New bibliography styles that are not listed (Sec.~11.1.1) might not run properly, mostly because of not having the corresponding \blt style or \texttt{*.bst} in the system [download style files and have it in the system/local folder]
+
+\item Some numerical styles (e.g., IEEEtran family) will not work when the \texttt{natbib} was set to author-year format [optional arguments of \texttt{natbib} package or arguments of \cmd{citestyle\{\}} command should be made compatible to the numerical styles (e.g., ``numbers'' or ``plain'' in their respective commands) --- so a combination of chosen \texttt{*.bst} and  \texttt{citestyle option} is the key to create the references listing in the correct format] 
+ 
+\item While trying different styles, compilation stops even for compatible styles [this is a common phenomenon and could be solved with an understanding of how \bt and \LaTeX{} resolves references by creating several auxiliary files (e.g., *.aux, *.toc, *.log, *.out) including *.bbl --- as contents of these files were referred from unsuccessful compilation, removing all these files leaving the source (\texttt{*.tex}) and recompiling with the compatible style and options will restore and regenerate the output. Thus, starting with only a clean source will work and regenerate the necessary files including the output, this strategy will work in other situations of compiling issues as well --- however, is not always necessary].
+\end{itemize}
+
+
+%--------------------------------------------------------------
+\subsection{Proper development of bibliography bib file}
+\vspace{-1ex}
+\begin{itemize}[itemsep=0em, leftmargin=*]
+\item Bib files should not be considered a dumping ground for bibliography codes that were usually not looked at for correctness, unlike the regular document source codes. This sometimes proves to be a serious mistake and stops compilation or produces strange outputs or major errors.
+
+\item The bib file, therefore, should be developed step-by-step carefully and each entry should be checked for correctness (only with ASCII characters and allowed equivalent \LaTeX{} commands for non-ASCII characters) and appropriateness (required and optional fields in bibliography entry). 
+
+\item Bib files are automatically generated by other reference management software (e.g., Zotero) for a given set of references, while they are helpful and provide a good starting point, are sometimes sources of compilation errors. These software may include ``abstract'' fields as well in the bib file, which are long and become sources of several unintended non-ASCII characters. These superfluous fields may be deleted so that the bib file is compact. Some of these software may include modern entries and fields that may be recognized by \blt but not included in \bt. Though it may be possible to create simpler and cleaner bib files, it is a good idea to check the generated bib file ``line-by-line'' for correctness.  
+
+\item It was found that ``Google Scholar'' generated \bt entries worked well in developing the bib file. These entries usually generate logical naming of the keys and valid \LaTeX{} commands for non-ASCII characters (especially international accented characters). Even in these entries checking the bib entries is always a good idea (e.g., use of capital letters, and emphasis).
+
+\item Common errors include:
+
+\begin{itemize}
+\item Extraneous non-ASCII characters (see Sec.~\ref{bibissue} first bullet);
+
+\item \% sign - which is an innocent symbol, but with LaTeX anything after will be considered as a comment so to produce \% we need to use \tb\%;
+
+\item On a similar note, we have a set of reserved symbols (\&, \%, \$, \{, \}, \@, \_, \#, and so on) that carry a special meaning and should not be used (without ``\tb'' preceding; e.g., \tb\&, \tb\%, \tb\$, and so on) loosely and expect a logical outcome;
+
+\item Every field (author, year, journal, etc.) should end with a comma (but the last one) - in a good bib file, just remove one comma and see the effect - which will teach us how a small thing will wreck the whole compilation;
+
+\item Unconventional fields (though created by other software) should be replaced by the correct ones (Wikipedia \bt), for example, date instead of the year will not work;
+
+\item Special symbols like degrees, copyright, and others commonly used in other systems can be coded in LaTeX as regular commands - and that command version of these symbols should be used in a bib or tex file; 
+
+\item Duplicate entries. 
+
+\item Unmatched braces. 
+
+\item Several types of \bt entries (\url{https://en.wikipedia.org/wiki/\bt}; e.g., \texttt{article, book, inproceedings, masterthesis, phdthesis, misc}, and so on) with their specific \emph{Required fields} and \emph{Optional fields}. Missing a required field (though generated by other resources) will be a mistake and will suspend compilation. The entry \emph{misc} does not contain any required field and can be used to fit odd entries.  
+
+\item The foreign accented characters (e.g., \'e, \`o, \^e, \"o, \c c, \~n, \l, \L, \ae, \aa, and so on, that are created by \verb|\'e, \`o, \^e, \"o, \c c, \~n, \l, \L, \ae, \aa| \LaTeX{} commands) (check the LaTeX cheat sheet and learn how to code them - all start with \ followed by some ASCII symbols or characters and the input character that receives the accent. As a practice try to have these accented characters in the tex file. If it runs there then that can be inserted into bib. 
+\end{itemize}
+
+\item While building your bib file add a couple of entries and check them how they compile. Don't go for the whole 120 entries (just to throw a good number).
+
+\item To visualize the reference listing of all the entries of the \texttt{*.bib}file issue the \verb|\nocite{*}| command. After the correctness of the entries were checked and fixed, the command may be removed and the listing of only cited references will appear --- nothing more nothing less.
+
+\item Further, remember the use of enclosing capital letters, especially in titles, for example, {NDSU}, {A}rgentina to get the capitals right from bib files. Similarly the use of \emph{Zee maize} for technical names in bib files for italicized output - otherwise they come out flat.
+
+\item It is a good idea while working with bib entries or in the main text, the liberal use of the \texttt{comment} environment, from the \texttt{comments} package, in the main text helps to check problematic bib entries and also produces efficient compilation.
+
+%\item Automatic finding and replacement of non-ASCII (online tools or unix command line methods can be used).
+
+\end{itemize}
+
+
+%-------------------------------------------
 \subsection{Chemical symbols}\index{chemical symbols}\index{chemical formula}
 Chemical symbols and chemical equations can be coded easily in a natural manner using the \cmd{ch\{\ldots\}} command using the \texttt{chemformula} package --- rather than using the math mode. The following chemicals: \ch{H2O}, \ch{H2SO4}, \ch{CrO4^2-}, \ch{[AgCl2]-}, \ch{(NH4)2S}, \ch{^{227}_{90}Th+}, and \ch{KCr(SO4)2 * 12 H2O} were coded through: \cmd{ch\{H2O\}}, \cmd{ch\{H2SO4\}}, \cmd{ch\{CrO4\textasciicircum2-\}}, \cmd{ch\{[AgCl2]-\}}, \cmd{ch\{(NH4)2S\}}, \cmd{ch\{\textasciicircum\{227\}\textunderscore\{90\}Th+\}}, and \cmd{ch\{KCr(SO4)2 * 12 H2O\}}, respectively.
 
@@ -868,6 +1050,14 @@ Chemical symbols and chemical equations can be coded easily in a natural manner 
 \cmd{ch\{N2 + 3 H2 -> 2 NH3\}} \hspace{0.65cm} gives \hspace{1cm} \ch{N2 + 3 H2 -> 2 NH3}
 \end{center}
 Refer to \texttt{chemformula} documentation for more options and details. It should be noted that there are other packages available for coding the chemicals and chemical equations, which are not included in the class but users can use them through \cmd{usepackage}\{\ldots\} command. 
+
+
+%%--------------------------------------------------------------
+\subsection{Individual or combine reference listing}\index{reference listing}
+The two types of reference listings are in the individual chapters added that end or a combined reference listing for all chapters as a standalone unnumbered chapter. 
+
+%
+
 
 %-------------------------------------------
 \subsection{Annotation commands}
@@ -900,120 +1090,12 @@ gives: \dt{\ldots text\ldots (Daly, 2010) \ldots text \ldots}
 Referring to items automatically using the defined labels is a common activity in \LaTeX\ and is called cross-reference. Although there are basic commands available to refer (e.g., fig.~\cmd{ref\{label\}}), the use of \texttt{\ix{cleveref}} package is an efficient way to achieve this task. This package enhances \LaTeX's cross-referencing to automatically detect the ``type'' of the item cross-referenced (e.g., equation, section, tables, figures, etc.) based on the context of the cross-reference. This means a single command of \cmd{cref\{label\}} or \cmd{Cref\{label\}} with the label will produce the correct output (e.g., fig.~1.1, eq.~3, Figure~1.1, Equation~3, etc.). Refer to this package for more details and customization. However, \texttt{cleveref} commands will not work with the appendix tables and appendix figures only, where the basic commands (\cmd{ref\{\ldots\}}) should be used. \index{cref} \index{Cref}
 
 
-%--------------------------------------------------------------
-\subsection{Bibliography compilation issues}\index{bibliography!compilation}\index{bibliography!issues}\label{bibissue}
-The common issues [and proposed solution] while working with bibliographies, especially in combination with \texttt{natbib} include:
-\vspace{-1ex}
-\begin{itemize}[itemsep=0em, leftmargin=*]
-
-\item The basic principle usually gets violated is that the \LaTeX{} inputs (\texttt{tex, bib, or others}) require only the ASCII characters. Anything that disregards this principle will have issues during compilation. Presence of extraneous characters (unprintable and formatting) in the \texttt{*.bib} file, which comes while copying a formatted non-ASCII text, stalls the compilation [remove them from \texttt{*.bib} file] 
-
-\item Proper title case will not appear in the output (e.g., proper nouns like country names) even though things may seem right in \texttt{*.bib} file [use additional curly braces \{\ldots\} to enclose the desired title case items or the letters] 
-
-\item Proper italics will not show in the output (\emph{Scientific names} of animals and plants; e.g., \emph{Homo sapiens, Zea mays}) [use \cmd{emph\{\ldots\}} around the entries in the \texttt{*.bib} file] 
-
-\item Proper formatting of URLs with wrapping content and clickable links does not appear [use \cmd{url\{\ldots\}} command in the \texttt{*.bib} files entries that have the URLs] 
-
-\item Outputs not formatted according to the thesis/journal requirement [select the \texttt{bst} file that matches most of the requirements and modify the code to suit our requirement might sometimes require --- most often only a few alterations are needed and have the file in the same folder as \texttt{*.bib}] 
-
-\item New bibliography styles that are not listed (Sec.~11.1.1) might not run properly, mostly because of not having the corresponding \texttt{*.bst} in the system [download style files and have it in the system/local folder]
-
-\item Some numerical styles (e.g., IEEEtran family) will not work when the \texttt{natbib} was set to author-year format [optional arguments of \texttt{natbib} package or arguments of \cmd{citestyle\{\}} command should be made compatible to the numerical styles (e.g., ``numbers'' or ``plain'' in their respective commands) --- so a combination of chosen \texttt{*.bst} and  \texttt{citestyle option} is the key to create the references listing in the correct format] 
- 
-\item While trying different styles, compilation stops even for compatible styles [this is a common phenomenon and could be solved with an understanding of how \bt and \LaTeX{} resolves references by creating several auxiliary files (e.g., *.aux, *.toc, *.log, *.out) including *.bbl --- as contents of these files were referred from unsuccessful compilation, removing all these files leaving the source (\texttt{*.tex}) and recompiling with the compatible style and options will restore and regenerate the output. Thus, starting with only a clean source will work and regenerate the necessary files including the output, this strategy will work in other situations of compiling issues as well --- however, is not always necessary].
-\end{itemize}
-
-
-%--------------------------------------------------------------
-\subsection{Proper development of bibliography bib file}
-\vspace{-1ex}
-\begin{itemize}[itemsep=0em, leftmargin=*]
-\item Bib files should not be considered a dumping ground for bibliography codes that were usually not looked at for correctness, unlike the regular document source codes. This sometimes proves to be a serious mistake and stops compilation or produces strange outputs or major errors.
-
-\item The bib file, therefore, should be developed step-by-step carefully and each entry should be checked for correctness (only with ASCII characters and allowed equivalent \LaTeX{} commands for non-ASCII characters) and appropriateness (required and optional fields in bibliography entry). 
-
-\item Bib files are automatically generated by other reference management software (e.g., Zotero) for a given set of references, while they are helpful and provide a good starting point, are sometimes sources of compilation errors. These software may include ``abstract'' fields as well in the bib file, which are long and become sources of several unintended non-ASCII characters. These superfluous fields may be deleted so that the bib file is compact. Some of these software may include modern entries and fields that may be recognized by \blt but not included in \bt. Though it may be possible to create simpler and cleaner bib files, it is a good idea to check the generated bib file ``line-by-line'' for correctness.  
-
-\item It was found that ``Google Scholar'' generated \bt entries worked well in developing the bib file. These entries usually generate logical naming of the keys and valid \LaTeX{} commands for non-ASCII characters (especially international accented characters). Even in these entries checking the bib entries is always a good idea (e.g., use of capital letters, and emphasis).
-
-\item Common errors include:
-
-\begin{itemize}
-\item Extraneous non-ASCII characters (remember we have demonstrated this during one of our classes);
-
-\item \% sign - which is an innocent symbol, but with LaTeX anything after will be considered as a comment so to have \% we need to use \%;
-
-\item On a similar note, we have a set of reserved symbols (\&, \%, \$, \{, \}, \@, \_, \#, and so on) that carry a special meaning and should not be used (without \ preceding) loosely and expect a logical outcome;
-
-\item Every field (author, year, journal, etc.) should end with a comma (but the last one) - in a good bib file, just remove one comma and see the effect - which will teach us how a small thing will wreck the whole;
-
-\item Unconventional fields (though created by other software) should be replaced by the correct ones (Wikipedia \bt), for example, date instead of the year will not work;
-
-\item Special symbols like degrees, copyright, and others commonly used in other systems can be coded in LaTeX as regular commands - and that command version of these symbols should be used in a bib or tex file; 
-
-\item Duplicate entries. 
-
-\item Unmatched braces. 
-
-\item Several types of \bt entries (\url{https://en.wikipedia.org/wiki/\bt}; e.g., \texttt{article, book, inproceedings, masterthesis, phdthesis, misc}, and so on) with their specific \emph{Required fields} and \emph{Optional fields}. Missing a required field (though generated by other resources) will be a mistake and will suspend compilation. The entry \emph{misc} does not contain any required field and can be used to fit odd entries.  
-
-\item The foreign accented characters (e.g., \'e, \`o, \^e, \"o, \c c, \~n, \l, \L, \ae, \aa, and so on, that are created by \verb|\'e, \`o, \^e, \"o, \c c, \~n, \l, \L, \ae, \aa| \LaTeX{} commands) (check the LaTeX cheat sheet and learn how to code them - all start with \ followed by some ASCII symbols or characters and the input character that receives the accent. As a practice try to have these accented characters in the tex file. If it runs there then that can be inserted into bib. 
-\end{itemize}
-
-\item While building your bib file add a couple of entries and check them how they compile. Don't go for the whole 120 entries (just to throw a good number).
-
-\item To visualize the reference listing of all the entries issue the \nocite{*} command (we have come across this). Later this can be removed and the listing of only cited references will appear - nothing more nothing less.
-
-\item Further, remember the use of enclosing capital letters, especially in titles, for example, {NDSU}, {A}rgentina to get the capitals right from bib files. Similarly the use of \emph{Zee maize} for technical names in bib files for italicized output - otherwise they come out flat.
-
-\item It is a good idea while working with bib entries or in the main text, the liberal use of the \texttt{comment} environment produces efficient compilation.
-
-\item Automatic finding and replacement of non-ASCII (online tools or unix command line methods can be used).
-
-\end{itemize}
-
 
 %--------------------------------------------------------------
 \subsection{Temporary ending}
 While reviewing/revising a large document, it will be efficient to compile only the chapter/section that was currently working. Rather than simply ending the document, it will be helpful to generate the citations in the text and a list of references at the \ix{temporary end}. As the commands that generate the reference listing need two files (style: \texttt{*.bst} and bibliography database: \texttt{*.bib}), which will be varying with users, it is better to code this command in the preamble (\cmd{makebib}) as given in Sec.~\ref{makebib}. 
 
 For this purpose, a shortcut \cmd{tend}\index{tend} is already defined in the class. Once \cmd{tend} is issued at any stage inside the source code will activate this temporary ending feature and end the document with a reference listing of all the cited references.
-
-%-------------------------------------------
-\subsection{Spacing adjustment around non-textual elements}
-Usually, the \ix{spacing} around the non-textual elements produced by \LaTeX\ will be good and based on typography principles. The environments that create these elements (e.g., tables, figures, equations) automatically supply an additional space to set the elements apart from the regular text and this is the expected and correct behavior. However, sometimes additional space will appear above or below these elements, which may be the result of fitting the elements with respect to others of the whole chapter. However, the spacing around the non-textual elements can be altered by one or any combination of the following to produce a consistent spacing around the non-textual elements:
-\begin{itemize}[itemsep=0em, leftmargin=*]
-\item
-The blank line coded, usually left between paragraphs, might create additional space before the element (e.g.,
-\texttt{equation}, \texttt{align}) and that can be removed to reduce the space above the element.
-\item
-Proper use of vertical spacing \cmd{\ix{vspace}\{\ldots\}} command with \ix{negative spacing} arguments (e.g., \cmd{vspace
-\{-3ex\}}) can able to correct the blank space above the element. This can also be used when a blank line was issued to separate the regular text from the element. Positive vertical space can also be issued as needed.
-\item
-When a set of equations was coded (e.g., \texttt{\ix{align}}, \texttt{\ix{eqnarray}}), it will be treated as a block and will not break and flow through multiple pages and gets pushed to the next page. This will create large gaps and can be broken into two or more subsets of equations to fit the page by repeating the environments.
-\item
-The actual space around the equations (displayed items) is controlled be the
-\cmd{\ix{abovedisplayskip}[=] glue} and \cmd{\ix{belowdisplayskip}[=] glue}.
-The \texttt{glue} is called a ``rubber'' length stating a basic length with an allowed play on both positive and negative sides. The default value for these commands was ``\texttt{12pt plus 3pt minus 9pt}'', and is also valid to use the basic length directly as:
-\ccmd{\cmd{abovedisplayskip=-12pt}}
-Another way for issuing the command is using the basic \cmd{setlength} as \cmd{setlength\{\tb abovedisplayskip\}
-\{-12pt\}}. To have the regular behavior subsequently, the default should be restored by reissuing the commands using the default values.
-\item
-In figures, the space above the caption (the space between the bottom of the image and the top of the caption) can be controlled by using the optional argument of the \texttt{myfig, myfigls, myfigap} and \texttt{myfigapls} commands. This optional argument was specifically developed to address this caption placement issue. This may be required only for necessary adjustments as the default (without option) will work well in most cases.
-\end{itemize}
-
-%-------------------------------------------
-\subsection{Line numbers for the whole document}
-Sometimes using line numbers will be helpful while communicating with the advisor or others, where specific locations of the document can be pointed to. Line numbers are generated using the package \texttt{lineno}, which is coded into the class, by the following command:
-\ccmd{\cmd{\ix{linenumbers}}}
-This command can be issued at the beginning or at any point, and numbers will appear in the left margin after the command. Of course, this command should be removed or commented on while finalizing the thesis.
-
-%-------------------------------------------
-\subsection{Chapter styles}\index{chapter styles}
-Two styles namely,  regular- and paper-styled chapters are generally followed. The regular is a traditional style where the whole thesis/dissertation is considered as a single document where individual chapters exclusively deal with aspects like introduction, literature review, methods, results, discussion or results and discussion, references, and appendices reflecting all studies carried in the research on these individual chapters. Even though this style produces a consolidated document and is solid in its own merit, which ties all research aspects of the study together in corresponding chapters, a good deal of rewriting will be necessary from the authors if they want to publish the contents as individual peer-reviewed journal articles.
-
-The paper-styled chapters are stand-alone chapters complete with all sections (abstract, introduction, literature review, \ldots, references) and are the modern trend. In this style, some amount of repetition among chapters is unavoidable (especially in methods, analysis, and references). However, as the chapters are already in paper-style, it is very easy to format them to suit the requirement of any peer-reviewed journal for submission. It is also possible to have individual chapter references (Bib\LaTeX) or a combined reference chapter (both Bib\TeX\ and Bib\LaTeX). With \LaTeX\ it is easy to create stand-alone papers with references for submission from a paper-styled disquisition with a combined reference chapter.  As outlined earlier,  the commands that start these chapters are 
-\cmd{myheading\{\ldots\}} or \cmd{mypaperheading\{3 args\}} (Sec.\,\ref{heading}).  It is a good idea to consult the advisor before committing to these styles,  for they are different and substantial rewriting is involved to switch back and forth. 
 
 %-------------------------------------------
 \vspace{-1.77ex}
@@ -1023,31 +1105,107 @@ When the length of chapters gets long it will be better managed into individual 
 \cmd{\ix{input}\{filename\}}\\
 \cmd{\ix{include}\{filename\}}\\
 }
-The \cmd{input\{filename\}} imports the codes from the \texttt{filename.tex} into the main file at the location where this command was issued. This is equivalent to typing all the code commands from the individual file into the main file. The \cmd{include\{filename\}} issues a \cmd{clearpage} before and after inserting the contents and had better speed than the \cmd{input\{filename\}} command. With such commands in place, it is possible to compile only the chapter the user wants to work on by commenting others, and this approach saves unnecessary compilation or reduces \ix{compilation times}.
+The \cmd{input\{filename\}} imports the codes from the \texttt{filename.tex} into the main file at the location where this command was issued. This is equivalent to typing all the code commands from the individual file into the main file. The \cmd{include\{filename\}} issues a \cmd{clearpage} before and after inserting the contents and had better speed than the \cmd{input\{filename\}} command. With such commands in place, it is possible to compile only the chapter the user wants to work on by commenting others, and this approach saves unnecessary compilation or reduces \ix{compilation times}. 
 
 %-------------------------------------------
-\subsection{Chapters as \ix{subfiles}}
-Another useful method of handling chapters is the application of subfiles (Sec.~\ref{adop}) that allows for individual files to be compiled and generate outputs. Subfiles are standalone documents that derive the preamble from the main document (e.g., my-dissertation.tex) and represent each chapter (e.g., chapter1-intro.tex, chapter2-methods.tex). The text of the ``subfile'' will have the following structure:
-\ccmd{
-\cmd{\ix{documentclass}[my-dissertation.tex]\{subfiles\}} \\
-\cmd{begin\{document\}} \\
-\hspace{0.2in}\ldots Entire chapter's text from title, abstract, sections/subsections, and \\
-\hspace{0.2in} so on, with citations using citation and bibliography commands \ldots \\[1ex]
-\cmd{end\{document\}}
+%\vspace{-1.77ex}
+\subsection{Chapters using ``\ix{includeonly}'' method --- Efficient working and compiling}
+\LaTeX{} allows to develop the document piece-by-piece (e.g., individual chapters, section, and even paragraphs) currently worked on. One way of doing this is to use the comments package's \texttt{comment} environment. Wherein the portion above and below the current chunk of code (e.g., chapter, section, and so on) can be enclosed leaving the \cmd{begin\{document\}} and \cmd{end\{document\}}. Thus, the only portion of the code will be compiled and displayed. The \cmd{end\{comment\}} of the top block and the \cmd{begin\{comment\}} of the end block can be moved as required to compile and output different portions of the code for display and inspection. It is also possible to replace the bottom block of comments by the direct \cmd{tend} (temporary ending command). 
+
+This procedure helps in focussing on the ``work at hand'' and enhances writing quality and productivity. It should be noted that the entire code of the document is ``there'' but only hidden from compiling and the comment commands can be removed or ``commented'' to produce the entire document any time for the final use. One drawback of this approach is that all the numbering (e.g. chapter, section, tables, figures) will be reset and start from the beginning and may not represent the final whole document's actual numbering. Just to address this situation the concept of \texttt{includeonly} was developed.  
+
+\setlength{\columnsep}{1cm}
+\setlength{\columnseprule}{0.4pt}
+\begin{multicols}{3}
+\noindent\textcolor{sec!60!sssec}{\underline{First run}}
+{\scriptsize
+\begin{verbatim}
+... Preamble ...
+\includeonly{ 
+chapter1, 
+chapter2,
+chapter3,
+chapter4,
+appendixA,
+appendixB
+}
+... 
+\begin{document}
+... 
+\include{chapter1} 
+\include{chapter2}
+\include{chapter3}
+\include{chapter4}
+\include{appendixA}
+\include{appendixB}
+... 
+\end{document}
+\end{verbatim}
 }
 
-While the ``main'' file (my-dissertation.tex) will have the following structure (similar to Sec. \ref{example} ``Thesis Example''):
-\ccmd{
-\cmd{documentclass[options]\{ndsu-thesis-2022\}} \\
-\hspace{0.2in}\ldots Preamble information \ldots \\
-\cmd{begin\{document\}} \\
-	\cmd{subfile\{chapter1-intro.tex\}}\\
-	\cmd{subfile\{chapter2-methods.tex\}}\\
-\hspace{0.2in}\ldots Bibliography commands, if required \ldots \\
-\cmd{end\{document\}}
+\columnbreak
+\noindent\textcolor{sec!60!sssec}{\underline{Second and subsequent runs}}
+{\scriptsize
+\begin{verbatim}
+... Preamble ...
+\includeonly{ 
+chapter1, 
+%chapter2,
+%chapter3,
+chapter4,
+appendixA,
+%appendixB
+}
+... 
+\begin{document}
+... 
+\include{chapter1} 
+\include{chapter2}
+\include{chapter3}
+\include{chapter4}
+\include{appendixA}
+\include{appendixB}
+... 
+\end{document}
+\end{verbatim}
 }
 
-It can be observed that the main file assembles all the chapters in subfiles, while each subfile borrows the class and preamble from the main file. All the subfiles can be kept in the same folder of the main file or can be stored separately in a subfolder but appropriately adding the paths in both files (Refer to the additional example in the class bundle for the use of subfiles and paths).
+\columnbreak
+\noindent\textcolor{sec!60!sssec}{\underline{Notes}}
+
+\vspace{1ex}
+{\scriptsize
+\noindent The number of chapters/files in the \texttt{includeonly\{\:\}} should match the files used in the \cmd{include\{\ldots\}} command. All chapter lines of code being active in the first run will create the \texttt{*.tex}
+files. In the second run shown only chapters 1, 4, and appendix A will be output. Any or all chapters in the \texttt{includeonly\{\:\}} can be made inactive or active in any subsequent runs and corresponding output will be generated. The total thesis TOC and other prefactory contents will always be generated irrespective of the selection of chapters.
+} 
+\end{multicols}
+
+For the initial run all lines of code with \texttt{includeonly} and \texttt{include} of the chapters should be active, which will produce the necessary working files (*.aux) for all chapters. In the later runs only the required chapters in the \texttt{includeonly} portion of the code can be kept active (other chapters commented, but ``\texttt{include}'' chapters always kept active --- refer to the additional example in the class bundle) and will produce the output of those active chapters only --- with all contents correctly numbered. Another advance method is to use \texttt{subfiles}, where individual chapters can be directly complied (NDSU-Thesis-Extended for example). 
+
+
+%-------------------------------------------
+%\subsection{Chapters as \ix{subfiles}}
+%Another advanced useful method of handling chapters is the application of subfiles (Sec.~\ref{adop}) that allows for individual files to be compiled and generate outputs. Subfiles are standalone documents that derive the preamble from the main document (e.g., my-dissertation.tex) and represent each chapter (e.g., chapter1-intro.tex, chapter2-methods.tex). The text of the ``subfile'' will have the following structure:
+%\ccmd{
+%\cmd{\ix{documentclass}[my-dissertation.tex]\{subfiles\}} \\
+%\cmd{begin\{document\}} \\
+%\hspace{0.2in}\ldots Entire chapter's text from title, abstract, sections/subsections, and \\
+%\hspace{0.2in} so on, with citations using citation and bibliography commands \ldots \\[1ex]
+%\cmd{end\{document\}}
+%}
+%
+%While the ``main'' file (my-dissertation.tex) will have the following structure (similar to Sec. \ref{example} ``Thesis Example''):
+%\ccmd{
+%\cmd{documentclass[options]\{ndsu-thesis-2022\}} \\
+%\hspace{0.2in}\ldots Preamble information \ldots \\
+%\cmd{begin\{document\}} \\
+%	\cmd{subfile\{chapter1-intro.tex\}}\\
+%	\cmd{subfile\{chapter2-methods.tex\}}\\
+%\hspace{0.2in}\ldots Bibliography commands, if required \ldots \\
+%\cmd{end\{document\}}
+%}
+%
+%It can be observed that the main file assembles all the chapters in subfiles, while each subfile borrows the class and preamble from the main file. All the subfiles can be kept in the same folder of the main file or can be stored separately in a subfolder but appropriately adding the paths in both files (Refer to the additional example in the class bundle for the use of subfiles and paths).
 
 %-------------------------------------------
 \subsection{Defining and using \ix{specific commands}, environments, and packages}
@@ -1115,7 +1273,7 @@ A few adjustments are necessary to convert the thesis chapters into journal arti
 \label{tab1}
 \end{table}
 
-The compatibility issue will not be there with the tables for no shortcuts were defined in the class and all table codes used the basic commands from the respective packages. Also, the heading commands (\cmd{myheading\{\}} and \cmd{mypaperheading\{\}}) are specific to the thesis class (See Sec.~\ref{heading}) and will not generally work with the journal template. However, their different arguments can be extracted and used in the commands specific to the journal template. Similarly the code from the appendices such as, \texttt{appendixtable} and \texttt{appendixfigure} environments should be replaced by the basic \texttt{table} and \texttt{figure} environments, respectively, in the article template. Needless to mention that the NDSU class-specific front matter commands that may not appear in individual chapters such as, \texttt{author, date, progdeptchoice, department, cchair, cmember(a-d), approvaldate, approver, listofabbreviations, listofsymbols}, and so on, will not work in the journal template; but the content of the arguments can be copied and utilized in the appropriate journal template commands. 
+The compatibility issue will not be there with the tables for no shortcuts were defined in the class and all table codes used the basic commands from the respective packages. Also, the heading commands (\cmd{myheading\{\}} and \cmd{mypaperheading\{\}}) are specific to the thesis class (see Sec.~\ref{heading}) and will not generally work with the journal template. However, their different arguments can be extracted and used in the commands specific to the journal template. Similarly the code from the appendices such as, \texttt{appendixtable} and \texttt{appendixfigure} environments should be replaced by the basic \texttt{table} and \texttt{figure} environments, respectively, in the article template. Needless to mention that the NDSU class-specific front matter commands that may not appear in individual chapters such as, \texttt{author, date, progdeptchoice, department, cchair, cmember(a-d), approvaldate, approver, listofabbreviations, listofsymbols}, and so on, will not work in the journal template; but the content of the arguments can be copied and utilized in the appropriate journal template commands. 
 
 It may be also necessary to include the missing packages in the template, which were used in the thesis class. The missing packages can be identified from the ``\texttt{Undefined control sequence}'' error messages from the command that stop the compilation (e.g., using \cmd{cref\{\}} without loading the \texttt{cleveref} package).  Of course, the template-specific commands should be used while developing journal articles. With these adjustments, the thesis code easily transitions to the journal articles. It is hoped that with the working knowledge of \LaTeX\ previously obtained and/or gathered thus far the students can able to handle what is required to convert the thesis chapters into journal articles' source code utilizing the specific journal templates. 
 
@@ -1158,7 +1316,7 @@ Option & Outcomes \\
 
 %--------------------------------------------------------------
 %--------------------------------------------------------------
-\section{Additional Information II --- Some Tips For Customization}
+\section{Additional Information \textrm{II} --- Some Tips For Customization}
 
 %-------------------------------------------
 \vspace{-1ex}
@@ -1206,7 +1364,7 @@ It is safe to assume that students who came this far should have ``cared enough'
 \section*{Acknowledgements}\index{acknowledgements}
 \addcontentsline{toc}{section}{Acknowledgements}
 %\vspace{-1ex}
-The authors gratefully appreciate the leadership and inputs from Danjel Nygard, Dissertation and Thesis Coordinator, NDSU, Fargo, ND, in developing this ``ndsu-thesis-2022'' \LaTeX\/ class. The support and involvement of James Thorne, Ph.D. Student, Department of Mathematics, NDSU, Fargo, ND, the maintainer of the previous version of this class in CTAN, is also highly appreciated. 
+The authors gratefully appreciate the leadership and inputs from Danjel Nygard, Dissertation and Thesis Coordinator, NDSU, Fargo, ND, in developing this ``ndsu-thesis-2022'' \LaTeX\/ class. The support and involvement of James Thorne, Ph.D. Student, Department of Mathematics, NDSU, Fargo, ND, the maintainer of the previous version of this class in CTAN, is also highly appreciated.
 \enlargethispage{\baselineskip}
 %--------------------------------------------------------------
 %\newpage
