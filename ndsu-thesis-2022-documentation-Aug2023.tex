@@ -553,7 +553,6 @@ Commands like \cmd{kant[1]} or \cmd{kant[4-8]} will produce single or multiple d
 
 %--------------------------------------------------------------
 %--------------------------------------------------------------
-%\section{Tables and Figures}
 \subsection{Tables}
 Different kinds of tables, such as simple table without caption (\texttt{\ixm{table}{tabular}}), table with \ixm{table}{caption} (\texttt{table}), table with \ixm{table}{footnote} (\texttt{\ixm{table}{threeparttable}}), table spanning entire text width (\texttt{\ixm{table}{tblr}}), table spanning multiple pages (\texttt{\ixm{table}{longtable}}), and table in \ixm{table}{landscape} page (\texttt{\ixm{table}{pdflscape}}) can be coded following the documentation of respective packages, and no shortcuts were defined as they were not practical. Using \texttt{\ixm{table}{booktabs}} package professional quality tables (Sec.~\ref{degtype}) can be created.
 
@@ -614,10 +613,10 @@ For convenient and automatic correct vertical spacing around equations, the foll
  \cmd{mydisp\{\:\}}, and 
  \cmd{myfracdisp\{\:\}}.  The arguments in these commands are the actual codes of the equation(s) without their environment as they were already included in these shortcuts (shown below).  
 \begin{tabbing}
-xxxxx\= xxxxxxxxxxxxxxxxxxxxx\=xxxxxxxxxxxxxxxxxxxxxxxxx\= xxxxxxxxxxxxxxxxxxxxx\=\kill
+xxx\= xxxxxxxxxxxxxxxxxxxxxx\=xxxxxxxxxxxxxxxxxxxxxxx\= xxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
 \> \textcolor{sssec}{\underline{Code}} \> \textcolor{sssec}{\underline{Output}} \> \textcolor{sssec}{\underline{Code}} \> \textcolor{sssec}{\underline{Output}} \\
 \> \cmd{myeqn\{} \>\> \cmd{myalign*\{} \\
-\> \texttt{E = m \tb times c\textasciicircum2}  \> $E = m \times c^2\qquad$ (1.1)  \> \texttt{E \&= m \tb times c\textasciicircum2}  \> $E_i = m_i \times c^2\qquad$\\
+\> \texttt{E = m \tb times c\textasciicircum2}  \> $E = m \times c^2\qquad$ (1.1)  \> \texttt{E\textunderscore i \&= m\textunderscore i \tb times c\textasciicircum2}  \> $E_i = m_i \times c^2\qquad$\\
 \> \texttt{\}} \>\> \texttt{y \&= Ax + B} \> $\:\:\,y = Ax + B$\\
 \>\>\>\texttt{\}}
 \end{tabbing}
