@@ -77,8 +77,16 @@
 %              Grid display through showgrid command option in the class (2023-07-17)
 %              New equation commands for right vertical spacing with text (2023-07-28)
 %              New equation* commands for right vertical spacing with text (2023-08-27)
+%              Auto chapterrefs option - no refsection reqd - \tendc added (2023-09-01) 
+%              Named xcolors dvipsnames*,svgnames,x11names,table added (2023-09-09) 
+%              Several new fonts installed - esp. sanserif fonts (2023-09-11) 
+%              Line spacing of 23/p applied abstract, acknow., dedi., & preface (2023-09-13)
 %
 %  Update history
+%  Last updated: 2023-09-13
+%  Last updated: 2023-09-11
+%  Last updated: 2023-09-09
+%  Last updated: 2023-09-01
 %  Last updated: 2023-08-27
 %  Last updated: 2023-07-28
 %  Last updated: 2023-07-17
@@ -108,6 +116,8 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage[obeyspaces,spaces,hyphens]{url}
 \RequirePackage[linktocpage,breaklinks,linktoc=all,hidelinks]{hyperref}
+
+\PassOptionsToPackage{dvipsnames*,svgnames,x11names,table}{xcolor}% done before package
 
 \setlength{\marginparwidth}{2cm}
 \RequirePackage[colorinlistoftodos,prependcaption,textsize=scriptsize]{todonotes}
@@ -139,6 +149,7 @@
 \RequirePackage{tocloft}
 \RequirePackage{xtab}
 \RequirePackage{siunitx}   % [binary-units = true]   
+\sisetup{detect-all}% maintain text font in SI items
 \RequirePackage{float}
 \RequirePackage[stable]{footmisc}% footnote in section and beyond
 \RequirePackage{booktabs}
@@ -151,6 +162,8 @@
 \RequirePackage{xspace}
 \RequirePackage{rotating}
 \RequirePackage{listings}
+\RequirePackage{textcomp}
+\RequirePackage{wasysym}
 \RequirePackage{tabularray}
 \RequirePackage{comment}
 \RequirePackage{enumitem}
@@ -159,6 +172,7 @@
 \RequirePackage{csquotes}
 \RequirePackage[export]{adjustbox}
 \RequirePackage[nameinlink]{cleveref} %capitalise, noabbrev 
+
 
 \UseTblrLibrary{amsmath} % to avoid potential conflict in tabularray
 \UseTblrLibrary{booktabs} 
@@ -238,7 +252,10 @@
 \DeclareOption{lmodern}{\renewcommand{\fonttype}{lmodern}}
 \DeclareOption{mathdesign}{\renewcommand{\fonttype}{mathdesign}}
 \DeclareOption{mathptmx}{\renewcommand{\fonttype}{mathptmx}}
+\DeclareOption{mlmodern}{\renewcommand{\fonttype}{mlmodern}}
 \DeclareOption{newcent}{\renewcommand{\fonttype}{newcent}}
+\DeclareOption{newpx}{\renewcommand{\fonttype}{newpx}}
+\DeclareOption{newtx}{\renewcommand{\fonttype}{newtx}}
 \DeclareOption{palatino}{\renewcommand{\fonttype}{palatino}}
 \DeclareOption{tgtermes}{\renewcommand{\fonttype}{tgtermes}}
 \DeclareOption{times}{\renewcommand{\fonttype}{times}}
@@ -246,7 +263,13 @@
 \DeclareOption{tgpagella}{\renewcommand{\fonttype}{tgpagella}}
 \DeclareOption{tgschola}{\renewcommand{\fonttype}{tgschola}}
 \DeclareOption{utopia}{\renewcommand{\fonttype}{utopia}}
-\DeclareOption{zlmtt}{\renewcommand{\fonttype}{zlmtt}}
+\DeclareOption{clearsans}{\renewcommand{\fonttype}{clearsans}}%sanserifs
+\DeclareOption{cmbright}{\renewcommand{\fonttype}{cmbright}}
+\DeclareOption{firasans}{\renewcommand{\fonttype}{firasans}}
+\DeclareOption{helvet}{\renewcommand{\fonttype}{helvet}}
+\DeclareOption{kurier}{\renewcommand{\fonttype}{kurier}}
+\DeclareOption{lxfonts}{\renewcommand{\fonttype}{lxfonts}}
+\DeclareOption{sansmathfonts}{\renewcommand{\fonttype}{sansmathfonts}}
 \ProcessOptions
 
 \ifthenelse{\equal{\fonttype}{bookman}}{\usepackage{bookman}}{
@@ -257,16 +280,37 @@
 \ifthenelse{\equal{\fonttype}{lmodern}}{\usepackage{lmodern}}{
 \ifthenelse{\equal{\fonttype}{mathdesign}}{\usepackage[bitstream-charter]{mathdesign}}{
 \ifthenelse{\equal{\fonttype}{mathptmx}}{\usepackage{mathptmx}}{
+\ifthenelse{\equal{\fonttype}{mlmodern}}{\usepackage{mlmodern}}{
 \ifthenelse{\equal{\fonttype}{newcent}}{\usepackage{newcent}}{
+\ifthenelse{\equal{\fonttype}{newpx}}{\usepackage{newpxtext,newpxmath}}{
+\ifthenelse{\equal{\fonttype}{newtx}}{\usepackage{newtxtext,newtxmath}}{
 \ifthenelse{\equal{\fonttype}{palatino}}{\usepackage{palatino}}{
 \ifthenelse{\equal{\fonttype}{tgtermes}}{\usepackage{tgtermes}}{
 \ifthenelse{\equal{\fonttype}{times}}{\usepackage{times}}{
 \ifthenelse{\equal{\fonttype}{tgbonum}}{\usepackage{tgbonum}}{
 \ifthenelse{\equal{\fonttype}{tgpagella}}{\usepackage{tgpagella}}{
 \ifthenelse{\equal{\fonttype}{tgschola}}{\usepackage{tgschola}}{
+\ifthenelse{\equal{\fonttype}{clearsans}}{\usepackage[sfdefault]{ClearSans}}{
+\ifthenelse{\equal{\fonttype}{cmbright}}{\usepackage{cmbright}
+\usepackage[OT1]{fontenc}
+}{
+\ifthenelse{\equal{\fonttype}{firasans}}{
+\usepackage[sfdefault,scaled=0.9]{FiraSans}
+\usepackage{newtxsf}
+}{
+\ifthenelse{\equal{\fonttype}{helvet}}{
+\usepackage[scaled]{helvet}% nomath
+\renewcommand*\familydefault{\sfdefault} 
+}{
+\ifthenelse{\equal{\fonttype}{kurier}}{\usepackage[condensed,math]{kurier}}{
+\ifthenelse{\equal{\fonttype}{lxfonts}}{\usepackage{lxfonts}}{
+\ifthenelse{\equal{\fonttype}{sansmathfonts}}{
+\usepackage{sansmathfonts}
+\renewcommand*\familydefault{\sfdefault}
+}{
 \ifthenelse{\equal{\fonttype}{utopia}}{\usepackage{utopia}}{
 \ifthenelse{\equal{\fonttype}{zlmtt}}{\usepackage{zlmtt}}
-}}}}}}}}}}}}}}}}{}
+}}}}}}}}}}}}}}}}}}}}}}}}}}{}
 
 % Showframe 
 \newcommand{\frameshow}{none3}
@@ -279,14 +323,14 @@
 %\newcommand{\referencetitile}{references}
 
 % ChapterBibliography 
-\newcommand{\chapbib}{none4}
-\DeclareOption{chaptersbib}{\renewcommand{\chapbib}{chaptersbib}}
-\ProcessOptions
-\ifthenelse{\equal{\chapbib}{chaptersbib}}
-{\setbool{whole}{false}
-\setbool{biblatexused}{true}}
-{\setbool{whole}{true}
-\setbool{biblatexused}{false}}
+%\newcommand{\chapbib}{none4}
+%\DeclareOption{chaptersbib}{\renewcommand{\chapbib}{chaptersbib}}
+%\ProcessOptions
+%\ifthenelse{\equal{\chapbib}{chaptersbib}}
+%{\setbool{whole}{false}
+%\setbool{biblatexused}{true}}
+%{\setbool{whole}{true}
+%\setbool{biblatexused}{false}}
 
 % ChapterReferences - To be used with BibLaTeX
 \newcommand{\chaprefs}{none5}
@@ -401,16 +445,29 @@
 \let\@cmemberd=\@empty
 
 % Other frontmatter sections
-\newcommand\abstract[1]{\def\@abstract{\setlength\parindent{0.5in}\clearpage\chapter*{ABSTRACT}\addcontentsline{toc}{chapter}{ABSTRACT}#1}}
+\newcommand\abstract[1]{\def\@abstract{\setlength\parindent{0.5in}\clearpage\chapter*{ABSTRACT}\addcontentsline{toc}{chapter}{ABSTRACT}
+\begin{spacing}{1.9} 
+#1
+\end{spacing}}}
 \let\@abstract=\@empty   
 
-\newcommand\acknowledgements[1]{\def\@acknowledgements{\clearpage\chapter*{ACKNOWLEDGEMENTS}\addcontentsline{toc}{chapter}{ACKNOWLEDGEMENTS}#1}}
+\newcommand\acknowledgements[1]{\def\@acknowledgements{\clearpage\chapter*{ACKNOWLEDGEMENTS}\addcontentsline{toc}{chapter}{ACKNOWLEDGEMENTS}
+\begin{spacing}{1.9} 
+#1
+\end{spacing}}}
 \let\@acknowledgements=\@empty
 
-\newcommand\dedication[1]{\def\@dedication{\clearpage\chapter*{DEDICATION}\addcontentsline{toc}{chapter}{DEDICATION}\begin{center}#1\end{center}}}
+\newcommand\dedication[1]{\def\@dedication{\clearpage\chapter*{DEDICATION}\addcontentsline{toc}{chapter}{DEDICATION}\begin{center}
+\begin{spacing}{1.9} 
+#1
+\end{spacing}
+\end{center}}}
 \let\@dedication=\@empty
 
-\newcommand\preface[1]{\def\@preface{\clearpage\chapter*{PREFACE}\addcontentsline{toc}{chapter}{PREFACE}#1}}
+\newcommand\preface[1]{\def\@preface{\clearpage\chapter*{PREFACE}\addcontentsline{toc}{chapter}{PREFACE}
+\begin{spacing}{1.9} 
+#1
+\end{spacing}}}
 \let\@preface=\@empty
 
 % LIST OF ABBREVIATIONS - Igathi
@@ -621,6 +678,7 @@
 % Usage: \biblio{reference-styleFile}{reference-bibFile}  -  Command to have references
 \newcommand{\biblio}[2]{
 \bibtocsubstart
+\setlength{\bibhang}{0.5in}
 \bibliographystyle{#1} 	% *.bst file  
 \bibliography{#2}    		% *.bib file 
 \addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
@@ -636,8 +694,33 @@
 \end{document}
 }
 
-% Usage: \tend the for bibtex \makebib was recursively passed 
+
+
+% Defined to handle BibLaTeX reference commands (individual and combined)
+\newcommand{\bibtitle}{References} % for BibLaTeX
+
+\newcommand{\makerefs}{
+\setlength{\bibhang}{0.5in}
+\ifbool{chapref}
+{\printbibliography[heading=subbibnumbered, title={\bibtitle}]}
+{\printbibliography[heading=bibintoc, title=\uppercase{\bibtitle}]}
+} % shortcut - section numbered; subbibintoc - unnumbered
+
+
+%---------------------------
+%---------------------------
+%---------------------------
+
+% Usage: \tend the for all - no listing
 \newcommand{\tend}{ 
+\ifbool{chapref}{\end{refsection}}{}
+\end{spacing}
+\end{document}
+}
+
+
+% Usage: \tendbt the for bibtex \makebib was recursively passed 
+\newcommand{\tendbt}{ 
 \bibtocsubstart
 \makebib
 \addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
@@ -645,33 +728,34 @@
 \end{document}
 }
 
-% Defined to handle BibLaTeX reference commands (individual and combined)
-\newcommand{\bibtitle}{References} % for BibLaTeX
-
-\newcommand{\makerefs}{
-\ifbool{chapref}
-{\printbibliography[heading=subbibnumbered, title={\bibtitle}]}
-{\printbibliography[heading=bibintoc, title=\uppercase{\bibtitle}]}
-} % shortcut - section numbered; subbibintoc - unnumbered
-
-% Usage: \tendx for biblatex the \makerefs was recursively passed
-\newcommand\tendx{ 
+% Usage: \tendblt for biblatex the \makerefs was recursively passed
+\newcommand{\tendblt}{ 
 \bibtocsubstart
 \makerefs
 \addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+%\end{refsection} 
 \end{spacing}
 \end{document}
 }
 
-% Usage: \tendb for biblatex the \makerefs was recursively passed
-\newcommand{\tendb}{ 
-\bibtocsubstart
-\makerefs
-\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
-\end{refsection} 
+% Usage: \tendcr for biblatex automatic individual or combined references
+\newcommand{\tendcr}{ 
+\checkEndRefsection% chapter reference section listing
+\checkMakeCombinedReferences% whole document reference listing
 \end{spacing}
 \end{document}
 }
+
+
+%% Usage: \tendx for biblatex the \makerefs was recursively passed
+%\newcommand{\tendx}{ 
+%\bibtocsubstart
+%\makerefs
+%\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+%\end{spacing}
+%\end{document}
+%}
+%
 
 \counterwithout{footnote}{chapter}% for continuous footnote
 
@@ -679,6 +763,8 @@
 \newcommand{\checkBeginRefsection}{\ifbool{chapref}{\begin{refsection}}{}}
 \newcommand{\checkEndRefsection}{\ifbool{chapref}{\makerefs\end{refsection}}{}}
 \newcommand{\checkMakeCombinedReferences}{\ifbool{chapref}{}{\newpage\makerefs}}
+
+
 
 % Generate appendices
 \newcommand{\myheadingref}[1]{ 

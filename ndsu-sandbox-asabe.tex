@@ -1,7 +1,7 @@
 %******************* START *******************
-%\documentclass[12pt,mathdesign]{ndsu-thesis-2022}
+\documentclass[12pt,mathdesign]{ndsu-thesis-2022}
 %\documentclass[12pt,mathdesign,chapterrefs,showgrid]{ndsu-thesis-2022}
-\documentclass[12pt,mathdesign,chapterrefs]{ndsu-thesis-2022}
+%\documentclass[12pt,mathdesign,chapterrefs]{ndsu-thesis-2022}
 
 %----------------------------------------------------
 \usepackage[style=apa,natbib=true,uniquename=false,backend=biber]{biblatex}% works well with \citep and \citet commands
@@ -23,6 +23,8 @@
 
 %----------------------------------------------------
 \myheading{Test Chapter for NDSU Thesis Class Sandbox}
+
+\checkBeginRefsection%%% Don't delete this
 
 This ``\texttt{ndsu-sandbox.tex}'' file can be used as a sandbox to try out things in the actual NDSU thesis environment. \textcolor{gray}{Things tested here (including the bibliography) can be readily inserted into the original thesis/dissertation document. Therefore, this lightweight source will be convenient to test things out.} So, go for it --- and remember anything is possible by \LaTeX{} (almost!?).
 
@@ -74,6 +76,7 @@ Firstfootnote\footnote{One - this is our first footnote. We can have our text he
 
 \myfig{H}{0.4}{frog.jpg}{Figure short caption is centered. Use of myfig command.}{fig2}
 
+%\tendc
 
 \kant[9]
 \myfig{H}{0.4}{frog}{Figure short caption is centered. Use of myfig command; Now long caption that will be left-justified.}{fig3}
@@ -83,15 +86,14 @@ Firstfootnote\footnote{One - this is our first footnote. We can have our text he
 
 %\nocite{*}
 
-\makerefs % for biblatex - being first no refsection needed
-
-%\tendb
+\checkEndRefsection%%% Don't delete this
 
 %----------------------------------------------------
 %----------------------------------------------------
 \mypaperheading{Test Second Chapter for NDSU Thesis Class Sandbox}{$^3$}{This paper footnote}\label{my2chap}
 
-\begin{refsection}  % for individual chapter reference (only from this chapter)
+\checkBeginRefsection%%% Don't delete this
+
 \kant[20-21]
 
 %----------------------------------------------------
@@ -105,6 +107,7 @@ A new footnote\footnote{The footnote next of the new tootnote!}.
 
 As is proven in the ontological manuals, it is obvious that the transcendental unity of apperception proves the validity of the Antinomies; what we have alone been able to show is that, our understanding. Let us suppose that the noumena have nothing to do with necessity, since knowledge of the complexnessivity\footnote{Is that a word?}
 
+%\tendc
 
 \myfig{H}{0.4}{frog}{Short caption is centered. Use of myfig command.}{fig4}
 
@@ -113,9 +116,6 @@ As is proven in the ontological manuals, it is obvious that the transcendental u
 
 %----------------------------------------------------
 \section{Second Section - NDSU Style Equation Spacing}
-%\setlength{\abovedisplayskip}{-0.2in}
-%\setlength{\belowdisplayskip}{0pt}
-
 Let us suppose that the noumena have nothing to do with necessity, since knowledge of the Categories is a posteriori. Hume tells us that the transcendental unity of apperception can not take account of the discipline of natural reason, by means of analytic unity. As is proven in the ontological manuals, it is obvious that the transcendental unity of apperception proves the validity of the Antinomies; what we have alone been able to show is that, our understanding. Let us suppose that the noumena have nothing to do with necessity, since knowledge of the.
 
 \myeqn{\text{Parameter} = ax^2 + bx + c \label{eq21}}
@@ -153,6 +153,8 @@ Q & = 8.8 y \times \frac{\beta}{3.6} \label{eq26}\\
 \text{Rate} & = 8.8 y \times \frac{\gamma}{\delta} \label{eq25}
 }
 
+%\tendc
+
 \noindent As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. Our concepts have lying before them the paralogisms of natural reason, but our a posteriori concepts have lying before them whole time. 
 
 \vspace{-2ex}
@@ -166,11 +168,12 @@ X(\omega) =
 
 \noindent As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. Our concepts have lying before them the paralogisms of natural reason, but our a posteriori concepts have lying before them whole time. 
 
+\checkEndRefsection%%% Don't delete this
 
 
-% for individual chapter reference (from now on) otherwise once for the document
-\makerefs % for biblatex 
-\end{refsection} 
+% Combined unnumbered Reference  chapter - automatically generated
+\checkMakeCombinedReferences%%% Don't delete this - can be moved down as reqd.
+
 %----------------------------------------------------
 
 % for whole doc references - remove all refsections 

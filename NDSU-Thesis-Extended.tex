@@ -9,7 +9,9 @@
 % nojustify = ragged-right (non-hyphenated whole words) passages, default = justified (hyphenated words) with straight right margin; 
 % draft = no figures but box frames, default = final; 
 % showframe = frame around the text area to check how text fills in the margins - this with draft option shows the items crossing the frame, default = noshowframe; 
+% showgrid = grid around the text area to check the vertical spacing of elements to adjust the spacing to match the double-line spacing
 % fonts (any of these): bookman, charter, gentium, kpfonts, libertine, mathdesign, mathptmx, newcent, palatino, tgtermes, times, tgbonum, tgpagella, tgschola, utopia, zlmtt, default = LaTeX computer modern. 
+% chapterrefs = individual reference sections, default = combined reference unnumbered chapter; with this option need to use \checkBeginRefsection, \checkEndRefsection (for each chapter) and \checkMakeCombinedReferences once at the end (refer ndsu-sandbox-asabe.tex)
 %------------------------------------------------------------------------------
 
 %---------------------------------------------------------------------------------------------------
@@ -36,14 +38,16 @@
 % \myfigap, \myfigapls = appendix regular figure and appendix landscape figure {5 items as before}
 % \citestyle{} = predefined natbib styles (options: plain, agu, egu, agms, dcu, kluwer, cospar, nature) use this after \usepackage[sort&compress]{natbib}
 % \lstset{e.g. language, font, style, color} options and {lstlisting} environment of listings package for programs and algorithms source code listing
+% \tendc = can be used to temporarily end the document (BibLaTeX individual ref sections)
 % \closeappendices = produces all elements (loat, loaf) when the last appendix does not have at least a figure and a table. If present, no need to use
 %---------------------------------------------------------------------------------------------------
 
 %-----------------------------------------------------------------------------
 %--------------------Load specific packages--------------------------
-\usepackage[sort&compress]{natbib}
-\citestyle{arms} % agms, agu, arms, egu, cospar, dcu, kluwer, plain, nature
-\newcommand{\makebib}{\biblio{apalike}{mybib}} % shortcut for bibliography
+
+\usepackage[style=apa,natbib=true,backend=biber]{biblatex}% works with \citep and \citet commands
+\addbibresource{mybib.bib}% *.bib extension is necessary 
+
 \newcommand\myspacing{1.9} % 23 lines/page needs 1.9 for thesis
 
 \newtheorem{theorem}{Theorem}[section]
@@ -172,7 +176,6 @@ $\gamma$ & hyperparameter in SVM
 \begin{spacing}{\myspacing}      % New line spacing - 23 lines per page
 %\linenumbers				% When required during review
 %-------------------------------------------
-
 
 %-----------------------------------------------------------------------------
 %-----------------------------------------------------------------------------
@@ -863,8 +866,7 @@ Number & Month & Same & Same\\
 \begin{landscape}
 \begin{table}[p]
 \centering
-\caption{Landscape table uses \vb{landscape} environment from \vb{pdflscape} package (loaded in the class). Landscape tables are set on a separate page using \vb{[p]} and usually don't have surrounding text, which makes sense. With the \vb{p} specifier the table is also centered vertically, otherwise with \vb{h} and \vb{t} will start from the top, and \vbc{vspace*} command need to be used to bring it down. The \vbc{columnwidth} in the landscape mode is = \fpeval{round(\columnwidth*0.013837, 8)}~in. 
-Note this table was resized using \vbc{resizebox} command --- Check the source code for details.}
+\caption{Landscape table uses \vb{landscape} environment from \vb{pdflscape} package (loaded in the class). Landscape tables are set on a separate page using \vb{[p]} and usually don't have surrounding text, which makes sense. With the \vb{p} specifier the table is also centered vertically, otherwise with \vb{h} and \vb{t} will start from the top, and \vbc{vspace*} command needs to be used to bring it down. The \vbc{columnwidth} in the landscape mode is = \fpeval{round(\columnwidth*0.013837, 8)}~in. Note this table was resized using \vbc{resizebox} command --- Check the source code for details.}
 \resizebox{\columnwidth}{!}{%
 \begin{tabular}{l  rrrr  cccc  llll  rr}
 \toprule
@@ -1652,29 +1654,37 @@ for citations to be used while loading the \texttt{natbib} package as \textcolor
 
 %-----------------------------------------------------------------------------
 \section{Handling Equations}
-\italk{The \texttt{abovedisplayskip} through \texttt{setlength} to reduce the spacing above the equations. These equations can be referred using \texttt{cref} commands (\cref{eq1,eq2,eq3,eq4,eq5,eq6,eq7,eq8}). The code shows how the first 5 equations were produced:}
+\italk{The \texttt{abovedisplayskip} through \texttt{setlength} to reduce the spacing above the equations. These equations can be referred using \texttt{cref} commands (\cref{eq1,eq2,eq3,eq4,eq5,eq6,eq7,eq8,eq9,eq10,eq11}). The code shows how all the equations were produced:}
 
 \vspace{1ex}
 {\singlespacing
 \begin{verbatim}
-\setlength{\abovedisplayskip}{-12pt} % required to adjust gap 
-\begin{align}
+\myalign{
 &\text{Convex area} = \frac{\text{Area}}{\text{Solidity}} \label{eq1} \\[1ex]
 &\text{Hollowness} = \frac{\text{Convex area - Area}}{\text{Convex area}} 
 \label{eq2} \\[1ex]
 &\text{Reverse aspect ratio (RAR)} = \frac{\text{1}}{\text{Aspect ratio}} 
 \label{eq3} \\[1ex]
-&\text{Rectangularity} = \frac{\text{Area}}{\text{Bounding rectangle area}}
+&\text{Rectangularity} = \frac{\text{Area}}{\text{Bounding rectangle area}} 
 \label{eq4} \\[1ex]
 &\text{Feret major axis ratio (FMA)} = \frac{\text{Feret diameter}}
-{\text{Major axis}} \label{eq5} 
-\end{align}
+{\text{Major axis}} \label{eq5} \\[1ex]
+&\text{Convex area Feret ratio (CAF)} = \frac{\text{Convex area}}
+{\text{Feret diameter}^2} \label{eq6}\\[1ex]
+&\text{Compactness} = \frac{\text{Area}}{\text{Feret diameter}} 
+\label{eq7}\\[1ex]
+&\text{Ratio of area to length (RAL)} = \frac{\text{Area}}
+{\text{Major axis}^2} \label{eq8}\\[1ex]
+&r = \sqrt{12 a^2 + 8 b^2} \times \cos{\theta} \label{eq9}\\[1ex]
+&q = sin{\theta} + \tan{\alpha} \times log x vs \log{x} 
+(Don't Use Simple Text in Eqn)\label{eq10}\\[1ex]
+&\textcolor{magenta}{\text{Variables in math mode}} \text{ and }  
+\textcolor{magenta}{\text{abbreviations in text mode}}\label{eq11}
+}
 \end{verbatim}
 }
 
-{
-\setlength{\abovedisplayskip}{-12pt} % required to adjust gap  
-\begin{align}
+\myalign{
 &\text{Convex area} = \frac{\text{Area}}{\text{Solidity}} \label{eq1} \\[1ex]
 &\text{Hollowness} = \frac{\text{Convex area - Area}}{\text{Convex area}} \label{eq2} \\[1ex]
 &\text{Reverse aspect ratio (RAR)} = \frac{\text{1}}{\text{Aspect ratio}} \label{eq3} \\[1ex]
@@ -1682,8 +1692,11 @@ for citations to be used while loading the \texttt{natbib} package as \textcolor
 &\text{Feret major axis ratio (FMA)} = \frac{\text{Feret diameter}}{\text{Major axis}} \label{eq5} \\[1ex]
 &\text{Convex area Feret ratio (CAF)} = \frac{\text{Convex area}}{\text{Feret diameter}^2} \label{eq6}\\[1ex]
 &\text{Compactness} = \frac{\text{Area}}{\text{Feret diameter}} \label{eq7}\\[1ex]
-&\text{Ratio of area to length (RAL)} = \frac{\text{Area}}{\text{Major axis}^2} \label{eq8}
-\end{align}
+&\text{Ratio of area to length (RAL)} = \frac{\text{Area}}{\text{Major axis}^2} \label{eq8}\\[1ex]
+&r = \sqrt{12 a^2 + 8 b^2} \times \cos{\theta} \label{eq9}\\[1ex]
+&q = sin{\theta} + \tan{\alpha} \times log x vs \log{x} (Don't Use Simple Text in Eqn)\label{eq10}\\[1ex]
+& \textcolor{magenta}{\text{Variables in math mode}} \text{ and }  \textcolor{magenta}{\text{abbreviations in text mode}}
+\label{eq11}
 }
 
 \italk{It is customary to define all the symbols and terms with units soon after the equation starting from top to bottom and left to right.}
@@ -1878,8 +1891,9 @@ Theorems, corollaries, lemmas, and other elements can be referenced after defini
 \renewcommand{\bibname}{REFERENCES}
 % Compatible natbib styles: plainnat, abbrvnat, unsrtnat, rusnat, agsm, chicago, apalike
 
-%bibtex used here
-\makebib  % Shortcut command using style and bib defined in the preamble
+%******************* Bibliography handling *******************
+\makerefs %For individual chapter references - command should be inside refsection environment
+
 \label{biblio}
 
 %-----------------------------------------------------------------------------
@@ -1936,12 +1950,11 @@ Referred items: \ref{eqa1} text. \ref{sub1} text.  Figure \ref{figap1} text and 
 }
 
 \italk{Shown below is an equation \cref{eqa1}. } 
- 
-\vspace{-4ex}
-\begin{equation}
+
+\myeqn{
 y = mx + c
 \label{eqa1}
-\end{equation}
+}
 
 %--------------------------------------------------
 \subsection{One of One}
@@ -2108,12 +2121,12 @@ Number & Month & Same & Same\\
 \end{appendixtable}
 
 \vspace{-4ex}
-\italk{Repeated table B1 (table~\ref{apbtab2})}
+\italk{Repeated table B1 (table~\ref{apbtab2}) with a little modification.}
 
 \begin{appendixtable}[h]
 \centering
 \caption{Named appendix B full-width table TWO using \texttt{tblr} environment.}
-\begin{tblr}{  *4{X[c]}  }
+\begin{tblr}{ X X[c] X[c] X[r]  }
 \toprule
 Number & Month & Same & Same\\
 \midrule
@@ -2276,15 +2289,13 @@ I can include appendix material here.
 
 \italk{Shown below is another equation showing hypotenuse \Cref{eqc1}. The previous equation in the appendix one is \cref{eqa1} which was $y = mx + c$ in \cpageref{eqa1}. } 
  
-\vspace{-3ex}
-\begin{equation}
+\myeqn{
 r^2 = x^2 + y^2
 \label{eqc1}
-\end{equation}
+}
 
 %-------------------------------------------
-\vspace{-2ex}
-\subsubsection{Test3}
+\subsubsection{Test3 --- Some text text text text text text text text text text text text}
 I can include appendix material here. 
 
 %-------------------------------------------
@@ -2315,7 +2326,7 @@ and Paper Publishing!
 \end{center}
 
 \vfill
-{\noindent\scriptsize\textcolor{gray}{Updated: June 16, 2023}}
+{\noindent\scriptsize\textcolor{gray}{Updated: September 1, 2023}}
 %--------------------------------------------------
 
 \end{spacing}
