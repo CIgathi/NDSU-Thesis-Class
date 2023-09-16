@@ -114,7 +114,7 @@
 % RequirePackage command and other essential packages used
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
-\RequirePackage[obeyspaces,spaces,hyphens]{url}
+\RequirePackage{xurl}
 \RequirePackage[linktocpage,breaklinks,linktoc=all,hidelinks]{hyperref}
 
 \PassOptionsToPackage{dvipsnames*,svgnames,x11names,table}{xcolor}% done before package
