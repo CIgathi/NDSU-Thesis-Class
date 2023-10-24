@@ -81,8 +81,10 @@
 %              Named xcolors dvipsnames*,svgnames,x11names,table added (2023-09-09) 
 %              Several new fonts installed - esp. sanserif fonts (2023-09-11) 
 %              Line spacing of 23/p applied abstract, acknow., dedi., & preface (2023-09-13)
+%              Automatic numbered footnote in paper-style headings (2023-10-22)
 %
 %  Update history
+%  Last updated: 2023-10-22
 %  Last updated: 2023-09-13
 %  Last updated: 2023-09-11
 %  Last updated: 2023-09-09
@@ -358,9 +360,9 @@
 }{}
 
 % Table of contents tweaks
-\addto\captionsamerican{\renewcommand{\contentsname}{TABLE OF CONTENTS}}
-\addto\captionsamerican{\renewcommand{\listtablename}{LIST OF TABLES}}
-\addto\captionsamerican{\renewcommand{\listfigurename}{LIST OF FIGURES}}
+\addto\captionsamerican{\renewcommand{\contentsname}{\vspace{-5pt}TABLE OF CONTENTS}}
+\addto\captionsamerican{\renewcommand{\listtablename}{\vspace{-5pt}LIST OF TABLES}}
+\addto\captionsamerican{\renewcommand{\listfigurename}{\vspace{-5pt}LIST OF FIGURES}}
 \renewcommand{\cftchapfont}{\normalfont}
 \renewcommand{\cftchappagefont}{\normalfont}
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
@@ -377,8 +379,10 @@
 \setlength{\cfttabindent}{0em}
 \DeclareTotalCounter{appendixfigure}
 \DeclareTotalCounter{appendixtable}
-\DeclareFloatingEnvironment[fileext=loaf,placement={ht},listname={LIST OF APPENDIX FIGURES},name=Figure]{appendixfigure}
-\DeclareFloatingEnvironment[fileext=loat,placement={ht},listname={LIST OF APPENDIX TABLES},name=Table]{appendixtable}
+
+\DeclareFloatingEnvironment[fileext=loaf,placement={ht},listname={{\vspace{-4pt}}LIST OF APPENDIX FIGURES},name=Figure]{appendixfigure}
+
+\DeclareFloatingEnvironment[fileext=loat,placement={ht},listname={{\vspace{-4pt}}LIST OF APPENDIX TABLES},name=Table]{appendixtable}
 
 % Fix table captions and row spacing
 %\AtBeginEnvironment{tabular}{\singlespacing}
@@ -445,26 +449,26 @@
 \let\@cmemberd=\@empty
 
 % Other frontmatter sections
-\newcommand\abstract[1]{\def\@abstract{\setlength\parindent{0.5in}\clearpage\chapter*{ABSTRACT}\addcontentsline{toc}{chapter}{ABSTRACT}
+\newcommand\abstract[1]{\def\@abstract{\setlength\parindent{0.5in}\clearpage\chapter*{ABSTRACT\vspace{-10pt}}\addcontentsline{toc}{chapter}{ABSTRACT}
 \begin{spacing}{1.9} 
 #1
 \end{spacing}}}
 \let\@abstract=\@empty   
 
-\newcommand\acknowledgements[1]{\def\@acknowledgements{\clearpage\chapter*{ACKNOWLEDGEMENTS}\addcontentsline{toc}{chapter}{ACKNOWLEDGEMENTS}
+\newcommand\acknowledgements[1]{\def\@acknowledgements{\clearpage\chapter*{ACKNOWLEDGEMENTS\vspace{-10pt}}\addcontentsline{toc}{chapter}{ACKNOWLEDGEMENTS}
 \begin{spacing}{1.9} 
 #1
 \end{spacing}}}
 \let\@acknowledgements=\@empty
 
-\newcommand\dedication[1]{\def\@dedication{\clearpage\chapter*{DEDICATION}\addcontentsline{toc}{chapter}{DEDICATION}\begin{center}
+\newcommand\dedication[1]{\def\@dedication{\clearpage\chapter*{DEDICATION\vspace{-10pt}}\addcontentsline{toc}{chapter}{DEDICATION}\begin{center}
 \begin{spacing}{1.9} 
 #1
 \end{spacing}
 \end{center}}}
 \let\@dedication=\@empty
 
-\newcommand\preface[1]{\def\@preface{\clearpage\chapter*{PREFACE}\addcontentsline{toc}{chapter}{PREFACE}
+\newcommand\preface[1]{\def\@preface{\clearpage\chapter*{PREFACE\vspace{-10pt}}\addcontentsline{toc}{chapter}{PREFACE}
 \begin{spacing}{1.9} 
 #1
 \end{spacing}}}
@@ -473,7 +477,7 @@
 % LIST OF ABBREVIATIONS - Igathi
 % A 2-col tabular environment; Usage: SI & System International - flowing over multipage
 \newcommand\listofabbreviations[1]{
-\def\@listofabbreviations{\clearpage\chapter*{\vspace{-1ex}LIST OF ABBREVIATIONS}\addcontentsline{toc}{chapter}{LIST OF ABBREVIATIONS}
+\def\@listofabbreviations{\clearpage\chapter*{LIST OF ABBREVIATIONS\vspace{-6pt}}\addcontentsline{toc}{chapter}{LIST OF ABBREVIATIONS}
 \vspace{-2ex} 
 \renewcommand{\arraystretch}{1.5}
 \begin{singlespace}
@@ -489,7 +493,7 @@
 % LIST OF SYMBOLS - Igathi
 % A 2-col tabular environment; Usage: $\alpha$ & The angle ($\dg$)
 \newcommand\listofsymbols[1]{
-\def\@listofsymbols{\clearpage\chapter*{\vspace{-1ex}LIST OF SYMBOLS}\addcontentsline{toc}{chapter}{LIST OF SYMBOLS}
+\def\@listofsymbols{\clearpage\chapter*{LIST OF SYMBOLS\vspace{-6pt}}\addcontentsline{toc}{chapter}{LIST OF SYMBOLS}
 \vspace{-2ex} 
 \renewcommand{\arraystretch}{1.5}
 \begin{singlespace}
@@ -608,33 +612,26 @@
 \titleformat{\chapter}
     {\centering\normalfont\bfseries\setstretch{1.6}}
     {{\large\MakeUppercase{{\chaptertitlename}}\ }}{0em}{\large\MakeUppercase}
-    \titlespacing*{\chapter}{0pt}{-0.6\baselineskip}{0.4\baselineskip} 
+    \titlespacing*{\chapter}{0pt}{-0.5\baselineskip}{0.4\baselineskip} 
 
-% Two versions based on "nonumber" option other two carry chapter numbers
+% Two versions based on "nonumber" - regular chapter heading
 \ifthenelse{\equal{\numbertype}{nonumber}}{  
-\newcommand{\myheading}[1]{\chapter[\uppercase{#1}]{{#1}}} 
+\newcommand{\myheading}[1]{\chapter[\uppercase{#1}]{{#1}\vspace{-12pt}}} 
 }{
-\newcommand{\myheading}[1]{\chapter[\uppercase{#1}]{\thechapter.~{#1}}}
+\newcommand{\myheading}[1]{\chapter[\uppercase{#1}]{\thechapter.~{#1}\vspace{-12pt}}}
 }
 
-% Only the footnote text with number hard-coded
-\newcommand\blfootnote[1]{  
-  \begingroup
-  \renewcommand\thefootnote{}\footnote{#1}%
-%  \addtocounter{footnote}{-1}% now continuous numbers
-  \endgroup
-}
-
-% Usage: \mypaperheading{Title}{footnote mark}{footnote text}  - 3 arguments 
-% Not a regular footnote - especially in chapter headings
+% Two versions based on "nonumber" - paper style chapter heading 
 \ifthenelse{\equal{\numbertype}{nonumber}}{  
-\newcommand{\mypaperheading}[3]{\chapter[\uppercase{#1}]{{#1\,#2}\vspace{-3.2ex}}\blfootnote{\raggedright#2\,#3}} 
-}{
-\newcommand{\mypaperheading}[3]{\chapter[\uppercase{#1}]{\thechapter.~{#1\,#2}\vspace{-3.2ex}}\blfootnote{\raggedright#2\,#3}} 
-}
+\newcommand{\mypaperheading}[2]{
+\stepcounter{footnote}\chapter[\uppercase{#1}]{#1$\,^{\number\value{footnote}}$\vspace{-12pt}} \footnotetext{#2}
+}}
+{
+\newcommand{\mypaperheading}[2]{\stepcounter{footnote}\chapter[\uppercase{#1}]{\thechapter.~#1$\,^{\number\value{footnote}}$\vspace{-12pt}}\footnotetext{#2}
+}}
 
-% NDSU - MAJOR HEADING - Centered, bold, All Caps, e.g., 1. MAJOR HEADING
-     
+
+% NDSU - MAJOR HEADING - Centered, bold, All Caps, e.g., 1. MAJOR HEADING     
 \titleformat{\section}  
     {\centering\normalfont\bfseries}{\thesection.}{0.3em}{} 
     \titlespacing*{\section}{0pt}{*0}{0pt}    
@@ -672,7 +669,7 @@
 \addcontentsline{toc}{chapter}{REFERENCES}
 \addtocontents{toc}{\protect\setcounter{tocdepth}{-1}}
 \renewcommand{\refname}{\vspace{-0.45in}}
-\renewcommand{\bibname}{REFERENCES}
+\renewcommand{\bibname}{REFERENCES\vspace{-0.4in}}
 }
 
 % Usage: \biblio{reference-styleFile}{reference-bibFile}  -  Command to have references
@@ -775,7 +772,7 @@
 
 % Generate appendices with the correct numbering - modified
 \renewcommand{\appendix}{
-    \chapter*{APPENDIX}
+    \chapter*{APPENDIX\vspace{-12pt}}
     \setcounter{section}{0}
     \setcounter{equation}{0}
     \setcounter{appendixfigure}{0}
@@ -793,7 +790,7 @@
 
 % Usage: 	\namedappendices{A}{Appendix title}
 \newcommand{\namedappendices}[2]{ % for multiple appendices
-    \chapter*{APPENDIX #1. #2} 
+    \chapter*{APPENDIX #1. #2\vspace{-12pt}} 
     \setcounter{section}{0}
     \setcounter{equation}{0}
     \setcounter{appendixfigure}{0}
@@ -927,7 +924,10 @@
 
 % Equations command for better vertical alignment with text 
 % myeqn, myfraceqn (different spacing), myalign, 
-% and myfracalign (different spacing, when frac as first or last equation)
+% myfracalign, mygather, myfracgather, with their starred (*) versions 
+% + mydisp, myfracdisp
+% (different spacing, when frac as first or last equation)
+% 
 \newcommand{\myeqn}[1]{
 \vspace{-0.35in}
 \begin{equation}
@@ -1060,8 +1060,6 @@
 \newcommand\SU[2]{\qty[mode = text]{#1}{#2}\xspace} % redefined using qty
 \newcommand\su[1]{\unit[mode = text]{#1}\xspace} % redefined using qty
 \newcommand\no[1]{\num[mode = text]{#1}\xspace} % redefined using qty
-
-
 
 
 

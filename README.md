@@ -52,7 +52,7 @@ Files included are:
   
   figures - subfolder holding the images of documentation 
   
-  sample-thesis-IncludeOnly - subfolder for include only demo contains other subfolders (chapters, figures) and files. 
+  sample-thesis-includeOnly - subfolder for include only demo contains other subfolders (chapters, figures) and files. 
   
   
 %==================================================================
