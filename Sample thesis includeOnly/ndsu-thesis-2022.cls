@@ -448,8 +448,12 @@
       \hrule\vspace{.2in}}}
 \let\@cmemberd=\@empty
 
+% Parindent
+\setlength{\parindent}{0.5in}
+
 % Other frontmatter sections
-\newcommand\abstract[1]{\def\@abstract{\setlength\parindent{0.5in}\clearpage\chapter*{ABSTRACT\vspace{-10pt}}\addcontentsline{toc}{chapter}{ABSTRACT}
+\newcommand\abstract[1]{\def\@abstract{
+\clearpage\chapter*{ABSTRACT\vspace{-10pt}}\addcontentsline{toc}{chapter}{ABSTRACT}
 \begin{spacing}{1.9} 
 #1
 \end{spacing}}}
