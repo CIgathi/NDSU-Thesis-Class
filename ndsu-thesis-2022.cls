@@ -82,8 +82,16 @@
 %              Several new fonts installed - esp. sanserif fonts (2023-09-11) 
 %              Line spacing of 23/p applied abstract, acknow., dedi., & preface (2023-09-13)
 %              Automatic numbered footnote in paper-style headings (2023-10-22)
+%              Automatic linespacing of equation shortcuts + global linespacing (2023-11-12)
+%              Headings > 3 level + caption left alignment (2023-11-16)
+%              List of schemes added \mysch \myschls (2023-11-23)
+%              Scenarios of closing appendices documented (2023-12-02)
 %
 %  Update history
+%  Last updated: 2023-12-02
+%  Last updated: 2023-11-23
+%  Last updated: 2023-11-16
+%  Last updated: 2023-11-12
 %  Last updated: 2023-10-22
 %  Last updated: 2023-09-13
 %  Last updated: 2023-09-11
@@ -103,7 +111,7 @@
 %---------------------------------------------------------------------------------------------------------
 %
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ndsu-thesis-2022}[2022/07/10 NDSU Thesis Class] 
+\ProvidesClass{ndsu-thesis-2022}[2023/12/02 NDSU Thesis Class] 
 \DeclareOption{draft}{\PassOptionsToClass{draft}{book}}
 \def\@@ptsize{12pt}		
 \DeclareOption{10pt}{\def\@@ptsize{10pt}}
@@ -148,7 +156,6 @@
 \RequirePackage{tikz}
 \usetikzlibrary{matrix,arrows,decorations.pathmorphing}
 \RequirePackage{etoolbox}
-\RequirePackage{tocloft}
 \RequirePackage{xtab}
 \RequirePackage{siunitx}   % [binary-units = true]   
 \sisetup{detect-all}% maintain text font in SI items
@@ -175,13 +182,16 @@
 \RequirePackage[export]{adjustbox}
 \RequirePackage[nameinlink]{cleveref} %capitalise, noabbrev 
 
-
 \UseTblrLibrary{amsmath} % to avoid potential conflict in tabularray
 \UseTblrLibrary{booktabs} 
 \UseTblrLibrary{counter}
 \UseTblrLibrary{diagbox}
 \UseTblrLibrary{siunitx}
 \UseTblrLibrary{varwidth}
+
+% To include scheme float to the cleveref
+\crefname{scheme}{sch.}{schs.}
+\Crefname{scheme}{Schematic}{Schematics}
 
 % Url better breaking + defining characters (alphabets and others) to break 
 \Urlmuskip=0mu plus 1mu\relax
@@ -199,7 +209,11 @@
 
 % Overall  
 \urlstyle{same}  % same font used for url than the regular tt font
-\captionsetup[figure]{singlelinecheck=true} % for figures (centered and left)
+\captionsetup[table]{skip=\baselineskip,labelfont={normalsize,bf},singlelinecheck=false} % figures (centered and left) NDSU Feb 2023
+\captionsetup[figure]{labelfont={normalsize,bf},singlelinecheck=false} % figures (centered and left) NDSU Feb 2023
+\captionsetup[scheme]{labelfont={normalsize,bf},singlelinecheck=false} % schematics (centered and left) NDSU Feb 2023
+
+
 \setlist{nosep, leftmargin=0.5in} % enumerate setup (no extra line spacing and let margin at 0.5in like other indent
 \newbool{whole}  % to be used with main and subfiles
 \setbool{whole}{true} % false produces refs individual subfiles - default
@@ -210,9 +224,13 @@
 \newbool{chapref}  % to be used with main 
 \setbool{chapref}{false} %  produces no individual chapter references - default
 
+\newbool{subsp} 
+
 % Spacing between number and captions (table and figures) 
-\setlength{\cfttabnumwidth}{2.5em} % table - tocloft package
-\setlength{\cftfignumwidth}{2.5em} % figure - tocloft package
+\setlength{\cfttabnumwidth}{0.5in} % table - tocloft package
+\setlength{\cftfignumwidth}{0.5in} % figure - tocloft package
+%\setlength{\cftnumwidth}{0.5in} % figure - tocloft package
+\renewcommand{\cftdotsep}{1.7} % dots separation value
 
 % Basic spacing
 \setcounter{secnumdepth}{5}
@@ -324,16 +342,6 @@
 % References title References or Bibliography
 %\newcommand{\referencetitile}{references}
 
-% ChapterBibliography 
-%\newcommand{\chapbib}{none4}
-%\DeclareOption{chaptersbib}{\renewcommand{\chapbib}{chaptersbib}}
-%\ProcessOptions
-%\ifthenelse{\equal{\chapbib}{chaptersbib}}
-%{\setbool{whole}{false}
-%\setbool{biblatexused}{true}}
-%{\setbool{whole}{true}
-%\setbool{biblatexused}{false}}
-
 % ChapterReferences - To be used with BibLaTeX
 \newcommand{\chaprefs}{none5}
 \DeclareOption{chapterrefs}{\renewcommand{\chaprefs}{chapterrefs}}
@@ -359,13 +367,16 @@
 {gridpapers}
 }{}
 
-% Table of contents tweaks
-\addto\captionsamerican{\renewcommand{\contentsname}{\vspace{-5pt}TABLE OF CONTENTS}}
-\addto\captionsamerican{\renewcommand{\listtablename}{\vspace{-5pt}LIST OF TABLES}}
-\addto\captionsamerican{\renewcommand{\listfigurename}{\vspace{-5pt}LIST OF FIGURES}}
+
+% Table of contents tweaks - capitalization and spacing
+\addto\captionsamerican{\renewcommand{\contentsname}{\vspace{-5pt}TABLE OF CONTENTS\vspace{-8pt}}}
+\addto\captionsamerican{\renewcommand{\listtablename}{\vspace{-0pt}LIST OF TABLES\vspace{0pt}}}
+\addto\captionsamerican{\renewcommand{\listfigurename}{\vspace{0pt}LIST OF FIGURES\vspace{0pt}}}
+
 \renewcommand{\cftchapfont}{\normalfont}
 \renewcommand{\cftchappagefont}{\normalfont}
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\@dotsep}{\cftdotsep}
 \renewcommand{\cftchapaftersnum}{.}
 \renewcommand{\cftfigaftersnum}{.}
 \renewcommand{\cfttabaftersnum}{.}
@@ -377,17 +388,22 @@
 \setlength{\cftbeforefigskip}{0.5\baselineskip}
 \setlength{\cftfigindent}{0em}
 \setlength{\cfttabindent}{0em}
+\DeclareTotalCounter{scheme}
 \DeclareTotalCounter{appendixfigure}
 \DeclareTotalCounter{appendixtable}
 
-\DeclareFloatingEnvironment[fileext=loaf,placement={ht},listname={{\vspace{-4pt}}LIST OF APPENDIX FIGURES},name=Figure]{appendixfigure}
+\DeclareFloatingEnvironment[fileext=los,placement={ht},listname={{\vspace{-5pt}}LIST OF SCHEMES\vspace{3pt}},name=Schematic]{scheme}% Igathi
 
-\DeclareFloatingEnvironment[fileext=loat,placement={ht},listname={{\vspace{-4pt}}LIST OF APPENDIX TABLES},name=Table]{appendixtable}
+\DeclareFloatingEnvironment[fileext=loaf,placement={ht},listname={{\vspace{-5pt}}LIST OF APPENDIX FIGURES\vspace{3pt}},name=Figure]{appendixfigure}
+
+\DeclareFloatingEnvironment[fileext=loat,placement={ht},listname={{\vspace{-5pt}}LIST OF APPENDIX TABLES\vspace{3pt}},name=Table]{appendixtable}
 
 % Fix table captions and row spacing
 %\AtBeginEnvironment{tabular}{\singlespacing}
-\captionsetup[table]{position=top,skip=\baselineskip, singlelinecheck=false} % left-aligned
-\captionsetup[appendixtable]{position=top,skip=0.75\baselineskip,singlelinecheck=false} % left-aligned
+%\captionsetup[table]{position=top,skip=\baselineskip, singlelinecheck=false} % left-aligned
+\captionsetup[scheme]{labelfont={normalsize,bf},position=top,skip=0.75\baselineskip,singlelinecheck=false} 
+\captionsetup[appendixtable]{labelfont={normalsize,bf},position=top,skip=0.75\baselineskip,singlelinecheck=false} % left-aligned
+\captionsetup[appendixfigure]{labelfont={normalsize,bf}, belowskip = 0pt, singlelinecheck=false} % left-aligned
 
 % Defines custom paper information
 \newcommand\papertype[1]{\def\@papertype{#1}}
@@ -451,37 +467,38 @@
 % Parindent
 \setlength{\parindent}{0.5in}
 
+% Overall spacing of document 
+\newcommand\myspacing{1.9}% 23 lines/page comes from 1.9
+
 % Other frontmatter sections
 \newcommand\abstract[1]{\def\@abstract{
-\clearpage\chapter*{ABSTRACT\vspace{-10pt}}\addcontentsline{toc}{chapter}{ABSTRACT}
-\begin{spacing}{1.9} 
-#1
-\end{spacing}}}
+\clearpage\chapter*{\vspace{0pt}ABSTRACT\vspace{-10pt}}
+\addcontentsline{toc}{chapter}{ABSTRACT}
+\setstretch{\myspacing}% Once give here applies to whole document 
+#1}}
 \let\@abstract=\@empty   
 
-\newcommand\acknowledgements[1]{\def\@acknowledgements{\clearpage\chapter*{ACKNOWLEDGEMENTS\vspace{-10pt}}\addcontentsline{toc}{chapter}{ACKNOWLEDGEMENTS}
-\begin{spacing}{1.9} 
-#1
-\end{spacing}}}
+\newcommand\acknowledgements[1]{\def\@acknowledgements{\clearpage\chapter*{\vspace{0pt}ACKNOWLEDGEMENTS\vspace{-10pt}}
+\addcontentsline{toc}{chapter}{ACKNOWLEDGEMENTS}
+#1}}
 \let\@acknowledgements=\@empty
 
-\newcommand\dedication[1]{\def\@dedication{\clearpage\chapter*{DEDICATION\vspace{-10pt}}\addcontentsline{toc}{chapter}{DEDICATION}\begin{center}
-\begin{spacing}{1.9} 
+\newcommand\dedication[1]{\def\@dedication{\clearpage\chapter*{\vspace{0pt}DEDICATION\vspace{-10pt}}\addcontentsline{toc}{chapter}{DEDICATION\vspace{0pt}}
+\begin{center}
 #1
-\end{spacing}
 \end{center}}}
 \let\@dedication=\@empty
 
-\newcommand\preface[1]{\def\@preface{\clearpage\chapter*{PREFACE\vspace{-10pt}}\addcontentsline{toc}{chapter}{PREFACE}
-\begin{spacing}{1.9} 
-#1
-\end{spacing}}}
+\newcommand\preface[1]{\def\@preface{\clearpage\chapter*{\vspace{0pt}PREFACE\vspace{-10pt}}
+\addcontentsline{toc}{chapter}{PREFACE\vspace{0pt}}
+#1}}
 \let\@preface=\@empty
 
 % LIST OF ABBREVIATIONS - Igathi
 % A 2-col tabular environment; Usage: SI & System International - flowing over multipage
 \newcommand\listofabbreviations[1]{
-\def\@listofabbreviations{\clearpage\chapter*{LIST OF ABBREVIATIONS\vspace{-6pt}}\addcontentsline{toc}{chapter}{LIST OF ABBREVIATIONS}
+\def\@listofabbreviations{\clearpage\chapter*{\vspace{0pt}LIST OF ABBREVIATIONS\vspace{-10pt}}
+\addcontentsline{toc}{chapter}{LIST OF ABBREVIATIONS}
 \vspace{-2ex} 
 \renewcommand{\arraystretch}{1.5}
 \begin{singlespace}
@@ -497,7 +514,8 @@
 % LIST OF SYMBOLS - Igathi
 % A 2-col tabular environment; Usage: $\alpha$ & The angle ($\dg$)
 \newcommand\listofsymbols[1]{
-\def\@listofsymbols{\clearpage\chapter*{LIST OF SYMBOLS\vspace{-6pt}}\addcontentsline{toc}{chapter}{LIST OF SYMBOLS}
+\def\@listofsymbols{\clearpage\chapter*{\vspace{0pt}LIST OF SYMBOLS\vspace{-10pt}}
+\addcontentsline{toc}{chapter}{LIST OF SYMBOLS}
 \vspace{-2ex} 
 \renewcommand{\arraystretch}{1.5}
 \begin{singlespace}
@@ -533,33 +551,33 @@
     \begin{center}
     \parbox{5.5in}{
         \begin{center}
-        \textbf{Title} \\
+        \textbf{\small Title} \\[0.15in]
         \@title
-        \vspace{.2in}
+        \vspace{.1in}
         \hrule
         \vspace{.2in}
-        \textbf{By} \\
+        \textbf{\small By} \\[0.15in]
         \@author
-        \vspace{.2in}
+        \vspace{.1in}
         \hrule
         \end{center}
     }
     \end{center}
 \endgroup
-\vspace{-1.2\baselineskip}
+\vspace{-1.5\baselineskip}
 \vfill
 \begingroup
-\leftskip1em
-\rightskip\leftskip
-{\noindent The Supervisory Committee certifies that this \MakeLowercase{\@papertype} complies with North Dakota State University's regulations and meets the accepted standards for the degree of}\\
-\par
+\parbox{5.5in}{\raggedright\noindent\small The Supervisory Committee certifies that this \MakeLowercase{\bfseries\itshape\@papertype} complies with North Dakota State University's regulations and meets the accepted standards for the degree of}
+\begin{center}
+\vspace{0.1in}
+\textbf{\@degree}
+\end{center}
 \endgroup
 
 \begin{center}
-\textbf{\@degree}
 \vfill
 \parbox{5.5in}{
-    \hspace{-0.35in}SUPERVISORY COMMITTEE: \\[0.06in]
+    SUPERVISORY COMMITTEE: \\[0.06in]
     \@cchair
     \@cochaira
     \@cochairb
@@ -569,7 +587,8 @@
     \@cmemberd
 }
 \parbox{5.5in}{
-    \vspace{0.2in}\hspace{-0.35in}Approved: \\[0.1in]
+    \vspace{0.2in}
+    Approved: \\[0.1in]
     \noindent \parbox{1.5in}{\centering\@approvaldate\vspace{.05in}\hrule\vspace{.05in}{\tiny Date}} \hfill
     \parbox{3in}{\centering\@approver\vspace{.05in}\hrule\vspace{.05in}{\tiny Department Chair}}
 }
@@ -594,19 +613,26 @@
 \endgroup
 \fi
 
+\iftotalschemes\begin{singlespace}\listofschemes\end{singlespace}\fi
+
 \@listofabbreviations  
 \@listofsymbols
-
 \iftotalappendixtables\begin{singlespace}\listofappendixtables\end{singlespace}\fi
 \iftotalappendixfigures\begin{singlespace}\listofappendixfigures\end{singlespace}\fi
 \mainmatter}
 
 \pagestyle{plain}
-\addtocontents{lot}{\noindent\underline{Table}\hfill \underline{Page}\par}
-\addtocontents{lof}{\noindent\underline{Figure}\hfill \underline{Page}\par}
-\addtocontents{loat}{\noindent\underline{Table}\hfill \underline{Page}\par}
-\addtocontents{loaf}{\noindent\underline{Figure}\hfill \underline{Page}\par}
-\addtocontents{loa}{\noindent\underline{Figure}\hfill \underline{Page}\par}  
+\addtocontents{lot}{\vspace{1pt}\noindent\underline{Table}\hfill \underline{Page}\par}
+\addtocontents{lof}{\vspace{0pt}\noindent\underline{Figure}\hfill \underline{Page}\par}
+\addtocontents{los}{\vspace{-1pt}\noindent\underline{Scheme}\hfill \underline{Page}\par}%\vspace{-10pt}}
+\addtocontents{loat}{\vspace{-2pt}\noindent\underline{Table}\hfill \underline{Page}\par\vspace{-10pt}}
+\addtocontents{loaf}{\vspace{-2pt}\noindent\underline{Figure}\hfill \underline{Page}\par\vspace{-10pt}}
+\addtocontents{loa}{\vspace{0pt}\noindent\underline{Figure}\hfill \underline{Page}\par}  
+
+% Uniform spacing of entries in LOSH 
+\newcommand*{\noaddvspace}{\renewcommand*{\addvspace}[1]{}}
+\addtocontents{los}{\protect\noaddvspace}
+\addtocontents{los}{\linespread{1}\selectfont}
 
 % Labels chapters correctly
 \newcommand{\heading}[1]{\chapter{\uppercase{#1}}}
@@ -654,14 +680,14 @@
 % NDSU - Third level subheading  - Left aligned, bold, italics, Sentence case, 
 % e.g., 1.1.1.1. Third level subheading
 
-\titleformat{\paragraph}
-    {\normalfont}{\theparagraph.}{0.3em}{} 
+\titleformat{\paragraph}% NDSU Feb 2023
+    {\normalfont\itshape}{\theparagraph.}{0.3em}{} 
     \titlespacing*{\paragraph}{0pt}{*0}{0pt}
 % Not in NDSU - Fourth level subheading  - Left aligned, normal, Sentence case, 
 %e.g., 1.1.1.1.1. Fourth level subheading
 
 \titleformat{\subparagraph}
-    {\normalfont\itshape}{\thesubparagraph.}{0.3em}{} 
+    {\normalfont}{\thesubparagraph.}{0.3em}{} 
     \titlespacing*{\subparagraph}{0pt}{*0}{0pt}
 % Not in NDSU - Fifth level subheading  - Left aligned, italics, Sentence case, 
 %e.g., 1.1.1.1.1.1. Fifth level subheading 
@@ -691,11 +717,8 @@
 \bibliographystyle{#1} 		% *.bst file
 \bibliography{#2}    			% *.bib file 
 \addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
-\end{spacing}
 \end{document}
 }
-
-
 
 % Defined to handle BibLaTeX reference commands (individual and combined)
 \newcommand{\bibtitle}{References} % for BibLaTeX
@@ -710,12 +733,10 @@
 
 %---------------------------
 %---------------------------
-%---------------------------
 
 % Usage: \tend the for all - no listing
 \newcommand{\tend}{ 
 \ifbool{chapref}{\end{refsection}}{}
-\end{spacing}
 \end{document}
 }
 
@@ -725,46 +746,22 @@
 \bibtocsubstart
 \makebib
 \addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
-\end{spacing}
 \end{document}
 }
 
-% Usage: \tendblt for biblatex the \makerefs was recursively passed
+% Usage: \tendblt for biblatex automatic individual or combined references
 \newcommand{\tendblt}{ 
-\bibtocsubstart
-\makerefs
-\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
-%\end{refsection} 
-\end{spacing}
-\end{document}
-}
-
-% Usage: \tendcr for biblatex automatic individual or combined references
-\newcommand{\tendcr}{ 
 \checkEndRefsection% chapter reference section listing
 \checkMakeCombinedReferences% whole document reference listing
-\end{spacing}
 \end{document}
 }
-
-
-%% Usage: \tendx for biblatex the \makerefs was recursively passed
-%\newcommand{\tendx}{ 
-%\bibtocsubstart
-%\makerefs
-%\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
-%\end{spacing}
-%\end{document}
-%}
-%
 
 \counterwithout{footnote}{chapter}% for continuous footnote
 
 % Checking [chapterrefs] option and creating refsection environment
 \newcommand{\checkBeginRefsection}{\ifbool{chapref}{\begin{refsection}}{}}
-\newcommand{\checkEndRefsection}{\ifbool{chapref}{\makerefs\end{refsection}}{}}
-\newcommand{\checkMakeCombinedReferences}{\ifbool{chapref}{}{\newpage\makerefs}}
-
+\newcommand{\checkEndRefsection}{\ifbool{chapref}{\makerefs\end{refsection}\clearpage}{\clearpage}}
+\newcommand{\checkMakeCombinedReferences}{\ifbool{chapref}{\clearpage}{\newpage\makerefs\clearpage}}
 
 
 % Generate appendices
@@ -772,7 +769,6 @@
     \chapter*{\uppercase{#1}}
    \addcontentsline{toc}{chapter}{\uppercase{#1}}
 }
-
 
 % Generate appendices with the correct numbering - modified
 \renewcommand{\appendix}{
@@ -806,7 +802,6 @@
     \addtocontents{toc}{\setlength{\protect\cftchapnumwidth}{0pt}}    
     \addcontentsline{toc}{chapter}{APPENDIX #1.{\hspace{1.5ex}}\uppercase{#2}}
     \renewcommand{\thesection}{#1.\arabic{section}} 	
-%    \addcontentsline{toc}{section}{#1.\arabic{section}}
     \renewcommand{\theequation}{#1.\arabic{equation}}
     \addtocontents{toc}{\protect\setcounter{tocdepth}{2}}% toc up to subsection
 }
@@ -820,23 +815,24 @@
 
 % Command to ensure list of both appendix tables and figures
 % Usage: \closeappendices on the last named appendix at the end or separately before the \end{document}	
-\newcommand{\closeappendices}{  % Igathi
+\newcommand{\closeappendices}{% Igathi
+\clearpage% for single file
 \renewcommand{\appendixfigurename}{}
 \renewcommand{\theappendixfigure}{}
 \renewcommand{\appendixtablename}{}
 \renewcommand{\theappendixtable}{}
-\begin{appendixfigure}[H]
+\begin{appendixfigure}[H]% required
 \caption[]{}
 \end{appendixfigure}
 \begin{appendixtable}[H]
 \caption[]{}
 \end{appendixtable}
-\let\clearpage\relax
-\vspace{-25ex}
+\let\clearpage\relax% for multiple files
 }
 
+
 % the thesis had only appendix tables
-\newcommand{\closeappendixtables}{  % Igathi
+\newcommand{\closeappendixtables}{% Igathi
 \renewcommand{\appendixtablename}{}
 \renewcommand{\theappendixtable}{}
 \begin{appendixtable}[H]
@@ -846,7 +842,7 @@
 }
 
 % the thesis had only appendix figures
-\newcommand{\closeappendixfigures}{  % Igathi
+\newcommand{\closeappendixfigures}{% Igathi
 \renewcommand{\appendixfigurename}{}
 \renewcommand{\theappendixfigure}{}
 \begin{appendixfigure}[H]
@@ -875,6 +871,19 @@
 \end{figure}
 }
 
+% Regular scheme command with placement (htpbH as first argument)
+\newcommand{\mysch}[6][0ex]{%3.5 earlier
+\vspace{2ex}
+\begin{scheme}[#2]
+\centering 
+   \setlength{\belowcaptionskip}{#1 plus 2pt minus 2pt}%captionsetup not working with scheme
+   \includegraphics[width=#3\textwidth]{#4}
+   \vspace{5pt} 
+   \caption{#5}
+   \label{#6}
+\end{scheme}
+}
+
 % Example usage: 
 % \myfigls[aboveskip]{ht}{0.8}{fig1.pdf}{My caption goes here}{fig1}
 
@@ -892,6 +901,20 @@
 \end{landscape}
 }
 
+% Landscape scheme command with placement (htpbH as first argument)
+\newcommand{\myschls}[6][0ex]{
+\begin{landscape}
+\begin{scheme}[#2]
+\centering 
+   \setlength{\belowcaptionskip}{#1 plus 2pt minus 2pt}%captionsetup not working with scheme
+   \includegraphics[width=#3\textwidth]{#4}
+   \vspace{5pt} 
+   \caption{#5}
+   \label{#6}
+\end{scheme}
+\end{landscape}
+}
+
 % Example usage: 
 % \myfigap[aboveskip]{ht}{0.5}{appenddfig1.pdf}{My appendix caption goes here}{figA1}
 
@@ -899,8 +922,8 @@
 \newcommand{\myfigap}[6][0ex]{
 \vspace{2ex}
 \begin{appendixfigure}[#2]
-\centering 
-\captionsetup{belowskip = 0pt, aboveskip = #1 plus 2pt minus 2pt} %, singlelinecheck=true for centering
+   \centering 
+   \captionsetup{aboveskip = #1 plus 2pt minus 2pt, belowskip = 0pt} 
    \includegraphics[width=#3\textwidth]{#4}
    \vspace{5pt} 
    \caption[#5]{#5}
@@ -915,8 +938,8 @@
 \newcommand{\myfigapls}[6][0ex]{
 \begin{landscape}
 \begin{appendixfigure}[#2]
-\centering 
-\captionsetup{belowskip = 0pt, aboveskip = #1 plus 2pt minus 2pt} %, singlelinecheck=true for centering
+   \centering 
+  \captionsetup[scheme]{aboveskip = #1 plus 2pt minus 2pt, belowskip = 0pt} 
    \includegraphics[width=#3\textwidth]{#4}
    \vspace{5pt} 
    \caption[#5]{#5}
@@ -931,119 +954,87 @@
 % myfracalign, mygather, myfracgather, with their starred (*) versions 
 % + mydisp, myfracdisp
 % (different spacing, when frac as first or last equation)
-% 
+%  Automatic adjustment for smaller and 1.9 linespacing
+
 \newcommand{\myeqn}[1]{
-\vspace{-0.35in}
-\begin{equation}
-#1
-\end{equation}
-\par\vspace{-0.15in}
-}
-\WithSuffix\newcommand\myeqn*[1]{% no brackets around \myeqnt*
-\vspace{-0.35in}
-\begin{equation*}
-#1
-\end{equation*}
-\par\vspace{-0.15in}
-}
+\ifdimcomp{\myspacing pt}{>}{1.8999 pt}
+{\vspace{-0.3in}\begin{equation} #1 \end{equation}\par\vspace{-0.12in}}
+{\vspace{-0.1in}\begin{equation} #1 \end{equation}\par}}
+\WithSuffix\newcommand\myeqn*[1]{
+\ifdimcomp{\myspacing pt}{>}{1.8999 pt}
+{\vspace{-0.3in}\begin{equation*}#1\end{equation*}\par\vspace{-0.12in}}
+{\vspace{-0.1in}\begin{equation*}#1\end{equation*}\par}}
 
 \newcommand{\myfraceqn}[1]{
-\vspace{-0.325in}
-\begin{equation}
-#1
-\end{equation}
-\par\vspace{-0.125in}
-}
+\ifdimcomp{\myspacing pt}{>}{1.8999 pt}
+{\vspace{-0.3in}\begin{equation} #1 \end{equation}\par\vspace{-0.12in}}
+{\vspace{-0.1in}\begin{equation} #1 \end{equation}\par}}
 \WithSuffix\newcommand\myfraceqn*[1]{
-\vspace{-0.325in}
-\begin{equation*}
-#1
-\end{equation*}
-\par\vspace{-0.125in}
-}
+\ifdimcomp{\myspacing pt}{>}{1.8999 pt}
+{\vspace{-0.3in}\begin{equation*}#1\end{equation*}\par\vspace{-0.12in}}
+{\vspace{-0.1in}\begin{equation*}#1\end{equation*}\par}}
 
 \newcommand{\myalign}[1]{
-\vspace{-0.67in}
-\addtolength{\jot}{-0.05in}
-\begin{align}
-#1
-\end{align}
-\par\vspace{-0.295in}
-}
+\ifdimcomp{\myspacing pt}{>}{1.8999 pt}
+{\vspace{-0.54in}\addtolength{\jot}{0in}% spacing between equations
+\begin{align}#1\end{align}\par\vspace{-0.24in}}
+{\vspace{-0.1in}\addtolength{\jot}{0in}
+\begin{align}#1\end{align}\par}}
 \WithSuffix\newcommand\myalign*[1]{
-\vspace{-0.67in}
-\addtolength{\jot}{-0.05in}
-\begin{align*}
-#1
-\end{align*}
-\par\vspace{-0.295in}
-}
+\ifdimcomp{\myspacing pt}{>}{1.8999 pt}
+{\vspace{-0.54in}\addtolength{\jot}{0in}% spacing between equations
+\begin{align*}#1\end{align*}\par\vspace{-0.24in}}
+{\vspace{-0.1in}\addtolength{\jot}{-0.05in}
+\begin{align*}#1\end{align*}\par}}
 
 \newcommand{\myfracalign}[1]{
-\vspace{-0.645in}
-\addtolength{\jot}{-0.05in}
-\begin{align}
-#1
-\end{align}
-\par\vspace{-0.27in}
-}
+\ifdimcomp{\myspacing pt}{>}{1.8999 pt}
+{\vspace{-0.54in}\addtolength{\jot}{0in}
+\begin{align}#1\end{align}\par\vspace{-0.2in}}
+{\vspace{-0.1in}\addtolength{\jot}{0in}
+\begin{align}#1\end{align}\par}}
 \WithSuffix\newcommand\myfracalign*[1]{
-\vspace{-0.645in}
-\addtolength{\jot}{-0.05in}
-\begin{align*}
-#1
-\end{align*}
-\par\vspace{-0.27in}
-}
+\ifdimcomp{\myspacing pt}{>}{1.8999 pt}
+{\vspace{-0.54in}\addtolength{\jot}{0in}
+\begin{align*}#1\end{align*}\par\vspace{-0.2in}}
+{\vspace{-0.1in}\addtolength{\jot}{0in}
+\begin{align*}#1\end{align*}\par}}
 
 \newcommand{\mygather}[1]{
-\vspace{-0.7in}
-\addtolength{\jot}{-0.05in}
-\begin{gather}
-#1
-\end{gather}
-\par\vspace{-0.315in}
-}
+\ifdimcomp{\myspacing pt}{>}{1.8999 pt}
+{\vspace{-0.64in}\addtolength{\jot}{-0in}
+\begin{gather}#1\end{gather}\par\vspace{-0.28in}}
+{\vspace{-0.1in}\addtolength{\jot}{-0in}
+\begin{gather}#1\end{gather}\par}}
 \WithSuffix\newcommand\mygather*[1]{
-\vspace{-0.7in}
-\addtolength{\jot}{-0.05in}
-\begin{gather*}
-#1
-\end{gather*}
-\par\vspace{-0.315in}
-}
+\ifdimcomp{\myspacing pt}{>}{1.8999 pt}
+{\vspace{-0.64in}\addtolength{\jot}{0in}
+\begin{gather*}#1\end{gather*}\par\vspace{-0.28in}}
+{\vspace{-0.1in}\addtolength{\jot}{0in}
+\begin{gather*}#1\end{gather*}\par}}
 
 \newcommand{\myfracgather}[1]{
-\vspace{-0.645in}
-\addtolength{\jot}{-0.05in}
-\begin{gather}
-#1
-\end{gather}
-\par\vspace{-0.27in}
-}
+\ifdimcomp{\myspacing pt}{>}{1.8999 pt}
+{\vspace{-0.645in}\addtolength{\jot}{0.05in}
+\begin{gather}#1\end{gather}\par\vspace{-0.28in}}
+{\vspace{-0.1in}\addtolength{\jot}{0.05in}
+\begin{gather}#1\end{gather}\par}}
 \WithSuffix\newcommand\myfracgather*[1]{
-\vspace{-0.645in}
-\addtolength{\jot}{-0.05in}
-\begin{gather*}
-#1
-\end{gather*}
-\par\vspace{-0.27in}
-}
+\ifdimcomp{\myspacing pt}{>}{1.8999 pt}
+{\vspace{-0.645in}\addtolength{\jot}{0.05in}
+\begin{gather*}#1\end{gather*}\par\vspace{-0.28in}}
+{\vspace{-0.1in}\addtolength{\jot}{0.05in}
+\begin{gather*}#1\end{gather*}\par}}
 
 \newcommand{\mydisp}[1]{
-\vspace{-0.35in}
-\[
-#1
-\]
-\par\vspace{-0.15in}
-}
+\ifdimcomp{\myspacing pt}{>}{1.8999 pt}
+{\vspace{-0.35in}\[ #1 \] \par\vspace{-0.15in}}
+{\vspace{-0.1in}\[ #1 \] \par}}
+
 \newcommand{\myfracdisp}[1]{
-\vspace{-0.325in}
-\[
-#1
-\]
-\par\vspace{-0.125in}
-}
+\ifdimcomp{\myspacing pt}{>}{1.8999 pt}
+{\vspace{-0.325in}\[ #1 \] \par\vspace{-0.125in}}
+{\vspace{-0.1in}\[ #1 \] \par}}
 
 % Highlight command defined
 \newcommand\hl{\bgroup\markoverwith
@@ -1075,7 +1066,7 @@
 \RequirePackage{subfiles} % Best loaded last in the preamble
 
 % ==============================================================
-% These commands are to support ASABE style (reference + captions)
+% These commands are to support the ASABE style (reference + captions)
 % Others may ignore these commands and will not interfere with other styles
 % ==============================================================
 % 
@@ -1096,10 +1087,12 @@
 \captionsetup[table]
 {labelfont={normalsize,bf},font={normalsize,bf},labelsep=period,justification=raggedright,aboveskip=10pt,belowskip=0pt, singlelinecheck=true} %specifying floats caption options (options of labelsep = period, newline, and dash)
 \captionsetup[figure]{labelfont={normalsize},font={normalsize,bf},labelsep=period,justification=raggedright,aboveskip=10pt,belowskip=-5pt,singlelinecheck=true} %specifying floats caption options 
+\captionsetup[scheme]{labelfont={normalsize},font={normalsize,bf},labelsep=period,justification=raggedright,aboveskip=10pt,belowskip=-5pt,singlelinecheck=true} %specifying floats caption options 
+
 
 %Appendix tables and figures in bold - for tables > 9 use [lot] directly
-\captionsetup[appendixtable]{font={normalsize,bf}} %bold for tables 
-\captionsetup[appendixfigure]{font={normalsize,bf}}%bold for figures
+\captionsetup[appendixtable]{font={normalsize,bf},singlelinecheck=true} %bold for tables 
+\captionsetup[appendixfigure]{font={normalsize,bf},singlelinecheck=true}%bold for figures
 }
 %*************** ASABE style references and captions  ****************
 % ==============================================================
@@ -1110,7 +1103,25 @@
 \makeatother
 }
 
+% Showframe option to show correctly with landscape pages
+% https://tex.stackexchange.com/questions/115908/geometry-showframe-landscape
+\makeatletter
+\newcommand*{\gmshow@textheight}{\textheight}
+\newdimen\gmshow@@textheight
+\g@addto@macro\landscape{%
+  \gmshow@@textheight=\hsize
+  \renewcommand*{\gmshow@textheight}{\gmshow@@textheight}%
+}
+\def\Gm@vrule{%
+  \vrule width 0.2pt height\gmshow@textheight depth\z@
+}%
+\makeatother
+
 \widowpenalty=10000
 \clubpenalty=10000
 
 \endinput
+
+%---------------------------------------------------
+%------------------END---------------------------
+%---------------------------------------------------

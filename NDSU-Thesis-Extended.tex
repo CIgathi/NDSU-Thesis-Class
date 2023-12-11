@@ -1,4 +1,4 @@
-\documentclass[phd]{ndsu-thesis-2022} 
+\documentclass[phd,showgrids]{ndsu-thesis-2022} 
 
 %------------------------------------------------------------------------------
 %-------------[Options]-applicable in this class----------------------
@@ -44,11 +44,10 @@
 
 %-----------------------------------------------------------------------------
 %--------------------Load specific packages--------------------------
-
 \usepackage[style=apa,natbib=true,backend=biber]{biblatex}% works with \citep and \citet commands
 \addbibresource{mybib.bib}% *.bib extension is necessary 
 
-\newcommand\myspacing{1.9} % 23 lines/page needs 1.9 for thesis
+\renewcommand\myspacing{1.9} % 23 lines/page needs 1.9 for thesis
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{corollary}{Corollary}[theorem]
@@ -57,15 +56,19 @@
 
 %-----------------------------------------------------------------------------
 %\AtBeginDocument{\raggedright}   % No justification - NDSU template; justification also okay
+
+\newcommand{\ec}{\end{comment}}% end comment environment
 \newcommand\italk[1]{\textcolor{blue}{#1}}  % for my texts
 \newcommand\cmd[1]{\textbackslash\texttt{#1}}  % for commands
 %\captionsetup[figure]{labelformat=simple, labelsep=colon, labelfont=it,textfont={bf,it}}
 %\captionsetup[table]{labelformat=simple, labelsep=colon, labelfont=it,textfont={bf,it}}
 
+%\newcommand\tt[1]{\texttt{#1}\xspace} 	
 \newcommand\lx{\LaTeX\xspace} 	
 \newcommand\tx{\TeX\xspace}
 \newcommand\bx{Bib\!\TeX\xspace}
 \newcommand\rr{$\Rightarrow$\xspace}
+\newcommand\tb{\textbackslash}
 \newcommand\vb[1]{\textcolor{blue}{\texttt{#1}}}%verb for text - Green3 of x11names is good
 \newcommand\vbc[1]{\textcolor{blue}{\textbackslash\,\texttt{#1}}}%verb for commands
 
@@ -91,9 +94,9 @@
   commentstyle=\color{pgreen},
   keywordstyle=\color{pblue},
   stringstyle=\color{pred},
-  basicstyle={\ttfamily, \footnotesize},
+  basicstyle={\ttfamily\footnotesize},
   moredelim=[il][\textcolor{pgrey}]{$$},
-  moredelim=[is][\textcolor{pgrey}]{\%\%}{\%\%},
+  moredelim=[is][\textcolor{pgrey}]{\%\%}{\%\%}
 }
 
 \newcommand\tabletopinfo{
@@ -109,11 +112,10 @@ Area (ha) & Number  & Methods & Aggregation & Transport & Total & MD$^\dag$ & TS
 $[$ac$]$ & of bales  &  & (km) & (km) & (km) & (km) & (km) & (\$) & (\$) & (\$) \\
     \midrule 
 }
-
 %-----------------------------------------------------------------------------
 \title{An M.S. Thesis or Ph.D. Dissertation Extended Illustration Sample Generated - Using the new ``NDSU-Thesis-2022'' \LaTeX\ Class and Template}
 \author{Samuel Quincy Student}
-\date{June 2023}
+\date{December 2023}
 \progdeptchoice{Department} % Use Department (or) Program
 \department{Mathematics}
 
@@ -173,9 +175,10 @@ $\gamma$ & hyperparameter in SVM
 
 %-----------------------------------------------------------------------------
 %\setlength{\parindent}{0.5in}	% Automatic indenting - NDSU 
-\begin{spacing}{\myspacing}      % New line spacing - 23 lines per page
 %\linenumbers				% When required during review
 %-------------------------------------------
+
+%\begin{comment}
 
 %-----------------------------------------------------------------------------
 %-----------------------------------------------------------------------------
@@ -579,6 +582,31 @@ Number & Our rating & Month \\
 \label{tab22}
 \end{table}
 
+\kant[9]
+
+
+%--------------------------------------------------------------
+\subsection{Tables with fewer columns}
+\italk{NDSU recommends that fewer column tables can be coded in a compact manner using fixed-width for readability, while tables with more columns can run the full-width or made into landscape tables. Compact tables with fewer columns are common and readily made by the common \texttt{tabular} and \texttt{table} environment. Where the columns will be based on the width of the widest entries and the columns will be naturally spaced and result in a compact table with the total width usually less than the textwidth. No special action is necessary to make these tables. Tables of less columns and narrower width need to be positioned on the page consistently. Either all of them left-justified or centered. Footnotes corresponding to the width of the table can be coded through the \cmd{multicolumn\{no of cols\}\{lcr\}\{text\}}\tb\tb for single line items or \cmd{multicolumn\{no of cols\}\{p\{dimension\}\}\{text\}} for footnotes that run like a paragraph. The width of the footnote is controlled by the amount of text or the dimension of the paragraph (refer to the ``\texttt{NDSU-Thesis-Extended.tex}'' for an example codes).} 
+ 
+\begin{table}[h!]
+\caption{Fixed-width whole table left-justified with footnote.}
+\begin{tabular}{ l c r @{\hspace{1cm}} c}
+\toprule
+Number & Our rating & Month  &  Days\\
+(left) & (center)   & (right)   & (center)\\
+\midrule
+1 & Colder & January & 31\\
+2 & Okay   & February & 28\\
+3 & Good   & March & 31\\
+\bottomrule
+\multicolumn{4}{l}{Note: 1. Footnote using \cmd{multicolumn}.}\\
+\multicolumn{4}{l}{Note: 2. Footnote using \cmd{multicolumn}.}\\
+\multicolumn{4}{p{3.2in}}{Note:~3. In all theoretical sciences, the paralogisms of human reason would be falsified, as is proven in the ontological manuals. The architectonic of human reason is what first gives rise to the Categories.}
+\end{tabular}
+\label{tab22}
+\end{table}
+
 %-----------------------------------------------------------------------------
 \section{Help with \LaTeX\ Tables}
 \italk{The code for the \Cref{tab22} may be a bit intimidating (really?), but it is just two nested environments (\vb{table} and \vb{tabular}). The layout is: \vb{table\{} -- \vb{caption} -- \vb{tabular\{} -- data rows -- \vb{tablular\}} -- \vb{label} -- \vb{table\}}. This layout when looked at in an overall manner is simple and all tables follow the same pattern.}  
@@ -592,49 +620,49 @@ Number & Our rating & Month \\
 
 %-------------------------------------------
 \subsection{Manual Method --- Using Table Column Width}
-\italk{One simple method is trial-and-error (manual) is to increase the tabular column separation width so that the table width fits the text width. The two commands \cmd{setlength\{}\cmd{tabcolsep\}} \vb{\{0.75in\}} (value of 0.75in obtained by trial-and-error) and \vbc{begin\{tabular\}\{ l    |c|    r \}} (rest of the code remains the same as in \cref{tab22}) created the table below (\cref{tab23}). It is possible to calculate the \vb{tabcolsep} based on the width of text elements and the number of gaps (2 * number of columns) with the use of \cmd{settowidth\{\ldots\}} and \cmd{fpeval\{\ldots\}} commands. Note the use of | was used for visualization.} 
+\italk{One simple method is trial-and-error (manual) is to increase the tabular column separation width so that the table width fits the text width. The two commands \cmd{setlength\{}\cmd{tabcolsep\}} \vb{\{0.75in\}} (value of 0.34in obtained by trial-and-error) and \vbc{begin\{tabular\}\{ l|   c|   r|   c|   c \}} (rest of the code remains the same as in \cref{tab22}) created the table below (\cref{tab23}). It is possible to calculate the \vb{tabcolsep} based on the width of text elements and the number of gaps (2 * number of columns) with the use of \cmd{settowidth\{\ldots\}} and \cmd{fpeval\{\ldots\}} commands. Note the use of | was used for visualization (not to be used in professional documents).} 
 
 \begin{table}[h!]
 \centering
 \caption{Professional looking full-width table using \cmd{tabcolsep} and \texttt{booktabs} package.}
-\setlength{\tabcolsep}{0.75in}
-\begin{tabular}{ l    |c|    r }
+\setlength{\tabcolsep}{0.34in}
+\begin{tabular}{ l|   c|   r|   c|   c}
 \toprule
-Number & Our rating & Month \\
-(left) & (center)   & (right)\\
+Number & Our rating & Month & Days & Rating\\
+(left) & (center)   & (right) & (number) & (stars)\\
 \midrule
-1 & Colder & January \\
-2 & Okay   & February \\
-3 & Good   & March\\
+1 & Colder & January & 31 & **\\
+2 & Okay   & February & 28 & ***\\
+3 & Good   & March & 31 & *****\\
 \bottomrule
 \end{tabular}
 \label{tab23}
 \end{table}
 
-\italk{It can be seen that the table column separation (\vb{tabcolsep}) value of 0.75in was applied on both sides of the text in each column. The vertical spaces at the start (left) and end (right) are not working well with the \vb{l} and \vb{r} specifications for the 1st and 3rd columns set in the \vb{tabular} environment. Had all columns been centered then this would have worked.}
+\italk{It can be seen that the table column separation (\vb{tabcolsep}) value of 0.34in was applied on both sides of the text in each column. The vertical spaces at the start (left) and end (right) are not working well with the \vb{l} and \vb{r} specifications for the 1st and 3rd columns set in the \vb{tabular} environment. Had all columns been centered then this would have worked.}
 
 \italk{To address and suppress these spaces, the control sequence \vb{@\{\ldots\}} can be used. When the spaces were removed, the table width will reduce and should be increased (1.1in used) accordingly. Thus, with the following code, the table (\cref{tab24}) was created where columns align per our expectations.
 }
 
 {\singlespacing
 \begin{verbatim}
-\setlength{\tabcolsep}{1.1in}
-\begin{tabular}{ @{ }l |c| r@{ } }
+\setlength{\tabcolsep}{0.41in}
+\begin{tabular}{ @{ }l|   c|   r|   c|   c@{ }}
 \end{verbatim}
 }
 
 \begin{table}[h!]
 \centering
 \caption{Professional looking full-width table using \cmd{tabcolsep}, \texttt{@\{\ldots\}}, and \texttt{booktabs} package.}
-\setlength{\tabcolsep}{1.1in}
-\begin{tabular}{ @{ }l    |c|    r@{ } }
+\setlength{\tabcolsep}{0.41in}
+\begin{tabular}{ @{ }l|   c|   r|   c|   c@{ }}
 \toprule
-Number & Our rating & Month \\
-(left) & (center)   & (right)\\
+Number & Our rating & Month & Days & Rating\\
+(left) & (center)   & (right) & (number) & (stars)\\
 \midrule
-1 & Colder & January \\
-2 & Okay   & February \\
-3 & Good   & March\\
+1 & Colder & January & 31 & **\\
+2 & Okay   & February & 28 & ***\\
+3 & Good   & March & 31 & *****\\
 \bottomrule
 \end{tabular}
 \label{tab24}
@@ -649,9 +677,9 @@ Number & Our rating & Month \\
 {\singlespacing
 \begin{verbatim}
 . . . . 
-\begin{tblr}{X | X[c] | X[r]} % tabular replaced by tabu
+\begin{tblr}{X|  X[c]|  X[r]|  X[c]|  X[r]} % tabular replaced by tblr
 . . . . 
-\end{tblr} % tabular replaced by tabu
+\end{tblr} % tabular replaced by tblr
 . . . .
 \end{verbatim}
 }
@@ -659,31 +687,50 @@ Number & Our rating & Month \\
 \begin{table}[h!]
 \centering
 \caption{Professional looking automatic full-width table using \texttt{tblr} environment and \texttt{booktabs} package.}
-\begin{tblr}{X | X[c] | X[r]}
+\begin{tblr}{X| X[c]| X[r]| X[c]| X[r]}
 \toprule
-Number & Our rating & Month \\
-(left) & (center)   & (right)\\
+Number & Our rating & Month & Days & Rating\\
+(left) & (center)   & (right) & (number) & (stars)\\
 \midrule
-1 & Colder & January \\
-2 & Okay   & February \\
-3 & Good   & March\\
+1 & Colder & January & 31 & **\\
+2 & Okay   & February & 28 & ***\\
+3 & Good   & March & 31 & *****\\
 \bottomrule
 \end{tblr}
 \label{tab25}
 \end{table}
 
-\italk{From the code it can be seen that the full-width table can be easily made using the \vb{tblr} environment. The \vb{X} column specifier allots column widths automatically so that the table spans the full-width. The other parameter enclosed by square brackets extends the functionality of the \vb{X} column. Thus, \vb{X[c]} and \vb{X[r]} specifies centering and right-justification of the column content, while left-justification is the default.}
+\italk{From the code it can be seen that the full-width table can be easily made using the \vb{tblr} environment. The \vb{X} column specifier allots column widths automatically so that the table spans the full-width. The other parameter enclosed by square brackets extends the functionality of the \vb{X} column. Thus, \vb{X[c]} and \vb{X[r]} specify centering and right-justification of the column content, while left-justification is the default.}
+
+\italk{Now the \Cref{tab25} is revised as \Cref{tab26} so that it is appropriate for the thesis or paper. Row spacing of the automatic full-width table \tt{tblr} is adjusted by \cmd{SetTblrInner\{rowsep = xxx\}}}
+
+\begin{table}[h!]
+\centering
+\SetTblrInner{rowsep=1pt}
+\caption{Professional looking automatic full-width table using \texttt{tblr} environment.}
+\begin{tblr}{X X[l] X[0.6,l] X[c] X[0.6,r]}% X[width, justification]
+\toprule
+Number & Our rating & Month & Days & Rating\\
+(left) & (center)   & (right) & (number) & (stars)\\
+\midrule
+1 & Colder & January & 31 & **\\
+2 & Okay   & February & 28 & ***\\
+3 & Good   & March & 31 & *****\\
+\bottomrule
+\end{tblr}
+\label{tab26}
+\end{table}
 
 %-------------------------------------------
 \subsection{Automatic Method --- Using \texttt{tblr} Environment --- Unequal Widths}
 
-\italk{Shown below is an advanced table (\cref{tab26}) with variable column widths and overall math-column specification. Variable widths can be specified using coefficients to \vb{X} columns. 
+\italk{Shown below is an advanced table (\cref{tab27}) with variable column widths and overall math-column specification. Variable widths can be specified using coefficients to \vb{X} columns. 
 }
 \vspace{-4ex}
 \begin{table}[ht]
 \caption{Full-width table using the \texttt{tblr} environment showing some vegetative indices formulas demonstrating the use of \texttt{X} column code with variable column widths and math column specifications (\texttt{X[0.8, \$]}).}
 %\setlength{\tabulinesep}{0.85ex} % constant vertical spacing between rows
-\SetTblrInner{rowsep=0.85ex}
+%\SetTblrInner{rowsep=0.85ex}
 
 \begin{tblr}{X[2] X[0.8, $]}
 \toprule
@@ -704,8 +751,8 @@ Simple text in math column right (See $\Rightarrow$) & \text{NDSU thesis class}\
 \end{tblr}
 \begin{tablenotes}[flushleft]
 \footnotesize
-\item \hspace{-1ex} \emph{Note}: $R$, $G$, $B$ stands for red, green, blue pixel values from the RGB color image.
-\label{tab26}
+\item \hspace{-1ex} Note: $R$, $G$, $B$ stands for red, green, blue pixel values from the RGB color image.
+\label{tab27}
 \end{tablenotes}
 \end{table}
 %------------------
@@ -723,10 +770,10 @@ Simple text in math column right (See $\Rightarrow$) & \text{NDSU thesis class}\
 }
 
 \vspace{-2ex}
-\italk{The environment specifies 2 columns with the first having a proportional 2 as width (\vb{coef}) and the second having 0.8 as width. Stated otherwise, the first column is \fpeval{2/0.8} (2/0.8) times the width of the second (2~:~0.8 = 2.5~:~1). The second column type was also specified using \$, which makes the entire column math, and the column code can be input without enclosing items between \$\ldots\$, as usually done in math mode. This math column specification will be convenient when the column predominantly contains math entries. Of course, regular entries can be input as \cmd{text\{\ldots\}}, as done in the last row of the \cref{tab26}.
+\italk{The environment specifies 2 columns with the first having a proportional 2 as width (\vb{coef}) and the second having 0.8 as width. Stated otherwise, the first column is \fpeval{2/0.8} (2/0.8) times the width of the second (2~:~0.8 = 2.5~:~1). The second column type was also specified using \$, which makes the entire column math, and the column code can be input without enclosing items between \$\ldots\$, as usually done in math mode. This math column specification will be convenient when the column predominantly contains math entries. Of course, regular entries can be input as \cmd{text\{\ldots\}}, as done in the last row of the \cref{tab27}.
 }
 
-\italk{Of course the manual method can also produce the \cref{tab26} and the output is presented in \cref{tab27}.  While the full code can be seen in the source code the important code segments and two rows of entries are shown as follows:
+\italk{Of course the manual method can also produce the \cref{tab27} and the output is presented in \cref{tab27}.  While the full code can be seen in the source code the important code segments and two rows of entries are shown as follows:
 }
 
 {\singlespacing
@@ -769,12 +816,12 @@ Simple text in regular column right (See $\Rightarrow$) & NDSU thesis class\\
 \begin{tablenotes}[flushleft]
 \footnotesize
 \item \hspace{-1ex} \emph{Note}: $R$, $G$, $B$ stands for red, green, and blue pixel values from the RGB color image.
-\label{tab27}
+\label{tab28}
 \end{tablenotes}
 \end{table}
 %------------------
 
-\italk{When compared, the automatic method (\cref{tab26}) is simpler than the manual method (\cref{tab27}); however, both produce similar output visually.} 
+\italk{When compared, the automatic method (\cref{tab27}) is simpler than the manual method (\cref{tab28}); however, both produce similar output visually.} 
 
 \kant[9]
 %\clearpage
@@ -784,7 +831,7 @@ Simple text in regular column right (See $\Rightarrow$) & NDSU thesis class\\
 
 {\singlespacing
 \begin{verbatim}
-. . . . %Table 2.8
+. . . . %Table 2.9
 \setlength{\tabcolsep}{0.675in}  
 \begin{tabular}{|@{\:}l |c|l| l@{\:}|} 	
 . . . . 
@@ -811,7 +858,7 @@ Number & Month & Same & Same\\
 3 & March & March & March \\
 \bottomrule
 \end{tabular}
-\label{tab28}
+\label{tab29}
 \end{table}
 
 {\singlespacing
@@ -830,7 +877,7 @@ work for some other! & March \\
 
 \begin{table}[ht]
 \centering
-\caption{Automatic method full-length table showing multicolumn and rule. The \cmd{cmidrule}[lr]\{3-4\} command was used.}
+\caption{Automatic method full-length table showing multicolumn and rule. The following command \cmd{cmidrule}[lr]\{3-4\} was used.}
 \begin{tblr}{| X[1.25] | X[4.75,c] | X[3] | X |}
 \toprule
 Number & Month & Same & Same\\
@@ -846,10 +893,10 @@ Number & Month & Same & Same\\
 4 & March & March is the month of joy for some and means yard work for others! & March \\
 \bottomrule
 \end{tblr}
-\label{tab29}
+\label{tab30}
 \end{table}
 
-\italk{Both tables are visually the same barring the different column widths visualized using |, but their mechanisms are different. It can also be seen that the \vb{tblr} \Cref{tab29} can handle lengthy text in ``paragraph'' mode automatically, which lengthy text will increase the column width (to fit the text) in the manual method. Based on the requirements, the users can use any of these methodologies. }
+\italk{Both tables are visually the same barring the different column widths visualized using |, but their mechanisms are different. It can also be seen that the \vb{tblr} \Cref{tab30} can handle lengthy text in ``paragraph'' mode automatically, which lengthy text will increase the column width (to fit the text) in the manual method. Based on the requirements, the users can use any of these methodologies. }
 
  
 %-----------------------------------------------------------------------------
@@ -860,6 +907,7 @@ Number & Month & Same & Same\\
 \italk{Landscape tables were usually set on a separate page using \vb{[p]} placement specifier. With the \vb{pdflscape} package that provides the \vb{landscape} environment for the table creation, the page is also rotated for direct viewing of the table, but prints correctly. An example of a landscape table is shown in \Cref{tab210}. More information about this table is available in the table caption and footnote. The source code of this table can be referred to for details.
 }
 
+\kant[4]
 
 % Use [p] use to adjust the centering of the whole table 
 % * version of vspace works - but manually adjusted:  \vspace*{1.3in}  
@@ -904,10 +952,12 @@ Row-of-values & \multicolumn{4}{c}{Block1}  &\multicolumn{4}{c}{Block2} & \multi
 %-----------------------------------------------------------------------------
 \section{Long Tables}
 \italk{In the disquisition sometimes it is necessary to present data and results that go more than a single page. In such situations, long tables should be used and the package developed for this purpose and included in the class was 
-\vb{longtable} and it works well with \vb{threeparttable} package as well. The \vb{longtable} environment is used.} 
+\vb{longtable} and it works well with \vb{threeparttable} package as well. The \vb{longtable} environment is used. For automatic full-width long tables the \vb{tabularray}'s \vb{longtblr} environment is used.} 
 
 \italk{The long tables have more components than regular tables (\cref{longtab}). Long tables contain, in general, main title, running title, running table head, running footnote, and table final footnote. Users are urged to refer to the documentation of \vb{longtable} and the source code for more details, as there are several aspects involved in long table creation. Referring to the long tables can be done by defining the \texttt{label} right inside the \texttt{longtable} environment and referring it in the usual way (\cref{longtab} and \Cref{longtab}).}
 
+%-----------------------------------------------------------------------------
+\subsection{Longtable 1: Elaborate long table}
 %-----------------------
 \vspace{2ex}
 \setlength\LTleft{0pt}
@@ -925,10 +975,12 @@ Row-of-values & \multicolumn{4}{c}{Block1}  &\multicolumn{4}{c}{Block2} & \multi
   \tabletopinfo% defined in the preamble
     \endfirsthead
     
+   \multicolumn{8}{l}% Same title (no short forms) should be used NDSU style
+{{\normalsize\tablename\ \thetable{}.  A long table - spanning 3 pages - an example taken from our research group}} \\ 
    \multicolumn{8}{l}%
-{{\normalsize\tablename\ \thetable{} Methods of optimum bale stack locations and their logistics distances and}} \\ 
+{{\normalsize work on ``Methods of optimum bale stack locations and their logistics distances and }} \\
    \multicolumn{8}{l}%
-{{\normalsize methods combined distances -- \emph{(continued).}}} \\[2ex] 
+{{\normalsize methods combined distances.'' -- \emph{(continued).}}} \\[2ex] 
  \tabletopinfo
     \endhead
     
@@ -1038,13 +1090,692 @@ $[1280]$ &  & Field middle  & 3765.75 & 1160.34 & 4926.09 \\
 \setlength{\parindent}{0.5in}
 \vspace{-2ex}
 %----------------------- 
-\kant[1]
+
+As any dedicated reader can clearly see, the Ideal of practical reason is a representation
+of, as far as I know, the things in themselves; as I have shown elsewhere, the phenomena
+should only be used as a canon for our understanding.
 
 
 %-----------------------------------------------------------------------------
-\section{Landscape Long Tables}
-\italk{Applying the similar logic \texttt{longtable} when enclosed in \texttt{landscape} environment will produce the landscape long tables (\cref{longtabls}). The previous table was reproduced to demonstrate long tables in landscape format.}
+\subsection{Longtable 2: Simplified long table - No repeated caption and header}
 
+\italk{The centering is done by \cmd{LTleft} and \cmd{LTright} values. Row spacing by \cmd{arraystretch} command. No footer or header ``Continued \ldots'' coded. Enclosing group environment is necessary.}
+
+\begingroup
+\setlength{\LTleft}{1mm plus -1fill}% centering done by LTleft - any small value
+\setlength{\LTright}{\LTleft}% as same is applied - the content is centered 
+\renewcommand{\arraystretch}{0.5}% adjusting the rowspacing
+\begin{longtable}{l l l l}
+\captionsetup{width=\textwidth}
+\caption{Most simple longtable --- Caption is not repeated. Let us make it long enough so that it goes to two lines and makes some noise there while it was there.}\\[-20pt]% This newline command is necessary 
+\toprule
+First column & Second column & Data & Where?\\
+\midrule
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+\bottomrule
+\end{longtable}
+\endgroup
+
+As any dedicated reader can clearly see, the Ideal of practical reason is a representation
+of, as far as I know, the things in themselves; as I have shown elsewhere, the phenomena
+should only be used as a canon for our understanding. The paralogisms of practical reason
+are what first give rise to the architectonic of practical reason.
+
+
+%-----------------------------------------------------------------------------
+\subsection{Longtable 3: Simplified long table - With header but no repeated caption }
+
+\italk{The centering is done by \cmd{LTleft} and \cmd{LTright} values. Row spacing by \cmd{arraystretch} command. Specifying \cmd{endfirsthead} suppresses the repeated caption, and \cmd{endhead} puts the header on each page. Footer or header ``Continued \ldots'' coded. Footnotes are coded with \cmd{endlastfoot} command with \cmd{multicolumn} using manual width. Enclosing group environment is necessary.}
+
+\begingroup
+\setlength{\LTleft}{0.5cm plus -1fill}% centering done by LTleft - any small value
+\setlength{\LTright}{\LTleft}% as same is applied - the content is centered 
+\renewcommand{\arraystretch}{0.6}% adjusting the rowspacing
+\begin{longtable}{l l l l r}
+\captionsetup{width=\textwidth}
+\caption{With repeating header row - A good caption need to be developed for this table - Let us make it long enough and some more and here we go.}\\[-20pt]% This newline command is necessary 
+
+% Needed to suppress the caption thereafter
+\toprule
+\textbf{First column} & \textbf{Second column} & \textbf{Third column} & Where? & Number\\ 
+\midrule
+\endfirsthead
+
+% Subsequent header row coded in endhead
+\toprule
+\textbf{First column} & \textbf{Second column} & \textbf{Third column} & Where? & Number\\
+\midrule
+\endhead
+
+\midrule \multicolumn{5}{r}{\itshape Continued \ldots} 
+\endfoot
+
+% For footnotes - p value by trial and error
+\multicolumn{5}{l}{\footnotesize Note: My footnote for the table is coded here. Longer note below.}\\[-1cm]
+\multicolumn{5}{p{6in}}{\singlespacing\footnotesize Note: \kant[9]}
+\endlastfoot
+
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+\bottomrule
+\label{lt:sim}
+\end{longtable}
+\endgroup
+
+%-----------------------------------------------------------------------------
+\subsection{Longtable 4: Simplified longtblr - With header but no repeated caption }
+
+\italk{Since it is automatic full-width no centering is necessary. Row spacing by \texttt{spacing} command (others are ineffective with the class). The necessary codes (caption, footnote, column specifications, etc.) are input inside of \cmd{longtblr} optional [\ldots] and regular argument \{\ldots\}. Enclosing group environment is necessary.}
+
+\begingroup
+\begin{spacing}{0.84}% works with longtblr
+\DefTblrTemplate{contfoot-text}{default}{\itshape Continued \ldots}% defining default 
+\DefTblrTemplate{capcont}{default}{}% using default 
+ 
+\begin{longtblr}[
+caption = {Full-width table with repeating header row - A good caption need to be developed for this table - Let us make it long enough and some more and here we go.},
+label = {table:tab6},
+note{} = {\footnotesize 
+	Note: Test \\ 
+	Note: \kant[9]}
+]{
+  colspec = {X X[1.5] X[1.1] X[1.2,c] X[0.8,r]},
+  rowhead = 2,
+  middlehead = {} 
+}
+\toprule
+First column & \textbf{Second column} & \textbf{Third column} & Where? & Number\\
+\midrule
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+\bottomrule
+\end{longtblr}
+\end{spacing}
+\endgroup
+
+
+%-----------------------------------------------------------------------------
+\subsection{Longtable 5: Simplified longtable - With no header or repeated caption - used to present just long data}
+
+\italk{The centering is done by \cmd{LTleft} and \cmd{LTright} values. Row spacing by \cmd{arraystretch} command. Captions, rules, etc. are not used in this data-style long table. Row spacing by \cmd{arraystretch} command. Enclosing group environment is necessary. The table counter number should be adjusted for this no-caption table.}
+
+\begingroup
+\setlength{\LTleft}{0.5cm plus -1fill}% centering done by LTleft - any small value
+\setlength{\LTright}{\LTleft}% as same is applied - the content is centered 
+\renewcommand{\arraystretch}{0.6}% adjusting the rowspacing
+\begin{longtable}{l @{\hspace{2cm}} l @{\hspace{1.5cm}} r}
+Part A  &   Part B      &   Part C      \\
+Hmmm    & This is not   & how I want it \\
+It is   & not clear     & what you want \\
+Hmmm    & This is not   & how I want it \\
+It is   & not clear     & what you want \\
+Hmmm    & This is not   & how I want it \\
+It is   & not clear     & what you want \\
+Hmmm    & This is not   & how I want it \\
+It is   & not clear     & what you want \\
+Hmmm    & This is not   & how I want it \\
+It is   & not clear     & what you want \\
+Hmmm    & This is not   & how I want it \\
+It is   & not clear     & what you want \\
+Hmmm    & This is not   & how I want it \\
+It is   & not clear     & what you want \\
+Hmmm    & This is not   & how I want it \\
+It is   & not clear     & what you want \\
+Hmmm    & This is not   & how I want it \\
+It is   & not clear     & what you want \\
+Hmmm    & This is not   & how I want it \\
+It is   & not clear     & what you want \\
+Hmmm    & This is not   & how I want it \\
+It is   & not clear     & what you want \\
+Hmmm    & This is not   & how I want it \\
+It is   & not clear     & what you want \\
+Hmmm    & This is not   & how I want it \\
+It is   & not clear     & what you want \\
+Hmmm    & This is not   & how I want it \\
+It is   & not clear     & what you want \\
+Hmmm    & This is not   & how I want it \\
+It is   & not clear     & what you want \\
+Hmmm    & This is not   & how I want it \\
+It is   & not clear     & what you want \\
+Hmmm    & This is not   & how I want it \\
+It is   & not clear     & what you want \\
+Hmmm    & This is not   & how I want it \\
+It is   & not clear     & what you want \\
+Hmmm    & This is not   & how I want it \\
+It is   & not clear     & what you want \\
+Hmmm    & This is not   & how I want it \\
+It is   & not clear     & what you want \\
+Hmmm    & This is not   & how I want it \\
+It is   & not clear     & what you want \\
+Hmmm    & This is not   & how I want it \\
+It is   & not clear     & what you want \\
+Hmmm    & This is not   & how I want it \\
+It is   & not clear     & what you want \\
+Hmmm    & This is not   & how I want it \\
+It is   & not clear     & what you want \\
+Hmmm    & This is not   & how I want it \\
+It is   & not clear     & what you want \\
+Hmmm    & This is not   & how I want it \\
+It is   & not clear     & what you want \\
+\end{longtable}
+\endgroup
+\addtocounter{table}{-1}% for this dummy table the counter should be reduced by 1
+
+\kant[9]
+
+%-----------------------------------------------------------------------------
+\subsection{Longtable 6: Simplified longtblr - With no header or repeated caption - used to present just long data}
+
+\italk{Since it is automatic full-width no centering is necessary. Row spacing by \texttt{spacing} command (others are ineffective with the class). The necessary codes to be input inside of \cmd{longtblr} optional [\ldots] and regular argument \{\ldots\} are not done suppress. The entry = none will make the table not listed in TOC. Bottom \cmd{hrule} should be kept outside of \vb{longtblr} so that it does not repeat on every page. Enclosing group environment is necessary. The table counter number should be adjusted for this no-caption table.}
+
+
+\begingroup
+\begin{spacing}{0.84}% works with longtblr
+\DefTblrTemplate{caption-tag}{default}{}% the tag "Table"
+\DefTblrTemplate{caption-sep}{default}{}% the sep symbol :
+\DefTblrTemplate{caption-text}{default}{}% caption suppressed
+\DefTblrTemplate{conthead-text}{default}{}% head text suppressed
+\DefTblrTemplate{contfoot-text}{default}{}% foot text suppressed
+\begin{longtblr}[entry=none]{X[0.5] X[0.5] X[0.7] X}
+\SetCell[c=4]{l} \textbf{This is a multipage data table using longtblr that will not feature in the TOC}\\%[-1ex]
+\SetCell[c=4]{l} \textbf{--- the barebone style}\\
+\toprule
+Number  & Twice & Squared & Fourth power \\
+\midrule
+0 & 0 & \num{0} & \num{0}\\
+15 & 30 & \num{225} & \num{50625}\\
+30 & 60 & \num{900} & \num{810000}\\
+45 & 90 & \num{2025} & \num{4100625}\\
+60 & 120 & \num{3600} & \num{12960000}\\
+75 & 150 & \num{5625} & \num{31640625}\\
+90 & 180 & \num{8100} & \num{65610000}\\
+105 & 210 & \num{11025} & \num{121550625}\\
+120 & 240 & \num{14400} & \num{207360000}\\
+135 & 270 & \num{18225} & \num{332150625}\\
+150 & 300 & \num{22500} & \num{506250000}\\
+165 & 330 & \num{27225} & \num{741200625}\\
+180 & 360 & \num{32400} & \num{1049760000}\\
+195 & 390 & \num{38025} & \num{1445900625}\\
+210 & 420 & \num{44100} & \num{1944810000}\\
+225 & 450 & \num{50625} & \num{2562890625}\\
+240 & 480 & \num{57600} & \num{3317760000}\\
+255 & 510 & \num{65025} & \num{4228250625}\\
+270 & 540 & \num{72900} & \num{5314410000}\\
+285 & 570 & \num{81225} & \num{6597500625}\\
+300 & 600 & \num{90000} & \num{8100000000}\\
+315 & 630 & \num{99225} & \num{9845600625}\\
+330 & 660 & \num{108900} & \num{11859210000}\\
+345 & 690 & \num{119025} & \num{14166950625}\\
+360 & 720 & \num{129600} & \num{16796160000}\\
+375 & 750 & \num{140625} & \num{19775390625}\\
+390 & 780 & \num{152100} & \num{23134410000}\\
+405 & 810 & \num{164025} & \num{26904200625}\\
+420 & 840 & \num{176400} & \num{31116960000}\\
+435 & 870 & \num{189225} & \num{35806100625}\\
+450 & 900 & \num{202500} & \num{41006250000}\\
+465 & 930 & \num{216225} & \num{46753250625}\\
+480 & 960 & \num{230400} & \num{53084160000}\\
+495 & 990 & \num{245025} & \num{60037250625}\\
+510 & 1020 & \num{260100} & \num{67652010000}\\
+525 & 1050 & \num{275625} & \num{75969140625}\\
+540 & 1080 & \num{291600} & \num{85030560000}\\
+555 & 1110 & \num{308025} & \num{94879400625}\\
+570 & 1140 & \num{324900} & \num{105560010000}\\
+585 & 1170 & \num{342225} & \num{117117950625}\\
+600 & 1200 & \num{360000} & \num{129600000000}\\
+615 & 1230 & \num{378225} & \num{143054150625}\\
+630 & 1260 & \num{396900} & \num{157529610000}\\
+645 & 1290 & \num{416025} & \num{173076800625}\\
+660 & 1320 & \num{435600} & \num{189747360000}\\
+675 & 1350 & \num{455625} & \num{207594140625}\\
+690 & 1380 & \num{476100} & \num{226671210000}\\
+705 & 1410 & \num{497025} & \num{247033850625}\\
+720 & 1440 & \num{518400} & \num{268738560000}\\
+735 & 1470 & \num{540225} & \num{291843050625}\\
+750 & 1500 & \num{562500} & \num{316406250000}\\
+765 & 1530 & \num{585225} & \num{342488300625}\\
+780 & 1560 & \num{608400} & \num{370150560000}\\
+795 & 1590 & \num{632025} & \num{399455600625}\\
+810 & 1620 & \num{656100} & \num{430467210000}\\
+825 & 1650 & \num{680625} & \num{463250390625}\\
+840 & 1680 & \num{705600} & \num{497871360000}\\
+855 & 1710 & \num{731025} & \num{534397550625}\\
+870 & 1740 & \num{756900} & \num{572897610000}\\
+885 & 1770 & \num{783225} & \num{613441400625}\\
+900 & 1800 & \num{810000} & \num{656100000000}\\
+915 & 1830 & \num{837225} & \num{700945700625}\\
+930 & 1860 & \num{864900} & \num{748052010000}\\
+945 & 1890 & \num{893025} & \num{797493650625}\\
+960 & 1920 & \num{921600} & \num{849346560000}\\
+975 & 1950 & \num{950625} & \num{903687890625}\\
+990 & 1980 & \num{980100} & \num{960596010000}\\
+1005 & 2010 & \num{1010025} & \num{1020150500625}\\
+1020 & 2040 & \num{1040400} & \num{1082432160000}\\
+1035 & 2070 & \num{1071225} & \num{1147523000625}\\
+1050 & 2100 & \num{1102500} & \num{1215506250000}\\
+1065 & 2130 & \num{1134225} & \num{1286466350625}\\
+1080 & 2160 & \num{1166400} & \num{1360488960000}\\
+1095 & 2190 & \num{1199025} & \num{1437660950625}\\
+1110 & 2220 & \num{1232100} & \num{1518070410000}\\
+1125 & 2250 & \num{1265625} & \num{1601806640625}\\
+1140 & 2280 & \num{1299600} & \num{1688960160000}\\
+1155 & 2310 & \num{1334025} & \num{1779622700625}\\
+1170 & 2340 & \num{1368900} & \num{1873887210000}\\
+1185 & 2370 & \num{1404225} & \num{1971847850625}\\
+1200 & 2400 & \num{1440000} & \num{2073600000000}\\
+1215 & 2430 & \num{1476225} & \num{2179240250625}\\
+1230 & 2460 & \num{1512900} & \num{2288866410000}\\
+1245 & 2490 & \num{1550025} & \num{2402577500625}\\
+1260 & 2520 & \num{1587600} & \num{2520473760000}\\
+1275 & 2550 & \num{1625625} & \num{2642656640625}\\
+1290 & 2580 & \num{1664100} & \num{2769228810000}\\
+1305 & 2610 & \num{1703025} & \num{2900294150625}\\
+1320 & 2640 & \num{1742400} & \num{3035957760000}\\
+1335 & 2670 & \num{1782225} & \num{3176325950625}\\
+1350 & 2700 & \num{1822500} & \num{3321506250000}\\
+1365 & 2730 & \num{1863225} & \num{3471607400625}\\
+1380 & 2760 & \num{1904400} & \num{3626739360000}\\
+1395 & 2790 & \num{1946025} & \num{3787013300625}\\
+1410 & 2820 & \num{1988100} & \num{3952541610000}\\
+1425 & 2850 & \num{2030625} & \num{4123437890625}\\
+1440 & 2880 & \num{2073600} & \num{4299816960000}\\
+1455 & 2910 & \num{2117025} & \num{4481794850625}\\
+1470 & 2940 & \num{2160900} & \num{4669488810000}\\
+\end{longtblr}
+\end{spacing}
+\endgroup
+\hrule
+\addtocounter{table}{-1}% for this dummy table the counter should be reduced by 1
+
+
+%-----------------------------------------------------------------------------
+\section{Longtable 7: Simple long data table using \texttt{tabbing} environment}
+
+\italk{The \vb{tabbing} environment offers the most simple way of developing data table (always left-justified; no TOC entries) and \vb{tabbing} entries automatically flow through pages (longtable). The tabs can be defined according to requirements. The tab stops can be adjusted to move the entire table or column widths manually.}
+
+\begingroup
+\singlespacing
+\begin{tabbing}
+111111111111111111111\=22222222222222\=333333333333333\=\kill
+\>1st column  \>  2nd column  \>  3rd column \\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\textcolor{blue}{The first column is left-justified - shown below (3 tabs = 4 columns)}\\
+Left \>123  \>2345  \>34567\\
+Left \>123  \>2345  \>34567\\
+Left \>123  \>2345  \>34567\\
+Left \>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\textcolor{blue}{Blank line by \textbackslash\textbackslash and shown below}\\ 
+\\
+As is shown in the writings of Aristotle, the things in themselves (and it remains)\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\textcolor{blue}{Tabs can be skipped or not filled - text flows through columns}\\
+Left - Tabs can be skipped or not filled\\ 
+\>Tabs can be skipped or not filled\\ 
+\>\>Tabs can be skipped or not filled\\ 
+\>\>\>Tabs can be skipped or not filled\\ 
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\end{tabbing}
+\endgroup
+
+\vspace{-4ex}
+\kant[9]
+
+%-----------------------------------------------------------------------------
+\section{Longtable 8: Landscape Long Tables}
+\italk{Applying the similar logic \texttt{longtable} when enclosed in \texttt{landscape} environment will produce the landscape long tables (\cref{longtabls}). The previous table was reproduced to demonstrate long tables in landscape format.}
 
 %-----------------------
 \vspace{2ex}
@@ -1171,7 +1902,6 @@ $[1280]$ &  & Field middle  & 3765.75 & 1160.34 & 4926.09 \\
 \setlength{\parindent}{0.5in}
 \vspace{-2ex}
 
-
 %-----------------------------------------------------------------------------
 %-----------------------------------------------------------------------------
 \mypaperheading{Figures in thesis/dissertation}
@@ -1241,6 +1971,8 @@ placement using 5mm.}{fig5}
 }
 
 \italk{\hl{Important note:}} \textcolor{magenta}{\bfseries While printing the landscape pages (containing tables and figures) the settings should be double-checked. Adobe Reader was known to print landscape pages in the correct format. Mac Preview was observed not to give the correct output (distortion observed) at the time of this writing.}
+
+\kant[4]
 
 % Option p vertically centers figure & 5mm +ve space added above  caption
 \myfigls[5mm]{p}{0.9}{frog.jpg}{Landscape figure with long long long long long long long long long long long long long long long caption and vertical caption placement using 5mm.}{fig5}
@@ -1474,8 +2206,72 @@ As any dedicated reader can clearly see, the Ideal of practical reason is a repr
 
 \end{landscape}
 
+%-----------------------------------------------------------------------------
+%-----------------------------------------------------------------------------
+\mypaperheading{Schemes in thesis/dissertation}
+{Schemes are floats and have to be controlled by float specifiers}
+
+%--------------------------------------------------------------
+\subsection{Figures and schemes --- general information}\label{figs}
+
+\italk{The \textbf{figures} are used to represent pictures, photographs, drawings, maps, illustrations of samples, fields, instruments, structures, methods; graphs or plots of measurements, results; or anything graphically depicted to convey the thoughts or data. However, \textbf{schemes} should be used to specifically represent systematic plans for implementing an idea or concept, usually used to depict a process flow and the steps involved and often involve ``arrows'' connecting one step to the next. Examples of schemes are chemical process diagrams, sets of chemical reaction pathways, flowcharts (process and computer algorithms), electrical circuits, block diagrams connected by arrows, and so on. In any thesis or paper, schemes always appear; however, in a thesis it can be shown as a separate set with a list of schemes (LOSH), and in papers they are coded as figures.}
+
+\italk{The schemes are coded using ``\texttt{scheme}'' environment similar to`` \texttt{figure}'' environments both in long (using: \cmd{includegraphics}\{\ldots\}, \cmd{centering}, \cmd{resize}, \cmd{caption}, and \cmd{label}) and defined shortcut forms.  By default, the schemes are labeled as Schematic in their caption. Schemes can be cross-referenced using \cmd{cref} or \cmd{Cref} commands as usual.} 
+
+%--------------------------------------------------------------
+\section{Shortcuts for schemes with direct and optional arguments}
+
+\italk{Shortcuts similar to figures, with 1 [optional] argument + 5 \{arguments\}, were developed for the schemes. The arguments are: (1) [optional] vertical placement of the caption (moving it up and down with respect to the bottom of the figure, especially for images with excessive or too less whitespace), (2) placement, (3) size factor, (4) input file, (5) caption, and (6) label were defined to produce figures (regular and landscape). These commands coded for schemes are: \cmd{mysch\{\ldots\}}, \cmd{mysch[\ldots]\{\ldots\}}, \cmd{myschls\{\ldots\}}, and \cmd{myschls[\ldots]\{\ldots\}}.}
+
+\italk{\emph{Note}: For simplicity, appendix schemes are not supported by the class (see \cref{appsch}). However, such schematics can be coded as ``appendix figures.''  Following are examples of figure shortcuts for regular and landscape schemes without and with the optional argument.}
+
+\begin{flushleft}
+\hspace{-0.2cm}
+\begin{minipage}{0ex}
+\begin{verbatim}
+ \mysch{ht}{0.7}{image1.jpg}{Caption for this regular figure}{fig:1}
+ \mysch[1.5ex]{ht}{0.7}{image1o.jpg}{Figure caption with placement 
+              option}{fig:1o}
+ \myschls{p}{1.32}{image2.pdf}{Caption for this landscape figure}{fig:2ls}
+ \myschls[2ex]{p}{1.31}{image3.pdf}{Landscape figure caption with 
+               placement option}{fig:3ls}
+\end{verbatim}
+\end{minipage}
+\end{flushleft}
+%------------------------
+
+\italk{These shortcuts (and regular float environments as well) are automatically included in LOSH that appear after the TOC. Sometimes, excessive spaces were observed above and below the figures and tables (floating elements) with respect to the text around. The use of vertical spacing (+ve or -ve; e.g., \cmd{vspace\{4pt\}} and \cmd{vspace\{-6pt\}}) around the floating elements can help in the adjustment of their placements. The vertical spacing commands can be issued before and after these environments (as required) to fix the spacing. }
 
 
+%-----------------------------------------------------------------------------
+\section{Regular schemes in chapters}
+\italk{A schematic file (``\texttt{LampFlowchart.pdf}'') is included in the class folders for the demonstration. Any other user schematics or other dummy figures from the \texttt{mwe} package (Documentation Sec. 7.3) can also be used.}
+
+\kant[9]
+
+\begin{scheme}
+\centering
+\includegraphics[width=0.6\textwidth]{LampFlowchart}
+\caption{Flowchart of controls of light bulb --- A scheme.}
+\label{sc1}
+\end{scheme}
+%
+\kant[9]
+
+\mysch[-2.5ex]{h!}{0.4}{LampFlowchart}{Caption for this example image demonstrating an optional -2.5ex vertical spacing. Compare this with a narrow caption spacing without optional argument in \Cref{sc1}.}{sc2}
+
+\vspace{-3.5ex}
+
+%-----------------------------------------------------------------------------
+\section{Landscape schemes in chapters}
+
+\italk{All schemes are referred: The (\cref{sc1,sc2}) are good. And the \Cref{sc1,sc2,sc3} are too.} 
+
+\kant[4]\kant[9]
+
+\italk{Again - No appendix schemes are available in the class as they are not required as well and can be managed through appendix figures (\cref{appsch}) and avoids another list namely ``List of Appendix Schemes'' --- feels a little too much.}
+
+\myschls[0.2ex]{p}{0.4}{LampFlowchart}{Landscape scheme --- Flowchart of controls of light bulb. Optional 0.2ex vertical spacing was used.}{sc3}
 
 
 %-----------------------------------------------------------------------------
@@ -1651,8 +2447,6 @@ for citations to be used while loading the \texttt{natbib} package as \textcolor
 
 \hl{Foot \emph{vs} feet.} Best way is to use ``ft'' also goes for ``in'', and ``ac''. 
 
-
-
 %-----------------------------------------------------------------------------
 \section{Handling Equations}
 \italk{The \texttt{abovedisplayskip} through \texttt{setlength} to reduce the spacing above the equations. These equations can be referred using \texttt{cref} commands (\cref{eq1,eq2,eq3,eq4,eq5,eq6,eq7,eq8,eq9,eq10,eq11}). The code shows how all the equations were produced:}
@@ -1704,15 +2498,21 @@ for citations to be used while loading the \texttt{natbib} package as \textcolor
 
 
 %----------------------------------------------------
-\section{Handy commands for equation with correct spacing}
+\section{Handy commands for equation with correct spacing}\label{eqnscut}
 %\setlength{\abovedisplayskip}{-0.2in}
 %\setlength{\belowdisplayskip}{0pt}
 
-Let us suppose that the noumena have nothing to do with necessity, since knowledge of the Categories is a posteriori. Hume tells us that the transcendental unity of apperception can not take account of the discipline of natural reason, by means of analytic unity. As is proven in the ontological manuals, it is obvious that the transcendental unity of apperception proves the validity of the Antinomies; what we have alone been able to show is that, our understanding. Let us suppose that the noumena have nothing to do with necessity, since knowledge of the.
+Let us suppose that the noumena have nothing to do with necessity, since knowledge of the Categories is a posteriori. Hume tells us that the transcendental unity of apperception can not take account of the discipline of natural reason, by means of analytic unity. As is proven in the ontological manuals, it is obvious that the transcendental unity of apperception proves the validity of the Antinomies; what we have alone been able to show is that, our understanding. Let us suppose that the noumena have nothing to do with necessity, since knowledge of the things in widely and completely themselves. \italk{Now, \cmd{myeqn\{\ldots\}} shortcut:}
 
 \myeqn{\text{Parameter} = ax^2 + bx + c \label{eq21}}
 
-\noindent \cref{eq21} is one equation. As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. Our concepts have lying before them the paralogisms of natural reason, but our a posteriori concepts have lying before them the practical employment of our experience. Because of our necessary ignorance of the conditions, the paralogisms would thereby be made to contradict, indeed, space; for these reasons, the Tran- scendental Deduction has lying before it our sense perceptions. (Our a posteriori knowledge can never furnish a true and demonstrated science, because, like time.
+\noindent \cref{eq21} is one equation. As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. 
+
+Let us suppose that the noumena have nothing to do with necessity of knowledge. \italk{Now, \cmd{myeqn*\{\ldots\}} shortcut (needless to mention * version eliminate equation numbers):}
+
+\myeqn*{\text{Parameter} = ax^2 + bx + c}
+
+\noindent Our concepts have lying before them the paralogisms of natural reason, but our a posteriori concepts have lying before them the practical employment of our experience. Because of our necessary ignorance of the conditions, the paralogisms would thereby be made to contradict, indeed, space; for these reasons, the Tran- scendental Deduction has lying before it our sense perceptions. (Our a posteriori knowledge). \italk{Now, \cmd{myeqn\{\ldots\}} shortcuts separately issued:} 
 
 \myeqn{
 P = ax^2 + b 
@@ -1721,8 +2521,9 @@ P = ax^2 + b
 
 \myeqn{P = ax^2 + bx + c + d^3 \label{eqn:23}}
 
-As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. Our concepts have lying before them the paralogisms of natural reason, but our a posteriori concepts have lying before them the practical employment of our experience when coupled with their experience is futile. 
+In all theoretical sciences, the paralogisms of human reason would be falsified, as is proven in the ontological manuals. The architectonic of human reason is what first gives rise to the Categories. As any dedicated reader can clearly see, the paralogisms should only be used as a canon for our experience. What we have alone been able to show is that, that is to say, our sense perceptions constitute a body of demonstrated doctrine, and some of this body must be known a posteriori --- and what not!  \italk{Now, \cmd{myalign\{\ldots\}} shortcut:}.
 
+\vspace{-6pt}% sometime necessary to apply additional correction (font change)
 \myalign{
 R & = 7.25 x \times \alpha \label{eq24}\\
 Q & = 8.8 y \times \gamma \label{eq25}\\
@@ -1730,23 +2531,61 @@ Q & = 8.8 y \times \frac{\beta}{3.6} \label{eq26}\\
 Q & = 8.8 y \times \Delta \label{eq27}
 }
 
-\noindent \Cref{eq27} is the last one. As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. Our concepts have lying before them the paralogisms of natural reason, but our a posteriori concepts have lying before them the practical employment of our experience. Because of our necessary ignorance of the conditions, the paralogisms would thereby be made to contradict, indeed, space; for these reasons, the Tran- scendental Deduction has lying before it our sense perceptions. (Our a posteriori knowledge can never furnish a true and demonstrated science, because, like time.
+\noindent \Cref{eq27} shown above. As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. 
+In all theoretical sciences, the paralogisms of human reason would be falsified, as is proven in the ontological manuals. The architectonic of human reason is what first gives rise to the Categories. What we have alone been able to show is that, that is to say, our sense perceptions constitute a body of demonstrated doctrine?, and some of this body must be known a posteriori. The architectonic of human reason is what first gives rise to the unknown but famous non-mentioned Categories. \italk{Now \cref{eq24,eq25,eq26,eq27} as, \cmd{myalign*\{\ldots\}} shortcut:}.
 
-\myfraceqn{y = \frac{2}{3} \times x \label{28}}
-
-\noindent As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. Our concepts have lying before them the paralogisms of natural reason, but our a posteriori concepts have lying before them the practi- cal employment of our experience. Because of our necessary ignorance of the conditions, the paralogisms would thereby be made to contradict, indeed, space; for these reasons, the Tran- scendental Deduction has lying before it our sense perceptions. (Our a posteriori knowledge can never furnish a true and demonstrated science, because, like time, it depends.
-
-\noindent \Cref{eq27} is the last one. As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. 
-
-\myfracalign{
-y & = \frac{2}{3} \times x b \label{29} \\
-Q & = 8.8 y \times \gamma \label{eq25}\\
-Q & = 8.8 y \times \frac{\beta}{3.6} \label{eq26}\\
-\text{Rate} & = 8.8 y \times \frac{\gamma}{\delta} \label{eq25}
+\vspace{-6pt}% sometime necessary to apply additional correction (font change)
+\myalign*{
+R & = 7.25 x \times \alpha \\
+Q & = 8.8 y \times \gamma \\
+Q & = 8.8 y \times \frac{\beta}{3.6} \\
+Q & = 8.8 y \times \Delta 
 }
 
-\noindent As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. Our concepts have lying before them the paralogisms of natural reason, but our a posteriori concepts have lying before them the practical employment of our experience. Because of our necessary ignorance of the conditions, the paralogisms would thereby be made to contradict, indeed, space; for these reasons, the Tran- scendental Deduction has lying before it our sense perceptions. (Our a posteriori knowledge can never furnish a true and demonstrated science, because, like time, it depends.
+Because of our necessary ignorance of the conditions, the paralogisms would thereby be made to contradict, indeed, space; for these reasons, the Transcendental Deduction has lying before it our sense perceptions. (Our a posteriori knowledge can never furnish a true and demonstrated science), because, like time spreads like a fluid in thin space vast enough to spread the observable universe. \italk{Now, \cmd{myfraceqn\{\ldots\}} shortcut:}
 
+\myfraceqn{y = \frac{2}{3} \times x \label{eq28}}
+
+\noindent \noindent \Cref{eq28} is another equation. As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. 
+
+As is shown, in the logics defined, in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case). \italk{Now, \cmd{myfracalign\{\ldots\}} shortcut:} 
+
+\myfracalign{
+y & = \frac{2}{3} \times x b \label{eq29} \\
+Q & = 8.8 y \times \gamma \label{eq30}\\
+Q & = 8.8 y \times \frac{\beta}{3.6} \label{eq31}\\
+\text{Rate} & = 8.8 y \times \frac{\gamma}{\delta} \label{eq32}
+}
+
+\noindent As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. Have alone been able to show is that.
+
+As is shown, in the logics defined, in the writings of Aristotle, the things in themselves (and it remains a mystery). \italk{Now \cref{eq29,eq30,eq31,eq32}, \cmd{myfracalign*\{\ldots\}} shortcut:} 
+
+\myfracalign*{
+y & = \frac{2}{3} \times x b \\
+Q & = 8.8 y \times \gamma \\
+Q & = 8.8 y \times \frac{\beta}{3.6} \\
+\text{Rate} & = 8.8 y \times \frac{\gamma}{\delta} 
+}
+
+\noindent As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. Have alone been able to show is that.
+
+
+Our sense perceptions constitute a body of demonstrated doctrine, and some of this body must be known a posteriori. Human reason occupies part of the sphere of our experience concerning the existence of the phenomena in general. Things in themselves (and it remains a mystery why this is the case) of time. \italk{Now, \cmd{mygather\{\ldots\}} shortcut:}
+
+\mygather{
+    \sin{2x} = 2\sin{x}\cos{x}\\
+    \cos{2x} = \cos^2{x}-\sin^2{x}\\ 
+    \cos^2{x} + \sin^2{x} = 1
+}
+
+\noindent As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. \italk{Now, \cmd{mygather*} shortcut:}
+
+\mygather*{
+    \sin{2x} = 2\sin{x}\cos{x}\\
+    \cos{2x} = \cos^2{x}-\sin^2{x}\\ 
+    \cos^2{x} + \sin^2{x} = 1
+}
 
 %-----------------------------------------------------------------------------
 \section{Spacing adjustment around non-textual elements}
@@ -1897,6 +2736,7 @@ Theorems, corollaries, lemmas, and other elements can be referenced after defini
 
 \label{biblio}
 
+
 %-----------------------------------------------------------------------------
 %-----------------------------------------------------------------------------
 \appendix % single and simple regular appendix 
@@ -2029,16 +2869,24 @@ Number & Month \\
 
 I can include appendix material here. 
 
-\italk{And the second figure using the shortcut command \texttt{myfigap} and uses a long caption that wraps around (refer code in page: \pageref{figv}).}
+\italk{And the second figure using the shortcut command \texttt{myfigap} and uses a long caption that wraps around (refer code in page: \pageref{figv}).} \hl{Note: The figure number A1 is again created as we have single ``Appendix'' as well as ``Named Appendices'' in the same document. This is applicable to all floats. And, this will not happen in a regular thesis (e.g., both styles of appendices).}
 
-
-\myfigap{H}{0.4}{frog.jpg}{Named appendix figure using myfigap command - figure captions go at the bottom - a long long long long long long long long long long long long long long long long long long long long caption.}{figaa1}
+\myfigap{H}{0.3}{frog.jpg}{Named appendix figure using myfigap command - figure captions go at the bottom - a long long long long long long long long long long long long caption.}{figaa1}
 
 \kant[1]
 
+%-----------------------------------------------------------------------------
+\section{Appendix scheme}\label{appsch}
+
+\italk{Appendix scheme is coded as appendix figure using (e.g., \cmd{myfigap})}
+
+\myfigap{H}{0.4}{LampFlowchart}{Appendix schematic of control of checking the light bulb.}{figas1}
+
 \begin{appendixtable}[h]
 \centering
-\caption{Appendix table (full-width) using \texttt{tblr} package with \texttt{booktabs} commands illustrating column width coefficient (2nd column is thrice the width of 1st) and automatic overflow of rows as a paragraph. \textcolor{magenta}{Important: While using the \cmd{cmidrule} trim options inside \texttt{tblr} environment use [lr] instead of (lr).} Captions go at the top of the table and are left-justified.}
+\caption{Appendix table (full-width) using \texttt{tblr} package with \texttt{booktabs} commands illustrating column width coefficient (2nd column is thrice the width of 1st) and automatic overflow of rows as a paragraph. \textcolor{magenta}{Important: With \texttt{tblr} use \cmd{SetTblrInner\{rowsep=\ldots\}}, as used in this table, for altering the row spacing. While using the \cmd{cmidrule} trim options inside \texttt{tblr} environment use [lr] instead of (lr). } Captions go at the top of the table and are left-justified. 
+}
+\SetTblrInner{rowsep=0.8pt}
 \begin{tblr}{X X[3]}
 \toprule
 Number & Month \\
@@ -2085,7 +2933,7 @@ Number & Month & Same & Same\\
 
 %-------------------------------------------
 \subsection{Test 4}
-\italk{A few equations using \texttt{align} environment.}
+\italk{A few equations using \texttt{align} environment. Observe the additional white space created when the equation is coded in a regular way. The solution is to use the equation shortcuts or the use of negative \cmd{vspace} commands as shown earlier (\cref{eqnscut}).}
 
 \begin{align}
 y &= mx + c \\
@@ -2095,6 +2943,13 @@ v\: (\text{Velocity}) &= \frac{d\: (\text{distance})}{t\: (\text{time})}
 
 \vspace{-1.5ex}
 \italk{Now regular text with space adjusted by -ve \cmd{vspace} command.} Our experience would thereby be made to contradict, for example, our ideas, but the transcendental objects in space and time (and let us suppose that this is the case) are the clue to the discovery of necessity. But the proof of this is a task from which we can here be absolved.
+
+\vspace{-4pt}
+\myalign{
+y &= mx + c \\
+E &= mc^2 \\
+v\: (\text{Velocity}) &= \frac{d\: (\text{distance})}{t\: (\text{time})} 
+}
 
 \italk{\hl{Just to reiterate:} The spacing around equations, figures, and tables can be appropriately adjusted to match the text double spacing using \cmd{vspace} commands.}
 
@@ -2251,6 +3106,8 @@ I can include appendix material here. \kant[9]
 \end{verbatim}
 }
 
+
+
 \italk{The actual example or rendered section of Java program using \vb{lstlisting} environment (refer source code) is shown below as an illustration:}
 
 {\singlespacing
@@ -2285,7 +3142,162 @@ I can include appendix material here. \kant[9]
 }
 
 %-------------------------------------------
-\subsection{Test2}
+\subsection{More listings}
+
+%-------------------------------------------
+\subsubsection{Listings as non-float and fonts}
+
+\italk{Caption in the listing as a listing option, which will not feature in the TOC.}
+
+{\singlespacing
+\begin{lstlisting}[frameround=fttt, caption = {Caption in listing as option.}, captionpos=b]
+//-------------------------------------------------------------------------
+// Comment global variable
+//
+	public void extractHSBchannel(ImagePlus colimp){
+
+		ImageProcessor iporig = colimp.getProcessor();
+	}	
+//-------------------------------------------------------------------------	
+\end{lstlisting}
+}
+
+In all theoretical sciences, the paralogisms of human reason would be falsified, as is proven in the ontological manuals. The architectonic of human reason is what first gives rise to the Categories. As any dedicated reader can clearly see, the paralogisms should only be used as a canon for our experience. 
+
+\italk{No caption --- just listing with frame style changed. The list settings can redefined as desired. Default double spacing was applied as no spacing command was used.}
+\vspace{3mm}
+
+\lstset{frameround=fttt}
+\begin{lstlisting}[frame=trBL, caption={}]
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+\end{lstlisting}
+
+\kant[9]
+\italk{Listing coded in figure environment. Frame style and background color changed. This listing will have the figure number and will be added to the TOC.}
+
+\begin{figure}[h!]
+{\singlespacing
+\lstset{frameround=fttt}
+\begin{lstlisting}[frame=trBL, backgroundcolor=\color{blue!10!white}]
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+\end{lstlisting}
+}
+\caption{Listing fig caption.}
+\end{figure}
+
+%-------------------------------------------
+\subsubsection{Long listings}
+
+\italk{Longer listings that span several pages are coded as two parts: (1) Simple listing without a caption --- as listings will follow automatically through several pages and (2) A figure environment with title only and [H] placement describing the code. Frame style and background color changed. Obviously, this listing indirectly will have the figure number and will be added to the TOC.}
+
+%Listing with dummy fig caption
+%\begin{figure}[t]
+{\singlespacing
+\lstset{frameround=fttt}
+\begin{lstlisting}[frame=trBL, backgroundcolor=\color{green!10!red!5!white}]
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+\end{lstlisting}
+}
+
+\vspace{-5mm}
+\begin{figure}[H]
+\caption{Dummy caption for listing}
+\label{dum-list-cap}
+\end{figure}
+
+\italk{The \Cref{dum-list-cap} lists the code of our program.}
+
+%-------------------------------------------
+\subsection{}
 I can include appendix material here. 
 
 \italk{Shown below is another equation showing hypotenuse \Cref{eqc1}. The previous equation in the appendix one is \cref{eqa1} which was $y = mx + c$ in \cpageref{eqa1}. } 
@@ -2319,35 +3331,21 @@ and Paper Publishing!
 \end{center}
 
 \hfill {\footnotesize --- C. Igathinathane}
-\closeappendices  % Essential to create LOAT and LOAF 
 
-\vspace{0.5in}
+\vspace{0.1in}
 \begin{center}
 \italk{--- The End ---}
 \end{center}
 
 \vfill
-{\noindent\scriptsize\textcolor{gray}{Updated: September 1, 2023}}
-%--------------------------------------------------
+{\noindent\scriptsize\textcolor{gray}{Updated: December 10, 2023}}
 
-\end{spacing}
+%--------------------------------------------------
+\closeappendices  % Essential to create LOAT and LOAF 
 
 \end{document}
 %--------------------------------------------------
 %--------------------------------------------------
 %--------------------------------------------------
-
-ToDo:
-Refer to this for units conventions. 
-https://physics.nist.gov/cuu/Units/checklist.html
-https://physics.nist.gov/cuu/pdf/checklist.pdf
-
-Revise documentation with the new example code
-BibLaTeX first
-Units info above 
-Update Fig.1 of documentation
-
-
-
 
 

@@ -1,17 +1,23 @@
 %******************* START *******************
-\documentclass[12pt,chapterrefs,showgrid]{ndsu-thesis-2022}
-%\documentclass[12pt]{ndsu-thesis-2022}
+\documentclass[12pt,chapterrefs]{ndsu-thesis-2022}
 
 %----------------------------------------------------
 %\usepackage[sort&compress]{natbib}
 %\citestyle{egu} % agms, agu, arms, egu, cospar, dcu, kluwer, plain, nature
 %\newcommand{\makebib}{\biblio{chicago}{mybib}} % shortcut for bibliography
 
+%\usepackage[contents={},opacity=0]{background}
+%\backgroundsetup{position={0,0},opacity=0.1,placement=bottom,angle=0,scale=1,
+%contents={\begin{tikzpicture}
+%   \fill[white] (0in,0in) rectangle (\paperwidth,\paperheight);
+%   \filldraw[help lines, step = 0.1in, line width=0.5pt, blue] (0in,0in) grid (\paperwidth,\paperheight);
+%\end{tikzpicture}}
+%}
 
 \usepackage[style=apa,uniquename=false,natbib=true,backend=biber]{biblatex}% works well with \citep and \citet commands
 \addbibresource{mybib.bib}% *.bib extension is necessary 
 
-\newcommand\myspacing{1.9} % 23 lines/page needs 1.9 for thesis
+\renewcommand\myspacing{1.9} % 23 lines/page needs 1.9 for thesis
 
 \usepackage{suffix}
 
@@ -45,7 +51,6 @@
 
 %************ Document start ************
 \begin{document}
-\begin{spacing}{\myspacing}      % New line spacing - 23 lines per page
 
 %----------------------------------------------------
 \myheading{Test Chapter for NDSU Thesis Class Sandbox}
@@ -63,6 +68,8 @@ This ``\texttt{ndsu-sandbox.tex}'' file can be used as a sandbox to try out thin
 
 %----------------------------------------------------
 \section{Second Section - NDSU Style Equation Spacing}
+%\setlength{\abovedisplayskip}{-0.2in}
+%\setlength{\belowdisplayskip}{0pt}
 
 Let us suppose that the noumena have nothing to do with necessity, since knowledge of the Categories is a posteriori. Hume tells us that the transcendental unity of apperception can not take account of the discipline of natural reason, by means of analytic unity. As is proven in the ontological manuals, it is obvious that the transcendental unity of apperception proves the validity of the Antinomies; what we have alone been able to show is that, our understanding. Let us suppose that the noumena have nothing to do with necessity.
 
@@ -74,7 +81,7 @@ Let us suppose that the noumena have nothing to do with necessity, since knowled
 P = ax^2 + bx + c + \frac{d^5}{r^2}
 }
 
-As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. Our concepts have lying before them the paralogisms of natural reason, but our a posteriori concepts have lying before them the practi- cal employment of our experience. Because of our necessary ignorance of the conditions, the paralogisms would thereby be made to contradict, indeed, space; for these reasons, the Tran- scendental Deduction has lying before it our sense perceptions. 
+As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. Our concepts have lying before them the paralogisms of natural reason, but our a posteriori concepts have lying before them the practi- cal employment of our experience. Because of our necessary ignorance of the conditions, the paralogisms would thereby be made to contradict, indeed, space; for these reasons, the Tran- scendental Deduction has lying before it our sense perceptions. (Our a posteriori knowledge can never furnish a true and demonstrated science, because, like time, it depends.
 
 \myeqn{\text{Parameter} = ax^2 + bx + c1 \label{eq21}}
 
@@ -104,32 +111,81 @@ a_1& =b_1+\frac{c1}{c2} \label{eqnfr}\\
 a_2& =b_2+c_2-d_2+\frac{e_2}{e_3}
 }
 
-As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. Our concepts have lying before them. As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. Our concepts have lying before.
+As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. Our concepts have lying there.
 
 \mydisp{
 a_1 =b_1+ c
 }
 
-As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. Our concepts have lying before. As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. Our concepts have lying before time. 
-
+As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. Our concepts have lying there. 
 
 \myfracdisp{
-\textcolor{blue}{a_1 =b_1+\frac{c1}{c2}} 
+a_1 =b_1+\frac{c1}{c2} 
+}
+
+As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. Our concepts have lying before them. As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case). \hl{Regular displays --- has more space}.
+
+\[
+a_1 =b_1+\frac{c1}{c2} 
+\]
+
+As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. Our concepts have lying before.
+
+\begin{gather}
+a_0=\frac{1}{\pi}\int\limits_{-\pi}^{\pi}f(x)\,\mathrm{d}x\\[6pt]
+a_1=\frac{1}{\pi}\int\limits_{-\pi}^{\pi}f(x)\,\mathrm{d}x+\frac{1}{\pi}\int\limits_{-\pi}^{\pi}f(x)\,\mathrm{d}x\\[6pt]
+a_2=\frac{1}{\pi}\int\limits_{-\pi}^{\pi}f(x)\,\mathrm{d}x
+\end{gather}
+
+As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. Our concepts have lying before.
+
+As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. Our concepts have lying before.
+
+\mygather*{
+a_0=\frac{1}{\pi}\int\limits_{-\pi}^{\pi}f(x)\,\mathrm{d}x\\[6pt]
+a_1=\frac{1}{\pi}\int\limits_{-\pi}^{\pi}f(x)\,\mathrm{d}x+\frac{1}{\pi}\int\limits_{-\pi}^{\pi}f(x)\,\mathrm{d}x
 }
 
 As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. Our concepts have lying before.
 
-\textcolor{magenta}{Compare the above spacing while using the a regular display command - with blank lines above and below the coded equation. The Grad School will not allow this extra line spacing.} As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time - taken in the right frame of relative time. 
+\vspace{2ex}
+\mygather*{
+a_0=\frac{1}{\pi}\int\limits_{-\pi}^{\pi}f(x)\,\mathrm{d}x\\[6pt]
+a_1=\frac{1}{\pi}\int\limits_{-\pi}^{\pi}f(x)\,\mathrm{d}x+\frac{1}{\pi}\int\limits_{-\pi}^{\pi}f(x)\,\mathrm{d}x
+}
+\vspace{2ex}
 
-\[
-\textcolor{magenta}{a_1 =b_1+\frac{c1}{c2}} 
-\]
+As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. Our concepts have lying before.
 
-\kant[2-3]
+As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. Our concepts have lying before.
+
+\myfracgather*{
+a_0=\frac{1}{\pi}\,\mathrm{d}x\\
+a_1=\frac{1}{\pi}\,\mathrm{d}x+\frac{1}{\pi}
+}
+
+As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. Our concepts have lying before.
+
+As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. Our concepts have lying before.
+
+\mygather{
+y = mx + c \label{eq22} \\
+y = mx + c + mx_3 + c_2 \label{eq23} \\
+y = mx + c \label{eq24}
+}
+
+As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. Our concepts have lying before them. As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. Our concepts have lying before.
+
+\mygather{
+y = mx + c \label{eq25}\\
+y = mx + c \label{eq26}
+}
+
+As is shown in the writings of Aristotle, the things in themselves (and it remains a mystery why this is the case) are a representation of time. Our concepts have lying before them.
+
 
 %----------------------------------------------------
 \makerefs%For individual chapter references - command should be inside refsection environment
 
-\end{spacing}
 \end{document}
 %******************* END *******************
