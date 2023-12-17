@@ -1672,7 +1672,7 @@ Number  & Twice & Squared & Fourth power \\
 
 
 %-----------------------------------------------------------------------------
-\section{Longtable 7: Simple long data table using \texttt{tabbing} environment}
+\section{Longtable 7: Simple long data table using \texttt{tabbing} environment}\label{lttab}
 
 \italk{The \vb{tabbing} environment offers the most simple way of developing data table (always left-justified; no TOC entries) and \vb{tabbing} entries automatically flow through pages (longtable). The tabs can be defined according to requirements. The tab stops can be adjusted to move the entire table or column widths manually. As the tabbing environment is not a table, it will not affect the numbering of the tables. }
 
@@ -3086,9 +3086,13 @@ Row 8 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 &
 \kant[9]
 
 %-----------------------------------------------------------------------------
-\section{Appendix - Longtable}
+\section{Appendix - Long Table}
 
-\italk{We know well that long tables are a little involved and tricky, and then in appendix needs manual override for proper output. The regular \vb{longtable} and \vb{longtbrl} environments are used to code the long tables, and their captions, and LOAT entries will appear correctly with \vb{table} environment. However, the existing appendix \vb{appendixtable} environment will not support the and \vb{longtable} and \vb{longtbrl} environments, even though these will output table contents the caption table numbering and LOAT will not appear correctly. Therefore, a simpler fix followed includes (1) a dummy \vb{appendixtable} with only a caption for the long table with negative \vb{vspace} and optional TOC entry \cmd{caption}[\ldots] with repeated caption text without negative \vb{vspace}, and immediately followed by (2) the long table code without caption. Examples of the appendix long tables are shown in Table~\ref{aplongtab1} and Table~\ref{aplongtab2}.}  
+\italk{We know well that long tables are a little involved and tricky, and then in appendix needs manual override for proper output. The regular \vb{longtable} and \vb{longtbrl} environments are used to code the long tables, and their captions, and LOAT entries will appear correctly with \vb{table} environment. However, the existing appendix \vb{appendixtable} environment will not support the and \vb{longtable} and \vb{longtbrl} environments, even though these will output table contents the caption table numbering and LOAT will not appear correctly. Therefore, a simpler fix followed includes (1) a dummy \vb{appendixtable} with only a caption for the long table with negative \vb{vspace} and optional TOC entry \cmd{caption}[\ldots] with repeated caption text without negative \vb{vspace}, and immediately followed by (2) the long table code without caption. Examples of the appendix long tables are shown in Table~\ref{aplongtab1} and Table~\ref{aplongtab2}. As shown before (Sec.~\ref{lttab}), for simple long data the \cmd{tabbing} environment can be utilized. These methods of appendix long table can be coded with or without caption.}  
+
+
+%-----------------------------------------------------------------------------
+\subsection{Appendix long table using fixed-width \texttt{longtable}}
 
 %------------------------------------
 \begin{appendixtable}% dummy appendixtable for caption 
@@ -3176,7 +3180,9 @@ One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
 }
 %------------------------------------
 
-\vspace{-3ex}
+%-----------------------------------------------------------------------------
+\subsection{Appendix long table using automatic full-width \texttt{longtblr}}
+
 \kant[9]
 
 %------------------------------------
@@ -3297,8 +3303,138 @@ One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
 }% long table code
 %------------------------------------
 
-\vspace{4ex}
+%-----------------------------------------------------------------------------
+\subsection{Appendix long table using \texttt{tabbing}}
+
+\kant[10]
+
+%-----------------------------------------------------------------------------
+\subsubsection{Long table without caption}
+\begingroup
+\singlespacing
+\begin{tabbing}
+1111111111111111\=22222222222222\=333333333333333\=44444444444444\=\kill
+\>1st column  \>  2nd column  \>  3rd column \> 4th column\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\end{tabbing}
+\endgroup
+
+%-----------------------------------------------------------------------------
+\subsubsection{Long table with caption}
+
 \kant[9]
+
+\vspace{-2ex}
+\begin{appendixtable}% dummy appendixtable for caption 
+\caption[Tabbing-based appendix long table using \texttt{tabbing} environment with separate caption and code.]{Tabbing-based appendix long table using \texttt{tabbing} environment with separate caption and code. \vspace{-8ex}}% caption with optional TOC entry and negative vspace
+\label{aplongtab3}% label 
+\end{appendixtable}
+\begingroup
+\singlespacing
+\begin{tabbing}
+11111111111111\=22222222222222\=333333333333333\=44444444444444\=\kill
+\>---------------------------------------------------------------------------------\\
+\>\: 1st column  \>  2nd column  \>  3rd column \> 4th column\\
+\>---------------------------------------------------------------------------------\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567\\
+\>\: 123tab  \>2345  \>34567\\
+\>\: 123tab  \>2345  \>34567\\
+\>\: 123tab  \>2345  \>34567\\
+\>\: 123tab  \>2345  \>34567\\
+\>\: 123tab  \>2345  \>34567\\
+\>\: 123tab  \>2345  \>34567\\
+\>\: 123tab  \>2345  \>34567\\
+\>\: 123tab  \>2345  \>34567\\
+\>\: 123tab  \>2345  \>34567\\
+\>\: 123tab  \>2345  \>34567\\
+\>\: 123tab  \>2345  \>34567\\
+\>\: 123tab  \>2345  \>34567\\
+\>\: 123tab  \>2345  \>34567\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>---------------------------------------------------------------------------------\\
+\end{tabbing}
+\endgroup
+
 
 %-----------------------------------------------------------------------------
 %-----------------------------------------------------------------------------
@@ -3571,7 +3707,7 @@ and Paper Publishing!
 \end{center}
 
 \vfill
-{\noindent\scriptsize\textcolor{gray}{Updated: December 10, 2023}}
+{\noindent\scriptsize\textcolor{gray}{Updated: December 17, 2023}}
 
 %--------------------------------------------------
 \closeappendices  % Essential to create LOAT and LOAF 
