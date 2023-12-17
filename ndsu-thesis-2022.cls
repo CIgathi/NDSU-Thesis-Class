@@ -86,8 +86,10 @@
 %              Headings > 3 level + caption left alignment (2023-11-16)
 %              List of schemes added \mysch \myschls (2023-11-23)
 %              Scenarios of closing appendices documented (2023-12-02)
+%              Appendix long table examples added in extended thesis (2023-12-17)
 %
 %  Update history
+%  Last updated: 2023-12-07
 %  Last updated: 2023-12-02
 %  Last updated: 2023-11-23
 %  Last updated: 2023-11-16
@@ -771,6 +773,10 @@
 }
 
 % Generate appendices with the correct numbering - modified
+
+\DefTblrTemplate{caption}{normal}{}% Suppressing the caption by tabularray
+\SetTblrTemplate{caption}{normal}
+
 \renewcommand{\appendix}{
     \chapter*{APPENDIX\vspace{-12pt}}
     \setcounter{section}{0}

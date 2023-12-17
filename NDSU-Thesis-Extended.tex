@@ -3065,7 +3065,215 @@ Row 8 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 &
 \end{appendixtable}
 \end{landscape}
 
-\kant[8]
+\kant[9]
+
+%-----------------------------------------------------------------------------
+\section{Appendix - Longtable}
+
+\italk{We know well that long tables are a little involved and tricky, and then in appendix needs manual override for proper output. The regular \vb{longtable} and \vb{longtbrl} environments are used to code the long tables, and their captions, and LOAT entries will appear correctly with \vb{table} environment. However, the existing appendix \vb{appendixtable} environment will not support the and \vb{longtable} and \vb{longtbrl} environments, even though these will output table contents the caption table numbering and LOAT will not appear correctly. Therefore, a simpler fix followed includes (1) a dummy \vb{appendixtable} with only a caption for the long table with negative \vb{vspace} and optional TOC entry \cmd{caption}[\ldots] with repeated caption text without negative \vb{vspace}, and immediately followed by (2) the long table code without caption. Examples of the appendix long tables are shown in \cref{aplongtab1}.} %,aplongtab2}.}
+
+%------------------------------------
+\begin{appendixtable}% dummy appendixtable for caption 
+\caption[Appendix long table using \texttt{longtable} environment with separate caption and long table code.]{Appendix long table using \texttt{longtable} environment with separate caption and long table code. \vspace{-8ex}}% caption with optional TOC entry and negative vspace
+\label{aplongtab1}% label 
+\end{appendixtable}
+{
+\singlespacing
+\centering
+\begin{longtable}{l c c c }% other specifiers (r and S) can be used
+        \toprule
+	First column & Second column & Data & Where?\\
+        \midrule
+        \endfirsthead 
+
+        \midrule
+	First column & Second column & Data & Where?\\
+        \midrule
+        \endhead
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+\bottomrule
+\multicolumn{4}{p{4.5in}}{Note: \kant[9]}
+\end{longtable}
+}
+%------------------------------------
+
+\kant[9]
+
+%------------------------------------
+\begin{appendixtable}
+
+\caption[Full-wdith appendix long table using \texttt{longtblr} environment with separate caption and long table code.]{Full-wdith appendix long table using \texttt{longtblr} environment with separate caption and long table code. \vspace{-7ex}}% caption with optional TOC entry and negative vspace
+\label{aplongtab2}% label 
+\end{appendixtable}
+\begingroup
+\begin{spacing}{0.8}% works with longtblr
+\DefTblrTemplate{contfoot-text}{default}{\itshape Continued \ldots}% defining default 
+\DefTblrTemplate{capcont}{default}{}% using default 
+ 
+\begin{longtblr}[
+note{} = {\footnotesize 
+	Note: First line of table footnote \\[1ex] 
+	\parbox{6.3in}{Note: \kant[9]}}
+]{
+  colspec = {X X[1.5] X[1.1] X[1.2,c] X[0.8,r]},
+  rowhead = 2,
+  middlehead = {} 
+}
+\toprule
+First column & \textbf{Second column} & \textbf{Third column} & Where? & Number\\
+\midrule
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+\bottomrule
+\end{longtblr}
+\end{spacing}
+\endgroup
+%------------------------------------
+
+\vspace{4ex}
+\kant[9]
 
 %-----------------------------------------------------------------------------
 %-----------------------------------------------------------------------------

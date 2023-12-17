@@ -193,6 +193,140 @@ Referring to all entries in the ``\texttt{mybib.bib}'' file to generate the cita
 
 The same using \texttt{\textbackslash citet\{\ldots\}} command (cite text) in the running text as: The authors \citet{texbook,lcompanion,latex2e,knuth1984,lesk1977,amsthm2017,calvo2004using,cannayen2011latex,kopka2004guide,notso2021,bari2016identification} have something to do with \LaTeX. For most bibliography citations and list creation, these two commands are sufficient.
 
+
+
+%------------------------------------------------------
+\subsection{Appendix A Subsection}
+This is an example long table.
+\vspace{2ex}
+\setlength\LTleft{0pt}
+\setlength\LTright{0pt}
+ 
+\begin{landscape}
+{\small
+{\renewcommand{\arraystretch}{0.6}
+\begin{ThreePartTable}
+  \begin{TableNotes}
+  \baselineskip=0.5\baselineskip
+    \item[] $\dag$ MD - Methods distance i.e. total polygonal distance of all methods taken in the selected order   
+    \item[] $\ddag$ TSP - Traveling salesperson distance i.e., total polygonal distance of all methods following traveling salesman technique; Origin was the outlet location where bales were finally transported; and medoid was the aggregation method where it coincided on one of the field stacks but other methods may not.
+  \end{TableNotes}
+  \begin{longtable}{lll lll ll rrr}
+  \caption{\normalsize A long table - spanning 3 pages - an example taken from our research group work on ``Methods of optimum bale stack locations and their logistics distances and methods combined distances.''}\label{tab1}\\[-2ex]    
+%  \tabletopinfols% defined in the preamble
+    \endfirsthead
+   
+ \multicolumn{11}{l}%
+{{\normalsize\tablename\ \thetable{} Methods of optimum bale stack locations and their logistics distances  -- (\emph{continued}).}} \\[2ex]
+%\tabletopinfols% defined in the preamble
+    \endhead
+   
+    \cmidrule{10-11}
+    \multicolumn{11}{r}{\textit{continued \ldots}}
+    \endfoot
+    \bottomrule
+    \insertTableNotes
+    \endlastfoot
+       
+% the contents of the table
+0.41 & 3 & Origin  & 0.196 & 0 & 0.196 & 0.070 & 0.045 & 123 & 234 & 345\\
+$[1]$ &  & Field middle  & 0.085 & 0.045 & 0.130 \\
+&  & Middle data range  & 0.070 & 0.061 & 0.131 \\
+&  & Centroid & 0.068 & 0.062 & 0.130 \\
+&  & Geometric median & 0.065 & 0.064 & 0.129 \\
+&  & Medoid  & 0.068 & 0.075 & 0.143 \\
+\midrule
+0.51 & 4 & Origin  & 0.240 & 0 & 0.240 & 0.054 & 0.048 & 123 & 234 & 345\\
+$[1.25]$ &  & Field middle  & 0.107 & 0.050 & 0.158 \\
+&  & Middle data range  & 0.108 & 0.052 & 0.160 \\
+&  & Centroid & 0.102 & 0.057 & 0.159 \\
+&  & Geometric median & 0.099 & 0.067 & 0.166 \\
+&  & Medoid  & 0.101 & 0.072 & 0.172 \\
+\midrule
+1.01 & 8 & Origin  & 0.462 & 0 & 0.462 & 0.095 & 0.051  & 123 & 234 & 345\\
+$[2.5]$ &  & Field middle  & 0.404 & 0.142 & 0.546 \\
+&  & Middle data range  & 0.205 & 0.109 & 0.315 \\
+&  & Centroid & 0.206 & 0.114 & 0.320 \\
+&  & Geometric median & 0.205 & 0.109 & 0.314 \\
+&  & Medoid  & 0.206 & 0.103 & 0.308 \\
+\midrule
+2.02 & 18 & Origin  & 1.80 & 0 & 1.80 & 0.054 & 0.034 & 123 & 234 & 345 \\
+$[5]$ &  & Field middle  & 0.87 & 0.30 & 1.17 \\
+&  & Middle data range  & 0.87 & 0.30 & 1.17 \\
+&  & Centroid & 0.86 & 0.31 & 1.17 \\
+&  & Geometric median & 0.86 & 0.31 & 1.18 \\
+&  & Medoid  & 0.89 & 0.35 & 1.24 \\
+\midrule
+4.05 & 33 & Origin  & 5.26 & 0 & 5.26 & 0.144 & 0.100 & 123 & 234 & 345 \\
+$[10]$ &  & Field middle  & 3.11 & 0.85 & 3.96 \\
+&  & Middle data range  & 3.11 & 0.86 & 3.97 \\
+&  & Centroid & 3.11 & 0.86 & 3.97 \\
+&  & Geometric median & 3.11 & 0.88 & 3.99 \\
+&  & Medoid  & 3.45 & 1.09 & 4.53 \\
+\midrule
+8.09 & 67 & Origin  & 14.63 & 0 & 14.63 & 0.024 & 0.021 & 123 & 234 & 345 \\
+$[20]$ &  & Field middle  & 7.29 & 2.41 & 9.71 \\
+&  & Middle data range  & 7.29 & 2.43 & 9.72 \\
+&  & Centroid & 7.29 & 2.43 & 9.72 \\
+&  & Geometric median & 7.28 & 2.45 & 9.73 \\
+&  & Medoid  & 7.29 & 2.41 & 9.70 \\
+\midrule
+16.19 & 133 & Origin  & 40.67 & 0 & 40.67 & 0.074 & 0.072 & 123 & 234 & 345 \\
+$[40]$ &  & Field middle  & 20.28 & 6.54 & 26.82 \\
+&  & Middle data range  & 20.29 & 6.61 & 26.89 \\
+&  & Centroid & 20.28 & 6.51 & 26.79 \\
+&  & Geometric median & 20.28 & 6.58 & 26.86 \\
+&  & Medoid  & 20.52 & 6.88 & 27.39 \\
+\midrule
+32.38 & 270 & Origin  & 117.89 & 0 & 117.89 & 0.060 & 0.052 & 123 & 234 & 345 \\
+$[80]$ &  & Field middle  & 58.92 & 18.11 & 77.03 \\
+&  & Middle data range  & 58.92 & 18.22 & 77.14 \\
+&  & Centroid & 58.92 & 18.16 & 77.08 \\
+&  & Geometric median & 58.92 & 18.19 & 77.11 \\
+&  & Medoid  & 59.18 & 18.11 & 77.29 \\
+\midrule
+64.75 & 540 & Origin  & 333.12 & 0 & 333.12 & 0.049 & 0.043 & 123 & 234 & 345 \\
+$[160]$ &  & Field middle  & 166.52 & 51.21 & 217.73 \\
+&  & Middle data range  & 166.53 & 51.41 & 217.93 \\
+&  & Centroid & 166.52 & 51.26 & 217.78 \\
+&  & Geometric median & 166.52 & 51.30 & 217.82 \\
+&  & Medoid  & 166.81 & 51.23 & 218.05 \\
+\midrule
+129.5 & 1082 & Origin  & 943.38 & 0 & 943.38 & 0.051 & 0.029 & 123 & 234 & 345 \\
+$[320]$ &  & Field middle  & 470.83 & 145.65 & 616.48 \\
+&  & Middle data range  & 470.83 & 145.79 & 616.62 \\
+&  & Centroid & 470.83 & 145.91 & 616.74 \\
+&  & Geometric median & 470.83 & 145.83 & 616.66 \\
+&  & Medoid  & 471.26 & 148.53 & 619.79 \\
+\midrule
+259 & 2163 & Origin  & 2665.34 & 0 & 2665.34 & 0.028 & 0.027 & 123 & 234 & 345 \\
+$[640]$ &  & Field middle  & 1331.20 & 410.81 & 1742.01 \\
+&  & Middle data range  & 1331.21 & 411.45 & 1742.66 \\
+&  & Centroid & 1331.19 & 411.07 & 1742.27 \\
+&  & Geometric median & 1331.19 & 411.25 & 1742.44 \\
+&  & Medoid  & 1331.32 & 407.51 & 1738.83 \\
+\midrule
+517 & 4324 & Origin  & 7531.35 & 0 & 7531.35 & 0.022 & 0.020 & 123 & 234 & 345 \\
+$[1280]$ &  & Field middle  & 3765.75 & 1160.34 & 4926.09 \\
+&  & Middle data range  & 3765.77 & 1160.95 & 4926.72 \\
+&  & Centroid & 3765.75 & 1160.51 & 4926.26 \\
+&  & Geometric median & 3765.75 & 1160.39 & 4926.15 \\
+&  & Medoid  & 3765.86 & 1159.71 & 4925.57 \\
+\label{longtabls} % label inside the innermost longtable environment
+\end{longtable}
+\end{ThreePartTable}
+}
+}
+\end{landscape}
+ 
+\setlength{\parindent}{0.5in}
+\vspace{-2ex}
+ 
+%-----------------------------------------------------------------------------
+
+
+
+
 %******************* Bibliography handling *******************
 \makerefs %For individual chapter references - command should be inside refsection environment
 
