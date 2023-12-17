@@ -1348,15 +1348,15 @@ One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
 %-----------------------------------------------------------------------------
 \subsection{Longtable 4: Simplified longtblr - With header but no repeated caption }
 
-\italk{Since it is automatic full-width no centering is necessary. Row spacing by \texttt{spacing} command (others are ineffective with the class). The necessary codes (caption, footnote, column specifications, etc.) are input inside of \cmd{longtblr} optional [\ldots] and regular argument \{\ldots\}. Enclosing group environment is necessary.}
+\italk{Since it is automatic full-width no centering is necessary. Row spacing by \texttt{spacing} command (others are ineffective with the class). The necessary codes (caption, footnote, column specifications, etc.) are input inside of \cmd{longtblr} optional [\ldots] and regular argument \{\ldots\}. Enclosing group environment is necessary. As this is un-numbered table the table's serial number should be reduced by 1 using the command \cmd{addtocounter}\{table\}\{-1\} after the table code (as applied at the end).}
 
 \begingroup
 \begin{spacing}{0.84}% works with longtblr
 \DefTblrTemplate{contfoot-text}{default}{\itshape Continued \ldots}% defining default 
-\DefTblrTemplate{capcont}{default}{}% using default 
+\DefTblrTemplate{capcont}{default}{}% suppress the repeating head caption
+\DefTblrTemplate {caption-lot}{default}{}% suppressing lot entry
  
 \begin{longtblr}[
-caption = {Full-width table with repeating header row - A good caption need to be developed for this table - Let us make it long enough and some more and here we go.},
 label = {table:tab6},
 note{} = {\footnotesize 
 	Note: Test \\ 
@@ -1472,6 +1472,7 @@ One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
 \end{longtblr}
 \end{spacing}
 \endgroup
+\addtocounter{table}{-1}% for this dummy table the counter should be reduced by 1
 
 
 %-----------------------------------------------------------------------------
@@ -1556,7 +1557,9 @@ It is   & not clear     & what you want \\
 \DefTblrTemplate{caption-text}{default}{}% caption suppressed
 \DefTblrTemplate{conthead-text}{default}{}% head text suppressed
 \DefTblrTemplate{contfoot-text}{default}{}% foot text suppressed
-\begin{longtblr}[entry=none]{X[0.5] X[0.5] X[0.7] X}
+\DefTblrTemplate {caption-lot}{default}{}% suppress lot entry
+
+\begin{longtblr}[]{X[0.5] X[0.5] X[0.7] X}
 \SetCell[c=4]{l} \textbf{This is a multipage data table using longtblr that will not feature in the TOC}\\%[-1ex]
 \SetCell[c=4]{l} \textbf{--- the barebone style}\\
 \toprule
@@ -1671,7 +1674,7 @@ Number  & Twice & Squared & Fourth power \\
 %-----------------------------------------------------------------------------
 \section{Longtable 7: Simple long data table using \texttt{tabbing} environment}
 
-\italk{The \vb{tabbing} environment offers the most simple way of developing data table (always left-justified; no TOC entries) and \vb{tabbing} entries automatically flow through pages (longtable). The tabs can be defined according to requirements. The tab stops can be adjusted to move the entire table or column widths manually.}
+\italk{The \vb{tabbing} environment offers the most simple way of developing data table (always left-justified; no TOC entries) and \vb{tabbing} entries automatically flow through pages (longtable). The tabs can be defined according to requirements. The tab stops can be adjusted to move the entire table or column widths manually. As the tabbing environment is not a table, it will not affect the numbering of the tables. }
 
 \begingroup
 \singlespacing
@@ -1755,6 +1758,20 @@ Left - Tabs can be skipped or not filled\\
 \>Tabs can be skipped or not filled\\ 
 \>\>Tabs can be skipped or not filled\\ 
 \>\>\>Tabs can be skipped or not filled\\ 
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
 \>123  \>2345  \>34567\\
 \>123  \>2345  \>34567\\
 \>123  \>2345  \>34567\\
@@ -1901,6 +1918,7 @@ $[1280]$ &  & Field middle  & 3765.75 & 1160.34 & 4926.09 \\
 
 \setlength{\parindent}{0.5in}
 \vspace{-2ex}
+
 
 %-----------------------------------------------------------------------------
 %-----------------------------------------------------------------------------
@@ -3070,7 +3088,7 @@ Row 8 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 &
 %-----------------------------------------------------------------------------
 \section{Appendix - Longtable}
 
-\italk{We know well that long tables are a little involved and tricky, and then in appendix needs manual override for proper output. The regular \vb{longtable} and \vb{longtbrl} environments are used to code the long tables, and their captions, and LOAT entries will appear correctly with \vb{table} environment. However, the existing appendix \vb{appendixtable} environment will not support the and \vb{longtable} and \vb{longtbrl} environments, even though these will output table contents the caption table numbering and LOAT will not appear correctly. Therefore, a simpler fix followed includes (1) a dummy \vb{appendixtable} with only a caption for the long table with negative \vb{vspace} and optional TOC entry \cmd{caption}[\ldots] with repeated caption text without negative \vb{vspace}, and immediately followed by (2) the long table code without caption. Examples of the appendix long tables are shown in \cref{aplongtab1}.} %,aplongtab2}.}
+\italk{We know well that long tables are a little involved and tricky, and then in appendix needs manual override for proper output. The regular \vb{longtable} and \vb{longtbrl} environments are used to code the long tables, and their captions, and LOAT entries will appear correctly with \vb{table} environment. However, the existing appendix \vb{appendixtable} environment will not support the and \vb{longtable} and \vb{longtbrl} environments, even though these will output table contents the caption table numbering and LOAT will not appear correctly. Therefore, a simpler fix followed includes (1) a dummy \vb{appendixtable} with only a caption for the long table with negative \vb{vspace} and optional TOC entry \cmd{caption}[\ldots] with repeated caption text without negative \vb{vspace}, and immediately followed by (2) the long table code without caption. Examples of the appendix long tables are shown in Table~\ref{aplongtab1} and Table~\ref{aplongtab2}.}  
 
 %------------------------------------
 \begin{appendixtable}% dummy appendixtable for caption 
@@ -3078,8 +3096,10 @@ Row 8 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 &
 \label{aplongtab1}% label 
 \end{appendixtable}
 {
+\setlength{\LTleft}{1mm plus -1fill}% centering done by LTleft - any small value
+\setlength{\LTright}{\LTleft}% as same is applied - the content is centered 
+%\renewcommand{\arraystretch}{0.5}% adjusting the rowspacing
 \singlespacing
-\centering
 \begin{longtable}{l c c c }% other specifiers (r and S) can be used
         \toprule
 	First column & Second column & Data & Where?\\
@@ -3142,24 +3162,33 @@ One & abcdef ghjijklmn & 123.456778 \\
 One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
 One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
 One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
 \bottomrule
 \multicolumn{4}{p{4.5in}}{Note: \kant[9]}
 \end{longtable}
 }
 %------------------------------------
 
+\vspace{-3ex}
 \kant[9]
 
 %------------------------------------
-\begin{appendixtable}
-
-\caption[Full-wdith appendix long table using \texttt{longtblr} environment with separate caption and long table code.]{Full-wdith appendix long table using \texttt{longtblr} environment with separate caption and long table code. \vspace{-7ex}}% caption with optional TOC entry and negative vspace
+\begin{appendixtable}% dummy appendixtable for caption 
+\caption[Full-width appendix long table using \texttt{longtblr} environment with separate caption and long table code.]{Full-width appendix long table using \texttt{longtblr} environment with separate caption and long table code. \vspace{-5ex}}% caption with optional TOC entry and negative vspace
 \label{aplongtab2}% label 
 \end{appendixtable}
-\begingroup
+{%long table code
 \begin{spacing}{0.8}% works with longtblr
 \DefTblrTemplate{contfoot-text}{default}{\itshape Continued \ldots}% defining default 
-\DefTblrTemplate{capcont}{default}{}% using default 
+\DefTblrTemplate{capcont}{default}{}% suppress the repeating head caption
+\DefTblrTemplate {caption-lot}{default}{}% suppressing lot entry
  
 \begin{longtblr}[
 note{} = {\footnotesize 
@@ -3262,14 +3291,10 @@ One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
 One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
 One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
 One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
-One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
-One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
-One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
-One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
 \bottomrule
 \end{longtblr}
 \end{spacing}
-\endgroup
+}% long table code
 %------------------------------------
 
 \vspace{4ex}
