@@ -78,7 +78,7 @@
 \author{Aaron Feickert$\,^{a}$, Jonathan Totushek$\,^{a}$, and C. Igathinathane$\,^{b,\,*}$ \\ *\,Maintainer, Bug Reports, and Enquires:  Igathinathane Cannayen (\texttt{i.cannayen@ndsu.edu})\\ {\small Github: \url{https://github.com/CIgathi/NDSU-Thesis-Class.git}}
 }
 \date{{\small $^{a}$\emph{Department of Mathematics, NDSU} \\ $^{b}$\emph{Department of Agricultural and Biosystems Engineering, NDSU}\\[2ex]}
-2 December 2023}
+20 February 2024}
 
 %--------------------------------------------------------------
 %--------------------------------------------------------------
@@ -295,9 +295,36 @@ $M_\text{p}$ is the mass of a proton (p, descriptive). Note how variables, abbre
 subscripts are coded in \cref{eq:lin}. Refer Extended Thesis to know more about equations 
 and shortcuts. 
 
+\section{Schemes}
+\kant[2]
+
+The regular way of coding a scheme:
+
+\begin{scheme}
+\centering
+\includegraphics[width=0.4\textwidth]{LampFlowchart}
+\caption{Flowchart of controls of light bulb --- A scheme}
+\label{sc1}
+\end{scheme}
+%
+
+\kant[9]\vspace{-1.5ex}
+
+\mysch[2ex]{h!}{0.48}{LampFlowchart}{Caption for this example image demonstrating an optional 
+2ex vertical spacing. Compare this with a narrow caption spacing without optional argument 
+in \cref{fig:2}.}{sc2}
+
+\kant[2]\kant[9]
+
+The (\cref{sc1,sc2}) are good. And, stating this differently all the \Cref{sc1,sc2,sc3} are 
+good too. Note that \Cref{sc3} is in landscape mode.
+
+\myschls[1ex]{p}{0.65}{LampFlowchart}{Landscape scheme --- Flowchart of controls of light bulb. 
+Optional 2ex vertical spacing was used.}{sc3}
+
 \section{Some References}
-Referring to all entries in the ``\texttt{mybib.bib}'' file to generate the citations here and the 
-listing using the \texttt{\textbackslash citep\{\ldots\}} ``natbib'' command (cite parenthesis) 
+Referring to all entries in the ``\texttt{mybib.bib}'' file to generate the citations here and 
+the listing using the \texttt{\textbackslash citep\{\ldots\}} ``natbib'' command (cite parenthesis) 
 \citep{texbook,lcompanion,latex2e,knuth1984,lesk1977,amsthm2017,calvo2004using,
 cannayen2011latex,kopka2004guide,notso2021,bari2016identification}.
 
