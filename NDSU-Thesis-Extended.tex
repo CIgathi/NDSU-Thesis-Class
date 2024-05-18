@@ -57,7 +57,7 @@
 %-----------------------------------------------------------------------------
 %\AtBeginDocument{\raggedright}   % No justification - NDSU template; justification also okay
 
-\newcommand{\ec}{\end{comment}}% end comment environment
+%\newcommand{\ec}{\end{comment}}% end comment environment
 \newcommand\italk[1]{\textcolor{blue}{#1}}  % for my texts
 \newcommand\cmd[1]{\textbackslash\texttt{#1}}  % for commands
 %\captionsetup[figure]{labelformat=simple, labelsep=colon, labelfont=it,textfont={bf,it}}
@@ -504,7 +504,7 @@ $\gamma$ & hyperparameter in SVM
 
 \italk{Users are encouraged to refer to the Sec. 8.1 of the NDSU Class Documentation before seeing some of the examples presented in this chapter. Shown below is the most basic table using \lx \texttt{tabular} environment. Vertical lines (created by ``pipe'' character |), which are not generally used in professional tables, are shown to illustrate the column widths. However, | can be used for visualization during table development.}
 
-\begin{table}[h!]
+\begin{table}[ht!]
 \centering
 \caption{Simple fixed-width table with left-justified top caption.}
 \begin{tabular}{| l |c| r |}
@@ -537,7 +537,7 @@ Number & Our rating & Month \\
 3 & Good   & March\\
 \hline
 \end{tabular}
-\label{tab21a}
+\label{tab21}
 \end{table}
 \end{verbatim}
 }
@@ -564,9 +564,10 @@ Number & Our rating & Month \\
 \label{tab22}
 \end{table}
 \end{verbatim}
-}\label{tabcode22}
+}
+\label{tabcode22}
 
-\begin{table}[h!]
+\begin{table}[ht!]
 \centering
 \caption{Professional looking fixed-width table with left-justified top caption using \texttt{booktabs} package.}
 \begin{tabular}{ l c r }
@@ -587,9 +588,9 @@ Number & Our rating & Month \\
 
 %--------------------------------------------------------------
 \subsection{Tables with fewer columns}
-\italk{NDSU recommends that fewer column tables can be coded in a compact manner using fixed-width for readability, while tables with more columns can run the full-width or made into landscape tables. Compact tables with fewer columns are common and readily made by the common \texttt{tabular} and \texttt{table} environment. Where the columns will be based on the width of the widest entries and the columns will be naturally spaced and result in a compact table with the total width usually less than the textwidth. No special action is necessary to make these tables. Tables of less columns and narrower width need to be positioned on the page consistently. Either all of them left-justified or centered. Footnotes corresponding to the width of the table can be coded through the \cmd{multicolumn\{no of cols\}\{lcr\}\{text\}}\tb\tb for single line items or \cmd{multicolumn\{no of cols\}\{p\{dimension\}\}\{text\}} for footnotes that run like a paragraph. The width of the footnote is controlled by the amount of text or the dimension of the paragraph (refer to the ``\texttt{NDSU-Thesis-Extended.tex}'' for an example codes).} 
+\italk{NDSU recommends that fewer column tables can be coded in a compact manner using fixed-width for readability, while tables with more columns can run the full-width or made into landscape tables. Compact tables with fewer columns are common and readily made by the common \texttt{tabular} and \texttt{table} environment (\cref{tab23a}).} 
  
-\begin{table}[h!]
+\begin{table}[ht!]
 \caption{Fixed-width whole table left-justified with footnote.}
 \begin{tabular}{ l c r @{\hspace{1cm}} c}
 \toprule
@@ -604,25 +605,28 @@ Number & Our rating & Month  &  Days\\
 \multicolumn{4}{l}{Note: 2. Footnote using \cmd{multicolumn}.}\\
 \multicolumn{4}{p{3.2in}}{Note:~3. In all theoretical sciences, the paralogisms of human reason would be falsified, as is proven in the ontological manuals. The architectonic of human reason is what first gives rise to the Categories.}
 \end{tabular}
-\label{tab22}
+\label{tab23a}
 \end{table}
+
+\vspace{-2ex}
+\italk{Where the columns will be based on the width of the widest entries and the columns will be naturally spaced and result in a compact table with the total width usually less than the textwidth. No special action is necessary to make these tables. Tables of fewer columns and narrower widths need to be positioned on the page consistently. Either all of them left-justified or centered. Footnotes corresponding to the width of the table can be coded through the \cmd{multicolumn\{no of cols\}\{lcr\}\{text\}}\tb\tb for single line items or \cmd{multicolumn\{no of cols\}\{p\{dimension\}\}\{text\}} for footnotes that run like a paragraph (\cref{tab23a}). The width of the footnote is controlled by the amount of text or the dimension of the paragraph (refer to the ``\texttt{NDSU-Thesis-Extended.tex}'' for an example codes).} 
 
 %-----------------------------------------------------------------------------
 \section{Help with \LaTeX\ Tables}
-\italk{The code for the \Cref{tab22} may be a bit intimidating (really?), but it is just two nested environments (\vb{table} and \vb{tabular}). The layout is: \vb{table\{} -- \vb{caption} -- \vb{tabular\{} -- data rows -- \vb{tablular\}} -- \vb{label} -- \vb{table\}}. This layout when looked at in an overall manner is simple and all tables follow the same pattern.}  
+\italk{The code for the \Cref{tab22,tab23a} may be a bit intimidating (really?), but it is just two nested environments (\vb{table} and \vb{tabular}). The layout is: \vb{table\{} -- \vb{caption} -- \vb{tabular\{} -- data rows -- \vb{tablular\}} -- \vb{label} -- \vb{table\}}. This layout when looked at in an overall manner is simple and all tables follow the same pattern.}  
 
 \italk{\LaTeX installations will have some tools (e.g., IntelliSense code completion) that allow to develop table codes from scratch or paste the copied table data from spreadsheets (e.g., ``Paste Spreadsheet Cells -- booktabs'' in Mac) make table creation easy. Also, there are several online tools \href{https://www.tablesgenerator.com}{\textcolor{magenta}{Table Generator}} and \href{https://www.latex-tables.com}{\textcolor{magenta}{LaTeX Tables Editor}} among others will help generate table codes from typed data, and imported files (*.csv, *.xls, etc.,). Also, Excel Add-Ins such as \href{https://ctan.org/tex-archive/support/excel2latex?lang=en}{\textcolor{magenta}{Excel2\LaTeX}} will generate and export the table codes. 
 }
 
 %-----------------------------------------------------------------------------
 \section{Full-width Tables}
-\italk{Even though these tables (\cref{tab21,tab22}) were compact, they are not supported by NDSU guidelines. Therefore, these tables should be made to full-width. We have two methods of achieving this.}
+\italk{Unlike short width tables with a few columns (\cref{tab21,tab22,tab23a}), based on the width of columns and width exceeds about \pr{60}, it will be better to opt for full-width tables that look aligned with the surrounding text. We have two methods of achieving the full-width tables when required.}
 
 %-------------------------------------------
 \subsection{Manual Method --- Using Table Column Width}
 \italk{One simple method is trial-and-error (manual) is to increase the tabular column separation width so that the table width fits the text width. The two commands \cmd{setlength\{}\cmd{tabcolsep\}} \vb{\{0.75in\}} (value of 0.34in obtained by trial-and-error) and \vbc{begin\{tabular\}\{ l|   c|   r|   c|   c \}} (rest of the code remains the same as in \cref{tab22}) created the table below (\cref{tab23}). It is possible to calculate the \vb{tabcolsep} based on the width of text elements and the number of gaps (2 * number of columns) with the use of \cmd{settowidth\{\ldots\}} and \cmd{fpeval\{\ldots\}} commands. Note the use of | was used for visualization (not to be used in professional documents).} 
 
-\begin{table}[h!]
+\begin{table}[ht!]
 \centering
 \caption{Professional looking full-width table using \cmd{tabcolsep} and \texttt{booktabs} package.}
 \setlength{\tabcolsep}{0.34in}
@@ -651,7 +655,7 @@ Number & Our rating & Month & Days & Rating\\
 \end{verbatim}
 }
 
-\begin{table}[h!]
+\begin{table}[ht!]
 \centering
 \caption{Professional looking full-width table using \cmd{tabcolsep}, \texttt{@\{\ldots\}}, and \texttt{booktabs} package.}
 \setlength{\tabcolsep}{0.41in}
@@ -827,7 +831,7 @@ Simple text in regular column right (See $\Rightarrow$) & NDSU thesis class\\
 %\clearpage
 %-------------------------------------------
 \subsection{Another Example with Multicolumn and Cmidrule}
-\italk{Usage of \vb{multicolumn} and \vb{cmidrule} in full-width tables using manual and automatic are presented (\cref{tab28,tab29}) in this example. Only the significant code lines that produced these tables are given subsequently.} 
+\italk{Usage of \vb{multicolumn} and \vb{cmidrule} in full-width tables using manual and automatic are presented (\cref{tab28,tab210}) in this example. Only the significant code lines that produced these tables are given subsequently.} 
 
 {\singlespacing
 \begin{verbatim}
@@ -858,7 +862,7 @@ Number & Month & Same & Same\\
 3 & March & March & March \\
 \bottomrule
 \end{tabular}
-\label{tab29}
+\label{tab210}
 \end{table}
 
 {\singlespacing
@@ -904,7 +908,7 @@ Number & Month & Same & Same\\
 
 \italk{When more columns need to be accommodated in tables that cannot be handled in the regular orientation, with available text width of about \SI{6.5}{in}, the landscape that can utilize the text height of \SI{8.75}{in} for the table contents. If even more columns have to be packed then the use of \cmd{resizebox} command can scale down the table to the required size, and this can be used in regular and landscape modes.}
 
-\italk{Landscape tables were usually set on a separate page using \vb{[p]} placement specifier. With the \vb{pdflscape} package that provides the \vb{landscape} environment for the table creation, the page is also rotated for direct viewing of the table, but prints correctly. An example of a landscape table is shown in \Cref{tab210}. More information about this table is available in the table caption and footnote. The source code of this table can be referred to for details.
+\italk{Landscape tables were usually set on a separate page using \vb{[p]} placement specifier. With the \vb{pdflscape} package that provides the \vb{landscape} environment for the table creation, the page is also rotated for direct viewing of the table, but prints correctly. An example of a landscape table is shown in \Cref{tab212}. More information about this table is available in the table caption and footnote. The source code of this table can be referred to for details.
 }
 
 \kant[4]
@@ -945,7 +949,7 @@ Row-of-values & \multicolumn{4}{c}{Block1}  &\multicolumn{4}{c}{Block2} & \multi
 \italk{\hl{Important note:}} \textcolor{magenta}{\bfseries While printing the landscape pages (containing tables and figures) the settings should be double-checked. Adobe Reader was known to print landscape pages in the correct format. Mac Preview was observed not to give the correct output (distortion observed) at the time of this writing.}
 }  
 \end{tablenotes}  
-\label{tab210}
+\label{tab212}
 \end{table}
 \end{landscape}
 
@@ -971,7 +975,8 @@ Row-of-values & \multicolumn{4}{c}{Block1}  &\multicolumn{4}{c}{Block2} & \multi
     \item[] $\ddag$ TSP - Traveling salesperson distance i.e., total polygonal distance of all methods following traveling salesman technique; Origin was the outlet location where bales were finally transported; and medoid was the aggregation method where it coincided on one of the field stacks but other methods may not.
   \end{TableNotes}
   \begin{longtable}{lll lll ll}
-  \caption{\normalsize A long table - spanning 3 pages - an example taken from our research group work on ``Methods of optimum bale stack locations and their logistics distances and methods combined distances.''}\label{tab1}\\[-2ex]     
+  \caption{\normalsize A long table - spanning 3 pages - an example taken from our research group work on ``Methods of optimum bale stack locations and their logistics distances and methods combined distances.''}
+  \label{tab13}\\[-2ex]     
   \tabletopinfo% defined in the preamble
     \endfirsthead
     
@@ -1224,7 +1229,8 @@ are what first give rise to the architectonic of practical reason.
 \midrule
 \endhead
 
-\midrule \multicolumn{5}{r}{\itshape Continued \ldots} 
+%\midrule 
+\multicolumn{5}{r}{\itshape Continued \ldots} 
 \endfoot
 
 % For footnotes - p value by trial and error
@@ -1809,7 +1815,8 @@ Left - Tabs can be skipped or not filled\\
     \item[] $\ddag$ TSP - Traveling salesperson distance i.e., total polygonal distance of all methods following traveling salesman technique; Origin was the outlet location where bales were finally transported; and medoid was the aggregation method where it coincided on one of the field stacks but other methods may not.
   \end{TableNotes}
   \begin{longtable}{lll lll ll rrr}
-  \caption{\normalsize A long table - spanning 3 pages - an example taken from our research group work on ``Methods of optimum bale stack locations and their logistics distances and methods combined distances.''}\label{tab1}\\[-2ex]     
+  \caption{\normalsize A long table - spanning 3 pages - an example taken from our research group work on ``Methods of optimum bale stack locations and their logistics distances and methods combined distances.''}
+  \label{tab16}\\[-2ex]     
   \tabletopinfols% defined in the preamble
     \endfirsthead
     
@@ -1919,7 +1926,6 @@ $[1280]$ &  & Field middle  & 3765.75 & 1160.34 & 4926.09 \\
 \setlength{\parindent}{0.5in}
 \vspace{-2ex}
 
-
 %-----------------------------------------------------------------------------
 %-----------------------------------------------------------------------------
 \mypaperheading{Figures in thesis/dissertation}
@@ -1930,6 +1936,7 @@ $[1280]$ &  & Field middle  & 3765.75 & 1160.34 & 4926.09 \\
 \italk{As before the class documentation should be read first (Sec. 9.2). Let us have some figures. Refer to our first figure (\cref{fig1}) and second (\cref{fig2}). This figure file (``\texttt{frog.jpg}'') is also included in the class folder, and if necessary can be replaced by any other dummy figures from the \texttt{mwe} package (Documentation Sec. 7). The following figure was coded using the regular figure environment and other commands.}
 
 \begin{figure}[H]
+\captionsetup{singlelinecheck=true} 
 \centering
 \includegraphics[width=0.4\textwidth]{frog.jpg}
 \caption{\label{fig:frog}This frog figure short caption is centered - NDSU.}
@@ -1995,6 +2002,47 @@ placement using 5mm.}{fig5}
 % Option p vertically centers figure & 5mm +ve space added above  caption
 \myfigls[5mm]{p}{0.9}{frog.jpg}{Landscape figure with long long long long long long long long long long long long long long long caption and vertical caption placement using 5mm.}{fig5}
 
+
+%-----------------------------------------------------------------------------
+\section{Long Caption for Figures}
+
+The figure caption input in the source code will reflect on LOF as default behavior. Figure captions running up to 8 to 10 lines in LOF should be okay --- and this depends on personal taste. However, figures with long captions in published technical work are not uncommon. One can come across them frequently in journal articles --- where there is a necessity to present details of the figure or its components, which extends the caption length, to make them standalone. Another instance of a long figure caption is the presentation of a combined figure with several subfigures with identification labels. Such combined figures usually have a long caption that includes an overall caption and description of the subfigures, along with labels and sometimes source citations.
+
+As such, figures with long captions can be coded as usual, including the use of the developed figure shortcuts. Despite the personal preference for the length of the figure caption, a couple of technical coding issues will be encountered when using the usual method. These include (i) overflow of captions beyond the bottom margin (or) non-wrapping into the next page, and (ii) awkward-looking LOF again with an overflow problem (or) long captions moved to the next page with a lot of white space. The issue is similar to tables that are longer, hence the development of ``\texttt{longtable}'' handling packages (tables that wrap across pages). Therefore, the solution (see \texttt{*.tex} source and the example \cref{figlongcaption}) to handle the long caption is:
+
+\begin{itemize}
+\item Use regular \texttt{figure} environment --- shortcut not available
+\item Input the optional argument [\ldots] of the \texttt{caption} command the portion of the caption that will appear in the LOF
+\end{itemize}
+
+\begin{figure}[p]% Hht - can be used
+\setlength\belowcaptionskip{-20pt}% required to adjust the vspace below 
+\begin{center}
+\includegraphics[width=0.65\textwidth]{frog.jpg}
+\end{center}
+\caption[Title of my figure which is displayed in the list of figures - details given separately in this long caption.]{Title of my figure which is displayed in the list of figures - details given separately in this long caption. \textcolor{magenta}{Long caption not shown in TOC - but the contents are added as regular text in the figure environment --- as shown here}. Details of the item shown in figure are: (a) Here in a new line a long description about the figure, (b) Here in a new line a long description about the figure, (c) Here in a new line a long description about the figure, (d) Here in a new line a long description about the figure. (a) Here in a new line a long description about the figure, (b) Here in a new line a long description about the figure, (c) Here in a new line a long description about the figure, (d) Here in a new line a long description about the figure. (a) Here in a new line a long description about the figure, (b) Here in a new line a long description about the figure, (c) Here in a new line a long description about the figure, (d) Here in a new line a long description about the figure. (a) Here in a new line a long description about the figure, (b) Here in a new line a long description about the figure, (c) Here in a new line a long description about the figure, (d) Here in a new line a long description about the figure. (a) Here in a new line a long description about the figure, (b) Here in a new line a long description about the figure, (c) Here in a new line a long description about the figure, (d) Here in a new line a long description about the figure. (a) Here in a new line a long description about the figure, (b) Here in a new line a long description about the figure, (c) Here in a new line a long description about the figure, (d) Here in a new line a long description about the figure. (a) Here in a new line a long description about the figure.  Fill xxxxxxxxxxxxx xxxxxxxxxxxxxx xxxxxxxxxxxxxx Fill. \textcolor{blue}{Partial end of CAPTION. Adjust by adding words of the caption so that it end on the right margin. Will can go to next page as well with another block like this - Tested and worked!}}
+\label{figlongcaption}
+\end{figure}
+
+% Long captions are continued using \caption* command under figure environment - Will not update the figure counter.  
+\begin{figure}[H]
+%\setlength\abovecaptionskip{20pt}% required to adjust the vspace below 
+%\setlength\belowcaptionskip{-30pt}% required to adjust the vspace below 
+\caption*{\textcolor{magenta}{Long captions are continued using \textbackslash \texttt{caption*}\{ \ldots \} command under figure environment (will not update the figure counter) inside a blank \textbackslash \texttt{figure} environment --- see the code from the \texttt{*.tex} file. Shown here is a continued caption running this whole page. Hope one need not require longer than this, but when needed can be extended by another blank caption like this one.}  Continued caption  (a) Here in a new line a long description about the figure, (b) Here in a new line a long description about the figure, (c) Here in a new line a long description about the figure, (d) Here in a new line a long description about the figure. (a) Here in a new line a long description about the figure, (b) Here in a new line a long description about the figure, (c) Here in a new line a long description about the figure, (d) Here in a new line a long description about the figure. (a) Here in a new line a long description about the figure, (b) Here in a new line a long description about the figure, (c) Here in a new line a long description about the figure, (d) Here in a new line a long description about the figure. (a) Here in a new line a long description about the figure, (b) Here in a new line a long description about the figure, (c) Here in a new line a long description about the figure, (d) Here in a new line a long description about the figure. a) Here in a new line a long description about the figure, (b) Here in a new line a long description about the figure, (c) Here in a new line a long description about the figure, (d) Here in a new line a long description about the figure. (a) Here in a new line a long description about the figure, (b) Here in a new line a long description about the figure, (c) Here in a new line a long description about the figure, (d) Here in a new line a long description about the figure. (a) Here in a new line a long description about the figure, (b) Here in a new line a long description about the figure, (c) Here in a new line a long description about the figure, (d) Here in a new line a long description about the figure. (a) Here in a new line a long description about the figure, (b) Here in a new line a long description about the figure, (c) Here in a new line a long description about the figure, (d) Here in a new line a long description about the figure. (a) Here in a new line a long description about the figure, (b) Here in a new line a long description about the figure, (c) Here in a new line a long description about the figure, (d) Here in a new line a long description about the figure. (a) Here in a new line a long description about the figure, (b) Here in a new line a long description about the figure, (c) Here in a new line a long description about the figure, (d) Here in a new line a long description about the figure. (a) Here in a new line a long description about the figure, (b) Here in a new line a long description about the figure, (c) Here in a new line a long description about the figure, (d) Here in a new line a long description about the figure. (a) Here in a new line a long description about the figure, (b) Here in a new line a long description about the figure, (c) Here in a new line a long description about the figure, (d) Here in a new line a long description about the figure. (a) Here in a new line a long description about the figure, (b) Here in a new line a long description about the figure, (c) Here in a new line a long description about the figure, (d) Here in a new line a long description about the figure. (a) Here in a new line a long description about the figure, (b) Here in a new line a long description about the figure, (c) Here in a new line a long description about the figure, (d) Here in a new line a long description about the figure. (a) Here in a new line a long description about the figure, (b) Here in a new line a long description about the figure.  \textcolor{blue}{FINAL END of CAPTION. But can go to next page as well with another block like this - Tested and worked!}}
+\end{figure}
+
+
+\begin{itemize}
+\item Split the long caption into 2 parts so that the 1st part runs the end of the page (manual adjustment may be required) that carries the long caption after the figure, and the 2nd part is coded subsequently as a separate caption 
+\item Code the caption 1st part as regular argument of \texttt{caption\{\ldots\}} input --- the optional argument portion should be repeated for continuity
+\item Label and end the initial regular figure environment with the figure
+\item If required the spacing below the caption can be adjusted using \\\texttt{\textbackslash setlength\textbackslash belowcaptionskip\{value\}} command
+\item Code the long caption 2nd part in a blank \texttt{figure} environment (no figure or label used) as regular argument using * version of caption as \texttt{\textbackslash caption*\{\ldots\}} --- this will only create the caption on the next page without figure and seen as the continuation of the 1st part caption and will not appear in the LOF (effect of * version)
+\item If needed, the process is continued for an even longer caption (very rare)
+\item The abbreviated caption should make sense in the LOF --- so work on the wording
+\end{itemize}
+
+
 %-----------------------------------------------------------------------------
 \section{Subfigures with Automated Numbering}
  \italk{This multiple subfigures uses \texttt{subfig} package. The main figure caption can be referenced as \Cref{fig6} and in parenthesis (\cref{fig6}). Also, the subfigures can be referenced (\cref{fig6:1a,fig6:1c,fig6:1d,fig6:1f}). The sub-caption numbering is ``alphabetic'' by default and will be automatically generated. Sizes of the sub-figures can be individually altered. Also, the number of images that occupy a single row can be readily coded with commands (refer to source code), such as \cmd{subfloat\{\ldots\}}, \cmd{hspace\{\ldots\}}, and newline (\textbackslash\textbackslash).} 
@@ -2004,7 +2052,7 @@ placement using 5mm.}{fig5}
 \centering
 \subfloat[frog1.\label{fig6:1a}]{\includegraphics[width=0.1\textwidth]{frog.jpg}}\hspace{1in}
 \subfloat[frog2.\label{fig6:1b}] {\includegraphics[width=0.1\textwidth]{frog.jpg}}\\
-\subfloat[frog3.\label{fig6:1c}]{\includegraphics[width=0.3\textwidth]{frog.jpg}}\hspace{0.5in}\\
+\subfloat[Large frog3.\label{fig6:1c}]{\includegraphics[width=0.8\textwidth]{frog.jpg}}\hspace{0.5in}\\
 
 \subfloat[frog4\label{fig6:1d}]{\includegraphics[width=0.145\textwidth]{frog.jpg}}\hspace{1.2in}
 \subfloat[Frog caption.\label{fig6:1e}]{\includegraphics[width=0.2\textwidth]{frog.jpg}}
@@ -2124,7 +2172,7 @@ placement using 5mm.}{fig5}
 \caption[]{Multiple page sub-figures --- This caption can be the same as above or abbreviated. \textcolor{magenta}{Notice figure number was dropped in the numbering}. This is the final caption.} 
 \end{figure}
 
-\italk{The \cmd{clearpage} command, which typesets all unprocessed floats, is necessary after every block of \texttt{figure} environments (3 used in this \Cref{fig:1gen}). For suppressing the TOC entries of the subsequent captions (2 on this and before page), a null TOC entry such as \cmd{caption[]\{Multiple page \ldots \}} was issued.}
+\italk{The \cmd{clearpage} command, which typesets all unprocessed floats, is necessary after every block of \texttt{figure} environments (3 used in this \Cref{fig:1gen1}). For suppressing the TOC entries of the subsequent captions (2 on this and before page), a null TOC entry such as \cmd{caption[]\{Multiple page \ldots \}} was issued.}
 
 
 %-----------------------------------------------------------------------------
@@ -2160,7 +2208,7 @@ As any dedicated reader can clearly see, the Ideal of practical reason is a repr
 \subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
 \subfloat[Pet-Frog] {\includegraphics[width=0.15\textwidth]{frog.jpg}}\\
 \captionsetup{singlelinecheck=false} % can be given again
-\caption{Landscape multiple page sub-figures --- General caption of the subfigure - all the captions and sub-labels were created through \cmd{subfloat[\ldots]\{\ldots\}} command of \texttt{subfig} package. \emph{continued} \ldots} \label{fig:1gen}
+\caption{Landscape multiple page sub-figures --- General caption of the subfigure - all the captions and sub-labels were created through \cmd{subfloat[\ldots]\{\ldots\}} command of \texttt{subfig} package. \emph{continued} \ldots} \label{fig:1gen1}
 \end{figure}
 \clearpage
 
@@ -2338,7 +2386,7 @@ Data is presented in \Cref{tab1}; also, look at \Cref{fig1} again, after
 redefining the commands using:
 \end{verbatim}
 }
-First: :Refer to our first figure (\cref{fig1}) and second (\cref{fig2}). Data is presented in \Cref{tab1}; also, look at \Cref{fig1} again, after redefining the commands using:
+First: Refer to our first figure (\cref{fig1}) and second (\cref{fig2}). Data is presented in \Cref{tab21}; also, look at \Cref{fig1} again, after redefining the commands using:
 
 \begin{verbatim}
 \Crefname{figure}{Figure}{Figures}
@@ -2361,7 +2409,7 @@ Second: Refer to our first figure (\cref{fig1}) and second (\cref{fig2}). Data i
 presented in \Cref{tab1}; also, look at \Cref{fig1} again. 
 \end{verbatim}
 }
-Second: Refer to our first figure (\cref{fig1}) and second (\cref{fig2}). Data is presented in \Cref{tab1}; also, look at \Cref{fig1} again. 
+Second: Refer to our first figure (\cref{fig1}) and second (\cref{fig2}). Data is presented in \Cref{tab21}; also, look at \Cref{fig1} again. 
 
 \italk{We have used \cmd{cref\{\ldots\}} commands already in the previous chapters. The \vb{cleveref} package documentation may be referred for other commands and options. The package allows for referring ranges, multiple items, page numbers, and many more customization.  
 }
@@ -2710,7 +2758,7 @@ Theorems, corollaries, lemmas, and other elements can be referenced after defini
 
 \begin{itemize}
 \item
-\italk{With \cmd{cref\{\}} when referring to multiple items it is necessary to code them separated with commas but \emph{no space} should be used. So \cmd{cref\{tab28,tab29\}} with produce} \cref{tab28,tab29}\italk{, but \cmd{cref\{tab28, tab29\}} with produce ?? for the second label as } \cref{tab28, tab29}\italk{. And this applies to other arguments as well and is because the package was coded with this requirement.}
+\italk{With \cmd{cref\{\}} when referring to multiple items it is necessary to code them separated with commas but \emph{no space} should be used. So \cmd{cref\{tab28,tab210\}} with produce} \cref{tab28,tab210}\italk{, but \cmd{cref\{tab28,tab210\}} with produce ?? for the second label as } \cref{tab28,tab210}\italk{. And this applies to other arguments as well and is because the package was coded with this requirement.}
 
 \item
 \italk{Notice the no space before the word shown next ``environment''}  \LaTeX environments \italk{with the code [\cmd{LaTeX environments}]. Using the spacing command ``\cmd{\:}'' (backslash-and-space) as [\cmd{LaTeX\textbackslash\:environments}] will create the enough space as} \LaTeX\ environments\italk{.}
@@ -2828,7 +2876,7 @@ y = mx + c
 
 {\onehalfspacing
 \begin{verbatim}
-\begin{appendixtable}[h]
+\begin{appendixtable}[ht]
 \centering
 \caption{One appendix full-width table captions go at the top of the table.}
 \setlength\tabcolsep{1.3in}
@@ -2846,7 +2894,7 @@ Number & Month \\
 \end{verbatim}
 }
 
-\begin{appendixtable}[h]
+\begin{appendixtable}[ht]
 \centering
 \caption{One appendix full-width table captions go at the top of the table.}
 \setlength\tabcolsep{1.3in}
@@ -2904,7 +2952,7 @@ I can include appendix material here.
 
 \myfigap{H}{0.4}{LampFlowchart}{Appendix schematic of control of checking the light bulb.}{figas1}
 
-\begin{appendixtable}[h]
+\begin{appendixtable}[ht]
 \centering
 \caption{Appendix table (full-width) using \texttt{tblr} package with \texttt{booktabs} commands illustrating column width coefficient (2nd column is thrice the width of 1st) and automatic overflow of rows as a paragraph. \textcolor{magenta}{Important: With \texttt{tblr} use \cmd{SetTblrInner\{rowsep=\ldots\}}, as used in this table, for altering the row spacing. While using the \cmd{cmidrule} trim options inside \texttt{tblr} environment use [lr] instead of (lr). } Captions go at the top of the table and are left-justified. 
 }
@@ -2920,12 +2968,15 @@ Number & Month \\
 \cmidrule[lr]{2-2}
 4 & April, Apr, Apr, Apr,  Apr,  Apr,  Apr,  Apr,  Apr,  Apr,  Apr,  Apr,  Apr,  Apr, Apr, Apr,   Apr, Apr, Apr, Apr, Apr, Apr, Apr, Apr, Apr, Apr, Apr, Apr, Apr, 3-rows\\
 \bottomrule
+\label{apatab1}
 \end{tblr}
 \end{appendixtable}
 
-\kant[2]
+\italk{Appendix floats (tables, figures, and schemes) should be referred in the basic way using \tb\texttt{ref\{\ldots\}} command and the handy \texttt{cleveref} commands are not supported in appendix. As an example the two tables are referred here (tables~\ref{apatab1} and \ref{apatab2}).}
 
-\begin{appendixtable}[h]
+\kant[9]
+
+\begin{appendixtable}[ht]
 \centering
 \caption{Named appendix A full-width table ONE using \texttt{tblr} environment.}
 \begin{tblr}{  *4{X[c]}  }
@@ -2936,7 +2987,7 @@ Number & Month & Same & Same\\
 2 & February & February & February \\
 3 & March  & March & March\\
 \bottomrule
-\label{apbtab1}
+\label{apatab2}
 \end{tblr}
 \end{appendixtable}
 
@@ -2983,7 +3034,7 @@ v\: (\text{Velocity}) &= \frac{d\: (\text{distance})}{t\: (\text{time})}
 \section{Test}
 I can include appendix material here. \italk{Table~\ref{apbtab1} produced.}
 
-\begin{appendixtable}[h]
+\begin{appendixtable}[ht]
 \centering
 \caption{Named appendix B full-width table ONE using \texttt{tblr} environment.}
 \begin{tblr}{  *4{X[c]}  }
@@ -3001,7 +3052,7 @@ Number & Month & Same & Same\\
 \vspace{-4ex}
 \italk{Repeated table B1 (table~\ref{apbtab2}) with a little modification.}
 
-\begin{appendixtable}[h]
+\begin{appendixtable}[ht]
 \centering
 \caption{Named appendix B full-width table TWO using \texttt{tblr} environment.}
 \begin{tblr}{ X X[c] X[c] X[r]  }
@@ -3551,7 +3602,7 @@ In all theoretical sciences, the paralogisms of human reason would be falsified,
 \kant[9]
 \italk{Listing coded in figure environment. Frame style and background color changed. This listing will have the figure number and will be added to the TOC.}
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
 {\singlespacing
 \lstset{frameround=fttt}
 \begin{lstlisting}[frame=trBL, backgroundcolor=\color{blue!10!white}]
