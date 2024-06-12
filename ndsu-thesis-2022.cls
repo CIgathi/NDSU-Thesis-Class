@@ -17,7 +17,7 @@
 % This work has the LPPL maintenance status `maintained'.
 %
 % The current maintainer of this work is Igathinathane Cannayen.
-% Contact: i.cannayen@ndsu for bug reports and enquires.
+% Contact: i.cannayen@ndsu for bug reports and inquiries.
 %
 % This new class or the old can be used independently, and these classes are 
 % appropriately invoked through the documentclass command with required options. 
@@ -87,8 +87,10 @@
 %              List of schemes added \mysch \myschls (2023-11-23)
 %              Scenarios of closing appendices documented (2023-12-02)
 %              Appendix long table examples added in extended thesis (2023-12-17)
+% 		Title page (after cover page) now has single-spaced title (2024-06-11)
 %
 %  Update history
+%  Last updated: 2024-06-11
 %  Last updated: 2023-12-07
 %  Last updated: 2023-12-02
 %  Last updated: 2023-11-23
@@ -469,14 +471,14 @@
 % Parindent
 \setlength{\parindent}{0.5in}
 
-% Overall spacing of document 
+% Overall spacing of the document 
 \newcommand\myspacing{1.9}% 23 lines/page comes from 1.9
 
 % Other frontmatter sections
 \newcommand\abstract[1]{\def\@abstract{
 \clearpage\chapter*{\vspace{0pt}ABSTRACT\vspace{-10pt}}
 \addcontentsline{toc}{chapter}{ABSTRACT}
-\setstretch{\myspacing}% Once give here applies to whole document 
+\setstretch{\myspacing}% Once given here applies to the whole document 
 #1}}
 \let\@abstract=\@empty   
 
@@ -554,7 +556,9 @@
     \parbox{5.5in}{
         \begin{center}
         \textbf{\small Title} \\[0.15in]
-        \@title
+        \begin{singlespace}
+        		\@title
+	\end{singlespace}
         \vspace{.1in}
         \hrule
         \vspace{.2in}
@@ -743,7 +747,7 @@
 }
 
 
-% Usage: \tendbt the for bibtex \makebib was recursively passed 
+% Usage: \tendbt the for BibTeX \makebib was recursively passed 
 \newcommand{\tendbt}{ 
 \bibtocsubstart
 \makebib
@@ -751,7 +755,7 @@
 \end{document}
 }
 
-% Usage: \tendblt for biblatex automatic individual or combined references
+% Usage: \tendblt for Biblatex automatic individual or combined references
 \newcommand{\tendblt}{ 
 \checkEndRefsection% chapter reference section listing
 \checkMakeCombinedReferences% whole document reference listing
@@ -819,8 +823,8 @@
 \addto\captionsamerican{%
 \renewcommand\chaptername{}} 
 
-% Command to ensure list of both appendix tables and figures
-% Usage: \closeappendices on the last named appendix at the end or separately before the \end{document}	
+% Command to ensure the list of both appendix tables and figures
+% Usage: \closeappendices on the last-named appendix at the end (or) separately before the \end{document}	
 \newcommand{\closeappendices}{% Igathi
 \clearpage% for single file
 \renewcommand{\appendixfigurename}{}
@@ -837,7 +841,7 @@
 }
 
 
-% the thesis had only appendix tables
+% The thesis had only appendix tables
 \newcommand{\closeappendixtables}{% Igathi
 \renewcommand{\appendixtablename}{}
 \renewcommand{\theappendixtable}{}
@@ -847,7 +851,7 @@
 \vspace{-25ex}
 }
 
-% the thesis had only appendix figures
+% The thesis had only appendix figures
 \newcommand{\closeappendixfigures}{% Igathi
 \renewcommand{\appendixfigurename}{}
 \renewcommand{\theappendixfigure}{}
@@ -864,7 +868,7 @@
 % \myfig[aboveskip=3ex]{placement=ht}{width=0.8}{file=fig1.pdf}{caption=My caption goes here}{label=fig1}
 % \myfig[aboveskip]{ht}{0.8}{fig1.pdf}{My caption goes here}{fig1}
 
-% Regular figure command with placement (htpbH as first argument)
+% Regular figure command with placement (htpbH as the first argument)
 \newcommand{\myfig}[6][0ex]{%3.5 earlier
 \vspace{2ex}
 \begin{figure}[#2]
@@ -877,7 +881,7 @@
 \end{figure}
 }
 
-% Regular scheme command with placement (htpbH as first argument)
+% Regular scheme command with placement (htpbH as the first argument)
 \newcommand{\mysch}[6][0ex]{%3.5 earlier
 \vspace{2ex}
 \begin{scheme}[#2]
@@ -893,7 +897,7 @@
 % Example usage: 
 % \myfigls[aboveskip]{ht}{0.8}{fig1.pdf}{My caption goes here}{fig1}
 
-% Landscape figure command with placement (htpbH as first argument)
+% Landscape figure command with placement (htpbH as the first argument)
 \newcommand{\myfigls}[6][0ex]{
 \begin{landscape}
 \begin{figure}[#2]
@@ -907,7 +911,7 @@
 \end{landscape}
 }
 
-% Landscape scheme command with placement (htpbH as first argument)
+% Landscape scheme command with placement (htpbH as the first argument)
 \newcommand{\myschls}[6][0ex]{
 \begin{landscape}
 \begin{scheme}[#2]
@@ -924,7 +928,7 @@
 % Example usage: 
 % \myfigap[aboveskip]{ht}{0.5}{appenddfig1.pdf}{My appendix caption goes here}{figA1}
 
-% Appendix figure command - with placement (htpbH as first argument)
+% Appendix figure command - with placement (htpbH as the first argument)
 \newcommand{\myfigap}[6][0ex]{
 \vspace{2ex}
 \begin{appendixfigure}[#2]
@@ -940,7 +944,7 @@
 % Example usage: 
 % \myfigapls{ht}{0.5}{appenddfig1.pdf}{My appendix caption goes here}{figA1}
 
-% Appendix landscape figure command - with placement (htpbH as first argument)
+% Appendix landscape figure command - with placement (htpbH as the first argument)
 \newcommand{\myfigapls}[6][0ex]{
 \begin{landscape}
 \begin{appendixfigure}[#2]
