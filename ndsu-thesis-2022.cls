@@ -86,10 +86,13 @@
 %              Headings > 3 level + caption left alignment (2023-11-16)
 %              List of schemes added \mysch \myschls (2023-11-23)
 %              Scenarios of closing appendices documented (2023-12-02)
-%              Appendix long table examples added in extended thesis (2023-12-17)
+%              Appendix long table examples added in NDSU Extended Thesis (2023-12-17)
 % 		Title page (after cover page) now has single-spaced title (2024-06-11)
+% 		All headings (chapter and chapter*) consistently start at around 1 in from the top (2024-07-25)
+%
 %
 %  Update history
+%  Last updated: 2024-07-25
 %  Last updated: 2024-06-11
 %  Last updated: 2023-12-07
 %  Last updated: 2023-12-02
@@ -373,9 +376,9 @@
 
 
 % Table of contents tweaks - capitalization and spacing
-\addto\captionsamerican{\renewcommand{\contentsname}{\vspace{-5pt}TABLE OF CONTENTS\vspace{-8pt}}}
-\addto\captionsamerican{\renewcommand{\listtablename}{\vspace{-0pt}LIST OF TABLES\vspace{0pt}}}
-\addto\captionsamerican{\renewcommand{\listfigurename}{\vspace{0pt}LIST OF FIGURES\vspace{0pt}}}
+\addto\captionsamerican{\renewcommand{\contentsname}{\vspace{-13pt}TABLE OF CONTENTS\vspace{-8pt}}}
+\addto\captionsamerican{\renewcommand{\listtablename}{\vspace{-13pt}LIST OF TABLES\vspace{12pt}}}
+\addto\captionsamerican{\renewcommand{\listfigurename}{\vspace{-13pt}LIST OF FIGURES\vspace{12pt}}}
 
 \renewcommand{\cftchapfont}{\normalfont}
 \renewcommand{\cftchappagefont}{\normalfont}
@@ -396,11 +399,11 @@
 \DeclareTotalCounter{appendixfigure}
 \DeclareTotalCounter{appendixtable}
 
-\DeclareFloatingEnvironment[fileext=los,placement={ht},listname={{\vspace{-5pt}}LIST OF SCHEMES\vspace{3pt}},name=Schematic]{scheme}% Igathi
+\DeclareFloatingEnvironment[fileext=los,placement={ht},listname={{\vspace{-13pt}}LIST OF SCHEMES\vspace{10pt}},name=Schematic]{scheme}% Igathi
 
-\DeclareFloatingEnvironment[fileext=loaf,placement={ht},listname={{\vspace{-5pt}}LIST OF APPENDIX FIGURES\vspace{3pt}},name=Figure]{appendixfigure}
+\DeclareFloatingEnvironment[fileext=loaf,placement={ht},listname={{\vspace{-13pt}}LIST OF APPENDIX FIGURES\vspace{12pt}},name=Figure]{appendixfigure}
 
-\DeclareFloatingEnvironment[fileext=loat,placement={ht},listname={{\vspace{-5pt}}LIST OF APPENDIX TABLES\vspace{3pt}},name=Table]{appendixtable}
+\DeclareFloatingEnvironment[fileext=loat,placement={ht},listname={{\vspace{-13pt}}LIST OF APPENDIX TABLES\vspace{12pt}},name=Table]{appendixtable}
 
 % Fix table captions and row spacing
 %\AtBeginEnvironment{tabular}{\singlespacing}
@@ -476,24 +479,24 @@
 
 % Other frontmatter sections
 \newcommand\abstract[1]{\def\@abstract{
-\clearpage\chapter*{\vspace{0pt}ABSTRACT\vspace{-10pt}}
+\clearpage\chapter*{\vspace{-3.5pt}ABSTRACT\vspace{-10pt}}
 \addcontentsline{toc}{chapter}{ABSTRACT}
 \setstretch{\myspacing}% Once given here applies to the whole document 
 #1}}
 \let\@abstract=\@empty   
 
-\newcommand\acknowledgements[1]{\def\@acknowledgements{\clearpage\chapter*{\vspace{0pt}ACKNOWLEDGEMENTS\vspace{-10pt}}
+\newcommand\acknowledgements[1]{\def\@acknowledgements{\clearpage\chapter*{ACKNOWLEDGEMENTS\vspace{-10pt}}
 \addcontentsline{toc}{chapter}{ACKNOWLEDGEMENTS}
 #1}}
 \let\@acknowledgements=\@empty
 
-\newcommand\dedication[1]{\def\@dedication{\clearpage\chapter*{\vspace{0pt}DEDICATION\vspace{-10pt}}\addcontentsline{toc}{chapter}{DEDICATION\vspace{0pt}}
+\newcommand\dedication[1]{\def\@dedication{\clearpage\chapter*{DEDICATION\vspace{-10pt}}\addcontentsline{toc}{chapter}{DEDICATION\vspace{0pt}}
 \begin{center}
 #1
 \end{center}}}
 \let\@dedication=\@empty
 
-\newcommand\preface[1]{\def\@preface{\clearpage\chapter*{\vspace{0pt}PREFACE\vspace{-10pt}}
+\newcommand\preface[1]{\def\@preface{\clearpage\chapter*{PREFACE\vspace{-10pt}}
 \addcontentsline{toc}{chapter}{PREFACE\vspace{0pt}}
 #1}}
 \let\@preface=\@empty
@@ -501,7 +504,7 @@
 % LIST OF ABBREVIATIONS - Igathi
 % A 2-col tabular environment; Usage: SI & System International - flowing over multipage
 \newcommand\listofabbreviations[1]{
-\def\@listofabbreviations{\clearpage\chapter*{\vspace{0pt}LIST OF ABBREVIATIONS\vspace{-10pt}}
+\def\@listofabbreviations{\clearpage\chapter*{LIST OF ABBREVIATIONS\vspace{-10pt}}
 \addcontentsline{toc}{chapter}{LIST OF ABBREVIATIONS}
 \vspace{-2ex} 
 \renewcommand{\arraystretch}{1.5}
@@ -518,7 +521,7 @@
 % LIST OF SYMBOLS - Igathi
 % A 2-col tabular environment; Usage: $\alpha$ & The angle ($\dg$)
 \newcommand\listofsymbols[1]{
-\def\@listofsymbols{\clearpage\chapter*{\vspace{0pt}LIST OF SYMBOLS\vspace{-10pt}}
+\def\@listofsymbols{\clearpage\chapter*{LIST OF SYMBOLS\vspace{-10pt}}
 \addcontentsline{toc}{chapter}{LIST OF SYMBOLS}
 \vspace{-2ex} 
 \renewcommand{\arraystretch}{1.5}
@@ -533,13 +536,13 @@
 \let\@listofsymbols=\@empty
 
 % Title page
-\setlength{\droptitle}{-1in}
+\setlength{\droptitle}{-108pt}
 \pretitle{\doublespacing \vfill \begin{center}}
 \posttitle{\vfill \singlespacing A \@papertype \\ Submitted to the Graduate Faculty \\ of the \\ North Dakota State University \\ of Agriculture and Applied Science \end{center}}
 \preauthor{\vfill \begin{center} By \\ \vspace{\baselineskip}}
 \postauthor{\vfill \singlespacing In Partial Fulfillment of the Requirements \\ for the Degree of \\ \@degree \vfill Major~\@progdeptchoice: \\ \@department \end{center}}
-\predate{\vfill \begin{center}}
-\postdate{\vfill Fargo, North Dakota \end{center}}
+\predate{\vspace{-4ex}\vfill \begin{center}}
+\postdate{\vspace{1ex}\vfill Fargo, North Dakota \end{center}}
 
 % These control the frontmatter sections
 \newcommand{\makeapproval}{
@@ -648,7 +651,8 @@
 \titleformat{\chapter}
     {\centering\normalfont\bfseries\setstretch{1.6}}
     {{\large\MakeUppercase{{\chaptertitlename}}\ }}{0em}{\large\MakeUppercase}
-    \titlespacing*{\chapter}{0pt}{-0.5\baselineskip}{0.4\baselineskip} 
+%    \titlespacing*{\chapter}{0pt}{-0.5\baselineskip}{0.4\baselineskip} 
+    \titlespacing*{\chapter}{0pt}{-1\baselineskip}{0.4\baselineskip} 
 
 % Two versions based on "nonumber" - regular chapter heading
 \ifthenelse{\equal{\numbertype}{nonumber}}{  

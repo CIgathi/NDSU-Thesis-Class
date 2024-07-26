@@ -1,4 +1,4 @@
-\documentclass[phd,showgrids]{ndsu-thesis-2022} 
+\documentclass[phd]{ndsu-thesis-2022} 
 
 %------------------------------------------------------------------------------
 %-------------[Options]-applicable in this class----------------------
@@ -1356,6 +1356,7 @@ One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
 
 \italk{Since it is automatic full-width no centering is necessary. Row spacing by \texttt{spacing} command (others are ineffective with the class). The necessary codes (caption, footnote, column specifications, etc.) are input inside of \cmd{longtblr} optional [\ldots] and regular argument \{\ldots\}. Enclosing group environment is necessary. As this is un-numbered table the table's serial number should be reduced by 1 using the command \cmd{addtocounter}\{table\}\{-1\} after the table code (as applied at the end).}
 
+
 \begingroup
 \begin{spacing}{0.84}% works with longtblr
 \DefTblrTemplate{contfoot-text}{default}{\itshape Continued \ldots}% defining default 
@@ -1821,7 +1822,7 @@ Left - Tabs can be skipped or not filled\\
     \endfirsthead
     
  \multicolumn{11}{l}%
-{{\normalsize\tablename\ \thetable{} Methods of optimum bale stack locations and their logistics distances  -- (\emph{continued}).}} \\[2ex]
+{{\normalsize\tablename\ \thetable{}. Methods of optimum bale stack locations and their logistics distances  -- (\emph{continued}).}} \\[2ex]
  \tabletopinfols% defined in the preamble
     \endhead
     

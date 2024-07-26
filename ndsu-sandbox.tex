@@ -15,7 +15,7 @@
 %}
 
 \usepackage[style=apa,uniquename=false,natbib=true,backend=biber]{biblatex}% works well with \citep and \citet commands
-\addbibresource{mybib.bib}% *.bib extension is necessary 
+\addbibresource{mybib.bib}% *.bib extension is necessary
 
 \renewcommand\myspacing{1.9} % 23 lines/page needs 1.9 for thesis
 
@@ -65,7 +65,33 @@ This ``\texttt{ndsu-sandbox.tex}'' file can be used as a sandbox to try out thin
 \textcolor{gray}{Dummy text from kantlipsum[9]. Reference listing on the next page. Check it for the intended formatting.} I refer to \citep{lamport94,kopka2004guide,baczkowski1990ndsu,cassuto2010advising,pires2021teens}. \kant[9]
 
 
+\newpage
+\makeatletter
+\setlength{\@fptop}{0pt}
+\makeatother
+\begin{table}[t]
+%\centering
+\caption{Use of \texttt{tblr} environment for full-width table - applicable to both main text 
+and appendix.  Note the use of \texttt{booktabs} commands and `X' parameters to reproduce 
+Table.}
+\begin{tblr}{*4X}
+\toprule
+Number 	& Name of month 	& Days 	& Season\\
+\midrule
+\#7 			& July       		& 30 		& Spring\\ \cmidrule[lr]{2-4}
+Multicolumn 	&\SetCell[c=3]{c} The three columns combined \\ \cmidrule[lr]{2-4}
+\#8 			& August 		 & 31 	& Summer\\
+\#9 			& September 	& 30 		& Summer\\
+\bottomrule
+\end{tblr}
+\begin{tablenotes}[flushleft]
+\item \hspace{-1ex} Note: The \texttt{tablenotes} environment produces table footnotes. Refer to \texttt{tabularray} documentation for further details.  
+\end{tablenotes}
+\label{tab:ap1}
+\end{table}
 
+
+\cleardoublepage
 %----------------------------------------------------
 \section{Second Section - NDSU Style Equation Spacing}
 %\setlength{\abovedisplayskip}{-0.2in}
