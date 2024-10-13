@@ -178,7 +178,7 @@ $\gamma$ & hyperparameter in SVM
 %\linenumbers				% When required during review
 %-------------------------------------------
 
-%\begin{comment}
+\begin{comment}
 
 %-----------------------------------------------------------------------------
 %-----------------------------------------------------------------------------
@@ -373,7 +373,7 @@ $\gamma$ & hyperparameter in SVM
 \italk{References listing of these are shown in the combined reference chapter before the appendices (See page: \pageref{biblio}).}
 
 %-------------------------------------------
-\subsection{Modern \LaTeX\ Commands - Calculations}
+\subsection{Modern \LaTeX\ Commands --- Calculations}
 \italk{The modern \LaTeX\ has several new functionalities \citep{latxprojteam22}. Several new document commands and environments were now available for use.  For example, simple calculations can be produced using \cmd{fpeval\{expression\}} the floating point evaluation command as:}
 
 \verb|\fpeval{2*3*100+6}| = \fpeval{2*3*100+6}; \hspace{0.15in} Follows the standard PEMDAS rule
@@ -494,10 +494,77 @@ $\gamma$ & hyperparameter in SVM
 \paragraph{Introduction paragraph}
 \kant[8]
 
+\end{comment}
 
 %-----------------------------------------------------------------------------
 %-----------------------------------------------------------------------------
-\myheading{Tables in thesis/dissertation --- Regular-Styled Chapter} 
+\myheading{Equations in Thesis/Dissertation --- General Principles} 
+
+%-----------------------------------------------------------------------------
+\section{Abbreviations, Variables, Subscripts, and Indices}
+\italk{Equations should follow the established convention --- and loosely coding the equation and its elements is simply unprofessional. In general, such conventions, if not taken specific care, will be overlooked and the user feels no harm done. It was noticed that several published papers carry these mistakes --- which will not make it right and users should not follow a bad example.}
+
+\section{Some Examples of Correctly Formatted Equations}
+
+Some examples of correctly formatted equations. 
+
+\myeqn{y = mx + c;  \quad\quad\quad E = m \times c^2}
+
+Here all symbols are variable and in \textit{italics}.
+
+\myeqn{\text{Sum} = \sum^{n}_{i = 1} x_i}
+
+Check the use of text, subscript, and indices. 
+
+\myalign{
+\text{Percent}_\text{change} & = \frac{V_\text{new} - V_\text{old}}{V_\text{old}} \times 100\\
+\text{Precision} &= \frac{\text{TP}}{\text{TP + FP}}\\
+\text{Recall} &= \frac{\text{TP}}{\text{TP + FN}}\\
+\text{F1 score} &= \frac{2\,(\text{Precision} \times \text{Recall})}{\text{Precision} + \text{Recall}}\\
+\text{CR}_\text{lim} & = B / \sum^{x}_{m = 1} \left(\frac{C_m}{\text{RfD}_m}\right) 
+}
+
+Check the use of text, subscripts, variables, and indices. 
+
+
+\section{Convention and Expectations with Equations}
+
+\italk{Shown below are the rules that can be followed while working with equations:}
+
+
+\begin{table}[h!]
+\caption{Equation coding conventions --- Dos and dont's with examples}
+\begin{tblr}{X[1] X[0.75] X[0.75] X[2.2,l]}
+\toprule
+\textbf{Item}		& \textbf{Correct form --- Do}		& \textbf{Wrong form --- \textcolor{red}{Don't}}		& \textbf{Remarks}\\
+\midrule
+Abbreviations & ABEN, STD, TP, TN, FP, FN & \textcolor{red}{$ABEN, STD$, $TP, TN, FP$, $FN$} & Abbreviations, usually $>1$ letter long, should be always upright. This should be followed in regular text and in equations (use the \cmd{text\{\ldots\}} in equations). Otherwise, it may be considered as a product of variables. \\
+
+Variables & $T, P, V, t, v$ & \textcolor{red}{T, P, V, t, v} & Variables, usually 1 letter long, should be always be typeset in italics. The italics font signifies technical symbols of variables (e.g., temperature, pressure, volume, time, velocity).\\ 
+
+Subscripts and superscripts & $T_\text{avg}$, $\text{TP}_{\text{max}}$, $\text{RMSE}_{\text{observed}}$, $v^\text{in}$, $t^\text{output}$, $P^\text{top}_\text{min}$ 
+& \textcolor{red}{$T_{avg}$, $\text{TP}_{max}$, $\text{RMSE}_{observed}$, $v^{in}$, $t^{output}$, $P^{top}_{min}$ } 
+& Subscripts and superscripts, usually $>1$ letter long, should always be typeset upright. \\[1ex] 
+
+Index & $i, j, k, l, m,$ $x_i, y_j, z_1, \theta_{23}$ 
+& \textcolor{red}{i, j, k, l, m,  $x_\text{i}, y_\text{j}, z_\textit{1}, \theta_\textit{23}$} 
+& Indices, usually 1 letter long, should be always be typeset in italics and not upright. However, numbers should always be upright.\\ 
+
+Standard operations & abs, sin, cos, min, max
+& \textcolor{red}{$abs, sin, cos,$ $min, max$} 
+& Standard operations are usually formatted upright. In \LaTeX{} when coded in ``math'' mode or equation environment these operations will always come out upright. \\ 
+
+Final thought!
+& $\rightarrow$ & $\rightarrow$ &
+Symbols T and $T$, and t and $t$ are technically different quantities.\\
+\bottomrule
+\end{tblr}
+\end{table} 
+
+
+%-----------------------------------------------------------------------------
+%-----------------------------------------------------------------------------
+\myheading{Tables in Thesis/Dissertation --- Regular-Styled Chapter} 
 
 %-----------------------------------------------------------------------------
 \section{Simple Tables}
@@ -587,7 +654,7 @@ Number & Our rating & Month \\
 
 
 %--------------------------------------------------------------
-\subsection{Tables with fewer columns}
+\subsection{Tables with Fewer Columns}
 \italk{NDSU recommends that fewer column tables can be coded in a compact manner using fixed-width for readability, while tables with more columns can run the full-width or made into landscape tables. Compact tables with fewer columns are common and readily made by the common \texttt{tabular} and \texttt{table} environment (\cref{tab23a}).} 
  
 \begin{table}[ht!]
@@ -675,7 +742,7 @@ Number & Our rating & Month & Days & Rating\\
 \italk{This table (\cref{tab24}), of course without the vertical lines (|), can be used in NDSU disquisition. The issue of such vertical space management will be prevalent only with fewer columns.}
 
 %-------------------------------------------
-\subsection{Automatic Method --- Using \texttt{tblr} Environment --- Equal Widths}
+\subsection{Automatic Method --- Using \texttt{tblr} Environment - Equal Widths}
 \italk{The automatic method using the \vb{tblr} environment replacing the \vb{tabular} makes it simple and avoids the guesswork in fixing the table width. The following code (rest of the code is same as Table~2.2, page: \pageref{tabcode22}) that reproduces the \cref{tab24} and the generated output (\cref{tab25}) are:} 
 
 {\singlespacing
@@ -726,7 +793,7 @@ Number & Our rating & Month & Days & Rating\\
 \end{table}
 
 %-------------------------------------------
-\subsection{Automatic Method --- Using \texttt{tblr} Environment --- Unequal Widths}
+\subsection{Automatic Method --- Using \texttt{tblr} Environment - Unequal Widths}
 
 \italk{Shown below is an advanced table (\cref{tab27}) with variable column widths and overall math-column specification. Variable widths can be specified using coefficients to \vb{X} columns. 
 }
@@ -961,7 +1028,7 @@ Row-of-values & \multicolumn{4}{c}{Block1}  &\multicolumn{4}{c}{Block2} & \multi
 \italk{The long tables have more components than regular tables (\cref{longtab}). Long tables contain, in general, main title, running title, running table head, running footnote, and table final footnote. Users are urged to refer to the documentation of \vb{longtable} and the source code for more details, as there are several aspects involved in long table creation. Referring to the long tables can be done by defining the \texttt{label} right inside the \texttt{longtable} environment and referring it in the usual way (\cref{longtab} and \Cref{longtab}).}
 
 %-----------------------------------------------------------------------------
-\subsection{Longtable 1: Elaborate long table}
+\subsection{Longtable 1: Elaborate Long Table}
 %-----------------------
 \vspace{2ex}
 \setlength\LTleft{0pt}
@@ -1102,7 +1169,7 @@ should only be used as a canon for our understanding.
 
 
 %-----------------------------------------------------------------------------
-\subsection{Longtable 2: Simplified long table - No repeated caption and header}
+\subsection{Longtable 2: Simplified Long Table --- No Repeated Caption and Header}
 
 \italk{The centering is done by \cmd{LTleft} and \cmd{LTright} values. Row spacing by \cmd{arraystretch} command. No footer or header ``Continued \ldots'' coded. Enclosing group environment is necessary.}
 
@@ -1205,7 +1272,7 @@ are what first give rise to the architectonic of practical reason.
 
 
 %-----------------------------------------------------------------------------
-\subsection{Longtable 3: Simplified long table - With header but no repeated caption }
+\subsection{Longtable 3: Simplified Long Table --- With Header But No Repeated Caption }
 
 \italk{The centering is done by \cmd{LTleft} and \cmd{LTright} values. Row spacing by \cmd{arraystretch} command. Specifying \cmd{endfirsthead} suppresses the repeated caption, and \cmd{endhead} puts the header on each page. Footer or header ``Continued \ldots'' coded. Footnotes are coded with \cmd{endlastfoot} command with \cmd{multicolumn} using manual width. Enclosing group environment is necessary.}
 
@@ -1352,7 +1419,7 @@ One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
 \endgroup
 
 %-----------------------------------------------------------------------------
-\subsection{Longtable 4: Simplified longtblr - With header but no repeated caption }
+\subsection{Longtable 4: Simplified longtblr --- With Header But No Repeated Caption }
 
 \italk{Since it is automatic full-width no centering is necessary. Row spacing by \texttt{spacing} command (others are ineffective with the class). The necessary codes (caption, footnote, column specifications, etc.) are input inside of \cmd{longtblr} optional [\ldots] and regular argument \{\ldots\}. Enclosing group environment is necessary. As this is un-numbered table the table's serial number should be reduced by 1 using the command \cmd{addtocounter}\{table\}\{-1\} after the table code (as applied at the end).}
 
@@ -1483,7 +1550,7 @@ One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
 
 
 %-----------------------------------------------------------------------------
-\subsection{Longtable 5: Simplified longtable - With no header or repeated caption - used to present just long data}
+\subsection{Longtable 5: Simplified Longtable --- With No Header or Repeated Caption - Used to Present Just Long Data}
 
 \italk{The centering is done by \cmd{LTleft} and \cmd{LTright} values. Row spacing by \cmd{arraystretch} command. Captions, rules, etc. are not used in this data-style long table. Row spacing by \cmd{arraystretch} command. Enclosing group environment is necessary. The table counter number should be adjusted for this no-caption table.}
 
@@ -1552,7 +1619,7 @@ It is   & not clear     & what you want \\
 \kant[9]
 
 %-----------------------------------------------------------------------------
-\subsection{Longtable 6: Simplified longtblr - With no header or repeated caption - used to present just long data}
+\subsection{Longtable 6: Simplified Longtblr --- With No Header or Repeated Caption - Used to Present Just Long Data}
 
 \italk{Since it is automatic full-width no centering is necessary. Row spacing by \texttt{spacing} command (others are ineffective with the class). The necessary codes to be input inside of \cmd{longtblr} optional [\ldots] and regular argument \{\ldots\} are not done suppress. The entry = none will make the table not listed in TOC. Bottom \cmd{hrule} should be kept outside of \vb{longtblr} so that it does not repeat on every page. Enclosing group environment is necessary. The table counter number should be adjusted for this no-caption table.}
 
@@ -1679,7 +1746,7 @@ Number  & Twice & Squared & Fourth power \\
 
 
 %-----------------------------------------------------------------------------
-\section{Longtable 7: Simple long data table using \texttt{tabbing} environment}\label{lttab}
+\section{Longtable 7: Simple Long Data Table Using \texttt{tabbing} Environment}\label{lttab}
 
 \italk{The \vb{tabbing} environment offers the most simple way of developing data table (always left-justified; no TOC entries) and \vb{tabbing} entries automatically flow through pages (longtable). The tabs can be defined according to requirements. The tab stops can be adjusted to move the entire table or column widths manually. As the tabbing environment is not a table, it will not affect the numbering of the tables. }
 
@@ -2177,7 +2244,7 @@ As such, figures with long captions can be coded as usual, including the use of 
 
 
 %-----------------------------------------------------------------------------
-\section{Multiple figures in landscape}
+\section{Multiple Figures in Landscape}
 As any dedicated reader can clearly see, the Ideal of practical reason is a representation of, as far as I know, the things in themselves; as I have shown elsewhere, the phenomena should only be used as a canon for our understanding. The paralogisms of practical reason are what first give rise to the architectonic of practical reason. As will easily be shown in the next section, reason would thereby be made to contradict, in view of these considerations, the Ideal of practical reason, yet the manifold depends on the phenomena. Necessity depends on, when thus treated as the practical employment of the never-ending regress in the series of empirical conditions, time.
 
 \begin{landscape}
@@ -2279,14 +2346,14 @@ As any dedicated reader can clearly see, the Ideal of practical reason is a repr
 {Schemes are floats and have to be controlled by float specifiers}
 
 %--------------------------------------------------------------
-\subsection{Figures and schemes --- general information}\label{figs}
+\subsection{Figures and Schemes --- General Information}\label{figs}
 
 \italk{The \textbf{figures} are used to represent pictures, photographs, drawings, maps, illustrations of samples, fields, instruments, structures, methods; graphs or plots of measurements, results; or anything graphically depicted to convey the thoughts or data. However, \textbf{schemes} should be used to specifically represent systematic plans for implementing an idea or concept, usually used to depict a process flow and the steps involved and often involve ``arrows'' connecting one step to the next. Examples of schemes are chemical process diagrams, sets of chemical reaction pathways, flowcharts (process and computer algorithms), electrical circuits, block diagrams connected by arrows, and so on. In any thesis or paper, schemes always appear; however, in a thesis it can be shown as a separate set with a list of schemes (LOSH), and in papers they are coded as figures.}
 
 \italk{The schemes are coded using ``\texttt{scheme}'' environment similar to`` \texttt{figure}'' environments both in long (using: \cmd{includegraphics}\{\ldots\}, \cmd{centering}, \cmd{resize}, \cmd{caption}, and \cmd{label}) and defined shortcut forms.  By default, the schemes are labeled as Schematic in their caption. Schemes can be cross-referenced using \cmd{cref} or \cmd{Cref} commands as usual.} 
 
 %--------------------------------------------------------------
-\section{Shortcuts for schemes with direct and optional arguments}
+\section{Shortcuts for Schemes with Direct and Optional Arguments}
 
 \italk{Shortcuts similar to figures, with 1 [optional] argument + 5 \{arguments\}, were developed for the schemes. The arguments are: (1) [optional] vertical placement of the caption (moving it up and down with respect to the bottom of the figure, especially for images with excessive or too less whitespace), (2) placement, (3) size factor, (4) input file, (5) caption, and (6) label were defined to produce figures (regular and landscape). These commands coded for schemes are: \cmd{mysch\{\ldots\}}, \cmd{mysch[\ldots]\{\ldots\}}, \cmd{myschls\{\ldots\}}, and \cmd{myschls[\ldots]\{\ldots\}}.}
 
@@ -2311,7 +2378,7 @@ As any dedicated reader can clearly see, the Ideal of practical reason is a repr
 
 
 %-----------------------------------------------------------------------------
-\section{Regular schemes in chapters}
+\section{Regular Schemes in Chapters}
 \italk{A schematic file (``\texttt{LampFlowchart.pdf}'') is included in the class folders for the demonstration. Any other user schematics or other dummy figures from the \texttt{mwe} package (Documentation Sec. 7.3) can also be used.}
 
 \kant[9]
@@ -2330,7 +2397,7 @@ As any dedicated reader can clearly see, the Ideal of practical reason is a repr
 \vspace{-3.5ex}
 
 %-----------------------------------------------------------------------------
-\section{Landscape schemes in chapters}
+\section{Landscape Schemes in Chapters}
 
 \italk{All schemes are referred: The (\cref{sc1,sc2}) are good. And the \Cref{sc1,sc2,sc3} are too.} 
 
@@ -2492,10 +2559,10 @@ for citations to be used while loading the \texttt{natbib} package as \textcolor
 
 %-----------------------------------------------------------------------------
 %-----------------------------------------------------------------------------
-\myheading{Other aspects in disquisition - Paper-styled Chapter} 
+\myheading{Other Uspects in Disquisition - Paper-styled Chapter} 
 
 %-----------------------------------------------------------------------------
-\section{SI units in thesis/dissertation}
+\section{SI Units in Thesis/Dissertation}
 \italk{This is a section of my thesis. SI units are available, which provides correct spacing between the number and the unit. For example, \SI{120800600}{\m\squared} gives the thousands separator and correct spacing between the number and units. The command used to produce was \textbackslash\texttt{SI\{120800600\}\{\textbackslash m\textbackslash squared\}}.  Also, refer to \texttt{siunitx} package user manual (\href{https://mirror.mwt.me/ctan/macros/latex/contrib/siunitx/siunitx.pdf}{\textcolor{magenta}{siunitx}}) for several other commands and features.} 
 
 %-----------------------------------------------------------------------------
@@ -2565,7 +2632,7 @@ for citations to be used while loading the \texttt{natbib} package as \textcolor
 
 
 %----------------------------------------------------
-\section{Handy commands for equation with correct spacing}\label{eqnscut}
+\section{Handy Commands for Equation with Correct Spacing}\label{eqnscut}
 %\setlength{\abovedisplayskip}{-0.2in}
 %\setlength{\belowdisplayskip}{0pt}
 
@@ -2655,7 +2722,7 @@ Our sense perceptions constitute a body of demonstrated doctrine, and some of th
 }
 
 %-----------------------------------------------------------------------------
-\section{Spacing adjustment around non-textual elements}
+\section{Spacing Adjustment Around Non-textual Elements}
 \textcolor{magenta}{Reproduced from the class documentation	for ready reference.} \italk{Usually, the spacing around the non-textual elements produced by \LaTeX\ will be good and based on typography principles. The environments that create these elements (e.g., tables, figures, equations) automatically supply an additional space to set the elements apart from the regular text and this is the expected and correct behavior. However, sometimes additional space will appear above or below these elements, which may be the result of fitting the elements with respect to others of the whole chapter. However, the spacing around the non-textual elements can be altered by one or any combination of the following to produce a consistent spacing around the non-textual elements:}
 \begin{itemize}
 \item
@@ -2947,7 +3014,7 @@ I can include appendix material here.
 \kant[1]
 
 %-----------------------------------------------------------------------------
-\section{Appendix scheme}\label{appsch}
+\section{Appendix Scheme}\label{appsch}
 
 \italk{Appendix scheme is coded as appendix figure using (e.g., \cmd{myfigap})}
 
@@ -3142,13 +3209,13 @@ Row 8 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 &
 \kant[9]
 
 %-----------------------------------------------------------------------------
-\section{Appendix - Long Table}
+\section{Appendix --- Long Table}
 
 \italk{We know well that long tables are a little involved and tricky, and then in appendix needs manual override for proper output. The regular \vb{longtable} and \vb{longtbrl} environments are used to code the long tables, and their captions, and LOAT entries will appear correctly with \vb{table} environment. However, the existing appendix \vb{appendixtable} environment will not support the and \vb{longtable} and \vb{longtbrl} environments, even though these will output table contents the caption table numbering and LOAT will not appear correctly. Therefore, a simpler fix followed includes (1) a dummy \vb{appendixtable} with only a caption for the long table with negative \vb{vspace} and optional TOC entry \cmd{caption}[\ldots] with repeated caption text without negative \vb{vspace}, and immediately followed by (2) the long table code without caption. Examples of the appendix long tables are shown in Table~\ref{aplongtab1} and Table~\ref{aplongtab2}. As shown before (Sec.~\ref{lttab}), for simple long data the \cmd{tabbing} environment can be utilized. These methods of appendix long table can be coded with or without caption.}  
 
 
 %-----------------------------------------------------------------------------
-\subsection{Appendix long table using fixed-width \texttt{longtable}}
+\subsection{Appendix Long Table Using Fixed-width \texttt{longtable}}
 
 %------------------------------------
 \begin{appendixtable}% dummy appendixtable for caption 
@@ -3237,7 +3304,7 @@ One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
 %------------------------------------
 
 %-----------------------------------------------------------------------------
-\subsection{Appendix long table using automatic full-width \texttt{longtblr}}
+\subsection{Appendix Long Table Using Automatic Full-width \texttt{longtblr}}
 
 \kant[9]
 
@@ -3360,7 +3427,7 @@ One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
 %------------------------------------
 
 %-----------------------------------------------------------------------------
-\subsection{Appendix long table using \texttt{tabbing}}
+\subsection{Appendix Long Table Using \texttt{tabbing}}
 
 \kant[10]
 
@@ -3567,7 +3634,7 @@ I can include appendix material here. \kant[9]
 }
 
 %-------------------------------------------
-\subsection{More listings}
+\subsection{More Listings}
 
 %-------------------------------------------
 \subsubsection{Listings as non-float and fonts}
