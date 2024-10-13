@@ -344,7 +344,7 @@
 \DeclareOption{showframe}{\renewcommand{\frameshow}{showframe}}
 \ProcessOptions
 \ifthenelse{\equal{\frameshow}{showframe}}
-{\RequirePackage[top=1in,bottom=1.25in,left=1in,right=1in,letterpaper,showframe]{geometry}}{\RequirePackage[top=1in,bottom=1.25in,left=1in,right=1in,letterpaper]{geometry}}
+{\RequirePackage[top=1in,bottom=1.25in,left=1in,right=1in,letterpaper,showframe]{geometry}}{\RequirePackage[top=1.0in,bottom=1.125in,left=1in,right=1in,letterpaper]{geometry}} % Sep12
 
 % References title References or Bibliography
 %\newcommand{\referencetitile}{references}
