@@ -71,6 +71,7 @@
 \newcommand\tb{\textbackslash}
 \newcommand\vb[1]{\textcolor{blue}{\texttt{#1}}}%verb for text - Green3 of x11names is good
 \newcommand\vbc[1]{\textcolor{blue}{\textbackslash\,\texttt{#1}}}%verb for commands
+\newcommand\te[1]{\ensuremath\text{#1}}%text in eqation - shortcut
 
 % Non-conventional SI units defined
 \DeclareSIUnit\gal{gallon}
@@ -115,7 +116,7 @@ $[$ac$]$ & of bales  &  & (km) & (km) & (km) & (km) & (km) & (\$) & (\$) & (\$) 
 %-----------------------------------------------------------------------------
 \title{An M.S. Thesis or Ph.D. Dissertation Extended Illustration Sample Generated - Using the new ``NDSU-Thesis-2022'' \LaTeX\ Class and Template}
 \author{Samuel Quincy Student}
-\date{December 2023}
+\date{October 2024}
 \progdeptchoice{Department} % Use Department (or) Program
 \department{Mathematics}
 
@@ -123,7 +124,7 @@ $[$ac$]$ & of bales  &  & (km) & (km) & (km) & (km) & (km) & (\$) & (\$) & (\$) 
 \cmembera{Prof. Abraham Lincoln}
 \cmemberb{Prof. George Washington}
 \cmemberc{Prof. Theodore Roosevelt} % If 3rd not required - delete this line 
-\approvaldate{2 August 2023}
+\approvaldate{2 October 2024}
 \approver{Prof. James Garfield}
 
 \abstract{
@@ -556,11 +557,25 @@ Standard operations & abs, sin, cos, min, max
 
 Final thought!
 & $\rightarrow$ & $\rightarrow$ &
-Symbols T and $T$, and t and $t$ are technically different quantities.\\
+Symbols T and $T$, and t and $t$ are technically different quantities. Same symbol style should be used in equation and in the definition (See example in the next section).\\
 \bottomrule
 \end{tblr}
 \end{table} 
 
+%-----------------------------------------------------------------------------
+\section{Equation and Definition --- An Example}
+The loading and unloading time can be determined using the number of bales generated and the loading and unloading time (min) per bale inputs as follows:
+
+\myalign{
+\te{Handling:}\quad T_\te{LU} & = \te{NB} \times (T_\te{L} + T_\te{U})/ 60 
+\label{tlu}\\
+\te{Overall:}\quad T_\te{OT} & = (T_\te{LU} + T_\te{C}) / 60 
+\label{tot}
+}
+
+\noindent where, $T_\te{LU}$ is total bale loading and unloading time (h), NB is number of bales, $T_\te{L}$ is the loading time per bale (min), $T_\te{U}$ is the unloading time per bale (min), $T_\te{OT}$ is the overall bale movement time (h), and $T_\te{C}$ is the bale collection time (min). 
+
+\italk{Note the exact reproduction of the symbols in the definitions  (font and format; \textcolor{magenta}{no wrong mixup of upright and italics characters with technical symbols!}) that followed the \cref{tlu,tot} in the order of left to right and top to bottom. It is also recommended to use the units of the symbols during definition. Also, notice the use of noindent with ``where''.}
 
 %-----------------------------------------------------------------------------
 %-----------------------------------------------------------------------------
@@ -3789,7 +3804,7 @@ In all theoretical sciences, the paralogisms of human reason would be falsified,
 \italk{The \Cref{dum-list-cap} lists the code of our program.}
 
 %-------------------------------------------
-\subsection{}
+\subsection{The Final Section of the Appendices}
 I can include appendix material here. 
 
 \italk{Shown below is another equation showing hypotenuse \Cref{eqc1}. The previous equation in the appendix one is \cref{eqa1} which was $y = mx + c$ in \cpageref{eqa1}. } 
