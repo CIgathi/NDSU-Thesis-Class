@@ -78,7 +78,7 @@
 \author{Aaron Feickert$\,^{a}$, Jonathan Totushek$\,^{a}$, and C. Igathinathane$\,^{b,\,*}$ \\ *\,Maintainer, Bug Reports, and Enquires:  Igathinathane Cannayen (\texttt{i.cannayen@ndsu.edu})\\ {\small Github: \url{https://github.com/CIgathi/NDSU-Thesis-Class.git}}
 }
 \date{{\small $^{a}$\emph{Department of Mathematics, NDSU} \\ $^{b}$\emph{Department of Agricultural and Biosystems Engineering, NDSU}\\[2ex]}
-2 October 2024}
+12 November 2024}
 
 %--------------------------------------------------------------
 %--------------------------------------------------------------
@@ -801,7 +801,7 @@ Similar to figures handled in the regular chapters (Sec.~\ref{figs}), for append
 
 %--------------------------------------------------------------
 \subsubsection{Closing appendices and creating TOC, LOAT, and LOAF}\label{apfigtab}
-In the class, the creation of \ixm{appendix}{LOAT} and \ixm{appendix}{LOAF} as well as their TOC entries requires special consideration. When the last appendix has at least one table and one figure, the TOC, LOAT, and LOAF will be automatically generated without intervention. However, when the last appendix does not have at least a table, or figure, or both (even though the previous appendices had them) the corresponding LOAT or LOAF and relevant TOC entries will not appear. The solution for the automatic creation of these items, irrespective of the contents of the last appendix is issuing the relevant commands such as \cmd{\ix{closeappendixtable}}, \cmd{\ix{closeappendixfigure}}, or \cmd{\ix{closeappendices}} in the overall code as the last command before \cmd{end\{document\}} and after the last appendix code. Several scenarios occur due to the presence or absence of appendix tables and figures in the last or previous appendices and the last command (or) none to be used are presented in Table~\ref{appclose} for proper generation of LOAT and LOAF. 
+In the class, the creation of \ixm{appendix}{LOAT} and \ixm{appendix}{LOAF} as well as their TOC entries requires special consideration. When the last appendix has at least one table and one figure, the TOC, LOAT, and LOAF will be automatically generated without intervention. However, when the last appendix does not have at least a table, or figure, or both (even though the previous appendices had them) the corresponding LOAT or LOAF and relevant TOC entries will not appear. The solution for the automatic creation of these items, irrespective of the contents of the last appendix is issuing the relevant commands such as \cmd{\ix{closeappendixtable}}, \cmd{\ix{closeappendixfigures}}, or \cmd{\ix{closeappendices}} in the overall code as the last command before \cmd{end\{document\}} and after the last appendix code. Several scenarios occur due to the presence or absence of appendix tables and figures in the last or previous appendices and the last command (or) none to be used are presented in Table~\ref{appclose} for proper generation of LOAT and LOAF. 
 
 
 \vspace{-1ex}
@@ -822,15 +822,15 @@ No Table \& Figure  & Only Figure   & None & Only LOAF auto generated\\
 No Table \& Figure  & Table \& Figure  & None & LOAT and LOAF auto generated\\
 \midrule
 Only Table   & Only Table   & None & Only LOAT auto generated\\
-Only Table   & Only Figure   & {\small\cmd{\ix{closeappendixtable}}} & LOAT and LOAF generated\\
-Only Table   & No Table or Figure   & {\small\cmd{\ix{closeappendixtable}}} & Only LOAT generated\\
+Only Table   & Only Figure   & {\small\cmd{\ix{closeappendixtables}}} & LOAT and LOAF generated\\
+Only Table   & No Table or Figure   & {\small\cmd{\ix{closeappendixtables}}} & Only LOAT generated\\
 \midrule
-Only Figure   & Only Table   & {\small\cmd{closeappendixfigure}} & LOAT and LOAF generated\\
+Only Figure   & Only Table   & {\small\cmd{closeappendixfigures}} & LOAT and LOAF generated\\
 Only Figure   & Only Figure   & None & Only LOAF auto generated\\
-Only Figure   & No Table or Figure   & {\small\cmd{\ix{closeappendixfigure}}} & Only LOAF generated\\
+Only Figure   & No Table or Figure   & {\small\cmd{\ix{closeappendixfigures}}} & Only LOAF generated\\
 \midrule
-Table \& Figure  & Only Table*  & {\small\cmd{closeappendixfigure}} & LOAT and LOAF generated\\
-Table \& Figure  & Only Figure*  & {\small\cmd{closeappendixtable}} & LOAT and LOAF generated\\
+Table \& Figure  & Only Table*  & {\small\cmd{closeappendixfigures}} & LOAT and LOAF generated\\
+Table \& Figure  & Only Figure*  & {\small\cmd{closeappendixtables}} & LOAT and LOAF generated\\
 Table \& Figure  & No Table or Figure   & {\small\cmd{closeappendices}}  & LOAT and LOAF generated\\
 \bottomrule
 \multicolumn{3}{l}{\small * The command  \cmd{closeappendices} can also be used instead} 
@@ -1086,9 +1086,16 @@ These commands (or equivalent commands if the user uses a different bibliography
 
 %--------------------------------------------------------------
 \subsection{Specialization specific bibliography --- Examples of ASABE and IEEE}
-The bibliography styles to be followed in the thesis/dissertation will be based on the parent department and the major technical society the department subscribes to in general. For example, the NDUS's ``Agricultural and Biosystems Engineering'' department's major technical society is The American Society of Agricultural and Biological Engineers (ASABE), and the NDSU's ``Electrical and Computer Engineering'' department's technical society is The  Institute of Electrical and Electronics Engineers (IEEE). The two ways of making the bibliography are to use \blt or \bt.
+The bibliography styles to be followed in the thesis/dissertation will be based on the parent department and the major technical society the department subscribes to in general. For example, the NDUS's ``Agricultural and Biosystems Engineering'' department's major technical society is the American Society of Agricultural and Biological Engineers (ASABE), and the NDSU's ``Electrical and Computer Engineering'' department's technical society is The  Institute of Electrical and Electronics Engineers (IEEE). The two ways of making the bibliography are to use \blt or \bt. The ASABE style journal references can be reproduced using \cmd{usepackage[style=apa,} \texttt{natbib=true]} \texttt{\{biblatex\}}. 
 
-The ASABE style journal references can be reproduced using \\\cmd{usepackage[style=apa,} \texttt{natbib=true]} \texttt{\{biblatex\}}. For \texttt{IEEEtran} styles with \blt use \cmd{usepackage[style=ieee]\{biblatex\}}. With \bt \texttt{*.bst} files and \cmd{citestyle\{\ldots\}} commands are available to create the style of reference followed in various departments (see Sec.~\ref{refhandling} for details). 
+For \texttt{IEEEtran} styles with \blt any of the following can be used (with increasing functionality). With \bt \texttt{*.bst} files and \cmd{citestyle\{\ldots\}} commands are available to create the style of reference followed in various departments (see Sec.~\ref{refhandling} for details). 
+
+\begin{maxipage}
+\ccmd{
+$\qquad$\cmd{usepackage[style=ieee,backend=biber]\{biblatex\}}\\
+$\qquad$\cmd{usepackage[style=ieee,natbib=true,backend=biber]\{biblatex\}}\\
+$\qquad$\cmd{usepackage[style=ieee,natbib=true,citestyle=numeric-comp,backend=biber]\{biblatex\}}}
+\end{maxipage}
 
 %--------------------------------------------------------------
 \subsection{Bibliography compilation issues}\index{bibliography!compilation}\index{bibliography!issues}\label{bibissue}
