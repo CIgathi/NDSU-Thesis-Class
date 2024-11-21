@@ -89,9 +89,14 @@
 %              Appendix long table examples added in NDSU Extended Thesis (2023-12-17)
 % 		Title page (after cover page) now has single-spaced title (2024-06-11)
 % 		All headings (chapter and chapter*) consistently start at around 1 in from the top (2024-07-25)
+%		Appendix sub-images handling scenarios were introduced (2024-11-20) 
+%		New shortcuts for appendix longtables & sub-images: \mytabapcap and \myfigapcap (2024-11-20) 
+%		Vspace adjustment through \dvsapce in landscape elements developed (2024-11-20) 
+%		Extended thesis updated: A chapter on equations handling was added (2024-11-20) 
 %
 %
 %  Update history
+%  Last updated: 2024-11-20
 %  Last updated: 2024-07-25
 %  Last updated: 2024-06-11
 %  Last updated: 2023-12-07
@@ -170,6 +175,7 @@
 \RequirePackage[stable]{footmisc}% footnote in section and beyond
 \RequirePackage{booktabs}
 \RequirePackage{pdflscape} 
+\RequirePackage{afterpage}
 \RequirePackage{booktabs}
 \RequirePackage{tabularx}
 \RequirePackage{longtable} 
@@ -599,7 +605,7 @@
     \vspace{0.2in}
     Approved: \\[0.1in]
     \noindent \parbox{1.5in}{\centering\@approvaldate\vspace{.05in}\hrule\vspace{.05in}{\tiny Date}} \hfill
-    \parbox{3in}{\centering\@approver\vspace{.05in}\hrule\vspace{.05in}{\tiny Department Chair}}
+    \parbox{3in}{\centering\@approver\vspace{.05in}\hrule\vspace{.05in}{\tiny \@progdeptchoice~Chair}}
 }
 \end{center}
 }
@@ -962,6 +968,24 @@
 \end{landscape}
 }
 
+% Dummy only figure caption for appendix listings and multipage figures
+\newcommand\myfigapcap[3][-3ex]{%1 optional vert spaceing +2 arguments
+\vspace{#1}
+\begin{appendixfigure}[h!]
+\caption{#2}%LOAT entry and caption are same
+\label{#3}
+\end{appendixfigure}
+}
+
+% Dummy only figure caption for listings and multipage figures
+\newcommand\mytabapcap[3][-8ex]{%1 optional verti spaceing +2 arguments
+\begin{appendixtable}[h!]
+\caption{#2}%LOAT entry and caption are same
+\label{#3}
+\end{appendixtable}
+\vspace{#1}
+}
+
 
 % Equations command for better vertical alignment with text 
 % myeqn, myfraceqn (different spacing), myalign, 
@@ -1130,6 +1154,16 @@
   \vrule width 0.2pt height\gmshow@textheight depth\z@
 }%
 \makeatother
+
+% The \phantomcaption command is required for the subfig to operate 
+% without captions in the appendices
+\makeatletter
+\providecommand\phantomcaption{\caption@refstepcounter\@captype}
+\makeatother
+
+% The dummy vspace necessary to have vertical spacing with landscape mode
+\newcommand\dvspace[1]{\,\!\!\vspace{#1}}
+
 
 \widowpenalty=10000
 \clubpenalty=10000

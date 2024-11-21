@@ -23,7 +23,7 @@
 % \myheading = proper numbering and format
 % \si{} and \SI{}{} = SI units from siunitx package that gives proper spacing between numbers and units
 % \citep and \citet = natbib package commands application with options
-% \myfig{5 items} = shortcut for regular figures {placement}{size}{file}{caption}{label}
+% \{5 items} = shortcut for regular figures {placement}{size}{file}{caption}{label}
 % \myfigls {5 items} = shortcut for landscape figures {placement}{size}{file}{caption}{label}
 % \cref and \Cref = use of cleveref package based reference
 % \tabcolsep = to stretch the tables to fill the entire width
@@ -56,6 +56,7 @@
 
 %-----------------------------------------------------------------------------
 %\AtBeginDocument{\raggedright}   % No justification - NDSU template; justification also okay
+
 
 %\newcommand{\ec}{\end{comment}}% end comment environment
 \newcommand\italk[1]{\textcolor{blue}{#1}}  % for my texts
@@ -150,22 +151,23 @@ This is the abstract for my thesis.
 \preface{You can put a preface here.}
 
 \listofabbreviations{  % A 2-col tabular environment and may use titlecase; ;Usage: SI & System International\\
-AC & alternating current \\
-AGL & above ground level \\
-API & application programming interface \\
-NDSU  & North Dakota State University \\ 
-ZL & zeta tevel
+AC 		& alternating current \\
+AGL 		& above ground level \\
+API 		& application programming interface \\
+NDSU  	& North Dakota State University \\ 
+SVM 	& support vector machine \\
+ZL 		& zeta level
 }
 
 \listofsymbols{ % A 2-col tabular environment and may use sentencecase; Usage: $A$ &  Area (\si{\m\squared})\\
-$A$ & area (\si{\m\squared})\\
-$e$     & Euler's constant (\num{2.718281828}) \\
-$R^2$ & coefficient of determination\\
-$T$ & time (s)\\
-$v$ & velocity (\si{\m\per\second})\\
-$x$ & $x$-coordinate of image pixel \\
-$y$ & $y$-coordinate of image pixel \\
-$\sigma$ & standard deviation\\ 
+$A$ 		& area (\si{\m\squared})\\
+$e$     	& Euler's constant (\num{2.718281828}) \\
+$R^2$ 	& coefficient of determination\\
+$T$ 		& time (s)\\
+$v$ 		& velocity (\si{\m\per\second})\\
+$x$ 		& $x$-coordinate of image pixel \\
+$y$ 		& $y$-coordinate of image pixel \\
+$\sigma$ 	& standard deviation\\ 
 $\gamma$ & hyperparameter in SVM		
 }
 
@@ -179,8 +181,6 @@ $\gamma$ & hyperparameter in SVM
 %\linenumbers				% When required during review
 %-------------------------------------------
 
-\begin{comment}
-
 %-----------------------------------------------------------------------------
 %-----------------------------------------------------------------------------
 \mypaperheading{General aspects --- Paper-Styled Chapter --- some study titles are long, and we are making it long enough so that it flow more than two line - oops it went to the fourth}{This paper is planned to be submitted as a review article in the \emph{Advanced Technical Research Collection} journal.  All the co-authors have assisted in the research direction and review of the manuscript.}
@@ -191,6 +191,7 @@ $\gamma$ & hyperparameter in SVM
 \italk{Welcome to the \LaTeX\ ``ndsu-thesis-2022'' document class (NDSU class hereafter) and this document serve as an \textcolor{magenta}{\emph{extended example}} of a template. The users are urged to first get familiarized with the \textcolor{magenta}{\emph{NDSU class documentation}}, where most of the instructions for developing the thesis/dissertation using the NDSU class are clearly outlined. The NDSU class tries to address several dissertation requirements that graduate students come to expect from a template. While \LaTeX\ provides several tools to create a professional-looking document, it requires some learning --- a new set of skills is always a desirable thing to have, especially for students. Several leading universities have their \emph{thesis} class and template to help their students, and NDSU is no different (we do have our thesis class, and being used by several students!). The NDSU \LaTeX\ class (previous and updated) even features in the CTAN (Comprehensive \TeX\ Archive Network) repository of \LaTeX. CTAN is the central archive location that currently (July 2022) has 6249 packages from 2869 contributors and most of the packages are free to download and use immediately. A search on ``thesis'' returns 114 hits in CTAN showing the popularity of universities developing their \LaTeX\ class to help their grad students with dissertations. Given the quality of output, no wonder that several publishing houses (peer-reviewed journals and books) use \LaTeX\ as their system and provide authors with templates and reference styles. In this document/chapter, we outline and provide illustrations of using the updated NDSU class for developing thesis/dissertations, and users should have noted that this document itself uses the updated NDSU class.\\ 
 }
 
+%\begin{comment}
 %-----------------------------------------------------------------------------
 \vspace{-5ex}
 \section{Introduction --- Second Section After Abstract --- \LaTeX\ as a Tool for Students/Researchers}
@@ -494,8 +495,6 @@ $\gamma$ & hyperparameter in SVM
 %-------------------------------------------
 \paragraph{Introduction paragraph}
 \kant[8]
-
-\end{comment}
 
 %-----------------------------------------------------------------------------
 %-----------------------------------------------------------------------------
@@ -2879,6 +2878,7 @@ Theorems, corollaries, lemmas, and other elements can be referenced after defini
 \subparagraph{Test 5}
 \italk{Paragraph works.} 
 
+%\end{comment}
 
 %-----------------------------------------------------------------------------
 \renewcommand{\bibname}{REFERENCES}
@@ -3007,24 +3007,22 @@ Number & Month \\
 
 %--------------------------------------------------
 %--------------------------------------------------
-\namedappendices{A}{Named appendix title here} % Multiple named appendices
+\namedappendices{A}{Named first appendix --- Basic elements} % Multiple named appendices
+\italk{The basic appendix elements covered are: simple figure, scheme, tables, and equations. These will carry the appendix number and will populate the LOAT and LOAF.}
 
 \textcolor{magenta}{Note: As mentioned earlier the named appendices were included for illustration purposes. The application of both will interfere with the numbering of sections, subsections, tables, figures, and so on. One may find in TOC, LOAT, and LOAF the same numbers begin repeated, which is logical and correct behavior. But this is of \emph{no consequence} in real work as both appendix and named appendix will never be used in a single disquisition.}
 
 \italk{This named appendix was made using the command:}
 
 \begin{verbatim}
-\namedappendices{A}{Named appendix title here}
+\namedappendices{A}{Named first appendix --- Basic elements}
 \end{verbatim}
 
 %-----------------------------------------------------------------------------
 \section{Section Test}
-
-I can include appendix material here. 
-
 \italk{And the second figure using the shortcut command \texttt{myfigap} and uses a long caption that wraps around (refer code in page: \pageref{figv}).} \hl{Note: The figure number A1 is again created as we have single ``Appendix'' as well as ``Named Appendices'' in the same document. This is applicable to all floats. And, this will not happen in a regular thesis (e.g., both styles of appendices).}
 
-\myfigap{H}{0.3}{frog.jpg}{Named appendix figure using myfigap command - figure captions go at the bottom - a long long long long long long long long long long long long caption.}{figaa1}
+\myfigap{H}{0.24}{frog.jpg}{Named appendix figure using myfigap command - figure captions go at the bottom - a long long long long long long long long long caption. Note the number \textbf{A1}.}{figaa1}
 
 \kant[1]
 
@@ -3100,7 +3098,7 @@ v\: (\text{Velocity}) &= \frac{d\: (\text{distance})}{t\: (\text{time})}
 \vspace{-1.5ex}
 \italk{Now regular text with space adjusted by -ve \cmd{vspace} command.} Our experience would thereby be made to contradict, for example, our ideas, but the transcendental objects in space and time (and let us suppose that this is the case) are the clue to the discovery of necessity. But the proof of this is a task from which we can here be absolved.
 
-\vspace{-4pt}
+\vspace{-6pt}
 \myalign{
 y &= mx + c \\
 E &= mc^2 \\
@@ -3109,9 +3107,1088 @@ v\: (\text{Velocity}) &= \frac{d\: (\text{distance})}{t\: (\text{time})}
 
 \italk{\hl{Just to reiterate:} The spacing around equations, figures, and tables can be appropriately adjusted to match the text double spacing using \cmd{vspace} commands.}
 
+
 %-----------------------------------------------------------------------------
 %-----------------------------------------------------------------------------
-\namedappendices{B}{Named second appendix title here} 
+\namedappendices{B}{Named second appendix --- advanced tables} 
+
+\italk{The appendix advanced elements covered are: landscape tables and longtables.These will populate the LOAT.}
+
+%-----------------------------------------------------------------------------
+\section{Test}
+I can include appendix material here. \italk{Table~\ref{apbtab1} produced.}
+
+\begin{appendixtable}[ht]
+\centering
+\caption{Named appendix B full-width table ONE using \texttt{tblr} environment.}
+\begin{tblr}{  *4{X[c]}  }
+\toprule
+Number & Month & Same & Same\\
+\midrule
+1 & January & January & January \\
+2 & February & February & February \\
+3 & March  & March & March\\
+\bottomrule
+\label{apbtab1}
+\end{tblr}
+\end{appendixtable}
+
+\vspace{-4ex}
+\italk{Repeated table B1 (table~\ref{apbtab2}) with a little modification.}
+
+\begin{appendixtable}[ht]
+\centering
+\caption{Named appendix B full-width table TWO using \texttt{tblr} environment.}
+\begin{tblr}{ X X[c] X[c] X[r]  }
+\toprule
+Number & Month & Same & Same\\
+\midrule
+1 & January & January & January \\
+2 & February & February & February \\
+3 & March  & March & March\\
+\bottomrule
+\label{apbtab2}
+\end{tblr}
+\end{appendixtable}
+
+
+%-----------------------------------------------------------------------------
+\section{Normal Section}
+The reader should be careful to observe that the objects in space and time are the clue to the discovery of, certainly, our a priori knowledge, by means of analytic unity. Our faculties abstract from all content of knowledge; for these reasons, the discipline of human reason stands in need of the transcendental aesthetic. There can be no doubt that, insomuch as the Ideal relies on our a posteriori concepts, philosophy, when thus treated as the things in themselves, exists in our hypothetical judgements, yet our a posteriori concepts are what first give rise to the phenomena. Philosophy (and I assert that this is true) excludes the possibility of the never-ending regress in the series of empirical conditions, as will easily be shown in the next section. Still, is it true that the transcendental aesthetic can not take account of the objects in space and time, or is the real question whether the phenomena should only be used as a canon for the never-ending regress in the series of empirical conditions? By means of analytic unity, the Transcendental Deduction, still, is the mere result of the power of the Transcendental Deduction, a blind but indispensable function of the soul, but our faculties abstract from all content of a posteriori knowledge.
+
+%-----------------------------------------------------------------------------
+\section{Appendix Landscape Table}
+\italk{Sometimes it is necessary to code larger tables in appendix using the landscape mode. These are created using the usual \texttt{appendixtable} environment but enclosed inside \texttt{landscape} environment --- as usually done. Show below is an example of the landscape table in regular font (Table~\ref{apbtab:ls}). Also, shown an even larger table where the whole table is scaled down to accommodate the content within the margins through what table \cmd{resizebox} command (Table~\ref{apbtab:lsmore}). Obviously, the font size can also be reduced to accommodate the contents. }
+
+\newpage
+\begin{landscape}
+\begin{appendixtable}[p]% p vertically centered
+%\tiny
+\centering
+\caption{Landscape table using \texttt{tabularray} 
+packages.}
+\begin{tblr}{X[2.01] XXXX XXXX XXXXX XXXXX} 
+\toprule
+Number 	& 1st    & 2nd   & 3rd & 4th & 5th     & 6th  & 7th & 8th & 9th & 10th       & 11th & 12th  & 13th & 14th & 15th       & 16th & 17th  & 18th & 19th & 20th\\
+\midrule
+Row 1 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20\\
+Row 2 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20\\
+Row 3 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20\\
+Row 4 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20\\
+\midrule
+Row 5 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20\\
+Row 6 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20\\
+Row 7 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20\\
+Row 8 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20\\
+\bottomrule
+\end{tblr}
+\label{apbtab:ls}
+\end{appendixtable}
+\end{landscape}
+
+
+\newpage
+\begin{landscape}
+\begin{appendixtable}[p]
+\centering
+\caption{Landscape table using resize box regular tabular environment} 
+\resizebox{1.35\textwidth}{!}{%
+\begin{tabular}{c lllll lllll lllll lllll lllll rrrrr}
+\toprule
+Number 	& 1st    & 2nd   & 3rd & 4th & 5th     & 6th  & 7th & 8th & 9th & 10th       & 11th & 12th  & 13th & 14th & 15th       & 16th & 17th  & 18th & 19th & 20th & 21th & 22th  & 23th & 24th & 25th\\
+\midrule
+Row 1 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20  & 21 & 22 & 23 & 24 & 25\\
+Row 2 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20  & 21 & 22 & 23 & 24 & 25\\
+Row 3 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20  & 21 & 22 & 23 & 24 & 25\\
+Row 4 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20  & 21 & 22 & 23 & 24 & 25\\
+\midrule
+Row 5 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20  & 21 & 22 & 23 & 24 & 25\\
+Row 6 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20  & 21 & 22 & 23 & 24 & 25\\
+Row 7 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20  & 21 & 22 & 23 & 24 & 25\\
+Row 8 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 & 17 & 18 & 19 & 20  & 21 & 22 & 23 & 24 & 25\\
+\bottomrule
+\end{tabular}
+}% resize
+\label{apbtab:lsmore}
+\end{appendixtable}
+\end{landscape}
+
+\kant[9]
+
+%-----------------------------------------------------------------------------
+\section{Appendix --- Long Table}
+
+\italk{We know well that long tables are a little involved and tricky, and then in appendix needs manual override for proper output. The regular \vb{longtable} and \vb{longtbrl} environments are used to code the long tables, and their captions, and LOAT entries will appear correctly with \vb{table} environment. However, the existing appendix \vb{appendixtable} environment will not support the and \vb{longtable} and \vb{longtbrl} environments, even though these will output table contents the caption table numbering and LOAT will not appear correctly. Therefore, a simpler fix followed includes (1) a dummy \vb{appendixtable} with only a caption for the long table with negative \vb{vspace} and optional TOC entry \cmd{caption}[\ldots] with repeated caption text without negative \vb{vspace}, and immediately followed by (2) the long table code without caption.} 
+
+\italk{The shortcut (\cmd{mytabapcap} with 1 optional [for vertical adjustment; lifting the table up; defaulty unit = $-8$ex] + 2 mandatory arguments \{Long table main caption\} and \{label\}) can be conveniently used to create the caption. Examples of the appendix long tables are shown in Table~\ref{aplongtab1}, Table~\ref{aplongtab2}, and Table~\ref{aplongtab3}. As shown before (Sec.~\ref{lttab}), for simple long data the \cmd{tabbing} environment can be utilized. These methods of appendix long table can be coded with or without caption.}  
+
+
+%-----------------------------------------------------------------------------
+\subsection{Appendix Long Table Using Fixed-width \texttt{longtable}}
+
+%------------------------------------
+%\begin{appendixtable}% dummy appendixtable for caption 
+%\caption[Appendix long table using \texttt{longtable} environment with separate caption and long table code.]{Appendix long table using \texttt{longtable} environment with separate caption and long table code. \vspace{-8ex}}% caption with optional TOC entry and negative vspace
+%\label{aplongtab1}% label 
+%\end{appendixtable}
+
+\mytabapcap[-9ex]{Appendix long table using \texttt{longtable} environment with separate caption and long table code.}{aplongtab1}
+{
+\setlength{\LTleft}{1mm plus -1fill}% centering done by LTleft - any small value
+\setlength{\LTright}{\LTleft}% as same is applied - the content is centered 
+%\renewcommand{\arraystretch}{0.5}% adjusting the rowspacing
+\singlespacing
+\begin{longtable}{l c c c }% other specifiers (r and S) can be used
+        \toprule
+	First column & Second column & Data & Where?\\
+        \midrule
+        \endfirsthead 
+
+        \midrule
+	First column & Second column & Data & Where?\\
+        \midrule
+        \endhead
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+\bottomrule
+\multicolumn{4}{p{4.5in}}{Note: \kant[9]}
+\end{longtable}
+}
+%------------------------------------
+
+%-----------------------------------------------------------------------------
+\subsection{Appendix Long Table Using Automatic Full-width \texttt{longtblr}}
+
+\kant[9]
+
+%------------------------------------
+%\begin{appendixtable}% dummy appendixtable for caption 
+%\caption[Full-width appendix long table using \texttt{longtblr} environment with separate caption and long table code.]{Full-width appendix long table using \texttt{longtblr} environment with separate caption and long table code. \vspace{-5ex}}% caption with optional TOC entry and negative vspace
+%\label{aplongtab2}% label 
+%\end{appendixtable}
+
+\mytabapcap[-7ex]{Full-width appendix long table using \texttt{longtblr} environment with separate caption and long table code.}{aplongtab2}
+{%long table code
+\begin{spacing}{0.8}% works with longtblr
+\DefTblrTemplate{contfoot-text}{default}{\itshape Continued \ldots}% defining default 
+\DefTblrTemplate{capcont}{default}{}% suppress the repeating head caption
+\DefTblrTemplate {caption-lot}{default}{}% suppressing lot entry
+ 
+\begin{longtblr}[
+note{} = {\footnotesize 
+	Note: First line of table footnote \\[1ex] 
+	\parbox{6.3in}{Note: \kant[9]}}
+]{
+  colspec = {X X[1.5] X[1.1] X[1.2,c] X[0.8,r]},
+  rowhead = 2,
+  middlehead = {} 
+}
+\toprule
+First column & \textbf{Second column} & \textbf{Third column} & Where? & Number\\
+\midrule
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots \\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
+\bottomrule
+\end{longtblr}
+\end{spacing}
+}% long table code
+%------------------------------------
+
+%-----------------------------------------------------------------------------
+\subsection{Appendix Long Table Using \texttt{tabbing}}
+
+\kant[10]
+
+%-----------------------------------------------------------------------------
+\subsubsection{Long table without caption}
+
+\vspace{-2ex}
+\begingroup
+\singlespacing
+\begin{tabbing}
+1111111111111111\=22222222222222\=333333333333333\=44444444444444\=\kill
+\>1st column  \>  2nd column  \>  3rd column \> 4th column\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\>123  \>2345  \>34567  \>89101112\\
+\end{tabbing}
+\endgroup
+
+%-----------------------------------------------------------------------------
+\subsubsection{Long table with caption}
+
+\kant[9]
+
+%\vspace{-2ex}
+%\begin{appendixtable}% dummy appendixtable for caption 
+%\caption[Tabbing-based appendix long table using \texttt{tabbing} environment with separate caption and code.]{Tabbing-based appendix long table using \texttt{tabbing} environment with separate caption and code. \vspace{-8ex}}% caption with optional TOC entry and negative vspace
+%\label{aplongtab3}% label 
+%\end{appendixtable}
+
+\mytabapcap{Tabbing-based appendix long table using \texttt{tabbing} environment with separate caption and code.}{aplongtab3}
+\begingroup
+\singlespacing
+\begin{tabbing}
+11111111111111\=22222222222222\=333333333333333\=44444444444444\=\kill
+\>---------------------------------------------------------------------------------\\
+\>\: 1st column  \>  2nd column  \>  3rd column \> 4th column\\
+\>---------------------------------------------------------------------------------\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567\\
+\>\: 123tab  \>2345  \>34567\\
+\>\: 123tab  \>2345  \>34567\\
+\>\: 123tab  \>2345  \>34567\\
+\>\: 123tab  \>2345  \>34567\\
+\>\: 123tab  \>2345  \>34567\\
+\>\: 123tab  \>2345  \>34567\\
+\>\: 123tab  \>2345  \>34567\\
+\>\: 123tab  \>2345  \>34567\\
+\>\: 123tab  \>2345  \>34567\\
+\>\: 123tab  \>2345  \>34567\\
+\>\: 123tab  \>2345  \>34567\\
+\>\: 123tab  \>2345  \>34567\\
+\>\: 123tab  \>2345  \>34567\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>\: 123tab  \>2345  \>34567  \>89101112\\
+\>---------------------------------------------------------------------------------\\
+\end{tabbing}
+\endgroup
+
+
+
+%-----------------------------------------------------------------------------
+%-----------------------------------------------------------------------------
+\namedappendices{C}{Named third appendix --- advanced figures}
+
+\italk{The appendix advanced elements covered are: subfigures (single-page and multipage), landscape figures (single-page and multipage), and listings. These will populate the LOAF.}
+
+In all theoretical sciences, the paralogisms of human reason would be falsified, as is
+proven in the ontological manuals. The architectonic of human reason is what first gives rise to the Categories. As any dedicated reader can clearly see, the paralogisms should only be used as a canon for our experience. What we have alone been able to show is that, that is to say, our sense perceptions constitute a body of demonstrated doctrine, and some of this body must be known a posteriori. Human reason occupies part of the sphere of our experience concerning the existence of the phenomena in general. What we have alone been able to show is that, that is to say, our sense perceptions constitute a body of demonstrated doctrine,  that is to say, our sense perceptions constitute, and some more of this body must be known a posteriori.
+
+%-----------------------------------------------------------------------------
+\section{Simple Figure and Landscape Figure}
+\italk{Figure produced (fig.~\ref{figab1}) - small one though!}
+
+\myfigap{H}{0.15}{frog.jpg}{Named appendix B figure.}{figab1}
+
+
+\italk{Now a landscape figure in appendix (fig.~\ref{figab2}, which can be found in \cpageref{figab2}), and the shortcut command \texttt{myfigapls} (refer code in \cpageref{figv}).}
+
+\myfigapls[2ex]{p}{0.9}{frog.jpg}{Fourth figure using myfigap command - figure captions go at the bottom}{figab2}
+\afterpage{\clearpage}
+
+
+\section{Subfigures in Appendix --- Single-page Subfigures}
+\begin{figure}[h!]% h!, H works better
+\captionsetup{singlelinecheck=true} % can be given in figure env.
+\centering
+\subfloat[frog1.\label{fig6:1a}]{\includegraphics[width=0.1\textwidth]{frog.jpg}}\hspace{1in}
+\subfloat[frog2.\label{fig6:1b}] {\includegraphics[width=0.1\textwidth]{frog.jpg}}\\
+\subfloat[Large frog3.\label{fig6:1c}]{\includegraphics[width=0.7\textwidth]{frog.jpg}}\hspace{0.5in}\\
+
+\subfloat[frog4\label{fig6:1d}]{\includegraphics[width=0.145\textwidth]{frog.jpg}}\hspace{1.2in}
+\subfloat[Frog caption.\label{fig6:1e}]{\includegraphics[width=0.2\textwidth]{frog.jpg}}
+\hspace{1.2in}
+\subfloat[frog6.\label{fig6:1f}] {\includegraphics[width=0.145\textwidth]{frog.jpg}}
+\end{figure}
+\myfigapcap[-0.3cm]{Single-page subfigures in appendix using the \textcolor{magenta}{regular figure element  with dummy only appendix caption strategy. Ensure enough space is there for the figures and the captions. Use \texttt{[H, or h!]} options. \texttt{h!} will make it compact and \text{H} will introduce vertical space with subcaptions. Also notice the use of caption vertical spacing optional argument}.}{figab3}
+%\afterpage{\clearpage}%Someties required 
+
+
+
+\section{Subfigures in Appendix --- Multipage Subfigures}
+\begin{figure}[H]
+\captionsetup{singlelinecheck=false, justification=raggedright}
+\renewcommand*{\thesubfigure}{\arabic{subfigure}} % numeric
+\centering
+\setstretch{1}% for subfloat caption linespacing
+\subfloat[SubCap let us have a long one]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap]{\includegraphics[width=0.12\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap] {\includegraphics[width=0.15\textwidth]{frog.jpg}}\\
+\subfloat[SubCap let us have a long one]{\includegraphics[width=0.12\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Small]{\includegraphics[width=0.1\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap] {\includegraphics[width=0.12\textwidth]{frog.jpg}}\\
+\subfloat[SubCap let us have a long one]{\includegraphics[width=0.12\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap]{\includegraphics[width=0.12\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap] {\includegraphics[width=0.12\textwidth]{frog.jpg}}\\
+\subfloat[SubCap]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap]{\includegraphics[width=0.12\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap] {\includegraphics[width=0.15\textwidth]{frog.jpg}}\\
+\subfloat[SubCap]{\includegraphics[width=0.12\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Small]{\includegraphics[width=0.1\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap] {\includegraphics[width=0.12\textwidth]{frog.jpg}}
+\\
+\hfill \emph{Continued \ldots}
+\phantomcaption% <=== This line added to compensate for the missing \caption
+\end{figure}
+%\afterpage{\clearpage}
+
+\begin{figure}[H]\ContinuedFloat
+\captionsetup{singlelinecheck=false, justification=raggedright}
+\renewcommand*{\thesubfigure}{\thefigure.\arabic{subfigure}} 
+\centering
+\setstretch{1}% for subfloat caption linespacing
+\subfloat[SubCap]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap]{\includegraphics[width=0.2\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap] {\includegraphics[width=0.15\textwidth]{frog.jpg}}\\
+\subfloat[SubCap]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap]{\includegraphics[width=0.2\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap] {\includegraphics[width=0.15\textwidth]{frog.jpg}}\\
+\subfloat[SubCap]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap]{\includegraphics[width=0.2\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap] {\includegraphics[width=0.15\textwidth]{frog.jpg}}\\
+\subfloat[SubCap]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap]{\includegraphics[width=0.2\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap] {\includegraphics[width=0.15\textwidth]{frog.jpg}}\\
+\subfloat[SubCap]{\includegraphics[width=0.2\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap] {\includegraphics[width=0.2\textwidth]{frog.jpg}}
+\\
+\hfill \emph{Continued \ldots}
+\phantomcaption% <=== This line added to compensate for the missing \caption
+\end{figure}
+%\afterpage{\clearpage}
+
+\begin{figure}[H]\ContinuedFloat
+\captionsetup{singlelinecheck=false, justification=raggedright}
+\renewcommand*{\thesubfigure}{\arabic{subfigure}} % numeric
+\centering
+\setstretch{1}% for subfloat caption linespacing
+\subfloat[SubCap]{\includegraphics[width=0.2\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap] {\includegraphics[width=0.2\textwidth]{frog.jpg}}\\
+\subfloat[SubCap]{\includegraphics[width=0.2\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap] {\includegraphics[width=0.2\textwidth]{frog.jpg}}
+\\
+\phantomcaption% <=== This line added to compensate for the missing \caption
+\end{figure}
+
+\myfigapcap[-0.3cm]{Multipage subfigures in appendix using the \textcolor{magenta}{regular figure element  with dummy only appendix caption strategy. Ensure enough space is there for the figures and the captions. Use \texttt{[H, or h!]} options, when page is full then \texttt{p or t} --- try and see. \texttt{h!} will make it compact and \text{H} will introduce vertical space with subcaptions. Also note the use of \texttt{setstretch, captionsetup} and \texttt{phantomcaption}, which is required for the subfloats spread on multiple pages using \texttt{ContinuedFloat}. When required to clear the floats we can use \texttt{\tb afterpage\{\tb clearpage\} command}
+}.}{figab4}
+%\afterpage{\clearpage}
+
+%-----------------------------------------------------------------------------
+\section{Normal Section}
+The reader should be careful to observe that the objects in space and time are the clue to the discovery of, certainly, our a priori knowledge, by means of analytic unity. Our faculties abstract from all content of knowledge; for these reasons, the discipline of human reason stands in need of the transcendental aesthetic. 
+
+%-----------------------------------------------------------------------------
+\section{Landscape Subfigures in Appendix --- Single-page Subfigures}
+There can be no doubt that, insomuch as the Ideal relies on our a posteriori concepts, philosophy, when thus treated as the things in themselves, exists in our hypothetical judgements, yet our a posteriori concepts are what first give rise to the phenomena. 
+
+\begin{landscape}
+\dvspace{-6pt}% This dummy null text vspace is required to control placement
+\begin{figure}[h]%H, h, h!; - t, p-not working
+\captionsetup{singlelinecheck=true} % can be given in figure env.
+\renewcommand*{\thesubfigure}{\arabic{subfigure}} % numeric
+\centering
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog] {\includegraphics[width=0.15\textwidth]{frog.jpg}}
+\\[-6pt]
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.2\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog] {\includegraphics[width=0.15\textwidth]{frog.jpg}}
+\\[6pt]
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog] {\includegraphics[width=0.15\textwidth]{frog.jpg}}
+\\[6pt]
+\subfloat[PF]{\includegraphics[width=0.06\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[PF]{\includegraphics[width=0.04\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[PF]{\includegraphics[width=0.03\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[PF]{\includegraphics[width=0.02\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[PF]{\includegraphics[width=0.01\textwidth]{frog.jpg}}\\
+\end{figure}
+
+\myfigapcap[-0.4cm]{Landscape single-page subfigures in appendix using the \textcolor{magenta}{regular figure element  with dummy only appendix caption strategy. Follow the previous caption instructions. Also note the use of enclosing \texttt{migfigapcap} inside \texttt{landscape} environment, and the use of \texttt{dvspace} newcommand (added to the thesis class) --- required for landscape environment to produce the usual vspace(s)}.}{figab5}
+\end{landscape}
+
+\kant[9-10]
+
+
+\section{Landscape Subfigures in Appendix --- Multipage Subfigures}
+In all theoretical sciences, the paralogisms of human reason would be falsified, as is
+proven in the ontological manuals. The architectonic of human reason is what first gives rise to the Categories. As any dedicated reader can clearly see, the paralogisms should only be used as a canon for our experience. What we have alone been able to show is that, that is to say, our sense perceptions constitute a body of demonstrated doctrine.
+
+\begin{landscape}
+\begin{figure}[p]
+\captionsetup{singlelinecheck=true} % can be given in figure env.
+\renewcommand*{\thesubfigure}{\arabic{subfigure}} % numeric
+\centering
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog] {\includegraphics[width=0.15\textwidth]{frog.jpg}}
+\\
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.2\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog] {\includegraphics[width=0.15\textwidth]{frog.jpg}}
+\\
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog] {\includegraphics[width=0.15\textwidth]{frog.jpg}}
+\\
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.2\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog] {\includegraphics[width=0.15\textwidth]{frog.jpg}}
+\\[10pt]
+\hfill \emph{Continued \ldots}
+\phantomcaption% <=== This line added to compensate for the missing \caption
+\end{figure}
+\clearpage
+
+\begin{figure}[p]\ContinuedFloat
+\vspace{-6ex}% Whole content vertical adjustment 
+\captionsetup{singlelinecheck=true} % can be given in figure env.
+\renewcommand*{\thesubfigure}{\thefigure.\arabic{subfigure}} 
+\centering
+\subfloat[Pet-Frog]{\includegraphics[width=0.20\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.2\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.20\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog] {\includegraphics[width=0.15\textwidth]{frog.jpg}}
+\\
+\subfloat[Pet-Frog]{\includegraphics[width=0.20\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.2\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.20\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog] {\includegraphics[width=0.15\textwidth]{frog.jpg}}
+\\
+\subfloat[Pet-Frog]{\includegraphics[width=0.20\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.2\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.20\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog] {\includegraphics[width=0.15\textwidth]{frog.jpg}}
+\\
+\subfloat[Pet-Frog]{\includegraphics[width=0.1\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.1\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.1\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog] {\includegraphics[width=0.1\textwidth]{frog.jpg}}
+\\
+\hfill \emph{Continued \ldots}
+\phantomcaption% <=== This line added to compensate for the missing \caption
+\end{figure}
+\clearpage
+
+
+\dvspace{0.5in}% This dummy null text vspace is required to control placement
+\begin{figure}[h]\ContinuedFloat
+\captionsetup{singlelinecheck=true} % can be given in figure env.
+\renewcommand*{\thesubfigure}{\arabic{subfigure}} % numeric
+\centering
+\subfloat[Pet-Frog]{\includegraphics[width=0.20\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.2\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.20\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog] {\includegraphics[width=0.2\textwidth]{frog.jpg}}
+\\
+\subfloat{\includegraphics[width=0.20\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat{\includegraphics[width=0.2\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat{\includegraphics[width=0.20\textwidth]{frog.jpg}}\hspace{0.5in}
+\\
+\subfloat[Pet-Frog]{\includegraphics[width=0.20\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.2\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog]{\includegraphics[width=0.20\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Pet-Frog] {\includegraphics[width=0.2\textwidth]{frog.jpg}}
+\phantomcaption% <=== This line added to compensate for the missing \caption
+\end{figure}
+
+\myfigapcap[-20pt]{Landscape single-page subfigures in appendix using the \textcolor{magenta}{regular figure element  with dummy only appendix caption strategy. Follow the previous caption instructions. Check the use of the ``\emph{Continued \ldots}'' and \texttt{phantomcaption} command with \texttt{ContinuedFloat}}.}{figab6}
+\end{landscape}
+
+
+
+%-----------------------------------------------------------------------------
+\namedappendices{D}{Named fourth Appendix --- Program Source Code Listing}
+
+\italk{The appendix advanced elements covered: source code listing. These will populate the LOAF. Also, the basic information of handling the source code listing is covered. }
+
+\italk{Note the \hl{important note} at the end of this appendix!}
+
+\section{Test1 and Program Source Code Listing}
+I can include appendix material here. \kant[9] 
+
+\italk{Computer program source codes, pseudocodes, and algorithms can be listed using the \vb{listings} package and loading the different options including the language used using \cmd{lstset\{arguments\}}. This package is an elaborate one and users should refer to the documentation for several features to suit their needs. The listings setup used for Java programs, used in the preamble, is shown below:}
+
+{\small
+\singlespacing
+\begin{verbatim}
+% listing package options loaded to produce the listing ()
+\definecolor{pblue}{rgb}{0.13,0.13,1}
+\definecolor{pgreen}{rgb}{0,0.5,0}
+\definecolor{pred}{rgb}{0.9,0,0.3}
+\definecolor{pgrey}{rgb}{0.46,0.45,0.48}
+
+\lstset{language=Java, 
+  showspaces=false,
+  showtabs=false,
+  breaklines=true,
+  showstringspaces=false,
+  breakatwhitespace=true,
+  commentstyle=\color{pgreen},
+  keywordstyle=\color{pblue},
+  stringstyle=\color{pred},
+  basicstyle={\ttfamily, \footnotesize},
+  moredelim=[il][\textcolor{pgrey}]{$$},
+  moredelim=[is][\textcolor{pgrey}]{\%\%}{\%\%}
+}
+\end{verbatim}
+}
+
+
+
+\italk{The actual example or rendered section of Java program using \vb{lstlisting} environment (refer source code) is shown below as an illustration:}
+
+{\singlespacing
+\begin{lstlisting}
+//-------------------------------------------------------------------------
+//
+// Process the color image into a stack and extract all channels of HSB 
+// as global variable
+//
+	public void extractHSBchannel(ImagePlus colimp){
+
+		ImageProcessor iporig = colimp.getProcessor();
+		
+		ImagePlus impd = colimp.duplicate();	// required otherwise original will be used up
+		impd.show();						    // required to generate the stacks
+		
+		IJ.run(impd, "HSB Stack", "");
+		IJ.run("Stack to Images", "");
+		int ni = WindowManager.getImageCount();
+
+		String[] flist = null;  // blank array without size specificatiion
+
+		flist = WindowManager.getImageTitles();
+		
+		H_imp = WindowManager.getImage?("Hue");			// as an array or global variable other channels can also be preserved
+		S_imp = WindowManager.getImage?("Saturation");
+		B_imp = WindowManager.getImage?("Brightness");
+	}	
+//
+//-------------------------------------------------------------------------	
+\end{lstlisting}
+}
+
+%-------------------------------------------
+\subsection{More Listings}
+
+%-------------------------------------------
+\subsubsection{Listings as non-float}
+
+\italk{Caption in the listing as a listing option, which will not feature in the TOC.}
+
+{\singlespacing
+\begin{lstlisting}[frameround=fttt, caption = {Caption in listing as option.}, captionpos=b]
+//-------------------------------------------------------------------------
+// Comment global variable
+//
+	public void extractHSBchannel(ImagePlus colimp){
+
+		ImageProcessor iporig = colimp.getProcessor();
+	}	
+//-------------------------------------------------------------------------	
+\end{lstlisting}
+}
+
+In all theoretical sciences, the paralogisms of human reason would be falsified, as is proven in the ontological manuals. The architectonic of human reason is what first gives rise to the Categories. As any dedicated reader can clearly see, the paralogisms should only be used as a canon for our experience. 
+
+\italk{No caption --- just listing with frame style changed. The list settings can redefined as desired. Default double spacing was applied as no spacing command was used.}
+\vspace{3mm}
+
+\lstset{frameround=fttt}
+\begin{lstlisting}[frame=trBL, caption={}]
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+\end{lstlisting}
+
+\kant[9]
+\italk{Listing coded in figure environment, which is okay when the listing is a part of regular chapter. Frame style and background color changed. This listing will have the figure number and will be added to the TOC.}
+
+\begin{figure}[ht!]
+{\singlespacing
+\lstset{frameround=fttt}
+\begin{lstlisting}[frame=trBL, backgroundcolor=\color{blue!10!white}]
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+\end{lstlisting}
+}
+\caption{Listing fig caption.}
+\end{figure}
+
+%-------------------------------------------
+\subsubsection{Long listings}
+
+\italk{Longer listings that span several pages are coded as two parts: (1) Simple listing without a caption --- as listings will follow automatically through several pages and (2) A figure environment with title only and [H] placement describing the code. Frame style and background color changed. Obviously, this listing indirectly will have the figure number and will be added to the TOC.}
+
+%Listing with dummy fig caption
+%\begin{figure}[t]
+{\singlespacing
+\lstset{frameround=fttt}
+\begin{lstlisting}[frame=trBL, backgroundcolor=\color{green!10!red!5!white}]
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+ for i:=maxint to 0 do
+ begin
+ { do nothing }
+ end;
+\end{lstlisting}
+}
+
+\vspace{-5mm}
+\begin{figure}[H]
+\caption{Dummy caption for listing}
+\label{dum-list-cap}
+\end{figure}
+
+\italk{The \Cref{dum-list-cap} lists the code of our program.}
+\kant[10]
+
+%-------------------------------------------
+\newpage
+\section{Finally Listing in Appendix and Featuring in LOAF}
+
+% listing package options loaded to produce the listing ()
+\definecolor{pblue}{rgb}{0.13,0.13,1}
+\definecolor{pgreen}{rgb}{0,0.5,0}
+\definecolor{pred}{rgb}{0.9,0,0.3}
+\definecolor{pgrey}{rgb}{0.46,0.45,0.48}
+
+\lstset{language=Java, 
+  showspaces=false,
+  showtabs=false,
+  breaklines=true,
+  showstringspaces=false,
+  breakatwhitespace=true,
+  commentstyle=\color{pgreen},
+  keywordstyle=\color{pblue},
+  stringstyle=\color{pred},
+  basicstyle={\ttfamily, \footnotesize},
+  moredelim=[il][\textcolor{pgrey}]{$$},
+  moredelim=[is][\textcolor{pgrey}]{\%\%}{\%\%}
+}
+
+
+\italk{Now the listing below will be considered as a ``Appendix Figure'' and will be listed in the LOAF rightfully. Notice the use of only caption of appendix.}
+
+{\singlespacing
+\begin{lstlisting}
+//-------------------------------------------------------------------------
+//
+// Process the color image into a stack and extract all channels of HSB 
+// as global variable
+//
+	public void extractHSBchannel(ImagePlus colimp){
+
+		ImageProcessor iporig = colimp.getProcessor();
+		
+		ImagePlus impd = colimp.duplicate();	// required otherwise original will be used up
+		impd.show();						    // required to generate the stacks
+		
+		IJ.run(impd, "HSB Stack", "");
+		IJ.run("Stack to Images", "");
+		int ni = WindowManager.getImageCount();
+
+		String[] flist = null;  // blank array without size specificatiion
+
+		flist = WindowManager.getImageTitles();
+		
+		H_imp = WindowManager.getImage?("Hue");			// as an array or global variable other channels can also be preserved
+		S_imp = WindowManager.getImage?("Saturation");
+		B_imp = WindowManager.getImage?("Brightness");
+	}	
+//
+//-------------------------------------------------------------------------	
+\end{lstlisting}
+}
+\myfigapcap[-2mm]{ImageJ-based source code listing to extract HSB channel of image. \textcolor{magenta}{Folllow this strategy of Regular Element + Only Appendix Caption for all appendix listings}.}{figaplist1}
+
+
+%-------------------------------------------
+\newpage
+\section{The Final Section of the Appendices}
+I can include appendix material here. 
+
+\italk{Shown below is another equation showing hypotenuse \Cref{eqc1}. The previous equation in the appendix one is \cref{eqa1} which was $y = mx + c$ in \cpageref{eqa1}. } 
+ 
+\myeqn{
+r^2 = x^2 + y^2
+\label{eqc1}
+}
+
+%-------------------------------------------
+\subsubsection{Test3 --- Some text text text text text text text text text text text text}
+I can include appendix material here. 
+
+%-------------------------------------------
+\paragraph{Test4}
+
+{\hl{Important note:}
+\textcolor{magenta}{It should be noted that the final appendix should contain the appendix tables and figures to generate the List of Appendix Tables and List of Appendix Figures --- based on NDSU thesis class. Otherwise, these items will not be created.}
+} 
+
+\textcolor{magenta}{This issue is not present with regular chapters.}
+
+\italk{However, now we have the new \cmd{closeappendices} command to ensure the list of appendix tables and figures. This has to be given at the end of the last appendix.}
+
+\vspace{1cm}
+\begin{center}
+{\LARGE\bfseries
+Happy {\LaTeX}ing, Thesis Writing, \\
+and Paper Publishing!
+}
+\end{center}
+
+\hfill {\footnotesize --- C. Igathinathane}
+
+\vspace{0.1in}
+\begin{center}
+\italk{--- The End ---}
+\end{center}
+
+\vfill
+{\noindent\scriptsize\textcolor{gray}{Updated: November 20, 2024}}
+
+%--------------------------------------------------
+\closeappendices  % Essential to create LOAT and LOAF 
+
+\end{document}
+%--------------------------------------------------
+%--------------------------------------------------
+%--------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+\namedappendices{B}{Named second appendix --- advanced tables} 
+
+\italk{The appendix advanced elements covered are: landscape tables and longtables.These will populate the LOAT and LOAF.}
 
 %-----------------------------------------------------------------------------
 \section{Test}
@@ -3159,6 +4236,96 @@ Number & Month & Same & Same\\
 \italk{Now a landscape figure in appendix (fig.~\ref{figab2}, which can be found in \cpageref{figab2}), and the shortcut command \texttt{myfigapls} (refer code in \cpageref{figv}).}
 
 \myfigapls[2ex]{p}{0.9}{frog.jpg}{Fourth figure using myfigap command - figure captions go at the bottom}{figab2}
+\afterpage{\clearpage}
+
+\section{Subfigures in Appendix}
+\begin{figure}[H]
+\captionsetup{singlelinecheck=false} % can be given in figure env.
+\centering
+\subfloat[frog1.\label{fig6:1a}]{\includegraphics[width=0.1\textwidth]{frog.jpg}}\hspace{1in}
+\subfloat[frog2.\label{fig6:1b}] {\includegraphics[width=0.1\textwidth]{frog.jpg}}\\
+\subfloat[Large frog3.\label{fig6:1c}]{\includegraphics[width=0.7\textwidth]{frog.jpg}}\hspace{0.5in}\\
+
+\subfloat[frog4\label{fig6:1d}]{\includegraphics[width=0.145\textwidth]{frog.jpg}}\hspace{1.2in}
+\subfloat[Frog caption.\label{fig6:1e}]{\includegraphics[width=0.2\textwidth]{frog.jpg}}
+\hspace{1.2in}
+\subfloat[frog6.\label{fig6:1f}] {\includegraphics[width=0.145\textwidth]{frog.jpg}}
+\end{figure}
+\myfigapcap[0cm]{Subfigures in appendix using the figure element strategy with dummy caption}{figab2}
+%\afterpage{\clearpage}%Someties required 
+
+
+
+\section{Multipage - Subfigures in Appendix}
+\begin{figure}[H]
+\captionsetup{singlelinecheck=false, justification=raggedright}
+\renewcommand*{\thesubfigure}{\arabic{subfigure}} % numeric
+\centering
+\setstretch{1}% for subfloat caption linespacing
+\subfloat[SubCap let us have a long one]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap]{\includegraphics[width=0.12\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap] {\includegraphics[width=0.15\textwidth]{frog.jpg}}\\
+\subfloat[SubCap let us have a long one]{\includegraphics[width=0.12\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Small]{\includegraphics[width=0.1\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap] {\includegraphics[width=0.12\textwidth]{frog.jpg}}\\
+\subfloat[SubCap let us have a long one]{\includegraphics[width=0.12\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap]{\includegraphics[width=0.12\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap] {\includegraphics[width=0.12\textwidth]{frog.jpg}}\\
+\subfloat[SubCap]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap]{\includegraphics[width=0.12\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap] {\includegraphics[width=0.15\textwidth]{frog.jpg}}\\
+\subfloat[SubCap]{\includegraphics[width=0.12\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[Small]{\includegraphics[width=0.1\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap] {\includegraphics[width=0.12\textwidth]{frog.jpg}}
+\\
+\hfill \emph{Continued \ldots}
+\phantomcaption% <=== This line added to compensate for the missing \caption
+\end{figure}
+%\afterpage{\clearpage}
+
+\begin{figure}[H]\ContinuedFloat
+\captionsetup{singlelinecheck=false, justification=raggedright}
+\renewcommand*{\thesubfigure}{\thefigure.\arabic{subfigure}} 
+\centering
+\setstretch{1}% for subfloat caption linespacing
+\subfloat[SubCap]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap]{\includegraphics[width=0.2\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap] {\includegraphics[width=0.15\textwidth]{frog.jpg}}\\
+\subfloat[SubCap]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap]{\includegraphics[width=0.2\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap] {\includegraphics[width=0.15\textwidth]{frog.jpg}}\\
+\subfloat[SubCap]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap]{\includegraphics[width=0.2\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap] {\includegraphics[width=0.15\textwidth]{frog.jpg}}\\
+\subfloat[SubCap]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap]{\includegraphics[width=0.2\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap] {\includegraphics[width=0.15\textwidth]{frog.jpg}}\\
+\subfloat[SubCap]{\includegraphics[width=0.2\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap] {\includegraphics[width=0.2\textwidth]{frog.jpg}}
+\\
+\hfill \emph{Continued \ldots}
+\phantomcaption% <=== This line added to compensate for the missing \caption
+\end{figure}
+%\afterpage{\clearpage}
+
+\begin{figure}[H]\ContinuedFloat
+\captionsetup{singlelinecheck=false, justification=raggedright}
+\renewcommand*{\thesubfigure}{\arabic{subfigure}} % numeric
+\centering
+\setstretch{1}% for subfloat caption linespacing
+\subfloat[SubCap]{\includegraphics[width=0.2\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap] {\includegraphics[width=0.2\textwidth]{frog.jpg}}\\
+\subfloat[SubCap]{\includegraphics[width=0.2\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap]{\includegraphics[width=0.15\textwidth]{frog.jpg}}\hspace{0.5in}
+\subfloat[SubCap] {\includegraphics[width=0.2\textwidth]{frog.jpg}}
+\\
+\phantomcaption% <=== This line added to compensate for the missing \caption
+\end{figure}
+
+\myfigapcap[-1cm]{Multipage appendix figure using the figure element strategy with dummy caption}{figab3}
+%\afterpage{\clearpage}
 
 %-----------------------------------------------------------------------------
 \section{Normal Section}
@@ -3572,287 +4739,5 @@ One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
 \>---------------------------------------------------------------------------------\\
 \end{tabbing}
 \endgroup
-
-
-%-----------------------------------------------------------------------------
-%-----------------------------------------------------------------------------
-\namedappendices{C}{Third appendix title here}
-
-\italk{Note the \hl{important note} at the end of this appendix!}
-
-\kant[3]
-
-%-----------------------------------------------------------------------------
-\section{Test1 and Program Source Code Listing}
-I can include appendix material here. \kant[9] 
-
-\italk{Computer program source codes, pseudocodes, and algorithms can be listed using the \vb{listings} package and loading the different options including the language used using \cmd{lstset\{arguments\}}. This package is an elaborate one and users should refer to the documentation for several features to suit their needs. The listings setup used for Java programs, used in the preamble, is shown below:}
-
-{\small
-\singlespacing
-\begin{verbatim}
-% listing package options loaded to produce the listing ()
-\definecolor{pblue}{rgb}{0.13,0.13,1}
-\definecolor{pgreen}{rgb}{0,0.5,0}
-\definecolor{pred}{rgb}{0.9,0,0.3}
-\definecolor{pgrey}{rgb}{0.46,0.45,0.48}
-
-\lstset{language=Java, 
-  showspaces=false,
-  showtabs=false,
-  breaklines=true,
-  showstringspaces=false,
-  breakatwhitespace=true,
-  commentstyle=\color{pgreen},
-  keywordstyle=\color{pblue},
-  stringstyle=\color{pred},
-  basicstyle={\ttfamily, \footnotesize},
-  moredelim=[il][\textcolor{pgrey}]{$$},
-  moredelim=[is][\textcolor{pgrey}]{\%\%}{\%\%}
-}
-\end{verbatim}
-}
-
-
-
-\italk{The actual example or rendered section of Java program using \vb{lstlisting} environment (refer source code) is shown below as an illustration:}
-
-{\singlespacing
-\begin{lstlisting}
-//-------------------------------------------------------------------------
-//
-// Process the color image into a stack and extract all channels of HSB 
-// as global variable
-//
-	public void extractHSBchannel(ImagePlus colimp){
-
-		ImageProcessor iporig = colimp.getProcessor();
-		
-		ImagePlus impd = colimp.duplicate();	// required otherwise original will be used up
-		impd.show();						    // required to generate the stacks
-		
-		IJ.run(impd, "HSB Stack", "");
-		IJ.run("Stack to Images", "");
-		int ni = WindowManager.getImageCount();
-
-		String[] flist = null;  // blank array without size specificatiion
-
-		flist = WindowManager.getImageTitles();
-		
-		H_imp = WindowManager.getImage?("Hue");			// as an array or global variable other channels can also be preserved
-		S_imp = WindowManager.getImage?("Saturation");
-		B_imp = WindowManager.getImage?("Brightness");
-	}	
-//
-//-------------------------------------------------------------------------	
-\end{lstlisting}
-}
-
-%-------------------------------------------
-\subsection{More Listings}
-
-%-------------------------------------------
-\subsubsection{Listings as non-float and fonts}
-
-\italk{Caption in the listing as a listing option, which will not feature in the TOC.}
-
-{\singlespacing
-\begin{lstlisting}[frameround=fttt, caption = {Caption in listing as option.}, captionpos=b]
-//-------------------------------------------------------------------------
-// Comment global variable
-//
-	public void extractHSBchannel(ImagePlus colimp){
-
-		ImageProcessor iporig = colimp.getProcessor();
-	}	
-//-------------------------------------------------------------------------	
-\end{lstlisting}
-}
-
-In all theoretical sciences, the paralogisms of human reason would be falsified, as is proven in the ontological manuals. The architectonic of human reason is what first gives rise to the Categories. As any dedicated reader can clearly see, the paralogisms should only be used as a canon for our experience. 
-
-\italk{No caption --- just listing with frame style changed. The list settings can redefined as desired. Default double spacing was applied as no spacing command was used.}
-\vspace{3mm}
-
-\lstset{frameround=fttt}
-\begin{lstlisting}[frame=trBL, caption={}]
- for i:=maxint to 0 do
- begin
- { do nothing }
- end;
-\end{lstlisting}
-
-\kant[9]
-\italk{Listing coded in figure environment. Frame style and background color changed. This listing will have the figure number and will be added to the TOC.}
-
-\begin{figure}[ht!]
-{\singlespacing
-\lstset{frameround=fttt}
-\begin{lstlisting}[frame=trBL, backgroundcolor=\color{blue!10!white}]
- for i:=maxint to 0 do
- begin
- { do nothing }
- end;
-\end{lstlisting}
-}
-\caption{Listing fig caption.}
-\end{figure}
-
-%-------------------------------------------
-\subsubsection{Long listings}
-
-\italk{Longer listings that span several pages are coded as two parts: (1) Simple listing without a caption --- as listings will follow automatically through several pages and (2) A figure environment with title only and [H] placement describing the code. Frame style and background color changed. Obviously, this listing indirectly will have the figure number and will be added to the TOC.}
-
-%Listing with dummy fig caption
-%\begin{figure}[t]
-{\singlespacing
-\lstset{frameround=fttt}
-\begin{lstlisting}[frame=trBL, backgroundcolor=\color{green!10!red!5!white}]
- for i:=maxint to 0 do
- begin
- { do nothing }
- end;
- for i:=maxint to 0 do
- begin
- { do nothing }
- end;
- for i:=maxint to 0 do
- begin
- { do nothing }
- end;
- for i:=maxint to 0 do
- begin
- { do nothing }
- end;
- for i:=maxint to 0 do
- begin
- { do nothing }
- end;
- for i:=maxint to 0 do
- begin
- { do nothing }
- end;
- for i:=maxint to 0 do
- begin
- { do nothing }
- end;
- for i:=maxint to 0 do
- begin
- { do nothing }
- end;
- for i:=maxint to 0 do
- begin
- { do nothing }
- end;
- for i:=maxint to 0 do
- begin
- { do nothing }
- end;
- for i:=maxint to 0 do
- begin
- { do nothing }
- end;
- for i:=maxint to 0 do
- begin
- { do nothing }
- end;
- for i:=maxint to 0 do
- begin
- { do nothing }
- end;
- for i:=maxint to 0 do
- begin
- { do nothing }
- end;
- for i:=maxint to 0 do
- begin
- { do nothing }
- end;
- for i:=maxint to 0 do
- begin
- { do nothing }
- end;
- for i:=maxint to 0 do
- begin
- { do nothing }
- end;
- for i:=maxint to 0 do
- begin
- { do nothing }
- end;
- for i:=maxint to 0 do
- begin
- { do nothing }
- end;
- for i:=maxint to 0 do
- begin
- { do nothing }
- end;
- for i:=maxint to 0 do
- begin
- { do nothing }
- end;
-\end{lstlisting}
-}
-
-\vspace{-5mm}
-\begin{figure}[H]
-\caption{Dummy caption for listing}
-\label{dum-list-cap}
-\end{figure}
-
-\italk{The \Cref{dum-list-cap} lists the code of our program.}
-
-%-------------------------------------------
-\subsection{The Final Section of the Appendices}
-I can include appendix material here. 
-
-\italk{Shown below is another equation showing hypotenuse \Cref{eqc1}. The previous equation in the appendix one is \cref{eqa1} which was $y = mx + c$ in \cpageref{eqa1}. } 
- 
-\myeqn{
-r^2 = x^2 + y^2
-\label{eqc1}
-}
-
-%-------------------------------------------
-\subsubsection{Test3 --- Some text text text text text text text text text text text text}
-I can include appendix material here. 
-
-%-------------------------------------------
-\paragraph{Test4}
-
-{\hl{Important note:}
-\textcolor{magenta}{It should be noted that the final appendix should contain the appendix tables and figures to generate the List of Appendix Tables and List of Appendix Figures --- based on NDSU thesis class. Otherwise, these items will not be created.}
-} 
-
-\textcolor{magenta}{This issue is not present with regular chapters.}
-
-\italk{However, now we have the new \cmd{closeappendices} command to ensure the list of appendix tables and figures. This has to be given at the end of the last appendix.}
-
-\vspace{1cm}
-\begin{center}
-{\LARGE\bfseries
-Happy {\LaTeX}ing, Thesis Writing, \\
-and Paper Publishing!
-}
-\end{center}
-
-\hfill {\footnotesize --- C. Igathinathane}
-
-\vspace{0.1in}
-\begin{center}
-\italk{--- The End ---}
-\end{center}
-
-\vfill
-{\noindent\scriptsize\textcolor{gray}{Updated: December 17, 2023}}
-
-%--------------------------------------------------
-\closeappendices  % Essential to create LOAT and LOAF 
-
-\end{document}
-%--------------------------------------------------
-%--------------------------------------------------
-%--------------------------------------------------
 
 

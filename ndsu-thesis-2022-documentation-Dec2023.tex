@@ -691,7 +691,7 @@ About handling \ix{equation}s, the NDSU's guidelines state ``When coding equatio
 
 %--------------------------------------------------------------
 \subsubsection{Shortcuts for equations --- properly spaced vertically}\label{eqnshortcuts}
-\LaTeX\/ engine sets an extra little vertical spacing around equations and non-textual elements (e.g., tables, figures) to make them stand out from the regular text; which is an expected and normal behavior. However, the NDSU's guidelines require no additional vertical spacing (same double line spacing) around equations. This additional spacing can be manually corrected by using a $-$ve \cmd{\ix{vspace}\{\ldots\}} command before and after the elements as required (see Sec.~\ref{spacearound} for details). 
+\LaTeX\/ engine sets an extra little vertical spacing around equations and non-textual elements (e.g., tables, figures) to make them stand out from the regular text; which is an expected and normal behavior. However, the NDSU's guidelines require no additional vertical spacing (same double line spacing) around equations. This additional spacing can be manually corrected by using a $-$ve valued argument in the \cmd{\ix{vspace}\{\ldots\}} command before and after the elements as required (see Sec.~\ref{spacearound} for details). 
 
 For convenient and automatic correct vertical spacing around equations, the following direct and starred versions of shortcut commands were coded for use in the class: 
  \cmd{myeqn\{\:\}},  \cmd{myeqn*\{\:\}}, 
@@ -701,18 +701,21 @@ For convenient and automatic correct vertical spacing around equations, the foll
  \cmd{mygather\{\:\}}, \\ \cmd{mygather*\{\:\}}, 
  \cmd{myfracgather\{\:\}},  \cmd{myfracgather*\{\:\}}, 			
  \cmd{mydisp\{\:\}}, and 
- \cmd{myfracdisp\{\:\}}.  The arguments in these commands are the actual codes of the equation(s) without their environment as they were already included in these shortcuts (shown below).  
+ \cmd{myfracdisp\{\:\}}.  The arguments in these commands are the actual codes of the equation(s) without their environment (already included) in these shortcuts (shown below). Label commands can be included in unstarred shortcuts as usual.  
+
 \begin{tabbing}
 xxx\= xxxxxxxxxxxxxxxxxxxxxx\=xxxxxxxxxxxxxxxxxxxxxxx\= xxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
 \> \textcolor{sssec}{\underline{Code}} \> \textcolor{sssec}{\underline{Output}} \> \textcolor{sssec}{\underline{Code}} \> \textcolor{sssec}{\underline{Output}} \\
+
 \> {\small\cmd{myeqn\{}} \>\> {\small\cmd{myalign*\{}} \\
 \> {\small\texttt{E = m \tb times c\textasciicircum2}}  \> $E = m \times c^2\qquad$ (1.1)  \> {\small\texttt{E\textunderscore i \&= m\textunderscore i \tb times c\textasciicircum2 \tb\tb}}  \> $E_i = m_i \times c^2\qquad$\\
-\> {\small\texttt{\}}} \>\> {\small\texttt{y \&= Ax + B}} \> $\:\:\,y = Ax + B$\\
-\>\>\>{\small\texttt{\}}}
+\> {\small\texttt{\cmd{label\{eq11\}}}} \>\> {\small\texttt{y \&= Ax + B}} \> $\:\:\,y = Ax + B$\\
+\> {\small\texttt{\}}} \>\> {\small\texttt{\}}}
 \end{tabbing}
 
-As known, the direct versions of the shortcuts will produce the equation number while the * versions will not. A similar coding applies to all the aforementioned defined shortcuts and the produced output will fit well with proper vertical spacing with text around them. For other specialized equation environments, other requirements, or when not things do not fit well, the manual method of issuing the appropriate $-$ve \cmd{\ix{vspace}\{\ldots\}} command can be followed.  
+As known, the direct versions of the shortcuts will produce the equation number while the * versions will not. A similar coding applies to all the aforementioned defined shortcuts and the produced output will fit well with proper vertical spacing with text around them. For other specialized equation environments, other requirements, or when not things do not fit well, the manual method of issuing the appropriate $-$ve valued arguments with \cmd{\ix{vspace}\{\ldots\}} command can be followed.  
  
+
 %--------------------------------------------------------------
 %--------------------------------------------------------------
 \subsection{References/bibliography}\index{bibliography}
@@ -740,10 +743,10 @@ These appendix commands are optional but are required if the disquisition includ
 It is necessary to generate the listing of appendices in TOC up to the subsection level (A.1.1), similar to the regular chapters. To achieve this necessary codes were included in the class.
 
 %--------------------------------------------------------------
-\subsubsection{Appendix figures and tables}\label{apfigtab}
-If the \ix{appendix} contains figures or tables, use the \texttt{\ixm{appendix}{appendixfigure}} and \texttt{\ixm{appendix}{appendixtable}} environments to generate them. These special environments ensure that the figures and tables appear in separate tables that appear after the table of contents. The usual \texttt{figure} and \texttt{table} environments should not be used in the appendix. The same rules for centering, captions, and labels used in normal \texttt{figure} and \texttt{table} environments apply to \texttt{appendixfigure} and \texttt{appendixtable} environments. It should be noted that the manual coding of \texttt{appendixfigure} is also possible with basic commands and appendix schemes are not included in the class.
+\subsubsection{Appendix basic figures and tables}\label{apfigtab}
+If the \ix{appendix} contains figures or tables, use the \texttt{\ixm{appendix}{appendixfigure}} and \texttt{\ixm{appendix}{appendixtable}} environments to generate them. These special environments have separate counters for appendices and generate LOAT and LOAF entries correctly after TOC. The usual \texttt{figure} and \texttt{table} environments in appendices will not add the entires in LOAT and LOAF as expected (will only go to LOT and LOF). The same rules for centering, captions, and labels used in normal \texttt{figure} and \texttt{table} environments apply to \texttt{appendixfigure} and \texttt{appendixtable} environments. 
 
-Similar to figures handled in the regular chapters (Sec.~\ref{figs}), for appendix figures as well, single command shortcuts dealing with appendix figures and appendix landscape figures with necessary arguments and one optional argument for caption vertical placement, were defined to produce the figures. Following are the examples of figure shortcuts for appendix regular, and landscape figures: \index{appendix!myfigap} \index{appendix!myfigapls}
+As the coding for figures is simple, shortcuts for \texttt{appendixfigure} are possible with basic commands, while shortcuts for \texttt{appendixtable} are not and need to be done in the usual manner. Similar to figures handled in the regular chapters (Sec.~\ref{figs}), single command shortcuts for appendix figures and appendix landscape figures were defined. Following are the examples of figure shortcuts for appendix regular, and landscape figures: \index{appendix!myfigap} \index{appendix!myfigapls}
 
 \begin{flushleft}
 \hspace{-0.2cm}
@@ -753,11 +756,32 @@ Similar to figures handled in the regular chapters (Sec.~\ref{figs}), for append
  \myfigap[12mm]{H}{0.6}{image_ap2.jpg}{Appendix landscape figure caption}{fig:ap2}
 
  \myfigapls{p}{1.32}{image_ap3.pdf}{Caption for this appendix landscape figure}{f:ap3ls}
- \myfigapls[1.5ex]{p}{1.33}{image_ap4.pdf}{Appendix landscape figure caption}{f:ap4ls}
+ \myfigapls[-1.5ex]{p}{1.33}{image_ap4.pdf}{Appendix landscape figure caption}{f:ap4ls}
 \end{verbatim}
 \end{minipage}
 \end{flushleft}
 
+
+%--------------------------------------------------------------
+\subsubsection{Appendix advanced elements --- longtables, listings, schemes, and multipage figures}\label{apfigtab}
+Handling of advanced elements in appendices (e.g., longtables, code listings, schemes, single-page subfigures, and multipage subfigures) needs additional consideration as these are handled only through \texttt{appendixfigure} and \texttt{appendixtable} environments --- as of now in the class. This means listings, schemes, subfigure types will be considered as entries of \texttt{appendixfigure} and longtables as \texttt{appendixtable}, and these elements will be listed in the LOAF and LOAT only, respectively. As separate entries will make it bloated, the above strategy will be a compact solution. 
+
+The method these elements are addressed in appendices in the class is: (i) code the respective elements using their natural environment (e.g., \texttt{scheme, subfigures, longtable}; no class defined shortcuts) in the appendices without their caption and label --- which will produce the elements in the usual manner; (ii) code a dummy \texttt{appendixfigure} or \texttt{appendixtable} with ``only caption and label'' corresponding the element source  --- which will create appropriate caption nead the elements and an entry in LOAF or LOAT. The label can be cross-referenced as usual and will have the reference number corresponding to the named appendix. This workaround is versatile and could include future elements to be dealt with in the appendices. The shortcuts, expanded as ``my-figure-appendix-caption'' (\cmd{myfigapcap}) and ``my-table-appendix-caption''  (\cmd{mytabapcap}), produced for the dummy element appendix figure and table captions (1 optional spacing and 2 mandatory caption and label arguments) are shown below. Refer to the ``\texttt{NDSU-Thesis-Extended.tex}'' for an example code. \index{appendix!myfigapcap} \index{appendix!mytabapcap}
+
+\begin{flushleft}
+\hspace{-0.2cm}
+\begin{minipage}{0ex}
+\begin{verbatim}
+ \myfigapcap{Caption for this appendix listings, schemes, or multipage figures}{fig:ap1a}
+ \myfigapcap[6pt]{Similar appendix figure caption with optional spacing argument}{f:ap2a}
+
+ \mytabapcap{Caption for this appendix longtables}{tab:ap1a}
+ \mytabapcap[-1cm]{Similar appendix table caption with optional spacing argument}{t:ap2a}
+\end{verbatim}
+\end{minipage}
+\end{flushleft}
+
+ 
 %--------------------------------------------------------------
 \subsubsection{Closing appendices and creating TOC, LOAT, and LOAF}\label{apfigtab}
 In the class, the creation of \ixm{appendix}{LOAT} and \ixm{appendix}{LOAF} as well as their TOC entries requires special consideration. When the last appendix has at least one table and one figure, the TOC, LOAT, and LOAF will be automatically generated without intervention. However, when the last appendix does not have at least a table, or figure, or both (even though the previous appendices had them) the corresponding LOAT or LOAF and relevant TOC entries will not appear. The solution for the automatic creation of these items, irrespective of the contents of the last appendix is issuing the relevant commands such as \cmd{\ix{closeappendixtables}}, \cmd{\ix{closeappendixfigures}}, or \cmd{\ix{closeappendices}} in the overall code as the last command before \cmd{end\{document\}} and after the last appendix code. Several scenarios occur due to the presence or absence of appendix tables and figures in the last or previous appendices and the last command (or) none to be used are presented in Table~\ref{appclose} for proper generation of LOAT and LOAF. 
