@@ -17,11 +17,11 @@
 %---------------------------------------------------------------------------------------------------
 % --------------Other useful commands or shortcuts available are:-----------------
 % \listofabbreviations  = A 2-col tabular environment; Usage: {SI & System International}\\
-% \listofsymbols =  A 2-col tabular environment; Usage: {$A$ &  Area (\si{\m\squared})}\\
+% \listofsymbols =  A 2-col tabular environment; Usage: {$A$ &  Area (\unit{\m\squared})}\\
 % \tempend{*.sty}{*.bib}  =  temporarily ending the document with reference listing
 % \myspacing =  defined to give the correct spacing of about 23 lines per page
 % \myheading = proper numbering and format
-% \si{} and \SI{}{} = SI units from siunitx package that gives proper spacing between numbers and units
+% \unit{} and \qty{}{} = SI units from siunitx package that gives proper spacing between numbers and units
 % \citep and \citet = natbib package commands application with options
 % \{5 items} = shortcut for regular figures {placement}{size}{file}{caption}{label}
 % \myfigls {5 items} = shortcut for landscape figures {placement}{size}{file}{caption}{label}
@@ -77,8 +77,8 @@
 % Non-conventional SI units defined
 \DeclareSIUnit\gal{gallon}
 \DeclareSIUnit\ft{ft}
-\newcommand{\sqft}[1]{\SI{#1}{foot}$^2$\xspace}% have math outside of SI
-\newcommand{\cuft}[1]{\SI{#1}{\cubic\ft}\xspace}% SI standard commands
+\newcommand{\sqft}[1]{\qty{#1}{foot}$^2$\xspace}% have math outside of SI
+\newcommand{\cuft}[1]{\qty{#1}{\cubic\ft}\xspace}% SI standard commands
 
 % listing package options loaded to produce the listing ()
 \definecolor{pblue}{rgb}{0.13,0.13,1}
@@ -133,7 +133,7 @@ $[$ac$]$ & of bales  &  & (km) & (km) & (km) & (km) & (km) & (\$) & (\$) & (\$) 
 
 This is the abstract for my thesis.
 
-\italk{This document uses the new: \textbf{ndsu-thesis-2022.cls} class and \textbf{mybib.bib} file storing the bibliography database.}  \italk{NDSU has word count limitations and that should be adhered to. URL:}  \textcolor{magenta}{\url{https://www.ndsu.edu/gradschool/current_students/graduation/theses_dissertations_papers/disquisition_formatting}}: \italk{``Margins must be at least \SI{1}{in} on each side of the page. Page number margins must be at least \SI{0.75}{in} from the bottom of the page. Abstracts appear after the Disquisition Approval page and begin on page iii of the disquisition. Abstracts for dissertations may not exceed 350 words. Abstracts for thesis and papers may not exceed 150 words.''} 
+\italk{This document uses the new: \textbf{ndsu-thesis-2022.cls} class and \textbf{mybib.bib} file storing the bibliography database.}  \italk{NDSU has word count limitations and that should be adhered to. URL:}  \textcolor{magenta}{\url{https://www.ndsu.edu/gradschool/current_students/graduation/theses_dissertations_papers/disquisition_formatting}}: \italk{``Margins must be at least \qty{1}{in} on each side of the page. Page number margins must be at least \qty{0.75}{in} from the bottom of the page. Abstracts appear after the Disquisition Approval page and begin on page iii of the disquisition. Abstracts for dissertations may not exceed 350 words. Abstracts for thesis and papers may not exceed 150 words.''} 
 
 \italk{One the useful resources to learn \LaTeX\ is: } \textcolor{magenta}{\url{https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes?utm_source=overleaf&utm_medium=email&utm_campaign=onboarding}}  \italk{And others include (details in REFERENCES):}  \textcolor{magenta}{(1) The Not So Short Introduction to \LaTeXe\/, (2) A Guide to \LaTeX\ and Electronic Publishing, and (3) \LaTeX\ -- A Document Preparation System.}
 
@@ -159,12 +159,12 @@ SVM 	& support vector machine \\
 ZL 		& zeta level
 }
 
-\listofsymbols{ % A 2-col tabular environment and may use sentencecase; Usage: $A$ &  Area (\si{\m\squared})\\
-$A$ 		& area (\si{\m\squared})\\
+\listofsymbols{ % A 2-col tabular environment and may use sentencecase; Usage: $A$ &  Area (\unit{\m\squared})\\
+$A$ 		& area (\unit{\m\squared})\\
 $e$     	& Euler's constant (\num{2.718281828}) \\
 $R^2$ 	& coefficient of determination\\
 $T$ 		& time (s)\\
-$v$ 		& velocity (\si{\m\per\second})\\
+$v$ 		& velocity (\unit{\m\per\second})\\
 $x$ 		& $x$-coordinate of image pixel \\
 $y$ 		& $y$-coordinate of image pixel \\
 $\sigma$ 	& standard deviation\\ 
@@ -433,7 +433,7 @@ $\gamma$ & hyperparameter in SVM
  \listofabbreviations{}  = A 2-col tabular environment; use titlecase 
  	Usage: {SI & System International}\\
  \listofsymbols{} =  A 2-col tabular environment; use sentence case
- 	Usage: {$A$ &  Area (\si{\m\squared})}\\
+ 	Usage: {$A$ &  Area (\unit{\m\squared})}\\
  \tempend{*.sty}{*.bib}  =  temporarily ending the document with 
  	reference listing
  \myspacing =  defined to give the correct spacing of about 
@@ -442,7 +442,7 @@ $\gamma$ & hyperparameter in SVM
  	Usage: \myheading{title}
  \mypaperheading{2 args} = paper-styled chapter 
  	Usage: \mypaperheading{title}{footnote text}
- \si{} and \SI{}{} = SI units from siunitx package that gives proper 
+ \unit{} and \qty{}{} = SI units from siunitx package that gives proper 
  	spacing between numbers and units
  \citep{} and \citet{} = natbib package commands for parenthetical and 
  	textual citation while writing 
@@ -987,7 +987,7 @@ Number & Month & Same & Same\\
 %-----------------------------------------------------------------------------
 \section{Landscape Tables}
 
-\italk{When more columns need to be accommodated in tables that cannot be handled in the regular orientation, with available text width of about \SI{6.5}{in}, the landscape that can utilize the text height of \SI{8.75}{in} for the table contents. If even more columns have to be packed then the use of \cmd{resizebox} command can scale down the table to the required size, and this can be used in regular and landscape modes.}
+\italk{When more columns need to be accommodated in tables that cannot be handled in the regular orientation, with available text width of about \qty{6.5}{in}, the landscape that can utilize the text height of \qty{8.75}{in} for the table contents. If even more columns have to be packed then the use of \cmd{resizebox} command can scale down the table to the required size, and this can be used in regular and landscape modes.}
 
 \italk{Landscape tables were usually set on a separate page using \vb{[p]} placement specifier. With the \vb{pdflscape} package that provides the \vb{landscape} environment for the table creation, the page is also rotated for direct viewing of the table, but prints correctly. An example of a landscape table is shown in \Cref{tab212}. More information about this table is available in the table caption and footnote. The source code of this table can be referred to for details.
 }
@@ -2577,7 +2577,7 @@ for citations to be used while loading the \texttt{natbib} package as \textcolor
 
 %-----------------------------------------------------------------------------
 \section{SI Units in Thesis/Dissertation}
-\italk{This is a section of my thesis. SI units are available, which provides correct spacing between the number and the unit. For example, \SI{120800600}{\m\squared} gives the thousands separator and correct spacing between the number and units. The command used to produce was \textbackslash\texttt{SI\{120800600\}\{\textbackslash m\textbackslash squared\}}.  Also, refer to \texttt{siunitx} package user manual (\href{https://mirror.mwt.me/ctan/macros/latex/contrib/siunitx/siunitx.pdf}{\textcolor{magenta}{siunitx}}) for several other commands and features.} 
+\italk{This is a section of my thesis. SI units are available, which provides correct spacing between the number and the unit. For example, \qty{120800600}{\m\squared} gives the thousands separator and correct spacing between the number and units. The command used to produce was \textbackslash\texttt{SI\{120800600\}\{\textbackslash m\textbackslash squared\}}.  Also, refer to \texttt{siunitx} package user manual (\href{https://mirror.mwt.me/ctan/macros/latex/contrib/siunitx/siunitx.pdf}{\textcolor{magenta}{siunitx}}) for several other commands and features.} 
 
 %-----------------------------------------------------------------------------
 \subsection{Non-conventional SI Units}
@@ -2585,13 +2585,13 @@ for citations to be used while loading the \texttt{natbib} package as \textcolor
 
 \noindent\emph{Regular use of SI units:}
 
-\SI{90000}{\m} and \unit{\m\per\s} and \unit{\joule\per\mole\per\kelvin} and \si{\joule\per\mole\per\kelvin} and \SI{780002233}{\joule\per\mole\per\kelvin}.
+\qty{90000}{\m} and \unit{\m\per\s} and \unit{\joule\per\mole\per\kelvin} and \unit{\joule\per\mole\per\kelvin} and \qty{780002233}{\joule\per\mole\per\kelvin}.
 
 \noindent\emph{Use of non-conventional but defined units:}
 
-\si{\gal}  and \SI{8.2}{\gal}. \SI{5.63}{foot}$^2$\xspace. \sqft{5.21}, and stop. \SI{9000}{\m}.
+\unit{\gal}  and \qty{8.2}{\gal}. \qty{5.63}{foot}$^2$\xspace. \sqft{5.21}, and stop. \qty{9000}{\m}.
 
-\SI{24.6}{\ft}. And, \SI{56.2}{\ft\tothe{2}}, and \SI{56.2}{\ft\tothe{3}}. Also, \SI{56.2}{\ft\squared}, and \SI{56.2}{\cubic\ft} - using \texttt{squared} and \texttt{cubed} commands. Shortcut: \cuft{56.2}, and stop.
+\qty{24.6}{\ft}. And, \qty{56.2}{\ft\tothe{2}}, and \qty{56.2}{\ft\tothe{3}}. Also, \qty{56.2}{\ft\squared}, and \qty{56.2}{\cubic\ft} - using \texttt{squared} and \texttt{cubed} commands. Shortcut: \cuft{56.2}, and stop.
 
 \hl{Foot \emph{vs} feet.} Best way is to use ``ft'' also goes for ``in'', and ``ac''. 
 
@@ -2823,7 +2823,7 @@ This is that famous theorem we all studied at middle school, which we still reme
 \noindent where $a$ and $b$ are the lengths of the legs of the right triangle and $c$ is the hypotenuse. 
 The next corollary is a consequence of \cref{pytha} and is also useful. The use of \cmd{cref} correctly inserted the item ``theorem.''
 \begin{corollary}
-It is a right rectangle whose sides measure \SI{3}{m}, \SI{4}{m}, and \SI{5}{m}.
+It is a right rectangle whose sides measure \qty{3}{m}, \qty{4}{m}, and \qty{5}{m}.
 \label{coro}
 \end{corollary}
 Lemma usually follows a corollary --- and there ends my knowledge of math.
@@ -3110,7 +3110,7 @@ v\: (\text{Velocity}) &= \frac{d\: (\text{distance})}{t\: (\text{time})}
 
 %-----------------------------------------------------------------------------
 %-----------------------------------------------------------------------------
-\namedappendices{B}{Named second appendix --- advanced tables} 
+\namedappendices{B}{Named second appendix --- table top-alignment and advanced tables} 
 
 \italk{The appendix advanced elements covered are: landscape tables and longtables.These will populate the LOAT.}
 
@@ -3158,7 +3158,7 @@ The reader should be careful to observe that the objects in space and time are t
 
 %-----------------------------------------------------------------------------
 \section{Appendix Landscape Table}
-\italk{Sometimes it is necessary to code larger tables in appendix using the landscape mode. These are created using the usual \texttt{appendixtable} environment but enclosed inside \texttt{landscape} environment --- as usually done. Show below is an example of the landscape table in regular font (Table~\ref{apbtab:ls}). Also, shown an even larger table where the whole table is scaled down to accommodate the content within the margins through what table \cmd{resizebox} command (Table~\ref{apbtab:lsmore}). Obviously, the font size can also be reduced to accommodate the contents. }
+\italk{Sometimes it is necessary to code larger tables in appendix using the landscape mode. These are created using the usual \texttt{appendixtable} environment but enclosed inside \texttt{landscape} environment --- as usually done. Show below is an example of the landscape table in regular font (Table~\ref{apbtab:ls}). Also, shown an even larger table where the whole table is scaled down to accommodate the content within the margins through what table \cmd{resizebox} command (Table~\ref{apbtab:lsmore}). Obviously, the font size can also be reduced to accommodate the contentss. }
 
 \newpage
 \begin{landscape}
@@ -3213,7 +3213,130 @@ Row 8 & 1 & 2  & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15  & 16 &
 \end{appendixtable}
 \end{landscape}
 
-\kant[9]
+%\kant[9]
+
+%-----------------------------------------------------------------------------
+\section{Top-aligned Tables}
+
+\begin{appendixtable}[h]
+\centering
+\caption{Squares and cubes in named appendix table using \texttt{siunitx} and \texttt{tabularray} 
+packages.}
+\begin{tblr}{X X[c] X[r] X[1.5,r]}
+\toprule
+Number & Square        & Cubes          & Fourth power\\
+\midrule
+11 	   & 121   			        & \num{1331} 		   & \num{14641}\\
+22 	   & 484  			        & \num{10648}		   & \num{234256}\\
+333 	   & \num{110889}             & \num{36926037}	   & \num{12296370321}\\
+\bottomrule
+\end{tblr}
+\label{tab:apb5}
+\end{appendixtable}
+ 
+{\color{blue} The Table~\ref{tab:apb6} is longer and will not fit in the space below the Table~\ref{tab:apc1}. Therefore, it is floated to the next page. As the table cannot fit, there is no option than to leave the space blank, which is okay and the logical thing to do. Also, note that \texttt{cref, Cref} commands will not work in the appendix (I guess, this was mentioned earlier elsewhere). \label{ttab}
+ 
+The method that makes the table top-aligned is the use of \texttt{newpage} command and the float placement option of \texttt{[h]} or \texttt{[h!]} --- other options will not produce this required effect. However, the float placement option \texttt{[H]} will make the top-alignment (with or without \texttt{newpage} command) but also make the rows spread out like the regular text with double-line spacing --- this means \texttt{H} is not an option. }
+
+{\color{magenta}
+\noindent
+\begin{minipage}[t]{3in}
+The solution source code again\\[-2ex]
+(minipage environment usage):
+\end{minipage}% side-by-side minipages
+\begin{minipage}[t]{3in}
+\hrule\vspace{6pt}
+\begin{verbatim}
+\newpage
+\begin{appendixtable}[h]% (or) [h!]
+... 
+\end{verbatim}
+\hrule
+\end{minipage}
+}
+ 
+\newpage
+\begin{appendixtable}[h]
+\centering
+\caption{Squares and cubes table --- Note the use of \textbackslash\texttt{newpage} and placement option \texttt{[h!]} to make the table anchored to the top.} 
+\begin{tblr}{X X[c] X[r] X[1.5,r]}
+\toprule
+Number & Square        & Cubes          & Fourth power\\
+\midrule
+11 	   & 121   			        & \num{1331} 		   & \num{14641}\\
+22 	   & 484  			        & \num{10648}		   & \num{234256}\\
+333 	   & \num{110889}             & \num{36926037}	   & \num{12296370321}\\
+11 	   & 121   			        & \num{1331} 		   & \num{14641}\\
+22 	   & 484  			        & \num{10648}		   & \num{234256}\\
+333 	   & \num{110889}             & \num{36926037}	   & \num{12296370321}\\
+11 	   & 121   			        & \num{1331} 		   & \num{14641}\\
+22 	   & 484  			        & \num{10648}		   & \num{234256}\\
+333 	   & \num{110889}             & \num{36926037}	   & \num{12296370321}\\
+11 	   & 121   			        & \num{1331} 		   & \num{14641}\\
+22 	   & 484  			        & \num{10648}		   & \num{234256}\\
+333 	   & \num{110889}             & \num{36926037}	   & \num{12296370321}\\
+11 	   & 121   			        & \num{1331} 		   & \num{14641}\\
+22 	   & 484  			        & \num{10648}		   & \num{234256}\\
+333 	   & \num{110889}             & \num{36926037}	   & \num{12296370321}\\
+11 	   & 121   			        & \num{1331} 		   & \num{14641}\\
+22 	   & 484  			        & \num{10648}		   & \num{234256}\\
+333 	   & \num{110889}             & \num{36926037}	   & \num{12296370321}\\
+11 	   & 121   			        & \num{1331} 		   & \num{14641}\\
+22 	   & 484  			        & \num{10648}		   & \num{234256}\\
+333 	   & \num{110889}             & \num{36926037}	   & \num{12296370321}\\
+\bottomrule
+\end{tblr}
+\label{tab:apb6}
+\end{appendixtable}
+
+%------------------------------------------------------
+\newpage
+\begin{appendixtable}[h!]
+\centering
+\caption{Squares and cubes table --- Note the use of \textbackslash\texttt{newpage} and placement option \texttt{[h!]} to make the table anchored to the top.} 
+\begin{tblr}{X X[c] X[r] X[1.5,r]}
+\toprule
+Number & Square        & Cubes          & Fourth power\\
+\midrule
+11 	   & 121   			        & \num{1331} 		   & \num{14641}\\
+22 	   & 484  			        & \num{10648}		   & \num{234256}\\
+333 	   & \num{110889}             & \num{36926037}	   & \num{12296370321}\\
+11 	   & 121   			        & \num{1331} 		   & \num{14641}\\
+22 	   & 484  			        & \num{10648}		   & \num{234256}\\
+333 	   & \num{110889}             & \num{36926037}	   & \num{12296370321}\\
+11 	   & 121   			        & \num{1331} 		   & \num{14641}\\
+22 	   & 484  			        & \num{10648}		   & \num{234256}\\
+333 	   & \num{110889}             & \num{36926037}	   & \num{12296370321}\\
+11 	   & 121   			        & \num{1331} 		   & \num{14641}\\
+22 	   & 484  			        & \num{10648}		   & \num{234256}\\
+333 	   & \num{110889}             & \num{36926037}	   & \num{12296370321}\\
+11 	   & 121   			        & \num{1331} 		   & \num{14641}\\
+22 	   & 484  			        & \num{10648}		   & \num{234256}\\
+333 	   & \num{110889}             & \num{36926037}	   & \num{12296370321}\\
+\bottomrule
+\end{tblr}
+\label{tab:apb7}
+\end{appendixtable}
+ 
+%------------------------------------------------------
+\begin{appendixtable}[h!]
+\centering
+\caption{Squares and cubes table --- following the previous.}
+\begin{tblr}{X X[c] X[r] X[1.5,r]}
+\toprule
+Number & Square        & Cubes          & Fourth power\\
+\midrule
+11 	   & 121   			        & \num{1331} 		   & \num{14641}\\
+22 	   & 484  			        & \num{10648}		   & \num{234256}\\
+333 	   & \num{110889}             & \num{36926037}	   & \num{12296370321}\\
+\bottomrule
+\end{tblr}
+\label{tab:apb8}
+\end{appendixtable}
+ 
+{\color{blue} Following the strategy mentioned in page~\pageref{ttab}, we have Table~\ref{tab:apb7} and Table~\ref{tab:apb8} coded in a regular manner, which simply follows the previous table without leaving ``excessive'' white space. This means no special consideration is required. The $-$ve \texttt{vspace} command can be issued to control the space between the tables if required. 
+} 
+ 
 
 %-----------------------------------------------------------------------------
 \section{Appendix --- Long Table}
