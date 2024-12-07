@@ -115,7 +115,7 @@ $[$ac$]$ & of bales  &  & (km) & (km) & (km) & (km) & (km) & (\$) & (\$) & (\$) 
     \midrule 
 }
 %-----------------------------------------------------------------------------
-\title{An M.S. Thesis or Ph.D. Dissertation Extended Illustration Sample Generated - Using the new ``NDSU-Thesis-2022'' \LaTeX\ Class and Template}
+\title{\vspace{3pt}An M.S. Thesis or Ph.D. Dissertation Extended Illustration Sample Generated - Using the new ``NDSU-Thesis-2022'' \LaTeX\ Class and Template}
 \author{Samuel Quincy Student}
 \date{October 2024}
 \progdeptchoice{Department} % Use Department (or) Program
@@ -3234,14 +3234,15 @@ Number & Square        & Cubes          & Fourth power\\
 \label{tab:apb5}
 \end{appendixtable}
  
-{\color{blue} The Table~\ref{tab:apb6} is longer and will not fit in the space below the Table~\ref{tab:apc1}. Therefore, it is floated to the next page. As the table cannot fit, there is no option than to leave the space blank, which is okay and the logical thing to do. Also, note that \texttt{cref, Cref} commands will not work in the appendix (I guess, this was mentioned earlier elsewhere). \label{ttab}
+{\color{blue} The Table~\ref{tab:apb6} is longer and will not fit in the space below this Table~\ref{tab:apb5}. Therefore, it is floated to the next page. As the table cannot fit, there is no option than to leave the space blank, which is okay and the logical thing to do. Also, note that \texttt{cref, Cref} commands will not work in the appendix (I guess, this was mentioned earlier elsewhere). \label{ttab}
  
 The method that makes the table top-aligned is the use of \texttt{newpage} command and the float placement option of \texttt{[h]} or \texttt{[h!]} --- other options will not produce this required effect. However, the float placement option \texttt{[H]} will make the top-alignment (with or without \texttt{newpage} command) but also make the rows spread out like the regular text with double-line spacing --- this means \texttt{H} is not an option. }
 
-{\color{magenta}
+{\singlespacing
+\color{magenta}
 \noindent
 \begin{minipage}[t]{3in}
-The solution source code again\\[-2ex]
+The solution source code again\\
 (minipage environment usage):
 \end{minipage}% side-by-side minipages
 \begin{minipage}[t]{3in}
@@ -3693,12 +3694,9 @@ One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
 \>\: 123tab  \>2345  \>34567  \>89101112\\
 \>\: 123tab  \>2345  \>34567  \>89101112\\
 \>\: 123tab  \>2345  \>34567  \>89101112\\
-\>\: 123tab  \>2345  \>34567  \>89101112\\
 \>---------------------------------------------------------------------------------\\
 \end{tabbing}
 \endgroup
-
-
 
 %-----------------------------------------------------------------------------
 %-----------------------------------------------------------------------------
