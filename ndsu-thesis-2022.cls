@@ -93,9 +93,11 @@
 %		New shortcuts for appendix longtables & sub-images: \mytabapcap and \myfigapcap (2024-11-20) 
 %		Vspace adjustment through \dvsapce in landscape elements developed (2024-11-20) 
 %		Extended thesis updated: A chapter on equations handling was added (2024-11-20) 
+%		The top margin  space is adjusted in the class (2024-12-06) 
 %
 %
 %  Update history
+%  Last updated: 2024-12-06
 %  Last updated: 2024-11-20
 %  Last updated: 2024-07-25
 %  Last updated: 2024-06-11
@@ -451,7 +453,7 @@
 \newcommand\approver[1]{\def\@approver{#1}}
 \let\@approver=\@empty
 
-\renewcommand\title[1]{\def\@title{\uppercase{#1}}}
+\renewcommand\title[1]{\def\@title{\vspace{-4pt}\uppercase{#1}}}
 \let\@title=\@empty
 
 % Committee information
@@ -485,7 +487,7 @@
 
 % Other frontmatter sections
 \newcommand\abstract[1]{\def\@abstract{
-\clearpage\chapter*{\vspace{-3.5pt}ABSTRACT\vspace{-10pt}}
+\clearpage\chapter*{\vspace{-3pt}ABSTRACT\vspace{-10pt}}
 \addcontentsline{toc}{chapter}{ABSTRACT}
 \setstretch{\myspacing}% Once given here applies to the whole document 
 #1}}
@@ -496,13 +498,15 @@
 #1}}
 \let\@acknowledgements=\@empty
 
-\newcommand\dedication[1]{\def\@dedication{\clearpage\chapter*{DEDICATION\vspace{-10pt}}\addcontentsline{toc}{chapter}{DEDICATION\vspace{0pt}}
+\newcommand\dedication[1]{\def\@dedication{\clearpage\chapter*{
+DEDICATION\vspace{-10pt}}\addcontentsline{toc}{chapter}{DEDICATION\vspace{0pt}}
 \begin{center}
 #1
 \end{center}}}
 \let\@dedication=\@empty
 
-\newcommand\preface[1]{\def\@preface{\clearpage\chapter*{PREFACE\vspace{-10pt}}
+\newcommand\preface[1]{\def\@preface{\clearpage\chapter*{
+PREFACE\vspace{-10pt}}
 \addcontentsline{toc}{chapter}{PREFACE\vspace{0pt}}
 #1}}
 \let\@preface=\@empty
@@ -510,7 +514,8 @@
 % LIST OF ABBREVIATIONS - Igathi
 % A 2-col tabular environment; Usage: SI & System International - flowing over multipage
 \newcommand\listofabbreviations[1]{
-\def\@listofabbreviations{\clearpage\chapter*{LIST OF ABBREVIATIONS\vspace{-10pt}}
+\def\@listofabbreviations{\clearpage\chapter*{
+LIST OF ABBREVIATIONS\vspace{-10pt}}
 \addcontentsline{toc}{chapter}{LIST OF ABBREVIATIONS}
 \vspace{-2ex} 
 \renewcommand{\arraystretch}{1.5}
@@ -527,7 +532,8 @@
 % LIST OF SYMBOLS - Igathi
 % A 2-col tabular environment; Usage: $\alpha$ & The angle ($\dg$)
 \newcommand\listofsymbols[1]{
-\def\@listofsymbols{\clearpage\chapter*{LIST OF SYMBOLS\vspace{-10pt}}
+\def\@listofsymbols{\clearpage\chapter*{
+LIST OF SYMBOLS\vspace{-10pt}}
 \addcontentsline{toc}{chapter}{LIST OF SYMBOLS}
 \vspace{-2ex} 
 \renewcommand{\arraystretch}{1.5}
@@ -582,7 +588,7 @@
 \vspace{-1.5\baselineskip}
 \vfill
 \begingroup
-\parbox{5.5in}{\raggedright\noindent\small The Supervisory Committee certifies that this \MakeLowercase{\bfseries\itshape\@papertype} complies with North Dakota State University's regulations and meets the accepted standards for the degree of}
+\hspace{0.5in}\parbox{5.5in}{\raggedright\noindent\small The Supervisory Committee certifies that this {\bfseries\itshape{disquisition}} complies with North Dakota State University's regulations and meets the accepted standards for the degree of}
 \begin{center}
 \vspace{0.1in}
 \textbf{\@degree}
@@ -655,8 +661,8 @@
 % Format headings correctly
 % Chapter title centered properly  - Use \myheading{} command
 \titleformat{\chapter}
-    {\centering\normalfont\bfseries\setstretch{1.6}}
-    {{\large\MakeUppercase{{\chaptertitlename}}\ }}{0em}{\large\MakeUppercase}
+    {\centering\normalfont\bfseries\setstretch{1.6}\vspace{-3pt}}
+    {{\large\MakeUppercase{{\chaptertitlename}}\ }}{-0em}{\large\MakeUppercase}
 %    \titlespacing*{\chapter}{0pt}{-0.5\baselineskip}{0.4\baselineskip} 
     \titlespacing*{\chapter}{0pt}{-1\baselineskip}{0.4\baselineskip} 
 
