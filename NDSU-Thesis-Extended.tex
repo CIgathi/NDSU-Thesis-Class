@@ -176,6 +176,7 @@ $\gamma$ & hyperparameter in SVM
 %-----------------------------------------------------------------------------
 \begin{document}
 
+%\begin{comment}
 %-----------------------------------------------------------------------------
 %\setlength{\parindent}{0.5in}	% Automatic indenting - NDSU 
 %\linenumbers				% When required during review
@@ -705,7 +706,7 @@ Number & Our rating & Month  &  Days\\
 
 %-------------------------------------------
 \subsection{Manual Method --- Using Table Column Width}
-\italk{One simple method is trial-and-error (manual) is to increase the tabular column separation width so that the table width fits the text width. The two commands \cmd{setlength\{}\cmd{tabcolsep\}} \vb{\{0.75in\}} (value of 0.34in obtained by trial-and-error) and \vbc{begin\{tabular\}\{ l|   c|   r|   c|   c \}} (rest of the code remains the same as in \cref{tab22}) created the table below (\cref{tab23}). It is possible to calculate the \vb{tabcolsep} based on the width of text elements and the number of gaps (2 * number of columns) with the use of \cmd{settowidth\{\ldots\}} and \cmd{fpeval\{\ldots\}} commands. Note the use of | was used for visualization (not to be used in professional documents).} 
+\italk{One simple method is trial-and-error (manual) is to increase the tabular column separation width so that the table width fits the text width. The two commands \cmd{setlength\{} \cmd{tabcolsep\}} \vb{\{0.75in\}} (value of 0.34in obtained by trial-and-error) and \vbc{begin\{tabular\}\{ l|   c|   r|   c|   c \}} (rest of the code remains the same as in \cref{tab22}) created the table below (\cref{tab23}). It is possible to calculate the \vb{tabcolsep} based on the width of text elements and the number of gaps (2 * number of columns) with the use of \cmd{settowidth\{\ldots\}} and \cmd{fpeval\{\ldots\}} commands. Note the use of | was used for visualization (not to be used in professional documents).} 
 
 \begin{table}[ht!]
 \centering
@@ -787,7 +788,7 @@ Number & Our rating & Month & Days & Rating\\
 
 \italk{From the code it can be seen that the full-width table can be easily made using the \vb{tblr} environment. The \vb{X} column specifier allots column widths automatically so that the table spans the full-width. The other parameter enclosed by square brackets extends the functionality of the \vb{X} column. Thus, \vb{X[c]} and \vb{X[r]} specify centering and right-justification of the column content, while left-justification is the default.}
 
-\italk{Now the \Cref{tab25} is revised as \Cref{tab26} so that it is appropriate for the thesis or paper. Row spacing of the automatic full-width table \tt{tblr} is adjusted by \cmd{SetTblrInner\{rowsep = xxx\}}}
+\italk{Now the \Cref{tab25} is revised as \Cref{tab26} so that it is appropriate for the thesis or paper. Row spacing of the automatic full-width table \tt{tblr} is adjusted by \cmd{SetTblrInner\{ rowsep = xxx\}}}
 
 \begin{table}[h!]
 \centering
@@ -1185,7 +1186,7 @@ should only be used as a canon for our understanding.
 %-----------------------------------------------------------------------------
 \subsection{Longtable 2: Simplified Long Table --- No Repeated Caption and Header}
 
-\italk{The centering is done by \cmd{LTleft} and \cmd{LTright} values. Row spacing by \cmd{arraystretch} command. No footer or header ``Continued \ldots'' coded. Enclosing group environment is necessary.}
+\italk{The centering is done by \cmd{LTleft} and \cmd{LTright} values. Row spacing by \\\cmd{arraystretch} command. No footer or header ``Continued \ldots'' coded. Enclosing group environment is necessary.}
 
 \begingroup
 \setlength{\LTleft}{1mm plus -1fill}% centering done by LTleft - any small value
@@ -1288,7 +1289,7 @@ are what first give rise to the architectonic of practical reason.
 %-----------------------------------------------------------------------------
 \subsection{Longtable 3: Simplified Long Table --- With Header But No Repeated Caption }
 
-\italk{The centering is done by \cmd{LTleft} and \cmd{LTright} values. Row spacing by \cmd{arraystretch} command. Specifying \cmd{endfirsthead} suppresses the repeated caption, and \cmd{endhead} puts the header on each page. Footer or header ``Continued \ldots'' coded. Footnotes are coded with \cmd{endlastfoot} command with \cmd{multicolumn} using manual width. Enclosing group environment is necessary.}
+\italk{The centering is done by \cmd{LTleft} and \cmd{LTright} values. Row spacing by \\\cmd{arraystretch} command. Specifying \cmd{endfirsthead} suppresses the repeated caption, and \cmd{endhead} puts the header on each page. Footer or header ``Continued \ldots'' coded. Footnotes are coded with \cmd{endlastfoot} command with \cmd{multicolumn} using manual width. Enclosing group environment is necessary.}
 
 \begingroup
 \setlength{\LTleft}{0.5cm plus -1fill}% centering done by LTleft - any small value
@@ -1566,7 +1567,7 @@ One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
 %-----------------------------------------------------------------------------
 \subsection{Longtable 5: Simplified Longtable --- With No Header or Repeated Caption - Used to Present Just Long Data}
 
-\italk{The centering is done by \cmd{LTleft} and \cmd{LTright} values. Row spacing by \cmd{arraystretch} command. Captions, rules, etc. are not used in this data-style long table. Row spacing by \cmd{arraystretch} command. Enclosing group environment is necessary. The table counter number should be adjusted for this no-caption table.}
+\italk{The centering is done by \cmd{LTleft} and \cmd{LTright} values. Row spacing by \\\cmd{arraystretch} command. Captions, rules, etc. are not used in this data-style long table. Row spacing by \cmd{arraystretch} command. Enclosing group environment is necessary. The table counter number should be adjusted for this no-caption table.}
 
 \begingroup
 \setlength{\LTleft}{0.5cm plus -1fill}% centering done by LTleft - any small value
@@ -1639,6 +1640,8 @@ It is   & not clear     & what you want \\
 
 
 \begingroup
+\setlength{\LTleft}{0pt}
+\setlength{\LTright}{0pt}%
 \begin{spacing}{0.84}% works with longtblr
 \DefTblrTemplate{caption-tag}{default}{}% the tag "Table"
 \DefTblrTemplate{caption-sep}{default}{}% the sep symbol :
@@ -1888,6 +1891,7 @@ Left - Tabs can be skipped or not filled\\
 \setlength\LTright{0pt}
 
 \begin{landscape}
+\setlength\tabcolsep{5.2pt}
 {\small 
 {\renewcommand{\arraystretch}{0.6}
 \begin{ThreePartTable}
@@ -2194,8 +2198,8 @@ As such, figures with long captions can be coded as usual, including the use of 
 \italk{Sometimes several subfigures running through multiple pages need to be coded. These are similar to long tables that span several pages. The caption will be repeated with ``contd\ldots'' note. The \cmd{ContinuedFloat} with another \texttt{figure} environment will carry the numbering forward. When the number of subfigures exceeds the number of alphabets (26), the numbering system should be switched to numeric, using the commands (preferably inside the figure environment; refer to source code): }
 
 \begin{verbatim}
-\renewcommand*{\thesubfigure}{\arabic{subfigure}} % numeric
-\renewcommand*{\thesubfigure}{\thefigure.\arabic{subfigure}} % with fig.number
+\renewcommand*{\thesubfigure}{\arabic{subfigure}} %numeric
+\renewcommand*{\thesubfigure}{\thefigure.\arabic{subfigure}}%with fig.No.
 \end{verbatim}
 
 \begin{figure}[H]
@@ -2487,8 +2491,8 @@ First: Refer to our first figure (\cref{fig1}) and second (\cref{fig2}). Data is
 
 {\singlespacing
 \begin{verbatim}
-Second: Refer to our first figure (\cref{fig1}) and second (\cref{fig2}). Data is 
-presented in \Cref{tab1}; also, look at \Cref{fig1} again. 
+Second: Refer to our first figure (\cref{fig1}) and second (\cref{fig2}). 
+Data is presented in \Cref{tab1}; also, look at \Cref{fig1} again. 
 \end{verbatim}
 }
 Second: Refer to our first figure (\cref{fig1}) and second (\cref{fig2}). Data is presented in \Cref{tab21}; also, look at \Cref{fig1} again. 
@@ -2503,7 +2507,7 @@ Second: Refer to our first figure (\cref{fig1}) and second (\cref{fig2}). Data i
 
 %-----------------------------------------------------------------------------
 \section{Citing References Through \texttt{natbib} Package}
-\italk{For bibliography management in \LaTeX\ \texttt{natbib} package is used by several journals \citep{daly2010natural}. This package is very stable and widely used. The commands like \cmd{citep\{\ldots\}} citation in parenthesis and \cmd{citet\{\ldots\}} citation in running text are quite useful in particular. The compatible styles with \texttt{natbib} and NDSU class are:  \texttt{abbrvnat, agsm, agu, apalike, apalike2, authordate1, authordate3, cell, chicago, chicagoa, dcu, dinat, IEEEtran (family;  numerical styles), kluwer, plainnat, rusnat, unsrtnat}, and more may be added. \url{https://ctan.mirrors.hoobly.com/macros/latex/contrib/natbib/natbib.pdf} Once correct citation commands are issued a.k.a ``cite while you write'' the REFERENCE section with all listings will be generated. More information of the package can be obtained from the Documentation: \textcolor{magenta}{\url{https://ctan.mirrors.hoobly.com/macros/latex/contrib/natbib/natbib.pdf}} and Reference Sheet: \!\!\textcolor{magenta}{\url{https://ctan.mirrors.hoobly.com/macros/latex/contrib/natbib/natnotes.pdf}}
+\italk{For bibliography management in \LaTeX\ \texttt{natbib} package is used by several journals \citep{daly2010natural}. This package is very stable and widely used. The commands like \cmd{citep\{\ldots\}} citation in parenthesis and \cmd{citet\{\ldots\}} citation in running text are quite useful in particular. The compatible styles with \texttt{natbib} and NDSU class are:  \texttt{abbrvnat, agsm, agu, apalike, apalike2, authordate1, authordate3, cell, chicago, chicagoa, dcu,} \\\texttt{dinat, IEEEtran (family;  numerical styles), kluwer, plainnat, rusnat, \\unsrtnat}, and more may be added. \url{https://ctan.mirrors.hoobly.com/macros/latex/contrib/natbib/natbib.pdf} Once correct citation commands are issued a.k.a ``cite while you write'' the REFERENCE section with all listings will be generated. More information of the package can be obtained from the Documentation: \textcolor{magenta}{\url{https://ctan.mirrors.hoobly.com/macros/latex/contrib/natbib/natbib.pdf}} and Reference Sheet: \!\!\textcolor{magenta}{\url{https://ctan.mirrors.hoobly.com/macros/latex/contrib/natbib/natnotes.pdf}}
 \textcolor{magenta}{\url{https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes?utm_source=overleaf&utm_medium=email&utm_campaign=onboarding}}}
 
 
@@ -2558,7 +2562,7 @@ for citations to be used while loading the \texttt{natbib} package as \textcolor
 
 %-----------------------------------------------------------------------------
 \section{Using Bib\LaTeX\ for Citation}
-\italk{Using Bib\LaTeX\ for citation will be similar to citation using BibTeX, especially when \vb{natbib} is used. As given in the class documentation the Bib\LaTeX\ will be set up using the following command:
+\italk{Using Bib\LaTeX\ for citation will be similar to citation using BibTeX, especially when \vb{natbib} is used. The class recommends the use of Bib\LaTeX\ for the thesis as it is modern and versatile.  BibTeX may be the choice for journal articles. As given in the class documentation the Bib\LaTeX\ will be set up using the following command:
 }
 
 \vspace{2ex}
@@ -2569,6 +2573,18 @@ for citations to be used while loading the \texttt{natbib} package as \textcolor
 }
 
 \italk{The compatible styles that can be used as an option while loading Bib\LaTeX\/ are: \textbullet\:numeric, \textbullet\:numeric-comp, \textbullet\:alphabetic, \textbullet\:authoryear, \textbullet\:authoryear-icomp, \textbullet\:authortitle, \textbullet\:verbose, \textbullet\:reading, \textbullet\:draft, \textbullet\:apa, \textbullet\:chem-acs, \textbullet\:chem-angew, \textbullet\:chem-biochem, \textbullet\:chem-rsc, \textbullet\:ieee, \textbullet\:mla, \textbullet\:musuos, \textbullet\:nuture, \textbullet\:nejm, \textbullet\:phys, \textbullet\:science, and \textbullet\:oscola.}
+
+For IEEE (numercal style journals) use the following in the preamble:
+
+\vspace{1ex}
+{\singlespacing
+\begin{verbatim}
+\usepackage[style=ieee,natbib=true,backend=biber]{biblatex}
+\end{verbatim}
+}
+
+\italk{The IEEE that requires a numerical style of citation. The above command with \texttt{style=1eee} work well with \texttt{natbib=true} option. With this the regular natbib commands like \cmd{citep\{\}} and \cmd{citet\{\}} will produce the expected output in numerical style. These commands produce correct outputs with numbered citations and author with number citations, respectively. It should be noted that the simple/regular \cmd{cite\{\}} command will only produce the number but not the author when needed.}
+
 
 
 %-----------------------------------------------------------------------------
@@ -2603,7 +2619,7 @@ for citations to be used while loading the \texttt{natbib} package as \textcolor
 {\singlespacing
 \begin{verbatim}
 \myalign{
-&\text{Convex area} = \frac{\text{Area}}{\text{Solidity}} \label{eq1} \\[1ex]
+&\text{Convex area} = \frac{\text{Area}}{\text{Solidity}}\label{eq1} \\[1ex]
 &\text{Hollowness} = \frac{\text{Convex area - Area}}{\text{Convex area}} 
 \label{eq2} \\[1ex]
 &\text{Reverse aspect ratio (RAR)} = \frac{\text{1}}{\text{Aspect ratio}} 
@@ -2774,7 +2790,7 @@ While using the above annotation commands, except for \cmd{nt\{\ldots\}}, enclos
 gives: \dt{\ldots text\ldots \mbox{\citep{daly2010natural}} \ldots text \ldots} 
 
 \vspace{1.5ex}
-\textbackslash\texttt{notes\{To Do notes - for interactive communication!\}} (also the shortcut \cmd{td\{\ldots\}}) gives: \notes{To Do notes - for interactive communication!} 
+\textbackslash\texttt{notes\{To Do notes - for interactive communication!\}} (also the shortcut \\\cmd{td\{\ldots\}}) gives: \notes{To Do notes - for interactive communication!} 
 
 %-----------------------------------------------------------------------------
 \section{Handling URLs}
@@ -2836,19 +2852,30 @@ Theorems, corollaries, lemmas, and other elements can be referenced after defini
 
 %-----------------------------------------------------------------------------
 \section{Fun Notes}
-\italk{Some unexpected behavior, but logical behavior we will come across while using \LaTeX. And some of those are described here (``itemize'' environment is used to produce the bulleted list).}
+\italk{Some unexpected behavior, but logical, we will come across while using \LaTeX. And some of those are described here (``itemize'' environment is used to produce the bulleted list).}
 
 \begin{itemize}
 \item
-\italk{With \cmd{cref\{\}} when referring to multiple items it is necessary to code them separated with commas but \emph{no space} should be used. So \cmd{cref\{tab28,tab210\}} with produce} \cref{tab28,tab210}\italk{, but \cmd{cref\{tab28,tab210\}} with produce ?? for the second label as } \cref{tab28,tab210}\italk{. And this applies to other arguments as well and is because the package was coded with this requirement.}
+\italk{With \cmd{cref\{\}} when referring to multiple items it is necessary to code them separated with commas but \emph{no space} should be used. So \cmd{cref\{tab28,tab210\}} with produce} \cref{tab28,tab210}\italk{, but \cmd{cref\{tab28, tab210\}} with produce ?? for the second label as } \cref{tab28, tab210}\italk{. And this applies to other arguments as well and is because the package was coded with this requirement.}
+
+\item
+\italk{The \cmd{cref\{\}} and \cmd{Cref\{\}} commands will not work with Appendices. We need to use the regular \cmd{ref\{\}} command with appropriate items (e.g., Table$\sim$\cmd{ref\{\}}, fig.$\sim$\cmd{ref\{\}}).}
+
+\item
+\italk{With tables (and with figures on lesser extent) the placement specifier [\texttt{H}], though puts the table ``HERE'' but introduces additional row spacing. Therefore, the solution is to just use [\texttt{h!}] that keeps the rows intact.}
 
 \item
 \italk{Notice the no space before the word shown next ``environment''}  \LaTeX environments \italk{with the code [\cmd{LaTeX environments}]. Using the spacing command ``\cmd{\:}'' (backslash-and-space) as [\cmd{LaTeX\textbackslash\:environments}] will create the enough space as} \LaTeX\ environments\italk{.}
 
 \item
-\italk{With some settings and fonts the period after letters such as F, O, T, P, V, W, and Y might go left into the letters, and such encroachment can be rectified by inserting ``\cmd{@}'' between the letter and period as:} {\LARGE{\verb|F\@.|}} 
+\italk{With some settings and fonts the period after letters such as F, O, T, P, V, W, and Y might go left into the letters as shown:}
 
-\italk{The correct version should be like this:} {\LARGE F\@., O\@., T\@., P\@.; V\@.; W\@.;} \italk{and} {\LARGE Y\@.}
+{\fontfamily{put}\selectfont 
+{\LARGE F., O., T., P.; V.; W.;} and {\LARGE Y.}}
+
+\italk{Such encroachment can be rectified by inserting ``\cmd{@}'' between the letter and period as:} {\LARGE{\verb|F\@.|}} \italk{The correct version should be like this:} 
+ 
+{\fontfamily{put}\selectfont\LARGE F\@., O\@., T\@., P\@.; V\@.; W\@.;} \italk{and} {\fontfamily{put}\selectfont\LARGE Y\@.}
 
 
 \end{itemize}
@@ -2903,11 +2930,13 @@ Theorems, corollaries, lemmas, and other elements can be referenced after defini
 \vspace{2ex}
 {\singlespacing
 \begin{verbatim}
-For regular appendix figures {1+5 inputs; }
-\myfigap[2ex]{ht}{0.5}{appenddfig1.pdf}{My appendix caption goes here}{figA1}
+For regular appendix figures {1+5 inputs}
+\myfigap[2ex]{ht}{0.5}{appenddfig1.pdf}{My appendix caption goes here}
+{figA1}
 
 For landscape appendix figures {1+5 inputs}
-\myfigapls[2.5ex]{p}{1.3}{appenddfig2.pdf}{My appendix caption goes here}{figA2}
+\myfigapls[2.5ex]{p}{1.3}{appenddfig2.pdf}{My appendix caption goes here}
+{figA2}
 \end{verbatim}
 }
 
@@ -2920,8 +2949,8 @@ For landscape appendix figures {1+5 inputs}
 Referred items: \cref{eqa1} text. \cref{sub1} text.  \cref{figap1} text 
 \cref{aptab1} text. \\
 
-Referred items: \ref{eqa1} text. Section \ref{sub1} text.  Figure \ref{figap1} 
-text and Table \ref{aptab1} text.
+Referred items: \ref{eqa1} text. Section \ref{sub1} text.  
+Figure \ref{figap1} text and Table \ref{aptab1} text.
 \end{verbatim}
 }
 
@@ -2938,8 +2967,8 @@ Referred items: \ref{eqa1} text. \ref{sub1} text.  Figure \ref{figap1} text and 
 
 {\onehalfspacing
 \begin{verbatim}
-\myfigap[1.5ex]{h!}{0.45}{frog.jpg}{Appendix one - figure using myfigap command -
- figure captions go at the bottom and is long too.}{figap1}
+\myfigap[1.5ex]{h!}{0.45}{frog.jpg}{Appendix one - figure using myfigap 
+command - figure captions go at the bottom and is long too.}{figap1}
 \end{verbatim}
 }
 
