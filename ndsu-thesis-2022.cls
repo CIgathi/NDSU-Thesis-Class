@@ -94,9 +94,11 @@
 %		Vspace adjustment through \dvsapce in landscape elements developed (2024-11-20) 
 %		Extended thesis updated: A chapter on equations handling was added (2024-11-20) 
 %		The top margin  space is adjusted in the class (2024-12-06) 
+%		New shortcut myfigs {7} - to give space between two consecutive figures (2024-12-24) 
 %
 %
 %  Update history
+%  Last updated: 2024-12-24
 %  Last updated: 2024-12-06
 %  Last updated: 2024-11-20
 %  Last updated: 2024-07-25
@@ -894,6 +896,20 @@ LIST OF SYMBOLS\vspace{-10pt}}
    \vspace{5pt} 
    \caption{#5}
    \label{#6}
+\end{figure}
+}
+
+% Regular figure command with placement (htpbH as the first argument) and space between two floats
+\newcommand{\myfigs}[7][0ex]{%3.5 earlier
+\vspace{2ex}
+\begin{figure}[#2]
+\centering 
+\captionsetup{aboveskip = #1 plus 2pt minus 2pt, belowskip = 0pt} %, singlelinecheck=true for centering; 14 pt
+   \includegraphics[width=#3\textwidth]{#4}
+   \vspace{5pt} 
+   \caption{#5}
+   \label{#6}
+   \vspace{#7}
 \end{figure}
 }
 
