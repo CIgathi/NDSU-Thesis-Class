@@ -3,10 +3,12 @@
 
 %Refer documentation (ndsu-thesis-2022-documentation.pdf) for various options and commands
 
+\graphicspath{{./figures/}}
+
 %******************* Packages, newcommands, and other customization *******************
 \usepackage[style=apa,natbib=true,backend=biber]{biblatex}% works with \citep and \citet commands
 \addbibresource{mybib.bib}% *.bib extension is necessary 
-\renewcommand\myspacing{1.9} % 23 lines/page needs 1.9 for thesis
+%\renewcommand\myspacing{1.9} % 23 lines/page needs 1.9 for thesis
 
 %***** SI units setup and a few custom unit commands *****
 \sisetup{group-separator = {,}}% thousands separator comma; space default
@@ -100,11 +102,20 @@ Number & Month & Days\\
 \bottomrule
 \end{tabular}
 \label{tab:1}
-\end{table}	\kant[7]
+\end{table}	
+
+\vspace{-0.1in}
+\kant[7]
+
+\hl{Note: The vertical spacing around (before and after) the float element (figures, tables, schemes, etc.) should be similar to the regular text with ``double spacing'' the natural automatic spacing of \LaTeX. This is achieved using the \texttt{\textbackslash vspace\{\ldots\}} command with $+$ve or $-$ve arguments. Observe the source code.}
 
 Now the figure (\cref{fig:1}) illustrates an example figure from the \texttt{mwe} package.
 
-\myfig{H}{0.525}{example-image-duck}{Caption for this example image in this first chapter.}{fig:1}	
+\vspace{-0.1in}
+
+\myfig[0.1in]{h!}{0.525}{example-image-duck}{Caption for this example image in this first chapter.}{fig:1}	
+
+\vspace{-0.25in}
 \kant[8-9]
 
 %******************* Second chapter - regular *******************
@@ -114,7 +125,7 @@ Regular style chapters will not have abstracts. General information or outline o
 
 %------------------------------------------------------
 \section{Excellent Results}
-This is another section of the thesis (1st level: 2.1. Experimental Results).\Cref{tab:2} presents the results in a tabular form that spans the entire width. Please note the results shown (\cref{tab:2}) are preliminary.
+This is another section of the thesis (1st level: 2.1. Experimental Results).\Cref{tab:2} presents the results in a tabular form that spans the entire width. Please note the results shown (\cref{tab:2}) are preliminary. \hl{Observe source code for vertical spacing following the table.}
 
 \begin{table}[ht]
 \centering
@@ -135,7 +146,10 @@ Number & Name of month & Days & Season\\
 \item \hspace{-1ex} Note: The \texttt{tablenotes} environment produces table footnotes. 
 \end{tablenotes}
 \label{tab:2}
-\end{table}	\kant[7-8]
+\end{table}	
+
+\vspace{-0.2in}
+\kant[7-8]
 
 %------------------------------------------------------
 \subsection{Minor Results}
@@ -144,13 +158,16 @@ This is a subsection of the thesis (1st level: 2.2. Experimental Results).
 \kant[8]
 The \Cref{fig:2} is an example image with command showing all arguments including the optional caption placement. The example figure (\cref{fig:2}) is included in the \texttt{mwe} package.
 
-\myfig[2ex]{H}{0.35}{example-image}{Caption for this example image demonstrating an optional 2ex vertical spacing. Compare this with a narrow caption spacing without optional argument in 
+\vspace{-0.1in}
+\myfig[1.5ex]{h!}{0.32}{frog}{Caption for this example image demonstrating an optional 2ex vertical spacing. Compare this with a narrow caption spacing without optional argument in 
 \cref{fig:1}.}{fig:2}
-\kant[8]
+
+\vspace{-0.2in}
+\kant[9]
 
 %------------------------------------------------------
 \section{Equations}
-\kant[2]
+\kant[9]
 
 \myeqn{% shortcut for equation vertically spaced
 y = (mx + c) \times \text{NCF} \times S_\text{factor} \times c_p \times M_\text{p}
@@ -165,25 +182,29 @@ Note how variables, abbreviations, and subscripts are coded in \cref{eq:lin}. Re
 \section{Schemes}
 \kant[2]
 
-The regular way of coding a scheme:
+The regular way of coding a scheme (\hl{Observe vertical spacing in source code}): 
 
 \begin{scheme}
 \centering
-\includegraphics[width=0.4\textwidth]{LampFlowchart}
+\includegraphics[width=0.5\textwidth]{LampFlowchart}
 \caption{Flowchart of controls of light bulb --- A scheme}
 \label{sc1}
 \end{scheme}
 %
 
-\kant[9]\vspace{-1.5ex}
+\vspace{-0.3in}
+\kant[9]
 
-\mysch[2ex]{ht!}{0.48}{LampFlowchart}{Caption for this example image demonstrating an optional 2ex vertical spacing. Compare this with a narrow caption spacing without optional argument in \cref{fig:2}.}{sc2}
+\vspace{-1.5ex}
 
+\mysch[0ex]{ht!}{0.55}{LampFlowchart}{Caption for this example image demonstrating an optional 2ex vertical spacing. Compare this with a narrow caption spacing without optional argument in \cref{fig:2}.}{sc2}
+
+\vspace{-0.3in}
 \kant[2]\kant[9]
 
 The (\cref{sc1,sc2}) are good. And, stating this differently all the \Cref{sc1,sc2,sc3} are good too. Note that \Cref{sc3} is in landscape mode.
 
-\myschls[1ex]{p}{0.65}{LampFlowchart}{Landscape scheme --- Flowchart of controls of light bulb. Optional 2ex vertical spacing was used.}{sc3}
+\myschls[0ex]{p}{0.65}{LampFlowchart}{Landscape scheme --- Flowchart of controls of light bulb. Optional 2ex vertical spacing was used.}{sc3}
 
 
 %------------------------------------------------------
@@ -206,7 +227,12 @@ Appendix material can be included here. First a paragraph of text and then an ex
 %------------------------------------------------------
 \section{Appendix A - Section With Figure}
 \kant[9]
-\myfigap{H}{0.5}{example-image-golden}{A golden ratio rectangle image.}{fig:ap1}	\kant[8]
+
+\vspace{-0.1in}
+
+\myfigap[0.5ex]{h!}{0.5}{example-image-golden}{A golden ratio rectangle image.}{fig:ap1}	
+\vspace{-0.2in}
+\kant[8]
 
 \section{Appendix A - Section With Table}
 And, then including a table (table.~\ref{tab:ap1}).
@@ -232,6 +258,7 @@ Multicolumn 	&\SetCell[c=3]{c} The three columns combined \\ \cmidrule[lr]{2-4}
 \label{tab:ap1}
 \end{appendixtable}
 
+\vspace{-0.15in}
 For other types of tables and figures, such as landscape tables, long tables, landscape long tables, landscape figures, subfigures, subfigures spanning multiple pages, and multiple figures in landscape see NDSU-Thesis-Extended code and output. 
 
 %------------------------------------------------------
@@ -246,7 +273,10 @@ Appendix material can be included here. First including a figure (fig.~\ref{fig:
 %------------------------------------------------------
 \section{Appendix B - Section With Figure}
 \kant[9]
-\myfigap[0.5ex]{H}{0.6}{example-grid-100x100pt}{A $10 \times 10$ grid of different concentric colors.}{fig:ap2}
+
+\vspace{-0.1in}
+
+\myfigap[1ex]{h!}{0.7}{example-grid-100x100pt}{A $10 \times 10$ grid of different concentric colors.}{fig:ap2}
 
 %------------------------------------------------------
 \section{Appendix B - Section With Table}
@@ -269,6 +299,8 @@ Number & Square        & Cubes          & Fourth power\\
 \end{appendixtable}
  
 %------------------------------------------------------
+
+\vspace{-0.125in}
 \subsection{Appendix B Subsection}
 \kant[11]
 

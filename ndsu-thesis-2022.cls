@@ -589,8 +589,10 @@ LIST OF SYMBOLS\vspace{-10pt}}
 \endgroup
 \vspace{-1.5\baselineskip}
 \vfill
+
 \begingroup
-\hspace{0.5in}\parbox{5.5in}{\raggedright\noindent\small The Supervisory Committee certifies that this {\bfseries\itshape{disquisition}} complies with North Dakota State University's regulations and meets the accepted standards for the degree of}
+\centering
+\parbox{5.5in}{\raggedright\small The Supervisory Committee certifies that this {\bfseries\itshape{disquisition}} complies with North Dakota State University's regulations and meets the accepted standards for the degree of}
 \begin{center}
 \vspace{0.1in}
 \textbf{\@degree}
