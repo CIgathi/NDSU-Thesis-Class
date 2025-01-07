@@ -139,7 +139,7 @@
 
 % RequirePackage command and other essential packages used
 \RequirePackage[utf8]{inputenc}
-\RequirePackage[T1]{fontenc}
+\RequirePackage[T1,T2A]{fontenc}
 \RequirePackage{xurl}
 \RequirePackage[linktocpage,breaklinks,linktoc=all,hidelinks]{hyperref}
 
