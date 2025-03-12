@@ -87,7 +87,7 @@
 \author{Aaron Feickert$\,^{a}$, Jonathan Totushek$\,^{a}$, and C. Igathinathane$\,^{b,\,*}$ \\ *\,Maintainer, Bug Reports, and Enquires:  Igathinathane Cannayen (\texttt{i.cannayen@ndsu.edu})\\ {\small Github: \url{https://github.com/CIgathi/NDSU-Thesis-Class.git}}
 }
 \date{{\small $^{a}$\emph{Department of Mathematics, NDSU} \\ $^{b}$\emph{Department of Agricultural and Biosystems Engineering, NDSU}\\[2ex]}
-8 March 2025}
+12 March 2025}
 
 %--------------------------------------------------------------
 %--------------------------------------------------------------
@@ -95,7 +95,7 @@
 \begin{document}
 \maketitle
 
-\vspace{-3.5ex}
+\vspace{-4ex}
 \hrule
 \vspace{-1.5ex}
 \begin{multicols}{2}
@@ -116,7 +116,7 @@ The bundled \ix{template} or the thesis example given (Section~\ref{example}) ca
 
 %--------------------------------------------------------------
 %--------------------------------------------------------------
-\section{Using and installing \LaTeX\ ---online and desktop environments} \index{online editor} \index{standalone editor}
+\section{Using and installing \LaTeX---online and desktop environments} \index{online editor} \index{standalone editor}
 
 \LaTeX\ consists of the base software and the integrated development environment (IDE) to conveniently work with document development. Base \LaTeX\ software for different operating systems can be downloaded from this resource \url{https://www.latex-project.org/get/}. Several online (e.g., Overleaf, Kile LaTeX Editor, Authorea, Papeeria, and so on) and standalone desktop versions (e.g., TeXMaker, TeXWorks, TexShop, TeXStudio, and so on) of \LaTeX\ IDEs are available. Online editors are ``ready-to-go,'' with several templates, tutorials, and help documentation, where the user need not install the software but requires an internet connection. The desktop version requires software installation and updating (usually required after initial installation and needed only to employ new features but will run with existing packages). With base \LaTeX\ installed, it is possible to edit source code and compile using command line processing (e.g., cmd window or mac terminal).   
 
@@ -196,22 +196,22 @@ submitted as a peer-reviewed article \ldots\ more information about the author(s
 \section{Abstract}
 Paper-styled chapters will have abstracts. Abstract of this chapter goes here. \kant[1]
 
-\section{Section ($\Rightarrow$ 1st level; Title Case; Centered; Boldface)}
+\section{Section ($\Rightarrow$ 1st level; Title Case; Centered; Boldface) E.g., Science is Key Period}
 This is the first section of the thesis (1st level: 1.2. Section). \kant[2]
 
-\section{Section}
+\section{Section E.g., Science is Key Period}
 This is the second section of the thesis (1st level: 1.3. Section). \kant[3]
 
-\subsubsection{Subsubsection ($\Rightarrow$ 3rd level; Title Case; Left-justified; Boldface; Italics)}
+\subsection{Subsection ($\Rightarrow$ 2nd level; Title Case; Left-justified; Boldface) E.g., Science is Key Period}
 This is the subsection text (2nd level: 1.3.1. Subsection). \kant[4]
 
-\subsubsection{Subsubsection}
+\subsubsection{Subsubsection ($\Rightarrow$ 3rd level; Sentence case; Left-justified; Boldface; Italics) E.g., Science is key period}
 This is the subsection text (3rd level: 1.3.1.1. Subsubsection). \kant[5]
 
-\paragraph{Paragraph ($\Rightarrow$ 4th level; Sentence case; Left-justified; No bold; Italics)}
+\paragraph{Paragraph ($\Rightarrow$ 4th level; Sentence case; Left-justified; No bold; Italics)  E.g., Science is key period}
 This is the subsection text (4th level: 1.3.1.1.1. Paragraph). \kant[6]
 
-\subparagraph{Subparagraph ($\Rightarrow$ 5th level; Sentence case; Left-justified; No bold; Regular)}
+\subparagraph{Subparagraph ($\Rightarrow$ 5th level; Sentence case; Left-justified; No bold; Regular) E.g., Science is key period}
 This is the subsection text (5th level: 1.3.1.1.1.1. Paragraph). \kant[7]
 
 \section{Table and Figure}
@@ -222,7 +222,7 @@ illustrates the inclusion of a simple table (\cref{tab:1}) and a figure shown la
 \centering
 \caption{Table captions go at the top of the table. This was a long caption of the table
 included in the first chapter---so that we see how it breaks into another line and
-has a single spacing. Usually, tables are of full-width and are demonstrated subsequently.}
+has a single spacing. Usually, tables are of full width and are demonstrated subsequently.}
 \vspace{-1ex}
 \begin{tabular}{clr}
 \toprule
@@ -372,7 +372,7 @@ Refer to \texttt{tabularray} documentation for further details.
 
 %******************* Named Appendix B *******************
 \namedappendices{B}{Named second appendix}
-Appendix material can be included here. First including a figure (fig.~\ref{fig:ap2}).
+Appendix material can be included here. First include a figure (fig.~\ref{fig:ap2}).
 
 \section{Appendix B - Section With Figure}
 \kant[9]
@@ -629,7 +629,7 @@ Major headings (e.g. chapters) are issued using the \cmd{myheading\{\ldots\}} co
 
 Each \cmd{myheading\{\ldots\}} or \cmd{mypaperheading\{2 args\}} command starts a new page and entry in the table of contents.  The regular chapter command is simple and takes one argument which is the title of the chapter as \cmd{myheading\{title\}}. The paper-styled chapter takes three arguments that address the title and footnote as \cmd{mypaperheading\{title\}\{\ix{footnotetext}\}}. The paper-style chapters have footnotes and the title has a numbered footnote mark. The \texttt{title} is common to both styles and will be rendered as all-caps irrespective of the input. The automatically generated footnote mark, an integer sequentially incremented, is associated with the footnote text which is displayed at the end of the page. The footnote text usually details the publication information with the roles of authors (refer to Grad School information for further details). 
 
-Based on the latest instruction, only the ``previously published papers'' should have the footnotes, which details the citation of the paper and the roles of the authors, and other ``papers in preparation/submission'' need not have the footnotes. To code those papers the users can simply go for \cmd{myheading\{\ldots title\ldots\}}, where the title is a regular paper-style title.  
+Based on the latest instruction, only the ``previously published papers'' should have the footnotes, which detail the citation of the paper and the roles of the authors, and other ``papers in preparation/submission'' need not have the footnotes. To code those papers the users can simply go for \cmd{myheading\{\ldots title\ldots\}}, where the title is a regular paper-style title.  
 	 
 In general,  the paper-styled chapter requires an ``Abstract'' section, while the regular chapter (e.g., Introduction, Review of Literature, etc.) does not. The class is coded to produce a consistent space between the title and the text (or section) below the title; however when necessary \cmd{vspace\{+ve or -ve\}} can be issued before the plain introductory text or section command to adjust this vertical space.  The \cmd{showgrid} documentclass option, if required, can be used to judge the the vertical spacing. 
 
@@ -843,7 +843,7 @@ The aim is to generate the LOAT or LOAF or both as coded in the appendices avoid
 Two styles namely,  regular- and paper-styled chapters are generally followed. The regular is a traditional style where the whole thesis/dissertation is considered as a single document where individual chapters exclusively deal with aspects like introduction, literature review, methods, results, discussion or results and discussion, references, and appendices reflecting all studies carried in the research on these individual chapters. Even though this style produces a consolidated document and is solid in its own merit, which ties all research aspects of the study together in corresponding chapters, a good deal of rewriting will be necessary from the authors if they want to publish the contents as individual peer-reviewed journal articles.
 
 The paper-styled chapters are stand-alone chapters complete with all sections (abstract, introduction, literature review, \ldots, references) and are the modern trend. In this style, some amount of repetition among chapters is unavoidable (especially in methods, analysis, and references). However, as the chapters are already in paper-style, it is very easy to format them to suit the requirements of any peer-reviewed journal for submission. It is also possible to have individual chapter references (Bib\LaTeX) or a combined reference chapter (both Bib\TeX\ and Bib\LaTeX). With \LaTeX\ it is easy to create stand-alone papers with references for submission from a paper-styled disquisition with a combined reference chapter.  As outlined earlier,  the commands that start these chapters are 
-\cmd{myheading\{\ldots\}} or \cmd{mypaperheading\{2 args\}} (Sec.\,\ref{heading}).  It is a good idea to consult the advisor before committing to these styles,  for they are different and substantial rewriting is involved to switch back and forth. 
+\cmd{myheading\{\ldots\}} or \cmd{mypaperheading\{2 args\}} (Sec.\,\ref{heading}).  It is a good idea to consult the advisor before committing to these styles,  for they are different, and substantial rewriting is involved to switch back and forth. 
 
 %-------------------------------------------
 \subsection{Advanced options in documentclass}
@@ -966,7 +966,7 @@ The Ti\emph{k}Z package, based on \TeX\ is an excellent and elaborate package (m
 
 %--------------------------------------------------------------
 \subsubsection{Subfigures}
-Multiple figures (\ix{subfigures}) under a common caption can be handled through \texttt{subfig} package. The subfigures can be individually sized, captioned, labeled, and referenced. The sub-caption numbering is ``alphabetic'' by default (holds 26---and for more subfigures, other options are available) and will be automatically generated. The number of images that occupy a single row can be readily coded with commands, such as \cmd{\ix{subfloat}\{\ldots\}}, \cmd{hspace\{\ldots\}}, and newline (\tb\tb). Refer to the accompanied ``NDSU-Thesis-Extended'' (URL: \url{https://github.com/CIgathi/NDSU-Thesis-Class}) document for instruction and examples.
+Multiple figures (\ix{subfigures}) under a common caption can be handled through \texttt{subfig} package. The subfigures can be individually sized, captioned, labeled, and referenced. The sub-caption numbering is ``alphabetic'' by default (holds 26---and for more subfigures, other options are available) and will be automatically generated. The number of images that occupy a single row can be readily coded with commands, such as \cmd{\ix{subfloat}\{\ldots\}}, \cmd{hspace\{\ldots\}}, and newline (\tb\tb). Refer to the accompanied ``NDSU-Thesis-Extended'' (URL: \url{https://github.com/CIgathi/NDSU-Thesis-Class}) document for instructions and examples.
 
 %--------------------------------------------------------------
 \subsubsection{Landscape subfigures}\index{figure!landscape subfigures}
@@ -982,6 +982,8 @@ Usually, the \ix{spacing} around the non-textual elements produced by \LaTeX\ wi
 \begin{itemize}[itemsep=0em, leftmargin=*]
 \item
 An additional document named ``ndsu-thesis-vertical-spacing'' that addresses this is available in the package (URL: \url{https://github.com/CIgathi/NDSU-Thesis-Class})\index{vertical spacing}. 
+\item
+The issue becomes apparent when the full page float is taken to the subsequent page and ``vertically'' centered. This breaks the rule of a ``1-inch'' top margin. The solution in simpler terms for this is: (i) Give a \cmd{newpage} command before the float environment, (ii) use placement specifier \texttt{[h!]} or \texttt{[H]} not \texttt{[p]}, and (iii) the blank space before the float is okay as this larger float could not have been accommodated there in the first place. 
 \item
 The blank line coded, usually left between paragraphs, might create additional space before the element (e.g.,\texttt{equation}, \texttt{align}) and that can be removed to reduce the space above the element. For equations, the defined shortcuts can be used to produce the correct vertical spacing (see Sec.~\ref{eqnshortcuts}). 
 \item
@@ -1226,12 +1228,12 @@ Furthermore, these individual chapter files can be stored under a folder (simila
 
 \ccmd{\cmd{chapterspath\{./mychapters/\}}}
 
-With this method the default directory (or project folder) will contain only one project tex file (e.g., \texttt{main.tex}), which calls the other chapters and figures from the respective folders, and other resources necessary for building the output (\texttt{cls, bib, bst, \ldots}). This way all the figures and chapters will be ``tugged away'' and promote better file organization (refer to \texttt{sample thesis includeOnly} project included with the class). In such system of storing the files separately, only the main project file can be compiled, which uses the codes of chapters in other folder, to generate the output, and the individual chapters cannot be compiled directly as the code does not contain the \texttt{documentclass}, prefatory material, and \texttt{document} environment---which is obvious.  
+With this method the default directory (or project folder) will contain only one project tex file (e.g., \texttt{main.tex}), which calls the other chapters and figures from the respective folders, and other resources necessary for building the output (\texttt{cls, bib, bst, \ldots}). This way all the figures and chapters will be ``tugged away'' and promote better file organization (refer to \texttt{sample thesis includeOnly} project included with the class). In such a system of storing the files separately, only the main project file can be compiled, which uses the codes of chapters in other folders, to generate the output, and the individual chapters cannot be compiled directly as the code does not contain the \texttt{documentclass}, prefatory material, and \texttt{document} environment---which is obvious.  
 
 %-------------------------------------------
 %\vspace{-1.77ex}
 \subsection{Chapters using ``\ix{includeonly}'' method---efficient working and compiling}\label{inclonly}
-\LaTeX{} allows to develop the document piece-by-piece (e.g., individual chapters, section, and even paragraphs) currently worked on. One way of doing this is to use the comments package's \texttt{comment} environment. The portion of the source code, however long, enclosed between \cmd{begin\{comment\}} and \cmd{end\{comment\}} will be excluded from compilation and output. This will be often convenient than commenting individual lines and paragraphs using \% character. 
+\LaTeX{} allows to develop the document piece-by-piece (e.g., individual chapters, section, and even paragraphs) currently worked on. One way of doing this is to use the comments package's \texttt{comment} environment. The portion of the source code, however long, enclosed between \cmd{begin\{comment\}} and \cmd{end\{comment\}} will be excluded from compilation and output. This will be often convenient than commenting on individual lines and paragraphs using \% character. 
 
 On the same token, applying two comment blocks, above and below the current chunk of code (e.g., chapter, section, and so on), obviously leaving the \cmd{begin\{document\}} and \cmd{end\{document\}} lines, the only portion of the code will be compiled and displayed. The \cmd{end\{comment\}} of the top block and the \cmd{begin\{comment\}} of the end block can be moved as required to compile and output different portions of the code for display and inspection. An alternative method is to replace the bottom comment block with the direct \cmd{tend} or other variations (temporary ending command; see Sec.~\ref{temend}). This method will end the document and only display the compiled output after the first comment block and before the temporary end command. 
 
