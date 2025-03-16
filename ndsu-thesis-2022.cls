@@ -95,9 +95,11 @@
 %		Extended thesis updated: A chapter on equations handling was added (2024-11-20) 
 %		The top margin  space is adjusted in the class (2024-12-06) 
 %		New shortcut myfigs {7} - to give space between two consecutive figures (2024-12-24) 
+%		Longtables using longtblr with caption workarund using \mytabcap see Extended Thesis (2025-03-16) 
 %
 %
 %  Update history
+%  Last updated: 2025-03-16
 %  Last updated: 2024-12-24
 %  Last updated: 2024-12-06
 %  Last updated: 2024-11-20
@@ -992,22 +994,42 @@ LIST OF SYMBOLS\vspace{-10pt}}
 \end{landscape}
 }
 
-% Dummy only figure caption for appendix listings and multipage figures
-\newcommand\myfigapcap[3][-3ex]{%1 optional vert spaceing +2 arguments
-\vspace{#1}
-\begin{appendixfigure}[h!]
+% Dummy only table caption for multipage long tables for longtblr 
+\newcommand\mytabcap[3][-8ex]{%1 optional verti spacing +2 arguments
+\begin{table}[h!]
 \caption{#2}%LOAT entry and caption are same
 \label{#3}
-\end{appendixfigure}
+\end{table}
+\vspace{#1}
+\addtocounter{table}{-1}% for this dummy table the counter should be reduced by 1
 }
 
-% Dummy only figure caption for listings and multipage figures
-\newcommand\mytabapcap[3][-8ex]{%1 optional verti spaceing +2 arguments
+% Dummy only figure caption for later use 
+\newcommand\myfigcap[3][-3ex]{%1 optional vert spacing +2 arguments
+\vspace{#1}
+\begin{figure}[h!]
+\caption{#2}%LOAT entry and caption are same
+\label{#3}
+\end{figure}
+}
+
+
+% Dummy only appendix table caption for listings and multipage figures
+\newcommand\mytabapcap[3][-8ex]{%1 optional verti spacing +2 arguments
 \begin{appendixtable}[h!]
 \caption{#2}%LOAT entry and caption are same
 \label{#3}
 \end{appendixtable}
 \vspace{#1}
+}
+
+% Dummy only appendix figure caption for appendix listings and multipage figures
+\newcommand\myfigapcap[3][-3ex]{%1 optional vert spacing +2 arguments
+\vspace{#1}
+\begin{appendixfigure}[h!]
+\caption{#2}%LOAT entry and caption are same
+\label{#3}
+\end{appendixfigure}
 }
 
 
