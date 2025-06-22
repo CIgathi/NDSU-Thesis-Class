@@ -96,9 +96,11 @@
 %		The top margin  space is adjusted in the class (2024-12-06) 
 %		New shortcut myfigs {7} - to give space between two consecutive figures (2024-12-24) 
 %		Longtables using longtblr with caption workarund using \mytabcap see Extended Thesis (2025-03-16) 
+%		Longtable used in list of abbreviations and symbols instead of xtabular (2025-06-22) 
 %
 %
 %  Update history
+%  Last updated: 2025-06-22
 %  Last updated: 2025-03-16
 %  Last updated: 2024-12-24
 %  Last updated: 2024-12-06
@@ -174,7 +176,7 @@
 \RequirePackage{tikz}
 \usetikzlibrary{matrix,arrows,decorations.pathmorphing}
 \RequirePackage{etoolbox}
-\RequirePackage{xtab}
+\RequirePackage{xtab}  % required for other commands
 \RequirePackage{siunitx}   % [binary-units = true]   
 \sisetup{detect-all}% maintain text font in SI items
 \RequirePackage{float}
@@ -412,7 +414,7 @@
 \DeclareTotalCounter{appendixfigure}
 \DeclareTotalCounter{appendixtable}
 
-\DeclareFloatingEnvironment[fileext=los,placement={ht},listname={{\vspace{-13pt}}LIST OF SCHEMES\vspace{10pt}},name=Schematic]{scheme}% Igathi
+\DeclareFloatingEnvironment[fileext=los,placement={ht},listname={{\vspace{-13pt}}LIST OF SCHEMES\vspace{12pt}},name=Schematic]{scheme}% Igathi
 
 \DeclareFloatingEnvironment[fileext=loaf,placement={ht},listname={{\vspace{-13pt}}LIST OF APPENDIX FIGURES\vspace{12pt}},name=Figure]{appendixfigure}
 
@@ -517,36 +519,40 @@ PREFACE\vspace{-10pt}}
 \let\@preface=\@empty
 
 % LIST OF ABBREVIATIONS - Igathi
-% A 2-col tabular environment; Usage: SI & System International - flowing over multipage
+% A 2-col longtable environment; Usage: SI & System International - flowing over multipage
 \newcommand\listofabbreviations[1]{
 \def\@listofabbreviations{\clearpage\chapter*{
-LIST OF ABBREVIATIONS\vspace{-10pt}}
+LIST OF ABBREVIATIONS}
 \addcontentsline{toc}{chapter}{LIST OF ABBREVIATIONS}
-\vspace{-2ex} 
+\vspace{-0.45in} 
 \renewcommand{\arraystretch}{1.5}
 \begin{singlespace}
 \xentrystretch{-0.1}
-\begin{xtabular}{>{\hspace{-0.05in}}p{2.3in}<{\dotfill}@{}p{3.5in}}
+%\begin{xtabular}{>{\hspace{-0.05in}}p{2.3in}<{\dotfill}@{}p{3.5in}} %has issues - longtable used
+\begin{longtable}[l]{>{\hspace{-0.09in}}p{2.3in}<{\dotfill} @{} p{4.1in}}
 #1
-\end{xtabular}
+\end{longtable}
+%\end{xtabular}
 \end{singlespace}
 \renewcommand{\arraystretch}{1}
 }}
 \let\@listofabbreviations=\@empty
 
 % LIST OF SYMBOLS - Igathi
-% A 2-col tabular environment; Usage: $\alpha$ & The angle ($\dg$)
+% A 2-col longtable environment; Usage: $\alpha$ & The angle ($\dg$) - flowing over multipage
 \newcommand\listofsymbols[1]{
 \def\@listofsymbols{\clearpage\chapter*{
-LIST OF SYMBOLS\vspace{-10pt}}
+LIST OF SYMBOLS}
 \addcontentsline{toc}{chapter}{LIST OF SYMBOLS}
-\vspace{-2ex} 
+\vspace{-0.45in} 
 \renewcommand{\arraystretch}{1.5}
 \begin{singlespace}
 \xentrystretch{-0.1}
-\begin{xtabular}{>{\hspace{-0.05in}}p{2.3in}<{\dotfill}@{}p{3.5in}}
+%\begin{xtabular}{>{\hspace{-0.05in}}p{2.3in}<{\dotfill}@{}p{3.5in}} % longtable used
+\begin{longtable}[l]{>{\hspace{-0.09in}}p{2.3in}<{\dotfill}@{}p{4.1in}}
 #1
-\end{xtabular}
+\end{longtable}
+%\end{xtabular}
 \end{singlespace}
 \renewcommand{\arraystretch}{1}
 }}
@@ -650,12 +656,12 @@ LIST OF SYMBOLS\vspace{-10pt}}
 \mainmatter}
 
 \pagestyle{plain}
-\addtocontents{lot}{\vspace{1pt}\noindent\underline{Table}\hfill \underline{Page}\par}
-\addtocontents{lof}{\vspace{0pt}\noindent\underline{Figure}\hfill \underline{Page}\par}
-\addtocontents{los}{\vspace{-1pt}\noindent\underline{Scheme}\hfill \underline{Page}\par}%\vspace{-10pt}}
-\addtocontents{loat}{\vspace{-2pt}\noindent\underline{Table}\hfill \underline{Page}\par\vspace{-10pt}}
-\addtocontents{loaf}{\vspace{-2pt}\noindent\underline{Figure}\hfill \underline{Page}\par\vspace{-10pt}}
-\addtocontents{loa}{\vspace{0pt}\noindent\underline{Figure}\hfill \underline{Page}\par}  
+\addtocontents{lot}{\vspace{-8pt}\noindent\underline{Table}\hfill \underline{Page}\par}
+\addtocontents{lof}{\vspace{-8pt}\noindent\underline{Figure}\hfill \underline{Page}\par}
+\addtocontents{los}{\vspace{-8pt}\noindent\underline{Scheme}\hfill \underline{Page}\par}%\vspace{-10pt}}
+\addtocontents{loat}{\vspace{-8pt}\noindent\underline{Table}\hfill \underline{Page}\par\vspace{-10pt}}
+\addtocontents{loaf}{\vspace{-8pt}\noindent\underline{Figure}\hfill \underline{Page}\par\vspace{-10pt}}
+\addtocontents{loa}{\vspace{-6pt}\noindent\underline{Figure}\hfill \underline{Page}\par}  
 
 % Uniform spacing of entries in LOSH 
 \newcommand*{\noaddvspace}{\renewcommand*{\addvspace}[1]{}}

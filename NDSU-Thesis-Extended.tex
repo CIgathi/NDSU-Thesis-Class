@@ -42,6 +42,8 @@
 % \closeappendices = produces all elements (loat, loaf) when the last appendix does not have at least a figure and a table. If present, no need to use
 %---------------------------------------------------------------------------------------------------
 
+\graphicspath{{./figures/}}
+
 %-----------------------------------------------------------------------------
 %--------------------Load specific packages--------------------------
 \usepackage[style=apa,natbib=true,backend=biber]{biblatex}% works with \citep and \citet commands
@@ -53,7 +55,6 @@
 \newtheorem{corollary}{Corollary}[theorem]
 \newtheorem{lemma}{Lemma}[corollary]
 %-----------------------------------------------------------------------------
-
 %-----------------------------------------------------------------------------
 %\AtBeginDocument{\raggedright}   % No justification - NDSU template; justification also okay
 
@@ -1514,7 +1515,7 @@ note{} = {\footnotesize
 ]{
   colspec = {X X[1.5] X[1.1] X[1.2,c] X[0.8,r]},
   rowhead = 1,
-  middlehead = {} 
+%  middlehead = {} 
 }
 %\caption{Summa thaan}
 \toprule
@@ -3121,7 +3122,7 @@ note{} = {\footnotesize
 ]{
   colspec = {X X[1.5] X[1.1] X[1.2,c] X[0.8,r]},
   rowhead = 1,
-  middlehead = {} 
+%  middlehead = {} 
 }
 \toprule
 First column & \textbf{Second column} & \textbf{Third column} & Where? & Number\\
@@ -3863,7 +3864,7 @@ note{} = {\footnotesize
 ]{
   colspec = {X X[1.5] X[1.1] X[1.2,c] X[0.8,r]},
   rowhead = 2,
-  middlehead = {} 
+%  middlehead = {} 
 }
 \toprule
 First column & \textbf{Second column} & \textbf{Third column} & Where? & Number\\
@@ -5179,7 +5180,7 @@ note{} = {\footnotesize
 ]{
   colspec = {X X[1.5] X[1.1] X[1.2,c] X[0.8,r]},
   rowhead = 2,
-  middlehead = {} 
+ % middlehead = {} 
 }
 \toprule
 First column & \textbf{Second column} & \textbf{Third column} & Where? & Number\\

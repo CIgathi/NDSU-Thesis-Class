@@ -5,6 +5,8 @@
 
 \graphicspath{{./figures/}}
 
+\usepackage{longtable}
+
 %******************* Packages, newcommands, and other customization *******************
 \usepackage[style=apa,natbib=true,backend=biber]{biblatex}% works with \citep and \citet commands
 \addbibresource{mybib.bib}% *.bib extension is necessary 
@@ -50,11 +52,13 @@ $A$     	& area (\unit{\m\squared})\\
 $e$     	& Euler's constant (\num{2.718281828}) \\
 $R^2$   	& coefficient of determination}
 
+
 %******************* Document start *******************
 \begin{document}
 
 %******************* First chapter - paper style *******************
 \mypaperheading{The First Chapter - Paper Style - Long title of this technical paper}{This paper is planned to be submitted as a peer-reviewed article \ldots\ more information about the author(s),  title,  \emph{journal},  to be added.}
+
 
 %------------------------------------------------------
 \section{Abstract}
