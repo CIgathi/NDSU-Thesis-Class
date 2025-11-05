@@ -96,10 +96,12 @@
 %		The top margin  space is adjusted in the class (2024-12-06) 
 %		New shortcut myfigs {7} - to give space between two consecutive figures (2024-12-24) 
 %		Longtables using longtblr with caption workarund using \mytabcap see Extended Thesis (2025-03-16) 
-%		Longtable used in list of abbreviations and symbols instead of xtabular (2025-06-22) 
+%		Scheme and List of Schemes were made with consistent terminology (2025-10-18) 
+%.             
 %
 %
 %  Update history
+%  Last updated: 2025-10-18
 %  Last updated: 2025-06-22
 %  Last updated: 2025-03-16
 %  Last updated: 2024-12-24
@@ -212,7 +214,7 @@
 
 % To include scheme float to the cleveref
 \crefname{scheme}{sch.}{schs.}
-\Crefname{scheme}{Schematic}{Schematics}
+\Crefname{scheme}{Scheme}{Schemes}
 
 % Url better breaking + defining characters (alphabets and others) to break 
 \Urlmuskip=0mu plus 1mu\relax
@@ -233,7 +235,7 @@
 \urlstyle{same}  % same font used for url than the regular tt font
 \captionsetup[table]{skip=\baselineskip,labelfont={normalsize,bf},singlelinecheck=false} % figures (centered and left) NDSU Feb 2023
 \captionsetup[figure]{labelfont={normalsize,bf},singlelinecheck=false} % figures (centered and left) NDSU Feb 2023
-\captionsetup[scheme]{labelfont={normalsize,bf},singlelinecheck=false} % schematics (centered and left) NDSU Feb 2023
+\captionsetup[scheme]{labelfont={normalsize,bf},singlelinecheck=false} % schemes (centered and left) NDSU Feb 2023
 
 
 \setlist{nosep, leftmargin=0.5in} % enumerate setup (no extra line spacing and let margin at 0.5in like other indent
@@ -414,7 +416,7 @@
 \DeclareTotalCounter{appendixfigure}
 \DeclareTotalCounter{appendixtable}
 
-\DeclareFloatingEnvironment[fileext=los,placement={ht},listname={{\vspace{-13pt}}LIST OF SCHEMES\vspace{12pt}},name=Schematic]{scheme}% Igathi
+\DeclareFloatingEnvironment[fileext=los,placement={ht},listname={{\vspace{-13pt}}LIST OF SCHEMES\vspace{12pt}},name=Scheme]{scheme}% Igathi
 
 \DeclareFloatingEnvironment[fileext=loaf,placement={ht},listname={{\vspace{-13pt}}LIST OF APPENDIX FIGURES\vspace{12pt}},name=Figure]{appendixfigure}
 
@@ -1213,6 +1215,7 @@ LIST OF SYMBOLS}
 \makeatletter
 \providecommand\phantomcaption{\caption@refstepcounter\@captype}
 \makeatother
+
 
 % The dummy vspace necessary to have vertical spacing with landscape mode
 \newcommand\dvspace[1]{\,\!\!\vspace{#1}}
