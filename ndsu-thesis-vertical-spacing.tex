@@ -10,7 +10,7 @@
 \title{The NDSU thesis---The vertical spacing around non-textual elements---Issues and Solutions \par test test test test test test test test test test test test test}
 
 
-\abstract{\textcolor{magenta}{The document demonstrates an important issue of vertical spacing around floats (tables and figures) and equations. \LaTeX{} usually adds spacing about the floating elements, which is a natural and intended behavior. However, NDSU requires the same ``double-spacing,'' which is \qty{0.33}{in} between baselines or \qty{0.26}{in} between baseline and top-level (\cref{fig1a}). Therefore, this document was developed to demonstrate the issues (Chapter~1) and provide a solution to address the issues (Chapter~2).  Users should understand the issues and able to use the solution to obtain the required results following the source code of this document. 
+\abstract{\textcolor{magenta}{This document (\textcolor{black}{look for the} megenta \textcolor{black}{text and side comments, where I am communicte to the users, while other text are fillers}) demonstrates an important issue of vertical spacing around floats (tables and figures) and equations in \LaTeX{} documents. \LaTeX{} usually adds spacing about the floating elements, which is a natural and intended behavior. However, NDSU requires the same ``double-spacing,'' which is \qty{0.384}{in} between baselines or \qty{0.3}{in} between baseline and top-level of next line (\cref{fig1a}). Therefore, this document was developed to demonstrate the issues (Chapter~1) and provide a solution to address the issues (Chapter~2).  Users should understand the issues and be able to use the solution to obtain the desired results by following the instructions (also source code) in this document. For easy to follow, when [showgrid] option is given (as followed in this document), it is easy to count the grids to obtain the ideal \qty{0.3}{in} spacing, just by counting the grids, where the 3 grids is optimal.  
 }
 
 \hfill{\footnotesize - C. Igathinathane}
@@ -33,7 +33,7 @@
 
 \myfig[0.0in]{h!}{0.99}{verticalSpacing}{The ``vertical spacing rule'' figure showing different spaing in terms of grid and inch units. Use \texttt{\textbackslash vspace}\{ \ldots \} command with +ve and -ve arguments to correct.}{fig1a}
 
-\todo{Excess vertical spacing here! $>$ 3.33 grids}
+\todo{Excess vertical spacing here! $>$ 3 grids}
 
 In all theoretical sciences, the paralogisms of human reason would be falsified, as is proven in the ontological manuals. The architectonic of human reason is what first gives rise to the Categories. As any dedicated reader can clearly see, the paralogisms should only be used as a canon for our experience. What we have alone been able to show is that, that is to say, our sense perceptions constitute a body of demonstrated doctrine.
 
@@ -42,19 +42,19 @@ In all theoretical sciences, the paralogisms of human reason would be falsified,
 
 \kant[1-2]
 
-\todo{Excess spacing below! $>$ 3.33 grids}
+\todo{Excess spacing below! $>$ 3 grids}
 
 \begin{equation}
 P(x) = ax^3+bx^2+cx+d
 \end{equation}
 
-\todo{Excess spacing here! $>$ 3.33 grids}
+\todo{Excess spacing here! $>$ 3 grids}
 
 %\kant[3]
 
 \kant[9]
 
-\todo{Less spacing! $<$ 3.33 grids}
+\todo{Less spacing! $<$ 3 grids}
 
 \begin{figure}[h!]
 \centering
@@ -62,11 +62,11 @@ P(x) = ax^3+bx^2+cx+d
 \caption{The green and yellow pet frog - long long long long long long long long caption.}
 \end{figure}
 
-\todo{Excess spacing here! Around 3.33 grids} 
+\todo{Excess spacing here! Around 3 grids reqd.} 
 
 \kant[10-11]
 
-\todo[color=green]{Correct spacing here! $>$ 3.33 grids}
+\todo[color=green]{Correct spacing here! $>$ 3 grids}
 
 \begin{table}[ht]
 \centering
@@ -196,7 +196,7 @@ Number & Name of month & Days & Season\\
 \kant[9]
 
 {\bfseries
-\textcolor{magenta}{\emph{Note}: The next demonstrates the handling of a large figure, which almost fills a page, and makes it align to the top 1-inch margin. The use of \texttt{h!} and \texttt{H} placement option works and others \texttt{t} and \texttt{p} do not, whereas the use of usual \texttt{p} also centers figure vertically, which is not accepted by NDSU. Show below is the use of \texttt{\textbackslash myfig}, which also works with the usual \texttt{figure} environment. Follow this principle for tables as well and use appropriate \texttt{\textbackslash vspace} values. }
+\textcolor{magenta}{\emph{Note}: The next demonstrates the handling of a large figure, which almost fills a page, and makes it align to the top 1-inch margin. The use of \texttt{h!} and \texttt{H} placement option works, and others \texttt{t} and \texttt{p} do not, whereas the use of the usual \texttt{p} also centers the figure vertically, which is not accepted by NDSU. Show below is the use of \texttt{\textbackslash myfig}, which also works with the usual \texttt{figure} environment. Follow this principle for tables as well and use appropriate \texttt{\textbackslash vspace} values. }
 }
 
 
@@ -207,7 +207,7 @@ Number & Name of month & Days & Season\\
 
 
 {\bfseries
-\textcolor{magenta}{\emph{Note}: Compare the source code of chapters 1 and 2 to understand how the spacing is adjusted. Once done, activate line 2 and comment to see the final output. Of course, this can be done at any time during development as well. Needless to say, the \texttt{todo} commands can be removed. Also, understand that whatever spacing given by \LaTeX{} is actually correct but we make these adjustments to comply with the NDSU-approved thesis format.}
+\textcolor{magenta}{\emph{Note}: Compare the source code of chapters 1 and 2 to understand how the spacing is adjusted. Once done, activate line 2 and comment to see the final output. Of course, this can be done at any time during development as well. Needless to say, the \texttt{todo} commands can be removed. Also, understand that whatever spacing given by \LaTeX{} is actually correct, but we make these adjustments to comply with the NDSU-approved thesis format.}
 }
 
 \hfill{\small - C. Igathinathane}
