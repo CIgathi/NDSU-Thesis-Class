@@ -97,10 +97,11 @@
 %		New shortcut myfigs {7} - to give space between two consecutive figures (2024-12-24) 
 %		Longtables using longtblr with caption workarund using \mytabcap see Extended Thesis (2025-03-16) 
 %		Scheme and List of Schemes were made with consistent terminology (2025-10-18) 
-%.             
+%.             Package xltabular that uses X and p{} formats to obtain full-width table (2025-12-12) 
 %
 %
 %  Update history
+%  Last updated: 2025-12-12
 %  Last updated: 2025-10-18
 %  Last updated: 2025-06-22
 %  Last updated: 2025-03-16
@@ -188,6 +189,7 @@
 \RequirePackage{afterpage}
 \RequirePackage{booktabs}
 \RequirePackage{tabularx}
+\RequirePackage{xltabular}% for full-width longtable
 \RequirePackage{longtable} 
 \RequirePackage{threeparttable}
 \RequirePackage{threeparttablex} 
