@@ -198,7 +198,6 @@ $\gamma$ & hyperparameter in SVM
 
 
 
-
 %\tend
 
 %-----------------------------------------------------------------------------
@@ -554,15 +553,15 @@ Check the use of text, subscripts, variables, and indices.
 
 \begin{table}[h!]
 \caption{Equation coding conventions --- Dos and dont's with examples}
-\begin{tblr}{X[1] X[0.75] X[0.75] X[2.2,l]}
+\begin{tblr}{X[0.6,l] X[0.75,l] X[0.75,l] X[2.2,l]}
 \toprule
-\textbf{Item}		& \textbf{Correct form --- Do}		& \textbf{Wrong form --- \textcolor{red}{Don't}}		& \textbf{Remarks}\\
+\textbf{Item}		& \textbf{Correct form---Do}		& \textbf{Wrong form---\textcolor{red}{Don't}}		& \textbf{Remarks}\\
 \midrule
-Abbreviations & ABEN, STD, TP, TN, FP, FN & \textcolor{red}{$ABEN, STD$, $TP, TN, FP$, $FN$} & Abbreviations, usually $>1$ letter long, should be always upright. This should be followed in regular text and in equations (use the \cmd{text\{\ldots\}} in equations). Otherwise, it may be considered as a product of variables. \\
+Abbrevia\-tions & ABEN, STD, TP, TN, FP, FN & \textcolor{red}{$ABEN, STD$, $TP, TN, FP$, $FN$} & Abbreviations, usually $>1$ letter long, should be always upright. This should be followed in regular text and in equations (use the \cmd{text\{\ldots\}} * in equations or math mode). Otherwise, it may be considered as a product of variables. \\
 
 Variables & $T, P, V, t, v$ & \textcolor{red}{T, P, V, t, v} & Variables, usually 1 letter long, should be always be typeset in italics. The italics font signifies technical symbols of variables (e.g., temperature, pressure, volume, time, velocity).\\ 
 
-Subscripts and superscripts & $T_\text{avg}$, $\text{TP}_{\text{max}}$, $\text{RMSE}_{\text{observed}}$, $v^\text{in}$, $t^\text{output}$, $P^\text{top}_\text{min}$ 
+Subscripts and superscripts & $T_\text{avg}$, $\text{TP}_{\max}$, $\text{RMSE}_{\text{observed}}$, $v^\text{in}$, $t^\text{output}$, $P^\text{top}_\text{min}$ 
 & \textcolor{red}{$T_{avg}$, $\text{TP}_{max}$, $\text{RMSE}_{observed}$, $v^{in}$, $t^{output}$, $P^{top}_{min}$ } 
 & Subscripts and superscripts, usually $>1$ letter long, should always be typeset upright. \\[1ex] 
 
@@ -570,7 +569,7 @@ Index & $i, j, k, l, m,$ $x_i, y_j, z_1, \theta_{23}$
 & \textcolor{red}{i, j, k, l, m,  $x_\text{i}, y_\text{j}, z_\textit{1}, \theta_\textit{23}$} 
 & Indices, usually 1 letter long, should be always be typeset in italics and not upright. However, numbers should always be upright.\\ 
 
-Standard operations & abs, sin, cos, min, max
+Standard operations & abs, $\sin, \cos,$  $\min, \max$
 & \textcolor{red}{$abs, sin, cos,$ $min, max$} 
 & Standard operations are usually formatted upright. In \LaTeX{} when coded in ``math'' mode or equation environment these operations will always come out upright. \\ 
 
@@ -579,7 +578,12 @@ Final thought!
 Symbols T and $T$, and t and $t$ are technically different quantities. Same symbol style should be used in equation and in the definition (See example in the next section).\\
 \bottomrule
 \end{tblr}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item \hspace{-1ex} Note: * Some standard functions can be directly coded in equation or math mode with \textbackslash\: as: \cmd{sin}, \cmd{cos}, \cmd{tan}, \cmd{log}, \cmd{min}, and \cmd{max}, and so on. For others use \cmd{text\{\ldots\}}.  
+\end{tablenotes}
 \end{table} 
+
 
 %-----------------------------------------------------------------------------
 \section{Equation and Definition --- An Example}
@@ -1054,6 +1058,8 @@ Row-of-values & \multicolumn{4}{c}{Block1}  &\multicolumn{4}{c}{Block2} & \multi
 \end{table}
 \end{landscape}
 
+
+
 %-----------------------------------------------------------------------------
 \section{Long Tables}
 \italk{In the disquisition sometimes it is necessary to present data and results that go more than a single page. In such situations, long tables should be used and the package developed for this purpose and included in the class was 
@@ -1203,7 +1209,260 @@ should only be used as a canon for our understanding.
 
 
 %-----------------------------------------------------------------------------
-\subsection{Longtable 2: Simplified Manual Full-Width Long Table With Paragraph Columns---No Repeated Caption and Header}
+\subsection{Longtable 2:  Automatic Full-Width Long Table Using \texttt{xltabular} package}
+
+\italk{With long tables that have more columns, it will always be convenient to have the automatic full-width rather than manually adjusting the column width or column separation. While \texttt{tblr} is the best option with single-page tables, the long table version of \texttt{longtblr} was found to have some issues with other setup commands---whereby the caption is not working (not displayed and appears in LOT). However, the \texttt{longtblr} can be used for other non-numbered tabular data (as presented later), since it is simpler to work with.} \textcolor{magenta}{There exists a workaround with \texttt{longtblr}---using \cmd{mytabcap} shortcut (See: \cref{mytabcap1}).}
+
+\italk{The modern and recommended solution is to use the \texttt{xltabular} package. This package is versatile and will do the following:
+\begin{itemize}
+\item Production of table caption and LOT entry
+\item Supports all types of columns (l, c, r, p, and X)
+\item Running head, foot, and final foot can be activated or suppressed---through \cmd{multicolumn} command
+\item X column makes the automatic width adjustment
+\item The command $>$\{\cmd{raggedright}\cmd{arraybackslash}\}p\{\ldots\} makes raggedright columns (otherwise justified)
+\item No adjustment of the counter is required
+\item The whole table width can be adjusted (sometimes necessary when the final column has citations)---comes handy with landscape environment (1.346 \cmd{textwidth}; See: \Cref{tab:xltabularls})
+\item Can be used for all practical long table situations---just follow the subsequent elaborate example shown in \Cref{tab:xltabular}.
+\end{itemize}
+}
+
+%-----------xltabular---------------
+\begingroup% required for restricting the scope commands (e.g. footnotesize, newcommand tf - local to this group) 
+\newcommand{\tf}{\textcolor{magenta}{Auto full-width X column:} It remains a mystery why, then, the discipline of human reason, in other words, is what first gives rise to nothing!}
+\footnotesize
+\renewcommand{\arraystretch}{2}% adjusting the rowspacing
+\begin{spacing}{0.6}
+
+\begin{xltabular}{\textwidth}{l X c >{\raggedright\arraybackslash}p{0.6in} r}
+\caption{Longtable using xltabular package illustrating the regular \texttt{l, c, r, p} and automatic \texttt{X} columns.}             % <---
+\label{tab:xltabular}\\
+   \toprule
+First l column & \textbf{Second X column} & \textbf{Third c column} & Where? p & Number r\\
+    \midrule
+    \endfirsthead
+
+%%%  running head
+    \multicolumn{5}{l}{\!Table running header---\textcolor{blue}{comment this when not required}}\\  % If required, otherwise commented
+    \toprule
+First l column & \textbf{Second X column} & \textbf{Third c column} & Where? p & Number r\\
+    \midrule
+    \endhead
+
+%%%  running foot
+%\midrule 
+\multicolumn{5}{r}{\itshape Continued \ldots} 
+\endfoot
+
+%%%  last foot
+\\[-0.5in]% needed to adjust the spacing above the footnote
+\multicolumn{5}{@{}p{6.5in}@{}}{\singlespacing\scriptsize{Note: First line of note.}} \\[-0.35in]
+\multicolumn{5}{@{}p{6.5in}@{}}{\singlespacing\scriptsize{Note: Second line + kant [9] as \kant[9]}} 
+\endlastfoot
+
+% Table data
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778 \\
+One & \tf & 123.456778 \\
+One & \tf & 123.456778 \\
+One & \tf & 123.456778 \\
+One & \tf & 123.456778 \\
+One & \tf & 123.456778 \\
+One & \tf & 123.456778 \\
+One & \tf & 123.456778 \\
+One & \tf & 123.456778 \\
+One & \tf & 123.456778 \\
+One & \tf & 123.456778 \\
+One & \tf & 123.456778 \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+\bottomrule
+\end{xltabular}
+\end{spacing}% adjusting line spacing in paragraphs
+\endgroup
+
+
+\kant[9]
+
+
+
+%-----------------------------------------------------------------------------
+\newpage
+\subsection{Longtable 3:  Workaround Automatic Full-Width Long Table Using \texttt{longtblr} package}
+
+
+\mytabcap[-7ex]{Workaround longtable Automatic Full-Width Long Table Using \texttt{longtblr} package}{mytabcap1}% required for special tables
+\begingroup
+\footnotesize
+\newcommand{\tf}{\textcolor{blue}{Auto X columns of longtblr} It remains a mystery why, then, the discipline of human reason, in other words, is what first gives rise to nothing!}
+\begin{spacing}{0.84}% works with longtblr
+\DefTblrTemplate{contfoot-text}{default}{\itshape Continued \ldots}% defining default 
+\DefTblrTemplate{capcont}{default}{}% suppress the repeating head caption
+\DefTblrTemplate {caption-lot}{default}{}% suppressing lot entry
+ 
+\begin{longtblr}[
+label = {table:tab6},
+note{} = {\footnotesize 
+	Note: Test \\ 
+	Note: \kant[9]}
+]{
+  colspec = {X[0.5,l] X[2.5] X[1,c] X[1.2,l] X[0.8,r]},
+  rowhead = 2,
+%  middlehead = {} 
+}
+\toprule
+First column & \textbf{Second column} & \textbf{Third column} & Where? & Number\\
+\midrule
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778 \\
+One & \tf & 123.456778 \\
+One & \tf & 123.456778 \\
+One & \tf & 123.456778 \\
+One & \tf & 123.456778 \\
+One & \tf & 123.456778 \\
+One & \tf & 123.456778 \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+\bottomrule
+\end{longtblr}
+\end{spacing}% adjusting line spacing in paragraphs
+\endgroup
+
+
+\vspace{0.2in}
+\kant[9]
+
+
+
+%-----------------------------------------------------------------------------
+\subsection{Longtable 4: Landscape Automatic Full-Width Long Table Using \texttt{xltabular} package}
+
+\italk{Wrapping the long table \texttt{xltabular} environment with \texttt{landscape} environment readily creates the landscape longtable (\cref{tab:xltabularls}). The width of the table should be adjusted to cover the entire width (e.g., 1.346\cmd{textwidth}). Note that the textwidth corresponds to the regular upright page. Footnote width should also be adjusted.}
+
+\kant[10]
+
+%-----------xltabular---------------
+\begin{landscape}
+\begingroup% required for restricting the scope commands (e.g. footnotesize, newcommand tf - local to this group) 
+\newcommand{\tf}{\textcolor{magenta}{Auto full-width X column:} It remains a mystery why, then, the discipline of human reason, in other words, is what first gives rise to nothing!}
+\footnotesize
+\renewcommand{\arraystretch}{2}% adjusting the rowspacing
+\begin{spacing}{0.8}
+
+\begin{xltabular}{1.346\textwidth}{l X c >{\raggedright\arraybackslash}p{0.6in} r}
+\caption{Landscape longtable using xltabular package illustrating the regular \texttt{l, c, r, p} and automatic \texttt{X} columns with no repeating head.}             % <---
+\label{tab:xltabularls}\\
+   \toprule
+First l column & \textbf{Second X column} & \textbf{Third c column} & Where? p & Number r\\
+    \midrule
+    \endfirsthead
+
+%%%  running head
+%    \multicolumn{5}{l}{\!Table running header---\textcolor{blue}{comment this when not required}}\\  % If required, otherwise commented
+    \toprule
+First l column & \textbf{Second X column} & \textbf{Third c column} & Where? p & Number r\\
+    \midrule
+    \endhead
+
+%%%  running foot
+\midrule[0.1pt] 
+\multicolumn{5}{r}{\itshape Continued \ldots} 
+\endfoot
+
+%%%  last foot
+\\[-0.6in]% needed to adjust the spacing above the footnote
+\multicolumn{5}{@{}p{1.346\textwidth}@{}}{\singlespacing\scriptsize{Note: First line of note.}} \\[-0.45in]
+\multicolumn{5}{@{}p{1.346\textwidth}@{}}{\singlespacing\scriptsize{Note: Second line + kant [9] as \kant[9]}} 
+\endlastfoot
+
+% Table data
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778 \\
+One & \tf & 123.456778 \\
+One & \tf & 123.456778 \\
+One & \tf & 123.456778 \\
+One & \tf & 123.456778 \\
+One & \tf & 123.456778 \\
+One & \tf & 123.456778 \\
+One & \tf & 123.456778 \\
+One & \tf & 123.456778 \\
+One & \tf & 123.456778 \\
+One & \tf & 123.456778 \\
+One & \tf & 123.456778 \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+\bottomrule
+\end{xltabular}
+\end{spacing}% adjusting line spacing in paragraphs
+\endgroup
+\end{landscape}
+
+\kant[10]
+
+
+%-----------------------------------------------------------------------------
+\subsection{Longtable 5: Simplified Manual Full-Width Long Table With Paragraph Columns---No Repeated Caption and Header}
 
 \italk{It is necessary to have paragraph (text wrapping) columns with their widths controlled by users. In such situations, it is also necessary to control the width manually by trial and error. Shown below is a table that performs all these requirements with a caption and the corresponding TOC entry. Check the commands that control the row spacing and line spacing.} 
 
@@ -1314,7 +1573,7 @@ One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
 %----------------------- 
 
 %-----------------------------------------------------------------------------
-\subsection{Longtable 3: Simplified Long Table --- No Repeated Caption and Header}
+\subsection{Longtable 6: Simplified Long Table --- No Repeated Caption and Header}
 
 \italk{The centering is done by \cmd{LTleft} and \cmd{LTright} values. Row spacing by \cmd{arraystretch} command. No footer or header ``Continued \ldots'' coded. Enclosing the group environment is necessary.}
 
@@ -1421,7 +1680,7 @@ are what first give rise to the architectonic of practical reason.
 
 
 %-----------------------------------------------------------------------------
-\subsection{Longtable 4: Simplified Long Table---With Header But No Repeated Caption --- No Full-width---Using \texttt{l} and \texttt{r} specifiers}
+\subsection{Longtable 7: Simplified Long Table---With Header But No Repeated Caption --- No Full-width---Using \texttt{l} and \texttt{r} specifiers}
 
 \italk{The centering is done by \cmd{LTleft} and \cmd{LTright} values. Row spacing by \cmd{arraystretch} command. Specifying \cmd{endfirsthead} suppresses the repeated caption, and \cmd{endhead} puts the header on each page. Footer or header ``Continued \ldots'' coded. Footnotes are coded with \cmd{endlastfoot} command with \cmd{multicolumn} using manual width. Enclosing the group environment is necessary.}
 
@@ -1450,6 +1709,7 @@ are what first give rise to the architectonic of practical reason.
 \endfoot
 
 % For footnotes - p value by trial and error
+\\[-0.4in]
 \multicolumn{5}{l}{\footnotesize Note: My footnote for the table is coded here. Longer note below.}\\[-1cm]
 \multicolumn{5}{p{6in}}{\singlespacing\footnotesize Note: \kant[9]}
 \endlastfoot
@@ -1555,21 +1815,15 @@ One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
 One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
 One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
 One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
-One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
-One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
-One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
-One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
-One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
-One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
-One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
 \bottomrule
 \label{lt:sim}
 \end{longtable}
 \endgroup
 
-%-----------------------------------------------------------------------------
-\subsection{Longtable 5: Simplified longtblr --- With Header But No Repeated Caption }
 
+%-----------------------------------------------------------------------------
+\subsection{Longtable 8: Simplified longtblr --- With Header But No Repeated Caption}
+\vspace{-0.3in}
 \italk{Since it is an automatic full-width, no centering is necessary. Row spacing by \texttt{spacing} command (others are ineffective with the class). The necessary codes (caption, footnote, column specifications, etc.) are input inside of \cmd{longtblr} optional [\ldots] and regular argument \{\ldots\}. Enclosing the group environment is necessary. As this is an un-numbered table the table's serial number should be reduced by 1 using the command \cmd{addtocounter}\{table\}\{-1\} after the table code (as applied at the end).}
 
 
@@ -1701,7 +1955,7 @@ One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
 
 
 %-----------------------------------------------------------------------------
-\subsection{Longtable 6: Simplified Longtable --- With No Header or Repeated Caption - Used to Present Just Long Data}
+\subsection{Longtable 9: Simplified Longtable --- With No Header or Repeated Caption - Used to Present Just Long Data}
 
 \italk{The centering is done by \cmd{LTleft} and \cmd{LTright} values. Row spacing by \cmd{arraystretch} command. Captions, rules, etc. are not used in this data-style long table. Row spacing by \cmd{arraystretch} command. Enclosing the group environment is necessary. The table counter number should be adjusted for this no-caption table.}
 
@@ -1770,7 +2024,7 @@ It is   & not clear     & what you want \\
 \kant[9]
 
 %-----------------------------------------------------------------------------
-\subsection{Longtable 7: Simplified Longtblr --- With No Header or Repeated Caption - Used to Present Just Long Data}
+\subsection{Longtable 10: Simplified Longtblr --- With No Header or Repeated Caption - Used to Present Just Long Data}
 
 \italk{Since it is automatic full-width no centering is necessary. Row spacing by \texttt{spacing} command (others are ineffective with the class). The necessary codes to be input inside of \cmd{longtblr} optional [\ldots] and regular argument \{\ldots\} are not suppressed. The entry = none will make the table not listed in the TOC. Bottom \cmd{hrule} should be kept outside of \vb{longtblr} so that it does not repeat on every page. Enclosing the group environment is necessary. The table counter number should be adjusted for this no-caption table.}
 
@@ -1897,7 +2151,7 @@ Number  & Twice & Squared & Fourth power \\
 
 
 %-----------------------------------------------------------------------------
-\section{Longtable 8: Simple Long Data Table Using \texttt{tabbing} Environment}\label{lttab}
+\subsection{Longtable 11: Simple Long Data Table Using \texttt{tabbing} Environment}\label{lttab}
 
 \italk{The \vb{tabbing} environment offers the simplest way of developing a data table (always left-justified; no TOC entries) and \vb{tabbing} entries automatically flow through pages (longtable). The tabs can be defined according to requirements. The tab stops can be adjusted to move the entire table or column widths manually. As the tabbing environment is not a table, it will not affect the numbering of the tables. }
 
@@ -2019,9 +2273,10 @@ Left - Tabs can be skipped or not filled\\
 \vspace{-4ex}
 \kant[9]
 
+
 %-----------------------------------------------------------------------------
-\section{Longtable 9: Landscape Long Tables}
-\italk{Applying the similar logic \texttt{longtable} when enclosed in \texttt{landscape} environment will produce the landscape long tables (\cref{longtabls}). The previous table was reproduced to demonstrate long tables in landscape format.}
+\subsection{Longtable 12: Landscape Long Tables Using \texttt{longtable}}
+\italk{Applying the similar logic \texttt{longtable} when enclosed in \texttt{landscape} environment will produce the landscape long tables (\cref{longtabls}). The previous table was reproduced to demonstrate long tables in landscape format. Note the use of \cmd{setlength}\cmd{tabcolsep}\{5.25pt\}, optained through trial-and-error, to adjust the final width of the table by altering the column sepration spacing.}
 
 %-----------------------
 \vspace{2ex}
@@ -2030,6 +2285,7 @@ Left - Tabs can be skipped or not filled\\
 
 \begin{landscape}
 {\small 
+\setlength{\tabcolsep}{5.25pt}% used to control the final width of the table
 {\renewcommand{\arraystretch}{0.6}
 \begin{ThreePartTable}
   \begin{TableNotes}
@@ -2148,6 +2404,11 @@ $[1280]$ &  & Field middle  & 3765.75 & 1160.34 & 4926.09 \\
 
 \setlength{\parindent}{0.5in}
 \vspace{-2ex}
+
+
+
+
+
 
 %-----------------------------------------------------------------------------
 %-----------------------------------------------------------------------------
@@ -3239,7 +3500,7 @@ v\: (\text{Velocity}) &= \frac{d\: (\text{distance})}{t\: (\text{time})}
 \vspace{-1.5ex}
 \italk{Now regular text with space adjusted by -ve \cmd{vspace} command.} Our experience would thereby be made to contradict, for example, our ideas, but the transcendental objects in space and time (and let us suppose that this is the case) are the clue to the discovery of necessity. But the proof of this is a task from which we can here be absolved.
 
-\vspace{-6pt}
+\vspace{-7pt}
 \myalign{
 y &= mx + c \\
 E &= mc^2 \\
@@ -3295,11 +3556,11 @@ Number & Month & Same & Same\\
 
 %-----------------------------------------------------------------------------
 \section{Normal Section}
-The reader should be careful to observe that the objects in space and time are the clue to the discovery of, certainly, our a priori knowledge, by means of analytic unity. Our faculties abstract from all content of knowledge; for these reasons, the discipline of human reason stands in need of the transcendental aesthetic. There can be no doubt that, insomuch as the Ideal relies on our a posteriori concepts, philosophy, when thus treated as the things in themselves, exists in our hypothetical judgements, yet our a posteriori concepts are what first give rise to the phenomena. Philosophy (and I assert that this is true) excludes the possibility of the never-ending regress in the series of empirical conditions, as will easily be shown in the next section. Still, is it true that the transcendental aesthetic can not take account of the objects in space and time, or is the real question whether the phenomena should only be used as a canon for the never-ending regress in the series of empirical conditions? By means of analytic unity, the Transcendental Deduction, still, is the mere result of the power of the Transcendental Deduction, a blind but indispensable function of the soul, but our faculties abstracted from all content of a posteriori knowledge.
+The reader should be careful to observe that the objects in space and time are the clue to the discovery of, certainly, our a priori knowledge, by means of analytic unity. Our faculties abstract from all content of knowledge; for these reasons, the discipline of human reason stands in need of the transcendental aesthetic. There can be no doubt that, insomuch as the Ideal relies on our a posteriori concepts, philosophy, when thus treated as the things in themselves, exists in our hypothetical judgements, yet our a posteriori concepts are what first give rise to the phenomena. Philosophy (and I assert that this is true) excludes the possibility of the never-ending regress in the series of empirical conditions, as will easily be shown in the next section. Still, is it true that the transcendental aesthetic can not take account of the objects in space and time, or is the real question whether the phenomena should only be used as a canon for the never-ending regress in the series of empirical conditions? By means of analytic unity, the Transcendental Deduction, still, is the mere result of the power of the Transcendental Deduction, a blind but indispensable function of the soul, but our faculties are abstracted from all content of a posteriori knowledge.
 
 %-----------------------------------------------------------------------------
 \section{Appendix Landscape Table}
-\italk{Sometimes it is necessary to code larger tables in the appendix using the landscape mode. These are created using the usual \texttt{appendixtable} environment but enclosed inside \texttt{landscape} environment --- as usually done. Shown below is an example of the landscape table in regular font (Table~\ref{apbtab:ls}). Also, shown is an even larger table where the whole table is scaled down to accommodate the content within the margins through what table \cmd{resizebox} command (Table~\ref{apbtab:lsmore}). Obviously, the font size can also be reduced to accommodate the contents. }
+\italk{Sometimes it is necessary to code larger tables in the appendix using the landscape mode. These are created using the usual \texttt{appendixtable} environment but enclosed inside \texttt{landscape} environment---as usually done. Shown below is an example of the landscape table in regular font (Table~\ref{apbtab:ls}). Also, shown is an even larger table where the whole table is scaled down to accommodate the content within the margins through what table \cmd{resizebox} command (Table~\ref{apbtab:lsmore}). Obviously, the font size can also be reduced to accommodate the contents. }
 
 \newpage
 \begin{landscape}
@@ -3379,7 +3640,7 @@ Number & Square        & Cubes          & Fourth power\\
  
 {\color{blue} The Table~\ref{tab:apb6} is longer and will not fit in the space below this Table~\ref{tab:apb5}. Therefore, it is floated to the next page. As the table cannot fit, there is no option but to leave the space blank, which is okay and the logical thing to do. Also, note that \texttt{cref, Cref} commands will not work in the appendix (I guess, this was mentioned earlier elsewhere). \label{ttab}
  
-The method that makes the table top-aligned is the use of \texttt{newpage} command and the float placement option of \texttt{[h]} or \texttt{[h!]} --- other options will not produce this required effect. However, the float placement option \texttt{[H]} will make the top-alignment (with or without \texttt{newpage} command) but also make the rows spread out like the regular text with double-line spacing --- this means \texttt{H} is not an option. }
+The method that makes the table top-aligned is the use of \texttt{newpage} command and the float placement option of \texttt{[h]} or \texttt{[h!]}---other options will not produce this required effect. However, the float placement option \texttt{[H]} will make the top-alignment (with or without \texttt{newpage} command) but also make the rows spread out like the regular text with double-line spacing---this means \texttt{H} is not an option. }
 
 {\singlespacing
 \color{magenta}
@@ -3484,10 +3745,13 @@ Number & Square        & Cubes          & Fourth power\\
 
 %-----------------------------------------------------------------------------
 \section{Appendix --- Long Table}
+\italk{We know well that long tables are a little involved and tricky, and then in the appendix, need manual override for proper output. The regular (in chapters) \vb{longtable}, \vb{xltabular}, and \vb{longtbrl} environments are used to code the long tables, and their captions, and LOAT entries will appear correctly with \vb{table} environment. However, the existing appendix \vb{appendixtable} environment will not support the \vb{longtable}, \vb{xltabular}, and \vb{longtbrl} environments, even though these will output table contents, the caption table numbering, and LOAT will not appear correctly. Therefore, a simpler fix followed includes (1) a dummy \vb{appendixtable} with only a caption for the long table with negative \vb{vspace} and optional TOC entry \cmd{caption}[\ldots] with repeated caption text without negative \vb{vspace}, and immediately followed by (2) the long table code without caption.} 
 
-\italk{We know well that long tables are a little involved and tricky, and then in the appendix, need manual override for proper output. The regular \vb{longtable} and \vb{longtbrl} environments are used to code the long tables, and their captions, and LOAT entries will appear correctly with \vb{table} environment. However, the existing appendix \vb{appendixtable} environment will not support the \vb{longtable} and \vb{longtbrl} environments, even though these will output table contents, the caption table numbering, and LOAT will not appear correctly. Therefore, a simpler fix followed includes (1) a dummy \vb{appendixtable} with only a caption for the long table with negative \vb{vspace} and optional TOC entry \cmd{caption}[\ldots] with repeated caption text without negative \vb{vspace}, and immediately followed by (2) the long table code without caption.} 
+\italk{The shortcut (\cmd{mytabapcap} with 1 optional [for vertical adjustment; lifting the table up; defaulty unit = $-8$ex] + 2 mandatory arguments \{Long table main caption\} and \{label\}) can be conveniently used to create the caption. This code will take care of the correct numbering, and the regular caption in the long table should be suppressed. Examples of the appendix long tables are shown in Table~\ref{aplongtab1}, Table~\ref{aplongtab2}, and Table~\ref{aplongtab3}.} 
 
-\italk{The shortcut (\cmd{mytabapcap} with 1 optional [for vertical adjustment; lifting the table up; defaulty unit = $-8$ex] + 2 mandatory arguments \{Long table main caption\} and \{label\}) can be conveniently used to create the caption. Examples of the appendix long tables are shown in Table~\ref{aplongtab1}, Table~\ref{aplongtab2}, and Table~\ref{aplongtab3}. As shown before (Sec.~\ref{lttab}), for simple long data, the \cmd{tabbing} environment can be utilized. These methods of the appendix long table can be coded with or without a caption.}  
+\italk{As shown before (Sec.~\ref{lttab}), for simple long data, the \cmd{tabbing} environment can be utilized. These methods of the appendix long table can be coded with or without a caption. These advanced tables should be referenced using the regular \cmd{ref}\{\ldots\} commands (e.g., Table~\ref{aplongtab1} and Table~\ref{aplongtab2}).}
+
+\textcolor{magenta}{In summary, we have \cmd{mytabapcap} with \vb{longtable}, \vb{xltabular}, and \vb{longtbrl} environments to code appendix long tables. Recall for regular chapters, we use \vb{longtable} or \vb{xltabular}, otherwise the workaround combination of \cmd{mytabcap} and \vb{longtbrl}.}  
 
 
 %-----------------------------------------------------------------------------
@@ -3705,6 +3969,86 @@ One & abcdef ghjijklmn & 123.456778  & Go go go go \ldots & \num{71294539}\\
 \end{spacing}
 }% long table code
 %------------------------------------
+
+
+
+%-----------------------------------------------------------------------------
+\vspace{-0.01in}
+\subsection{Appendix Long Table Using \texttt{xltabular}}
+\kant[9]
+
+%-----------xltabular---------------
+\mytabapcap[-7ex]{Appendix longtable using xltabular package illustrating the regular \texttt{l, c, r, p} and automatic \texttt{X} columns.}{aplongtab3}
+
+\begingroup% required for restricting the scope commands (e.g. footnotesize, newcommand tf - local to this group) 
+\newcommand{\tf}{\textcolor{magenta}{Auto full-width X column:} It remains a mystery why, then, the discipline of human reason, in other words, is what first gives rise to nothing!}
+\footnotesize
+\renewcommand{\arraystretch}{2}% adjusting the rowspacing
+\begin{spacing}{0.6}
+
+\begin{xltabular}{\textwidth}{l X c >{\raggedright\arraybackslash}p{0.6in} r}
+%\caption{Longtable using xltabular package illustrating the regular \texttt{l, c, r, p} and automatic \texttt{X} columns.}             % <---
+%\label{tab:xltabular}\\
+   \toprule
+First l column & \textbf{Second X column} & \textbf{Third c column} & Where? p & Number r\\
+    \midrule
+    \endfirsthead
+
+%%%  running head
+    \multicolumn{5}{l}{\!Table running header---\textcolor{blue}{comment this when not required}}\\  % If required, otherwise commented
+    \toprule
+First l column & \textbf{Second X column} & \textbf{Third c column} & Where? p & Number r\\
+    \midrule
+    \endhead
+
+%%%  running foot
+%\midrule 
+\multicolumn{5}{r}{\itshape Continued \ldots} 
+\endfoot
+
+%%%  last foot
+\\[-0.5in]% needed to adjust the spacing above the footnote
+\multicolumn{5}{@{}p{6.5in}@{}}{\singlespacing\scriptsize{Note: First line of note.}} \\[-0.35in]
+\multicolumn{5}{@{}p{6.5in}@{}}{\singlespacing\scriptsize{Note: Second line + kant [9] as \kant[9]}} 
+\endlastfoot
+
+% Table data
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778 \\
+One & \tf & 123.456778 \\
+One & \tf & 123.456778 \\
+One & \tf & 123.456778 \\
+One & \tf & 123.456778 \\
+One & \tf & 123.456778 \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots \\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+One & \tf & 123.456778  & Go go go go \ldots & \num{71294539}\\
+\bottomrule
+\end{xltabular}
+\end{spacing}% adjusting line spacing in paragraphs
+\endgroup
+
+
+\kant[9]
+
+
+
 
 %-----------------------------------------------------------------------------
 \subsection{Appendix Long Table Using \texttt{tabbing}}
