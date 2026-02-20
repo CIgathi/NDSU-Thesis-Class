@@ -98,9 +98,11 @@
 %		Longtables using longtblr with caption workarund using \mytabcap see Extended Thesis (2025-03-16) 
 %		Scheme and List of Schemes were made with consistent terminology (2025-10-18) 
 %.             Package xltabular that uses X and p{} formats to obtain full-width table (2025-12-12) 
+%.             TOC now hyperlinks to the appendices sections correctly (2026-02-19) 
 %
 %
 %  Update history
+%  Last updated: 2026-02-19
 %  Last updated: 2025-12-12
 %  Last updated: 2025-10-18
 %  Last updated: 2025-06-22
@@ -148,7 +150,7 @@
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1,T2A]{fontenc}
 \RequirePackage{xurl}
-\RequirePackage[linktocpage,breaklinks,linktoc=all,hidelinks]{hyperref}
+%\RequirePackage[linktocpage,breaklinks,linktoc=all,hidelinks]{hyperref}
 
 \PassOptionsToPackage{dvipsnames*,svgnames,x11names,table}{xcolor}% done before package
 
@@ -205,6 +207,7 @@
 \RequirePackage{suffix}% star version newcommands 
 \RequirePackage{csquotes}
 \RequirePackage[export]{adjustbox}
+\RequirePackage[linktocpage,breaklinks,linktoc=all,hidelinks]{hyperref}
 \RequirePackage[nameinlink]{cleveref} %capitalise, noabbrev 
 
 \UseTblrLibrary{amsmath} % to avoid potential conflict in tabularray
@@ -252,7 +255,7 @@
 
 \newbool{subsp} 
 
-% Spacing between number and captions (table and figures) 
+% Spacing between numbers and captions (table and figures) 
 \setlength{\cfttabnumwidth}{0.5in} % table - tocloft package
 \setlength{\cftfignumwidth}{0.5in} % figure - tocloft package
 %\setlength{\cftnumwidth}{0.5in} % figure - tocloft package
@@ -832,22 +835,24 @@ LIST OF SYMBOLS}
 }
 
 % Usage: 	\namedappendices{A}{Appendix title}
-\newcommand{\namedappendices}[2]{ % for multiple appendices
+\newcommand{\namedappendices}[2]{ % for multiple appendices - updated Feb 19, 2026 - TOC hyperlink corrected
     \chapter*{APPENDIX #1. #2\vspace{-12pt}} 
     \setcounter{section}{0}
     \setcounter{equation}{0}
     \setcounter{appendixfigure}{0}
     \setcounter{appendixtable}{0}
+    \renewcommand{\thechapter}{#1}% Igathi
+    \renewcommand\theHsection{\thechapter.\Alph{section}} % Igathi - theHsection is unique counter
     \renewcommand{\appendixfigurename}{Figure}
     \renewcommand{\theappendixfigure}{#1\arabic{appendixfigure}}
     \renewcommand{\appendixtablename}{Table}
     \renewcommand{\theappendixtable}{#1\arabic{appendixtable}}
     \addtocontents{toc}{\setlength{\protect\cftchapnumwidth}{0pt}}    
     \addcontentsline{toc}{chapter}{APPENDIX #1.{\hspace{1.5ex}}\uppercase{#2}}
-    \renewcommand{\thesection}{#1.\arabic{section}} 	
     \renewcommand{\theequation}{#1.\arabic{equation}}
     \addtocontents{toc}{\protect\setcounter{tocdepth}{2}}% toc up to subsection
 }
+
 
 % New(er) commands
 %---------------------------------------------------------------
@@ -1012,7 +1017,7 @@ LIST OF SYMBOLS}
 \label{#3}
 \end{table}
 \vspace{#1}
-\addtocounter{table}{-1}% for this dummy table the counter should be reduced by 1
+\addtocounter{table}{-1}% for this dummy table, the counter should be reduced by 1
 }
 
 % Dummy only figure caption for later use 
