@@ -99,9 +99,11 @@
 %		Scheme and List of Schemes were made with consistent terminology (2025-10-18) 
 %.             Package xltabular that uses X and p{} formats to obtain full-width table (2025-12-12) 
 %.             TOC now hyperlinks to the appendices sections correctly (2026-02-19) 
+%.             Vspace shortcuts added  (2026-02-24) 
 %
 %
 %  Update history
+%  Last updated: 2026-02-24
 %  Last updated: 2026-02-19
 %  Last updated: 2025-12-12
 %  Last updated: 2025-10-18
@@ -387,14 +389,20 @@
 {\setbool{subcomp}{true}}
 {\setbool{subcomp}{false}}
 
-% Grid option for the whole document. Use showgrid in class
+
+% Grid option for the whole document. Use showgrid in class - lighter color used
+
+\definecolor{mygridcol}{RGB}{169, 182, 205}% original
+
 \newcommand{\gridshow}{none7}
 \DeclareOption{showgrid}{\renewcommand{\gridshow}{showgrid}}
 \ProcessOptions
 \ifthenelse{\equal{\gridshow}{showgrid}}
-{\RequirePackage[pattern=std, colorset=plumpad, patternsize=0.1in]
+{\RequirePackage[pattern=std, colorset=plumpad, 
+majorcolor=mygridcol, minorcolor=mygridcol!36, patternsize=0.1in]
 {gridpapers}
 }{}
+
 
 
 % Table of contents tweaks - capitalization and spacing
@@ -919,7 +927,7 @@ LIST OF SYMBOLS}
 \end{figure}
 }
 
-% Regular figure command with placement (htpbH as the first argument) and space between two floats
+% Regular figure command with placement (htpbH as the first argument) and space between two floats for proper LOF spacing
 \newcommand{\myfigs}[7][0ex]{%3.5 earlier
 \vspace{2ex}
 \begin{figure}[#2]
@@ -943,6 +951,20 @@ LIST OF SYMBOLS}
    \vspace{5pt} 
    \caption{#5}
    \label{#6}
+\end{scheme}
+}
+
+% Regular scheme command with placement (htpbH as the first argument) and space between two floats for proper LOS spacing
+\newcommand{\myschs}[7][0ex]{%3.5 earlier
+\vspace{2ex}
+\begin{scheme}[#2]
+\centering 
+   \setlength{\belowcaptionskip}{#1 plus 2pt minus 2pt}%captionsetup not working with scheme
+   \includegraphics[width=#3\textwidth]{#4}
+   \vspace{5pt} 
+   \caption{#5}
+   \label{#6}
+   \vspace{#7}
 \end{scheme}
 }
 
@@ -1226,6 +1248,18 @@ LIST OF SYMBOLS}
 
 % The dummy vspace necessary to have vertical spacing with landscape mode
 \newcommand\dvspace[1]{\,\!\!\vspace{#1}}
+
+% Negative vspace commands
+\newcommand{\vh}{\vspace{-0.05in}}% vspace half -ve
+\newcommand{\vo}{\vspace{-0.1in}}% vspace one-ve
+\newcommand{\voh}{\vspace{-0.15in}}% vspace one half -ve
+\newcommand{\vt}{\vspace{-0.2in}}% vspace two -ve
+\newcommand{\vth}{\vspace{-0.25in}}% vspace two half -ve
+\newcommand{\vr}{\vspace{-0.3in}}% vspace three  -ve
+\newcommand{\vrh}{\vspace{-0.35in}}% vspace three half -ve
+
+\newcommand{\vs}[1]{\vspace*{#1in}}% vspace star version 
+\newcommand{\vc}[1]{\clearpage\vspace*{#1in}}% vspace with clear page and *
 
 
 \widowpenalty=10000
