@@ -150,7 +150,7 @@
 
 % RequirePackage command and other essential packages used
 \RequirePackage[utf8]{inputenc}
-\RequirePackage[T1,T2A]{fontenc}
+\RequirePackage[T2A,T1]{fontenc}
 \RequirePackage{xurl}
 %\RequirePackage[linktocpage,breaklinks,linktoc=all,hidelinks]{hyperref}
 
@@ -171,7 +171,6 @@
 \RequirePackage[titles]{tocloft}
 \RequirePackage[normalem]{ulem} % replacing soul
 \RequirePackage{xcolor}
-\RequirePackage{etoolbox}
 \RequirePackage{mwe}
 \RequirePackage{kantlipsum}
 \RequirePackage{subfig}
@@ -188,7 +187,6 @@
 \sisetup{detect-all}% maintain text font in SI items
 \RequirePackage{float}
 \RequirePackage[stable]{footmisc}% footnote in section and beyond
-\RequirePackage{booktabs}
 \RequirePackage{pdflscape} 
 \RequirePackage{afterpage}
 \RequirePackage{booktabs}
@@ -1015,6 +1013,20 @@ LIST OF SYMBOLS}
 \end{appendixfigure}
 }
 
+% Appendix figure command - with placement (htpbH as the first argument) and  vertical placement
+\newcommand{\myfigaps}[7][0ex]{
+\vspace{2ex}
+\begin{appendixfigure}[#2]
+   \centering 
+   \captionsetup{aboveskip = #1 plus 2pt minus 2pt, belowskip = 0pt} 
+   \includegraphics[width=#3\textwidth]{#4}
+   \vspace{5pt} 
+   \caption[#5]{#5}
+   \label{#6}
+   \vspace{#7}
+\end{appendixfigure}
+}
+
 % Example usage: 
 % \myfigapls{ht}{0.5}{appenddfig1.pdf}{My appendix caption goes here}{figA1}
 
@@ -1258,8 +1270,11 @@ LIST OF SYMBOLS}
 \newcommand{\vr}{\vspace{-0.3in}}% vspace three  -ve
 \newcommand{\vrh}{\vspace{-0.35in}}% vspace three half -ve
 
+\newcommand{\mysectop}{\clearpage\vspace*{-0.44in}}% vspace with clear page and  -0.45in 
+
 \newcommand{\vs}[1]{\vspace*{#1in}}% vspace star version 
 \newcommand{\vc}[1]{\clearpage\vspace*{#1in}}% vspace with clear page and *
+
 
 
 \widowpenalty=10000
