@@ -925,6 +925,20 @@ LIST OF SYMBOLS}
 \end{figure}
 }
 
+% Regular figure command with placement (htpbH as the first argument)
+\newcommand{\myfiga}[7][0ex]{%3.5 earlier
+\vspace{2ex}
+\begin{figure}[#2]
+\centering 
+\captionsetup{aboveskip = #1 plus 2pt minus 2pt, belowskip = 0pt} %, singlelinecheck=true for centering; 14 pt
+   \includegraphics[width=#3\textwidth, alt={#4}]{#5}
+   \vspace{5pt} 
+   \caption{#6}
+   \label{#7}
+\end{figure}
+}
+
+
 % Regular figure command with placement (htpbH as the first argument) and space between two floats for proper LOF spacing
 \newcommand{\myfigs}[7][0ex]{%3.5 earlier
 \vspace{2ex}
@@ -1274,6 +1288,8 @@ LIST OF SYMBOLS}
 
 \newcommand{\vs}[1]{\vspace*{#1in}}% vspace star version 
 \newcommand{\vc}[1]{\clearpage\vspace*{#1in}}% vspace with clear page and *
+
+\newcommand\cptp{\footnote{\hl{Compatible PDF tagging package}}}% Compatible PDF tagging package
 
 
 
