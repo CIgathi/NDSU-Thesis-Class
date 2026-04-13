@@ -1,11 +1,10 @@
 %******************* START *** [Updated: 14-03-2026] *******************
 \documentclass[ms-thesis,mathdesign,12pt,showgrid]{ndsu-thesis-2022}
-%\documentclass[12pt,showgrid]{ndsu-thesis-2022}% vspace to be adusted
 
-%Refer to documentation (ndsu-thesis-2022-documentation.pdf) for various options and commands
+%Refer to documentation (ndsu-thesis-2022-documentation....) for various options and commands
 
 \graphicspath{{./figures/}}
-%\renewcommand\myspacing{1.9} % 23 lines/page needs 1.9; other values for other fornts
+%\renewcommand\myspacing{1.9} % 23 lines/page needs 1.9; other values for other fonts
 
 %******************* Packages, newcommands, and other customization *******************
 \usepackage[style=apa,natbib=true,backend=biber]{biblatex}% works with \citep and \citet commands
@@ -14,18 +13,18 @@
 \addbibresource{mybib.bib}% *.bib extension is necessary 
 %\renewcommand\myspacing{1.9} % 23 lines/page needs 1.9 for thesis
 
-
 %***** SI units setup and a few custom unit commands *****
 \sisetup{group-separator = {,}}% thousands separator comma; space default
 \DeclareSIUnit\ft{ft}
 \newcommand{\sqft}[1]{\qty{#1}{foot}$^2$\xspace}% have math outside of SI
 \newcommand{\cuft}[1]{\qty{#1}{\cubic\ft}\xspace}% SI standard commands
  
- 
+
 %******************* First and second page material *******************
 \title{The Title of My M.S. Thesis: Optimized for two-line titles and the vertical starting level can be adjusted}
 \author{Samuel Fargo Bison}
-\date{December 2023}
+\pdftitleauthor{The Title of My M.S. Thesis: Optimized for two-line titles and the vertical starting level can be adjusted}{Samuel Fargo Bison}% For PDF output - title and author repeated
+\date{December 2026}
 \progdeptchoice{Department} % Use Department (or) Program
 \department{Mathematics}
 
@@ -33,7 +32,7 @@
 \cmembera{Prof. Abraham Lincoln}
 \cmemberb{Prof. George Washington}
 \cmemberc{Prof. Theodore Roosevelt} % If 3rd not required - delete this line 
-\approvaldate{12/14/2022}
+\approvaldate{12/14/2026}
 \approver{Prof. James Garfield}
 
 %******************* Front matter *******************
@@ -66,8 +65,6 @@ $R^2$   	& coefficient of determination}
 %------------------------------------------------------
 \section{Abstract}
 Paper-styled chapters will have abstracts. Abstract of this chapter goes here. \kant[1]
-
-\nocite{*}
 
 %------------------------------------------------------
 \section{Section ($\Rightarrow$ 1st level; Title Case; Centered; Boldface) E.g., Science is Key Period}

@@ -100,6 +100,7 @@
 %.             Package xltabular that uses X and p{} formats to obtain full-width table (2025-12-12) 
 %.             TOC now hyperlinks to the appendices sections correctly (2026-02-19) 
 %.             Vspace shortcuts added  (2026-02-24) 
+%.             Listings (chapter + appendix) codes + shortcuts added  (2026-04-12) 
 %
 %
 %  Update history
@@ -220,6 +221,8 @@
 % To include scheme float to the cleveref
 \crefname{scheme}{sch.}{schs.}
 \Crefname{scheme}{Scheme}{Schemes}
+\crefname{listing}{lst.}{lsts.}
+\Crefname{listing}{Listing}{Listings}
 
 % Url better breaking + defining characters (alphabets and others) to break 
 \Urlmuskip=0mu plus 1mu\relax
@@ -241,6 +244,7 @@
 \captionsetup[table]{skip=\baselineskip,labelfont={normalsize,bf},singlelinecheck=false} % figures (centered and left) NDSU Feb 2023
 \captionsetup[figure]{labelfont={normalsize,bf},singlelinecheck=false} % figures (centered and left) NDSU Feb 2023
 \captionsetup[scheme]{labelfont={normalsize,bf},singlelinecheck=false} % schemes (centered and left) NDSU Feb 2023
+\captionsetup[listing]{labelfont={normalsize,bf},singlelinecheck=false} % listings (centered and left) NDSU April 2026
 
 
 \setlist{nosep, leftmargin=0.5in} % enumerate setup (no extra line spacing and let margin at 0.5in like other indent
@@ -254,6 +258,9 @@
 \setbool{chapref}{false} %  produces no individual chapter references - default
 
 \newbool{subsp} 
+
+% PDF output tile and author
+\newcommand{\pdftitleauthor}[2]{\hypersetup{pdftitle={#1}, pdfauthor={#2}}}
 
 % Spacing between numbers and captions (table and figures) 
 \setlength{\cfttabnumwidth}{0.5in} % table - tocloft package
@@ -424,21 +431,37 @@ majorcolor=mygridcol, minorcolor=mygridcol!36, patternsize=0.1in]
 \setlength{\cftfigindent}{0em}
 \setlength{\cfttabindent}{0em}
 \DeclareTotalCounter{scheme}
+\DeclareTotalCounter{listing}
 \DeclareTotalCounter{appendixfigure}
 \DeclareTotalCounter{appendixtable}
+\DeclareTotalCounter{appendixscheme}
+\DeclareTotalCounter{appendixlisting}
+
 
 \DeclareFloatingEnvironment[fileext=los,placement={ht},listname={{\vspace{-13pt}}LIST OF SCHEMES\vspace{12pt}},name=Scheme]{scheme}% Igathi
 
-\DeclareFloatingEnvironment[fileext=loaf,placement={ht},listname={{\vspace{-13pt}}LIST OF APPENDIX FIGURES\vspace{12pt}},name=Figure]{appendixfigure}
+\DeclareFloatingEnvironment[fileext=lol,placement={ht},listname={{\vspace{-13pt}}LIST OF LISTINGS\vspace{12pt}},name=Listing]{listing}% Igathi
 
 \DeclareFloatingEnvironment[fileext=loat,placement={ht},listname={{\vspace{-13pt}}LIST OF APPENDIX TABLES\vspace{12pt}},name=Table]{appendixtable}
+
+\DeclareFloatingEnvironment[fileext=loaf,placement={ht},listname={{\vspace{-13pt}}LIST OF APPENDIX FIGURES\vspace{12pt}},name=Figure]{appendixfigure}
+
+\DeclareFloatingEnvironment[fileext=loas,placement={ht},listname={{\vspace{-13pt}}LIST OF APPENDIX SCHEMES\vspace{12pt}},name=Scheme]{appendixscheme}
+
+\DeclareFloatingEnvironment[fileext=loal,placement={ht},listname={{\vspace{-13pt}}LIST OF APPENDIX LISTINGS\vspace{12pt}},name=Listing]{appendixlisting}
 
 % Fix table captions and row spacing
 %\AtBeginEnvironment{tabular}{\singlespacing}
 %\captionsetup[table]{position=top,skip=\baselineskip, singlelinecheck=false} % left-aligned
 \captionsetup[scheme]{labelfont={normalsize,bf},position=top,skip=0.75\baselineskip,singlelinecheck=false} 
+\captionsetup[listing]{labelfont={normalsize,bf},position=top,skip=0.75\baselineskip,singlelinecheck=false} 
+
+
 \captionsetup[appendixtable]{labelfont={normalsize,bf},position=top,skip=0.75\baselineskip,singlelinecheck=false} % left-aligned
-\captionsetup[appendixfigure]{labelfont={normalsize,bf}, belowskip = 0pt, singlelinecheck=false} % left-aligned
+\captionsetup[appendixfigure]
+{labelfont={normalsize,bf}, belowskip = 0pt, singlelinecheck=false} 
+\captionsetup[appendixlisting]{labelfont={normalsize,bf},position=top,skip=0.75\baselineskip,singlelinecheck=false} 
+
 
 % Defines custom paper information
 \newcommand\papertype[1]{\def\@papertype{#1}}
@@ -661,19 +684,26 @@ LIST OF SYMBOLS}
 \fi
 
 \iftotalschemes\begin{singlespace}\listofschemes\end{singlespace}\fi
+\iftotallistings\begin{singlespace}\listoflistings\end{singlespace}\fi
 
 \@listofabbreviations  
 \@listofsymbols
 \iftotalappendixtables\begin{singlespace}\listofappendixtables\end{singlespace}\fi
 \iftotalappendixfigures\begin{singlespace}\listofappendixfigures\end{singlespace}\fi
+\iftotalappendixschemes\begin{singlespace}\listofappendixschemes\end{singlespace}\fi
+\iftotalappendixlistings\begin{singlespace}\listofappendixlistings\end{singlespace}\fi
 \mainmatter}
+
 
 \pagestyle{plain}
 \addtocontents{lot}{\vspace{-8pt}\noindent\underline{Table}\hfill \underline{Page}\par}
 \addtocontents{lof}{\vspace{-8pt}\noindent\underline{Figure}\hfill \underline{Page}\par}
-\addtocontents{los}{\vspace{-8pt}\noindent\underline{Scheme}\hfill \underline{Page}\par}%\vspace{-10pt}}
+\addtocontents{los}{\vspace{-8pt}\noindent\underline{Scheme}\hfill \underline{Page}\par}
+\addtocontents{lol}{\vspace{-8pt}\noindent\underline{Listing}\hfill \underline{Page}\par}
 \addtocontents{loat}{\vspace{-8pt}\noindent\underline{Table}\hfill \underline{Page}\par\vspace{-10pt}}
 \addtocontents{loaf}{\vspace{-8pt}\noindent\underline{Figure}\hfill \underline{Page}\par\vspace{-10pt}}
+\addtocontents{loas}{\vspace{-8pt}\noindent\underline{Scheme}\hfill \underline{Page}\par\vspace{-10pt}}
+\addtocontents{loal}{\vspace{-8pt}\noindent\underline{Listing}\hfill \underline{Page}\par}
 \addtocontents{loa}{\vspace{-6pt}\noindent\underline{Figure}\hfill \underline{Page}\par}  
 
 % Uniform spacing of entries in LOSH 
@@ -827,12 +857,18 @@ LIST OF SYMBOLS}
     \chapter*{APPENDIX\vspace{-12pt}}
     \setcounter{section}{0}
     \setcounter{equation}{0}
-    \setcounter{appendixfigure}{0}
     \setcounter{appendixtable}{0}
-    \renewcommand{\appendixfigurename}{Figure}
-    \renewcommand{\theappendixfigure}{A\arabic{appendixfigure}}
+    \setcounter{appendixfigure}{0}
+    \setcounter{appendixscheme}{0}
+    \setcounter{appendixlisting}{0}
     \renewcommand{\appendixtablename}{Table}
     \renewcommand{\theappendixtable}{A\arabic{appendixtable}}
+    \renewcommand{\appendixfigurename}{Figure}
+    \renewcommand{\theappendixfigure}{A\arabic{appendixfigure}}
+    \renewcommand{\appendixschemename}{Scheme}
+    \renewcommand{\theappendixscheme}{A\arabic{appendixscheme}}
+    \renewcommand{\appendixlistingname}{Listing}
+    \renewcommand{\theappendixlisting}{A\arabic{appendixlisting}}
     \addtocontents{toc}{\setlength{\protect\cftchapnumwidth}{0pt}}    
     \addcontentsline{toc}{chapter}{APPENDIX}
     \renewcommand{\thesection}{A.\arabic{section}} 	
@@ -849,12 +885,17 @@ LIST OF SYMBOLS}
     \setcounter{appendixtable}{0}
     \renewcommand{\thechapter}{#1}% Igathi
     \renewcommand\theHsection{\thechapter.\Alph{section}} % Igathi - theHsection is unique counter
-    \renewcommand{\appendixfigurename}{Figure}
-    \renewcommand{\theappendixfigure}{#1\arabic{appendixfigure}}
     \renewcommand{\appendixtablename}{Table}
     \renewcommand{\theappendixtable}{#1\arabic{appendixtable}}
+    \renewcommand{\appendixfigurename}{Figure}
+    \renewcommand{\theappendixfigure}{#1\arabic{appendixfigure}}
+    \renewcommand{\appendixschemename}{Scheme}
+    \renewcommand{\theappendixscheme}{#1\arabic{appendixscheme}}
+    \renewcommand{\appendixlistingname}{Listing}
+    \renewcommand{\theappendixlisting}{#1\arabic{appendixlisting}}
     \addtocontents{toc}{\setlength{\protect\cftchapnumwidth}{0pt}}    
     \addcontentsline{toc}{chapter}{APPENDIX #1.{\hspace{1.5ex}}\uppercase{#2}}
+    \renewcommand{\thesection}{#1.\arabic{section}} 	
     \renewcommand{\theequation}{#1.\arabic{equation}}
     \addtocontents{toc}{\protect\setcounter{tocdepth}{2}}% toc up to subsection
 }
@@ -884,7 +925,6 @@ LIST OF SYMBOLS}
 \let\clearpage\relax% for multiple files
 }
 
-
 % The thesis had only appendix tables
 \newcommand{\closeappendixtables}{% Igathi
 \renewcommand{\appendixtablename}{}
@@ -904,6 +944,27 @@ LIST OF SYMBOLS}
 \end{appendixfigure}
 \vspace{-25ex}
 }
+
+% The thesis had only appendix schemes
+\newcommand{\closeappendixschemes}{% Igathi
+\renewcommand{\appendixschemename}{}
+\renewcommand{\theappendixscheme}{}
+\begin{appendixscheme}[H]
+\caption[]{}
+\end{appendixscheme}
+\vspace{-25ex}
+}
+
+% The thesis had only listings
+\newcommand{\closeappendixlistings}{% Igathi
+\renewcommand{\appendixlistingname}{}
+\renewcommand{\theappendixlisting}{}
+\begin{appendixlisting}[H]
+\caption[]{}
+\end{appendixlisting}
+\vspace{-25ex}
+}
+
 
 \newcommand\vsalign{\vspace{-4ex}} 
 \newcommand\vseqn{\vspace{-2ex}} 
@@ -1058,6 +1119,53 @@ LIST OF SYMBOLS}
 \end{landscape}
 }
 
+
+% Appendix scheme  command - with placement (htpbH as the first argument)
+\newcommand{\myschap}[6][0ex]{
+\vspace{2ex}
+\begin{appendixscheme}[#2]
+   \centering 
+   \captionsetup{aboveskip = #1 plus 2pt minus 2pt, belowskip = 0pt} 
+   \includegraphics[width=#3\textwidth]{#4}
+   \vspace{5pt} 
+   \caption[#5]{#5}
+   \label{#6}
+\end{appendixscheme}
+}
+
+% Appendix scheme command - with placement (htpbH as the first argument) and  vertical placement
+\newcommand{\myschaps}[7][0ex]{
+\vspace{2ex}
+\begin{appendixscheme}[#2]
+   \centering 
+   \captionsetup{aboveskip = #1 plus 2pt minus 2pt, belowskip = 0pt} 
+   \includegraphics[width=#3\textwidth]{#4}
+   \vspace{5pt} 
+   \caption[#5]{#5}
+   \label{#6}
+   \vspace{#7}
+\end{appendixscheme}
+}
+
+% Example usage: 
+% \myfigapls{ht}{0.5}{appenddfig1.pdf}{My appendix caption goes here}{figA1}
+
+% Appendix landscape scheme  command - with placement (htpbH as the first argument)
+\newcommand{\myschapls}[6][0ex]{
+\begin{landscape}
+\begin{appendixscheme}[#2]
+   \centering 
+  \captionsetup[scheme]{aboveskip = #1 plus 2pt minus 2pt, belowskip = 0pt} 
+   \includegraphics[width=#3\textwidth]{#4}
+   \vspace{5pt} 
+   \caption[#5]{#5}
+   \label{#6}
+\end{appendixscheme}
+\end{landscape}
+}
+
+
+
 % Dummy only table caption for multipage long tables for longtblr 
 \newcommand\mytabcap[3][-8ex]{%1 optional verti spacing +2 arguments
 \begin{table}[h!]
@@ -1077,7 +1185,6 @@ LIST OF SYMBOLS}
 \end{figure}
 }
 
-
 % Dummy only appendix table caption for listings and multipage figures
 \newcommand\mytabapcap[3][-8ex]{%1 optional verti spacing +2 arguments
 \begin{appendixtable}[h!]
@@ -1094,6 +1201,15 @@ LIST OF SYMBOLS}
 \caption{#2}%LOAT entry and caption are same
 \label{#3}
 \end{appendixfigure}
+}
+
+% Dummy only appendix listing caption for listings and multipage figures
+\newcommand\mylisapcap[3][-8ex]{%1 optional verti spacing +2 arguments
+\begin{appendixlisting}[h!]
+\caption{#2}%LOAT entry and caption are same
+\label{#3}
+\end{appendixlisting}
+\vspace{#1}
 }
 
 
@@ -1284,6 +1400,7 @@ LIST OF SYMBOLS}
 \newcommand{\vr}{\vspace{-0.3in}}% vspace three  -ve
 \newcommand{\vrh}{\vspace{-0.35in}}% vspace three half -ve
 
+\newcommand{\mytop}{\clearpage\vspace*{-0.44in}}% vspace with clear page and  -0.45in 
 \newcommand{\mysectop}{\clearpage\vspace*{-0.44in}}% vspace with clear page and  -0.45in 
 
 \newcommand{\vs}[1]{\vspace*{#1in}}% vspace star version 
