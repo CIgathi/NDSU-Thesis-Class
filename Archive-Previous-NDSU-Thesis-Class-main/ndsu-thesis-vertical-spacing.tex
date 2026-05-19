@@ -1,0 +1,219 @@
+%******************* START ****************************
+%\documentclass[12pt,mathdesign]{ndsu-thesis-2022}
+\documentclass[12pt,mathdesign,showframe,showgrid]{ndsu-thesis-2022}
+
+
+\graphicspath{{./figures/}}
+
+%******** Load necessary packages below **********
+
+\title{The NDSU thesis---The vertical spacing around non-textual elements---Issues and Solutions \par test test test test test test test test test test test test test}
+
+
+\abstract{\textcolor{magenta}{This document (\textcolor{black}{look for the} megenta \textcolor{black}{text and side comments, where I am communicte to the users, while other text are fillers}) demonstrates an important issue of vertical spacing around floats (tables and figures) and equations in \LaTeX{} documents. \LaTeX{} usually adds spacing about the floating elements, which is a natural and intended behavior. However, NDSU requires the same ``double-spacing,'' which is \qty{0.384}{in} between baselines or \qty{0.3}{in} between baseline and top-level of next line (\cref{fig1a}). Therefore, this document was developed to demonstrate the issues (Chapter~1) and provide a solution to address the issues (Chapter~2).  Users should understand the issues and be able to use the solution to obtain the desired results by following the instructions (also source code) in this document. For easy to follow, when [showgrid] option is given (as followed in this document), it is easy to count the grids to obtain the ideal \qty{0.3}{in} spacing, just by counting the grids, where the 3 grids is optimal.  
+}
+
+\hfill{\footnotesize - C. Igathinathane}
+}
+
+
+%------------------------------------------------------------------
+%******************* Document start *******************
+\begin{document}
+%Barebone - document --- Put your code to test below:
+
+%------------------------------------------------------------------
+\myheading{NDSU Grad School Unacceptable Vertical Spacing Around Float Elements---Demonstrating Issues}
+
+\section{\textcolor{magenta}{The NDSU Thesis Vertical Spacing Convention Around Elements}}
+
+\textcolor{magenta}{The following figure describes the vertical spacing convention to be followed in the thesis. Each grid represents $0.1 \times 0.1$ inch.} 
+
+\todo{Excess vertical spacing here!}
+
+\myfig[0.0in]{h!}{0.99}{verticalSpacing}{The ``vertical spacing rule'' figure showing different spaing in terms of grid and inch units. Use \texttt{\textbackslash vspace}\{ \ldots \} command with +ve and -ve arguments to correct.}{fig1a}
+
+\todo{Excess vertical spacing here! $>$ 3 grids}
+
+In all theoretical sciences, the paralogisms of human reason would be falsified, as is proven in the ontological manuals. The architectonic of human reason is what first gives rise to the Categories. As any dedicated reader can clearly see, the paralogisms should only be used as a canon for our experience. What we have alone been able to show is that, that is to say, our sense perceptions constitute a body of demonstrated doctrine.
+
+%------------------------------------------------------------------
+\newpage
+
+\kant[1-2]
+
+\todo{Excess spacing below! $>$ 3 grids}
+
+\begin{equation}
+P(x) = ax^3+bx^2+cx+d
+\end{equation}
+
+\todo{Excess spacing here! $>$ 3 grids}
+
+%\kant[3]
+
+\kant[9]
+
+\todo{Less spacing! $<$ 3 grids}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.6\textwidth]{frog.jpg}
+\caption{The green and yellow pet frog - long long long long long long long long caption.}
+\end{figure}
+
+\todo{Excess spacing here! Around 3 grids reqd.} 
+
+\kant[10-11]
+
+\todo[color=green]{Correct spacing here! $>$ 3 grids}
+
+\begin{table}[ht]
+\centering
+\caption{Table spanning entire width (full-width) using \texttt{setlength} and
+\texttt{tabcolsep}.}
+\vspace{-1ex}
+\begin{tblr}{X X[c] X[r] X[r]}
+\toprule
+Number & Name of month & Days & Season\\
+\midrule
+\#4 	& April  & 30		& Spring\\
+\#5 	& May    & 31		& Summer\\
+\#6 	& June   & 30		& Summer\\
+\bottomrule
+\end{tblr}
+\begin{tablenotes}[flushleft]
+\item \hspace{-1ex} Note: The \texttt{tablenotes} environment produces table footnotes. 
+\end{tablenotes}
+\label{tab:2}
+\end{table}	
+
+\todo{Excess spacing here!}
+
+\kant[9]\kant[14]
+
+\todo[color=green]{Excess spacing at the page end is OK. As the float on the next page cannot be accommodated here!}
+
+
+%------------------------------------------------------------------
+\newpage
+\myfig[0.0in]{h!}{0.9}{frog}{The green and yellow pet frog - long long long long long long long long caption.}{fig1}
+
+\todo{Excess spacing here!}
+
+\kant[9]
+
+
+
+
+%------------------------------------------------------------------
+%------------------------------------------------------------------
+\myheading{The solution to vertical spacing around float elements using vspace\{ \ldots \} command---Demonstrating Solution}
+
+\section{\textcolor{magenta}{The NDSU Thesis Vertical Spacing Convention Around Elements}}
+
+\textcolor{magenta}{The following figure describes the vertical spacing convention to be followed in the thesis. Follow the source code (\texttt{*.tex}) for the solution.} 
+
+\todo[color=green]{Correct spacing!}
+
+\vspace{-0.2in}%2 grids
+\myfig[0.0in]{h!}{0.99}{verticalSpacing}{The ``vertical spacing rule'' figure showing different spaing in terms of grid and inch units. Use \texttt{\textbackslash vspace}\{ \ldots \} command with +ve and -ve arguments to correct.}{fig1}
+
+\todo[color=green]{Correct spacing!}
+
+\vspace{-0.27in}%2.7 grids
+\kant[9]
+
+\todo[color=green]{Spacing page end. Okay!}
+
+%------------------------------------------------------------------
+\newpage
+
+\kant[1-2]
+
+\todo[color=green]{Correct spacing. Using myeqn shortcut}
+
+\myeqn{% automatic spacing through shortcut
+P(x) = ax^3+bx^2+cx+d
+}
+
+\todo[color=green]{Correct spacing!}
+
+%\kant[3]
+
+\kant[9]
+
+\todo[color=green]{Correct spacing!}
+
+\vspace{0.1in}%1 grid
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.6\textwidth]{frog.jpg}
+\caption{The green and yellow pet frog - long long long long long long long long caption.}
+\end{figure}
+
+\todo[color=green]{Correct spacing!}
+
+\vspace{-0.25in}%2.5 grids
+\kant[10-11]
+
+\todo[color=green]{Correct spacing here!}
+
+\begin{table}[ht]
+\centering
+\caption{Table spanning entire width (full-width) using \texttt{setlength} and
+\texttt{tabcolsep}.}
+\vspace{-1ex}
+\begin{tblr}{X X[c] X[r] X[r]}
+\toprule
+Number & Name of month & Days & Season\\
+\midrule
+\#4 	& April  & 30		& Spring\\
+\#5 	& May    & 31		& Summer\\
+\#6 	& June   & 30		& Summer\\
+\bottomrule
+\end{tblr}
+\begin{tablenotes}[flushleft]
+\item \hspace{-1ex} Note: The \texttt{tablenotes} environment produces table footnotes. 
+\end{tablenotes}
+\label{tab:2}
+\end{table}	
+
+\todo[color=green]{Correct spacing!}
+
+\vspace{-0.2in}%2.5 grids
+\kant[14]
+
+\todo[color=green]{Excess spacing at the page end is OK. As the float on the next page cannot be accommodated here!}
+
+
+%------------------------------------------------------------------
+\myfig[0.0in]{h!}{0.9}{frog}{The green and yellow pet frog - long long long long long long long long caption.}{fig1}
+
+\todo[color=green]{Correct spacing!}
+
+\vspace{-0.2in}%2.5 grids
+\kant[9]
+
+{\bfseries
+\textcolor{magenta}{\emph{Note}: The next demonstrates the handling of a large figure, which almost fills a page, and makes it align to the top 1-inch margin. The use of \texttt{h!} and \texttt{H} placement option works, and others \texttt{t} and \texttt{p} do not, whereas the use of the usual \texttt{p} also centers the figure vertically, which is not accepted by NDSU. Show below is the use of \texttt{\textbackslash myfig}, which also works with the usual \texttt{figure} environment. Follow this principle for tables as well and use appropriate \texttt{\textbackslash vspace} values. }
+}
+
+
+%------------------------------------------------------------------
+% Note the use of \newpage command and h! - that put the figure immediately on next page and h! on the top with 1-inch margin
+\newpage
+\myfig[0.0in]{h!}{0.75}{example-image-golden-upright}{The ``example-image-golden-upright' example image from the \texttt{mwe} package.}{fig2}
+
+
+{\bfseries
+\textcolor{magenta}{\emph{Note}: Compare the source code of chapters 1 and 2 to understand how the spacing is adjusted. Once done, activate line 2 and comment to see the final output. Of course, this can be done at any time during development as well. Needless to say, the \texttt{todo} commands can be removed. Also, understand that whatever spacing given by \LaTeX{} is actually correct, but we make these adjustments to comply with the NDSU-approved thesis format.}
+}
+
+\hfill{\small - C. Igathinathane}
+
+\vspace{-0.1in}
+\hfill{\scriptsize March, 2025}
+
+\end{document}
+%******************* END *******************************
