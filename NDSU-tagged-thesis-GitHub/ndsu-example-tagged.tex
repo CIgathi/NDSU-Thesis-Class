@@ -1,0 +1,695 @@
+%******************* Metadata for PDF tagging *** [Updated: 18-05-2026] *******************
+\DocumentMetadata{
+ tagging=on,
+ lang=en-US,
+ tagging-setup={math/setup=mathml-SE,math/alt/use},
+ pdfversion=2.0,
+ pdfstandard=ua-2,
+ pdfstandard=a-4f,
+ uncompress,
+}
+%
+% Refer to documentation (ndsu-thesis-tagged-documentation....) for various options and commands
+% Use LuaTeX for compiling (LuaTeX+Biber+LuaTeX+LuaTeX for docs with bibliography)
+%
+% Created by C. Igathinathane <i.cannayen@nsdu.edu>,  ABEN, NDSU
+%
+%
+%***********************************************
+%***********************************************
+%******************* START *******************
+\documentclass[ms-thesis,mathdesign]{ndsu-thesis-tagged}% MS final, 12 pt
+%\documentclass[ms-thesis,mathdesign,chaprefs]{ndsu-thesis-tagged}% MS final, chap refs, 12 pt
+%\documentclass[ms-thesis,mathdesign,showgrid]{ndsu-thesis-tagged}% MS work, 12 pt
+%\documentclass{ndsu-thesis-tagged}% PhD final, 12 pt, computer modern
+%\documentclass[mathdesign,chapterrefs,showgrid]{ndsu-thesis-tagged}% PhD, chap refs, work
+%\documentclass[mathdesign,chapterrefs]{ndsu-thesis-tagged}% PhD, final, chap refs, 12 pt
+
+%-------------------------------------------------------
+\graphicspath{{./figures/}}
+
+%******************* Packages, newcommands, and other customization *******************
+\usepackage[style=apa,natbib=true,backend=biber]{biblatex}% works with \citep and \citet commands
+% For numeric styles, viz., ieee, numeric, numeric-comp see documentation Sec. 
+
+\addbibresource{mybib.bib}% *.bib extension is necessary 
+
+%***** SI units setup and a few custom unit commands *****
+\sisetup{group-separator = {,}}% thousands separator comma; space default
+\DeclareSIUnit\ft{ft}
+\newcommand{\sqft}[1]{\qty{#1}{foot}$^2$\xspace}% have math outside of SI
+\newcommand{\cuft}[1]{\qty{#1}{\cubic\ft}\xspace}% SI standard commands
+
+
+%******************* First and second page material *******************
+% Default 2-line title. Otherwise use \setlength{\droptitle}{Xin}; X = -1.57 for 1-line  and -1.47 for 3-line titles
+\title{Example NDSU LaTeX Thesis Template for Automatic PDF Tagging in Masters and Doctoral Dissertations}
+\author{Samuel Fargo Bison}
+\keywords{NDSU, Thesis, Dissertation, Accessible documents, Add your subject-specific keywords}
+\date{December 2026}
+\progdeptchoice{Department} % Use Department (or) Program
+\department{Mathematics}
+ 
+
+\cchair{Prof. John Adams} % Use actual committee members' names 
+\cmembera{Prof. Abraham Lincoln}
+\cmemberb{Prof. George Washington}
+\cmemberc{Prof. Theodore Roosevelt} % If 3rd not required - delete this line 
+\approvaldate{12/14/2026}
+\approver{Prof. James Garfield}
+
+%******************* Front matter *******************
+\abstract{
+{\color{magenta}
+Dissertation template design and Important instructions for using the template: 
+\begin{itemize}
+\item The template has been designed to have some initial instructions, usually in \tcb{blue text} or other colored text, and followed by filler text in black, just shown as a placeholder
+\item Look for this \start and populate your text after removing the existing text (instructions and filler text)
+\item Better make a copy of the template and work from there
+\item Read the ``\texttt{ndsu-thesis-tagged}'' class documentation to understand the available commands and features, which cannot be covered in this sample template.
+\end{itemize}
+}
+\start\tcb{Students and users may utilize this example as a ``template.'' Make a copy and start working. Most of the codes required to write the thesis are employed in this example (*.tex file), and along with the accompanying ``Documentation'' of the ``\texttt{ndsu-thesis-tagged}'' class, all necessary commands, options, and functionalities to generate a dissertation are covered. As this \LaTeX{} class generates tagged PDF, it is ``future-proof'' and supports the creation of ``Accessible Documents.'' The showgrid option, useful for vertical spacing of items (reference: $\approx$3 grids = $\approx$0.3 in), can be removed for the final output. Use LuaTeX for compiling (LuaTeX+Biber+LuaTeX+LuaTeX for docs with bibliography) for better tagging functionality. By the way, the ``\textbf{blue text}'' or other \textcolor{magenta}{colored} text or \hl{highlights} are used to draw attention!}
+\\ \indent \tcm{This is the abstract for my thesis. The word limits: 350 for PhD and 150 for MS.} \\ 
+\indent\repeatN{79}
+}%
+
+\acknowledgements{\start I acknowledge people here. \\ \tcb{\emph{Acknowledgements text should be placed here.}} \\ \indent\repeatN{100} \\ \indent\repeatN{80}
+}%
+
+\dedication{\start This thesis is dedicated to my cat, Mr. Fluffles. \\ 
+\tcb{\emph{This section dedicates the disquisition to a few significant people. The text must be double-spaced and aligned center to the page.} \\ Which is already taken care by this \LaTeX\ class.}
+}%
+
+\preface{\start You can put a preface here. \\ 
+\tcb{\emph{This section is optional!}} \\ 
+\indent\repeatN{100} \\ \indent\repeatN{80}
+}%
+
+\listofabbreviations{ % may use title case; tagged version; usage  \item[X]  -space-  def of X
+  \item[\start] 	\tcb{delete this list and populate with yours}
+  \item[AC] 	alternating current
+  \item[NDSU] 	North Dakota State University 
+  \item[MC] 	moisture content
+%  \item[TP] 	true positive and more text text text text text text text text text text text - definition wraps automatically
+  \item[US] 	United States
+  \item[ZL] 	zeta level
+  \item[\hl{*}]	\hl{Note: Items should be arranged in alphabetical order}
+}%
+
+\listofsymbols{% may use sentence case; tagged version;  usage  \item[$X$]  -space-  def of X
+  \item[\start] 	\tcb{delete this list and populate with yours}
+  \item[$A$]     	area (\unit{\m\squared})
+  \item[$c$]	speed of light (\qty{299792458}{\m\per\s}) 
+  \item[$e$]    	Euler's constant (\num{2.718281828}) 
+  \item[$r$]   	correlation coefficient (dimensionless) 
+  \item[$R^2$]   	coefficient of determination (dimensionless) 
+  \item[$t$]		time (\unit{\second}) 
+  \item[\hl{*}]	\hl{Note: Items should be arranged in alphabetical order}
+}%
+
+
+%******************* Document start *******************
+\begin{document}
+
+
+%********************************************************************
+%******************* First chapter - paper style *******************
+%********************************************************************
+\mypaperheading{The First Chapter - Paper Style - Long title of this technical paper - PDF Tag H1}{ \hl{Footnote only for published paper.} Include citation for the peer-reviewed article + more information about the authors' contributions. Refer to NDSU dissertation resources for examples.}
+
+\checkBeginRefsection%%% Don't delete this! Command given at the start of each chapter
+
+\noindent\start \tcb{Start writing your chapter following the template and examples given here.}
+
+%------------------------------------------------------
+\section{Abstract}
+Paper-styled chapters will have abstracts (PDF tag \tcb{H2}). \tcb{This \LaTeX{} \texttt{ndsu-thesis-tagged} class will automatically tag all elements (H1--H8, paragraph, caption, TH, TD, etc.) of the thesis (when instructions are followed properly)}. Abstract of this chapter goes here. Have your abstract text here. \repeatN{13}
+
+%------------------------------------------------------
+\section{Section ($\Rightarrow$ 1st level; Title Case; Centered; Boldface) E.g., Science is Key Period}
+This is the first section of the thesis (1st level: 1.2. Section, PDF tag \tcb{H2}). \repeatN{22}
+
+%------------------------------------------------------
+\section{Section E.g., Science is Key Period}
+This is the second section of the thesis (1st level: 1.3. Section, PDF tag \tcb{H2}). \repeatN{21}
+
+%------------------------------------------------------
+\subsection{Subsection ($\Rightarrow$ 2nd level; Title Case; Left-justified; Boldface) E.g., Science is Key Period}
+This is the subsection text (2nd level: 1.3.1. Subsection, PDF tag \tcb{H3}). \repeatN{22}
+
+%------------------------------------------------------
+\subsubsection{Subsubsection ($\Rightarrow$ 3rd level; Sentence case; Left-justified; Boldface; Italics) E.g., Science is key period}
+This is the subsubsection text (3rd level: 1.3.1.1. Subsubsection, PDF tag \tcb{H4}). \repeatN{82}
+
+%------------------------------------------------------
+\paragraph{Paragraph ($\Rightarrow$ 4th level; Sentence case; Left-justified; No bold; Italics)  E.g., Science is key period}
+This is the paragraph text (4th level: 1.3.1.1.1. Paragraph, PDF tag \tcb{H6}). \repeatN{21}
+
+%------------------------------------------------------
+\subparagraph{Subparagraph ($\Rightarrow$ 5th level; Sentence case; Left-justified; No bold; Regular) E.g., Science is key period}
+This is the subparagraph text (5th level: 1.3.1.1.1.1. Paragraph, PDF tag \tcb{H7}). \repeatN{20}
+
+%------------------------------------------------------
+\section{Tables and Figures}
+This is the third section of the thesis (1st level: 1.4. Section, PDF tag \tcb{H2}). This section illustrates the inclusion of a simple table (\cref{tab:1}) and a figure shown later.
+
+\voh% shortcut = \vspace{-0.15in}
+\begin{table}[ht!]
+\centering
+\caption{Table captions go at the top of the table. Compatible \texttt{tabular}. This was a long caption of the table included in the first chapter---so that we see how it breaks into another line and has a single spacing. Usually, tables are of full-width and are demonstrated subsequently.}
+\label{tab:1}
+\pvo
+\tagpdfsetup{table/header-rows={1}}% for tagging the header row(s) {1,2}
+\begin{tabular}{clr}
+\toprule
+Number & Month & Days\\
+\midrule
+\#1 & January    & 31\\
+\#2 & February   & 28\\
+\#3 & March      & 31\\
+\bottomrule
+\end{tabular}
+\end{table}	
+
+\voh
+\repeatN{160}
+
+\tcb{Note: The vertical spacing around (before and after) the float element (figures, tables, schemes, etc.) should be similar to the regular text with ``double spacing'' the natural automatic spacing of \LaTeX. This is achieved using the \texttt{\textbackslash vspace\{\ldots\}} command with $+$ve or $-$ve arguments. Convenient shortcuts were defined. Observe the source code.}
+
+\tcb{Now the figure (\cref{fig:11}) illustrates an example figure from the \texttt{mwe} package.}
+
+\vh% shortcut = \vspace{-0.05in}
+\myfigst[-0.05in]{ht!}{0.6}{example-image-duck}{Caption for this example image in this first chapter using the tagged shortcut command \texttt{myfigst} that pulls the embedded text up.}{A yellow duck with a golden crown and pizza in the belly on a gray background.}{fig:11}{-0.1in}	
+
+\vo% shortcut = \vspace{-0.1in}
+\repeatN{140}
+
+%------------------------------------------------------
+\section{Some References as Section or Combined}
+Some bibliography commands are parenthetical, like these  \citep{texbook,lcompanion,latex2e,knuth1984,cannayen2011latex,kopka2004guide}. The authors \citet{texbook,lcompanion,latex2e,knuth1984,amsthm2017,calvo2004using,cannayen2011latex} have something to do with \LaTeX. For most bibliography citations and list creation, these two commands are sufficient.
+
+%------------------------------------------------------
+\checkEndRefsection%%% Don't delete this! Command given at the end of each chapter
+%------------------------------------------------------
+
+
+
+%********************************************************************
+%******************* Second chapter - regular *******************
+%********************************************************************
+\myheading{The Second Chapter - Regular Style - Long title for this chapter}
+
+\checkBeginRefsection%%% Don't delete this! Command given at the start of each chapter
+
+\noindent\start \tcb{Start writing your chapter following the template and examples given here.}
+
+Regular style chapters will not have abstracts. General information or outline of the chapter is given here --- before breaking into sections. 
+
+%------------------------------------------------------
+\section{Excellent Results}
+This is another section of the thesis (1st level: 2.1. Experimental Results).\Cref{tab:21} presents the results in a tabular form that spans the entire width. Please note the results shown (\cref{tab:21}) are preliminary. \hl{Observe source code for vertical spacing following the table.}
+
+\vt% shortcut = \vspace{-0.2in}
+\begin{table}[ht]
+\centering
+\caption{Table spanning full-width using \texttt{setlength} and
+\texttt{tabcolsep}---manual method.}
+\label{tab:21}
+\pvh
+\setlength{\tabcolsep}{3.75em}
+\tagpdfsetup{table/header-rows={1}}% for tagging the header row(s) {1,2}
+\begin{tabular}{@{\hspace{2ex}} lccr @{\hspace{2ex}}}
+\toprule
+Number 	& Name of month 	& Days 	& Season\\
+\midrule
+\#4 		& April  			& 30		& Spring\\
+\#5 		& May    			& 31		& Summer\\
+\#6 		& June   			& 30		& Summer\\
+\bottomrule\\[-10pt]
+\multicolumn{4}{@{}p{\textwidth}@{}}{The footnote is created using the multicolumn command spanning all the columns of the table. \tcb{The fontsize of the footnote should be the same as the table contents.}}
+\end{tabular}
+\end{table}	
+
+\voh
+\tcb{The same \Cref{tab:21} using the automatic \texttt{xltabular} package (\cref{tab:22}). This is a non-floating table that is highly versatile (auto full-width and longtable functionalities).}
+
+\voh
+\begingroup% necessary to scope functionalities 
+\singlespacing
+\tagpdfsetup{table/header-rows={1}}% for tagging the header row(s) {1,2}
+\begin{xltabular}{\textwidth}{X >{\Centering}X >{\hspace{0.6in}\Centering}X >{\RaggedLeft}X}
+\caption{Table spanning full-width using \texttt{xltabular} environment---autmatic method.} \label{tab:22}\\[-0.15in]
+\toprule
+Number 	& Name of month 	& Days 	& Season\\
+\midrule
+\#4 		& April  			& 30		& Spring\\
+\#5 		& May    			& 31		& Summer\\
+\#6 		& June   			& 30		& Summer\\
+\bottomrule\\[-10pt]
+\multicolumn{4}{@{}p{\textwidth}@{}}{The footnote is created using the multicolumn command spanning all the columns of the table. \tcb{The fontsize of the footnote should be the same as the table contents.}}
+\end{xltabular}
+\endgroup
+
+\voh
+\repeatTN{filler text}{55}
+
+%------------------------------------------------------
+\subsection{Minor Results}
+This is a subsection of the thesis (1st level: 2.2. Experimental Results). \repeatN{42}
+
+The \Cref{fig:21} is an example image with a command showing all arguments, including the optional caption placement. The example figure (\cref{fig:21}) is included in the \LaTeX{} class resources. 
+
+\vo
+\myfigt[-0.05in]{h!}{0.365}{frog}{Caption for this example image demonstrating an optional \qty{0.025}{in} vertical spacing. Compare this with a narrow caption spacing without an optional argument in \Cref{fig:11}.}{A green frog with a yellow chest that is ready to hop.}{fig:21}
+
+\vrh% shortcut = \vspace{-0.35in}
+\repeatTN{my filler text}{38}
+
+%------------------------------------------------------
+\mysectop% Header on top of page vertical adjustment  
+\section{Equations}
+\repeatN{59}
+
+\vh% when required added
+\myeqn{% shortcut for equation vertically spaced
+y = (mx + c) \times \text{NCF} \times S_\text{factor} \times c_p \times M_\text{p}
+\label{eq:lin}
+}
+
+\noindent where $y$ is the dependent variable, $m$ is the slope, $x$ is the independent variable, $c$ is the $y$ intercept, NCF is the normalized conversion factor, $S_\text{factor}$ is the scale factor, $c_p$ is the specific heat capacity at constant pressure ($p$, variable), and $M_\text{p}$ is the mass of a proton (p, descriptive). 
+
+Note how variables, abbreviations, and subscripts are coded in \cref{eq:lin}. Refer to the Extended Thesis to know more about equations and shortcuts. 
+
+%------------------------------------------------------
+\section{Schemes}
+The shortcut was used to code the scheme (\cref{sch:21}), which is a substitute for the regular way using \texttt{includegraphics} command. \hl{Observe vertical spacing in source code; case of float between two paragraphs; shortcuts around the figure environment}: 
+
+\repeatTN{my dummy text}{48}
+
+\vc{-0.6}% shortcut:  vc = \clearpage\vspace*{#1in}
+\myschst[-0.1in]{h!}{0.5}{LampFlowchart}{Flowchart of controls of light bulb---A scheme---using myschst command.}{A flow diagram showing the steps of troubleshooting a lamp not working.}{sch:21}{-0.15in}
+
+Check this! \hl{Observe vertical spacing in source code; case of float embedded in a paragraph; paragraph text vertical spacing adjusted by 7th argument} of \texttt{myschst} command). 
+
+\myfigst[-0.05in]{t!}{0.7}{frog}{Caption for this example image demonstrating an optional -0.08in vertical spacing. Compare this with a narrow caption spacing without an optional argument in \Cref{sch:21}.}{A large-sized green frog with a yellow chest that is ready to hop.}{fig:22}{-0.1in}
+
+\voh
+\repeatTN{filler text}{150} 
+
+\tcb{The (\cref{sch:21,fig:22,sch:22}) are good. And, stating this differently, all the \Cref{sch:21,fig:22,sch:22} are good too. Note that \Cref{sch:22} is in landscape mode.}
+
+\myschlst[-0.2in]{p}{0.65}{LampFlowchart}{Landscape scheme---Flowchart of controls of light bulb. Optional -0.2in vertical spacing was used. Landscape can be applied to tables, figures, and schemes; also, these can be coded in appendices.}{A flow diagram showing the steps of troubleshooting a lamp not working as a landscape page.}{sch:22}
+
+\repeatN{58}
+
+%------------------------------------------------------
+\section{Source Code Listing Inside Regular Chapters}
+\tcb{Listings of source codes are complicated. The excellent ``\texttt{listing}'' package is not compatible with tagging; therefore, we use a simpler yet versatile ``\texttt{fancyverb}'' package and developed the ``mylisting'' environment, applicable to both regular chapters and appendices. The strategy consists of two steps. (1) Code the caption with \cmd{myliscap} or \cmd{mylisapcap}, and (2) Code the actual listings with ``\texttt{mylisting}'' environment with their options [fontsize, frame, numbers, xleftmargin] coded with default. Follow the code below and in the appendix.}
+
+\vo
+% Step 1 of 2
+\myliscap[-0.3in]{Python code listing for finding whether a given number is prime.}{lis:21}
+
+% Step 2 of 2
+% Other options [font sizes] [frame=none, single] [numbers=none, left, right] [xleftmargin]
+\begin{mylisting}[fontsize=\small, frame=single, numbers=left]
+import math
+
+def is_prime(n):
+    if n <= 1:
+        return False
+    # Check divisors from 2 up to the square root of n
+    for i in range(2, int(math.sqrt(n)) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+# Example usage:
+print(is_prime(29))  # Output: True
+\end{mylisting}
+
+%------------------------------------------------------
+\section{Some References}
+Referring to all entries in the ``\texttt{mybib.bib}'' file to generate the citations here and the listing using the \texttt{\textbackslash citep\{\ldots\}} ``natbib'' command (cite parenthesis \citep{texbook,lcompanion,latex2e,knuth1984,lesk1977,amsthm2017,calvo2004using,cannayen2011latex,kopka2004guide,notso2021,bari2016identification}.
+
+The same using \texttt{\textbackslash citet\{\ldots\}} command (cite text) in the running text as: The authors \citet{texbook,lcompanion,latex2e,knuth1984,lesk1977,amsthm2017,calvo2004using,cannayen2011latex,kopka2004guide,notso2021,bari2016identification} have something to do with \LaTeX. For most bibliography citations and list creation, these two commands are sufficient.
+
+%------------------------------------------------------
+\checkEndRefsection%%% Don't delete this! Command given at the end of each chapter
+%------------------------------------------------------
+
+
+
+%********************************************************************
+%******************* Third chapter - regular *******************
+%********************************************************************
+\myheading{Equations and long table---General Principles} 
+
+\checkBeginRefsection%%% Don't delete this! Command given at the start of each chapter
+
+\noindent\start \tcb{Start writing your chapter following the template and examples given here.}
+
+%-----------------------------------------------------------------------------
+\section{Abbreviations, Variables, Subscripts, and Indices}
+\tcb{Equations should follow the established convention --- and loosely coding the equation and its elements is simply unprofessional. In general, such conventions, if not taken with specific care, will be overlooked, and the user feels no harm done. It was noticed that several published papers carry these mistakes---which will not make it right, and users should not follow a bad example.}
+
+\section{Some Examples of Correctly Formatted Equations}
+
+Some examples of correctly formatted equations. 
+
+\myeqn{y = mx + c;  \quad\quad\quad E = m \times c^2}
+
+Here, all symbols are variable and in \textit{italics}.
+
+\myeqn{\text{Sum} = \sum^{n}_{i = 1} x_i}
+
+Check the use of text, subscripts, and indices. 
+
+\myalign{
+\text{Percent}_\text{change} & = \frac{V_\text{new} - V_\text{old}}{V_\text{old}} \times 100\\
+\text{Precision} &= \frac{\text{TP}}{\text{TP + FP}}\\
+\text{Recall} &= \frac{\text{TP}}{\text{TP + FN}}\\
+\text{F1 score} &= \frac{2\,(\text{Precision} \times \text{Recall})}{\text{Precision} + \text{Recall}}\\
+\text{CR}_\text{lim} & = B / \sum^{x}_{m = 1} \left(\frac{C_m}{\text{RfD}_m}\right) 
+}
+
+Check the use of text, subscripts, variables, and indices. 
+
+%--------------------------------------------
+\mysectop
+\section{Convention and Expectations With Equations}
+
+\tcb{Shown below are the rules that can be followed while working with equations:}
+
+\voh
+\begingroup
+\singlespacing
+\tagpdfsetup{table/header-rows={1}}% for tagging the header row(s) {1,2}
+\begin{xltabular}{\textwidth}{% for full-width and long table - non floating
+>{\hsize=0.56\hsize\RaggedRight}X           
+>{\hsize=0.7\hsize\RaggedRight}X           
+>{\hsize=0.7\hsize\RaggedRight}X           
+>{\hsize=2.05\hsize\RaggedRight}X           
+}
+\caption{Equation coding conventions --- Dos and dont's with examples} \label{tab:eq}\\[-0.15in]
+\toprule
+\textbf{Item}		& \textbf{Correct form---Do}		& \textbf{Wrong form---\textcolor{red!80!black}{Don't}}		& \textbf{Remarks}\\
+\midrule
+Abbrevia\-tions & ABEN, STD, TP, TN, FP, FN & \textcolor{red!80!black}{$ABEN, STD$, $TP, TN, FP$, $FN$} & Abbreviations, usually $>1$ letter long, should always be upright. This should be followed in regular text and in equations (use the \cmd{text\{\ldots\}} * in equations or math mode). Otherwise, it may be considered as a product of variables. \\
+
+\cmidrule(lr){2-4}
+Variables & $T, P, V, t, v$ & \textcolor{red!80!black}{T, P, V, t, v} & Variables, usually 1 letter long, should always be typeset in italics. The italics font signifies technical symbols of variables (e.g., temperature, pressure, volume, time, velocity).\\ 
+
+\cmidrule(lr){2-4}
+Subscripts and superscripts & $T_\text{avg}$, $\text{TP}_{\max}$, $\text{RMSE}_{\text{observed}}$, $v^\text{in}$, $t^\text{output}$, $P^\text{top}_\text{min}$ 
+& \textcolor{red!80!black}{$T_{avg}$, $\text{TP}_{max}$, $\text{RMSE}_{observed}$, $v^{in}$, $t^{output}$, $P^{top}_{min}$ } 
+& Subscripts and superscripts, usually $>1$ letter long, should always be typeset upright. \\[1ex] 
+
+\cmidrule(lr){2-4}
+Index & $i, j, k, l, m,$ $x_i, y_j, z_1, \theta_{23}$ 
+& \textcolor{red!80!black}{i, j, k, l, m,  $x_\text{i}, y_\text{j}, z_\textit{1}, \theta_\textit{23}$} 
+& Indices, usually 1 letter long, should be always be typeset in italics and not upright. However, numbers should always be upright.\\ 
+
+\cmidrule(lr){2-4}
+Standard operations & abs, $\sin, \cos,$  $\min, \max$
+& \textcolor{red!80!black}{$abs, sin, cos,$ $min, max$} 
+& Standard operations are usually formatted upright. In \LaTeX{} when coded in ``math'' mode or equation environment, these operations will always come out upright. \\ 
+
+\cmidrule(lr){2-4}
+Final thought!
+& $\rightarrow$ & $\rightarrow$ &
+Symbols T and $T$, and t and $t$ are technically different quantities. The same symbol style should be used in the equation and in the definition (See example in the next section).\\
+\bottomrule
+\multicolumn{4}{@{} p{\textwidth} @{}}{Note: * Some standard functions can be directly coded in equation or math mode with \textbackslash\: as: \cmd{sin}, \cmd{cos}, \cmd{tan}, \cmd{log}, \cmd{min}, and \cmd{max}, and so on. For others use \cmd{text\{\ldots\}}}% multicolumn for footnote
+\end{xltabular}
+\endgroup
+
+
+%-----------------------------------------------------------------------------
+\mysectop
+\section{Equation and Definition---An Example}
+The loading and unloading time can be determined using the number of bales generated and the loading and unloading time (min) per bale inputs as follows:
+
+\vo
+\myalign{
+\te{Handling:}\quad T_\te{LU} & = \te{NB} \times (T_\te{L} + T_\te{U})/ 60 
+\label{tlu}\\
+\te{Overall:}\quad T_\te{OT} & = (T_\te{LU} + T_\te{C}) / 60 
+\label{tot}
+}
+
+\noindent where, $T_\te{LU}$ is total bale loading and unloading time (h), NB is number of bales, $T_\te{L}$ is the loading time per bale (min), $T_\te{U}$ is the unloading time per bale (min), $T_\te{OT}$ is the overall bale movement time (h), and $T_\te{C}$ is the bale collection time (min). 
+
+\tcb{Note the exact reproduction of the symbols in the definitions  (font and format; \textcolor{magenta}{no wrong mixup of upright and italics characters with technical symbols!}) that followed the \cref{tlu,tot} in the order of left to right and top to bottom. It is also recommended to use the units of the symbols during the definition. Also, notice the use of noindent with ``where''.}
+
+
+%-----------------------------------------------------------------------------
+\section{Longtable Using the Versatile and Compatible \texttt{xltabular} Package}
+
+The long table using xltabular (\cref{tab:32}) illustrates several functionalities. This non-floating table will start from any location it is coded (provided enough room for the headers). 
+
+\vt% shortcut = \vspace{-0.2in}
+\begingroup
+\captionsetup[table]{margin={3pt, 0cm}}% check if required 
+
+%\footnotesize% works
+\singlespacing
+\renewcommand{\arraystretch}{1.25}
+
+\newcolumntype{Y}{>{\hsize=0.5\hsize\RaggedLeft}X}% new column styles
+\newcolumntype{Z}{>{\hsize=0.75\hsize\Centering}X}
+\newcolumntype{A}{>{\hsize=2.0\hsize\RaggedRight}X}
+
+\small% should be before xltabular
+
+\tagpdfsetup{table/header-rows={1}}% for tagging the header row(s) {1,2}
+\begin{xltabular}{\textwidth}{ Y ZZ A }
+% 1 of 4
+    \caption{A complete longtable using xltabular---non-floating table. Had we used a combined table with xltabular - second sentence. The first sentence is repeated on subsequent pages.} \label{tab:32} \vo \\% vspace issued
+    \toprule
+    \textbf{One (r)} & \textbf{Two (c)} & \textbf{Three (c)} & \textbf{Four (l)} \\
+    \midrule
+    \endfirsthead    
+% 2 of 4
+    \multicolumn{4}{@{}l @{}}%
+    {\textbf{\tablename\ \thetable{}.} A complete longtable using xltabular---non-floating table (continued)} \\
+    \toprule
+    \textbf{One (r)} & \textbf{Two (c)} & \textbf{Three (c)} & \textbf{Four (l)} \\
+    \midrule
+    \endhead    
+% 3 of 4
+    \midrule
+    \multicolumn{4}{r @{}} {Continued \ldots} \\
+    \endfoot    
+% 4 of 4
+    \bottomrule
+    \multicolumn{4}{@{} p{\textwidth} @{}}{\vspace{-0.35in} \singlespacing The final footnote here. \repeatN{50}} \\
+    \endlastfoot
+    
+% Table data 
+    Item: & 123456789 & 0.7891011 & Some text that wraps to go to the next line and go on \ldots  \\
+    Item: & 123456789 & 0.7891011 & Some text that wraps to go to the next line and go on \ldots  \\
+    Item: & 123456789 & 0.7891011 & Some text that wraps to go to the next line and go on \ldots  \\
+    \cmidrule(lr){2-3}
+    Item: & 123456789 & 0.7891011 & Some text that wraps to go to the next line and go on \ldots  \\
+    Item: & 123456789 & 0.7891011 & Some text that wraps to go to the next line and go on \ldots  \\
+    Item: & 123456789 & 0.7891011 & Some text that wraps to go to the next line and go on \ldots  \\
+    \cmidrule(lr){2-4}
+    Item: & 123456789 & 0.7891011 & Some text that wraps to go to the next line and go on \ldots  \\
+    Item: & 123456789 & 0.7891011 & Some text that wraps to go to the next line and go on \ldots  \\
+    \cmidrule(lr){1-3}
+    Item: & 123456789 & 0.7891011 & Some text that wraps to go to the next line and go on \ldots  \\
+    Item: & 123456789 & 0.7891011 & Some text that wraps to go to the next line and go on \ldots  \\
+    Item: & 123456789 & 0.7891011 & Some text that wraps to go to the next line and go on \ldots  \\
+\midrule
+    Item: & 123456789 & 0.7891011 & Some text that wraps to go to the next line and go on \ldots  \\
+    Item: & 123456789 & 0.7891011 & Some text that wraps to go to the next line and go on \ldots  \\
+    Item: & 123456789 & 0.7891011 & Some text that wraps to go to the next line and go on \ldots  \\
+    Item: & 123456789 & 0.7891011 & Some text that wraps to go to the next line and go on \ldots  \\
+    Item: & 123456789 & 0.7891011 & Some text that wraps to go to the next line and go on \ldots  \\
+    Item: & 123456789 & 0.7891011 & Some text that wraps to go to the next line and go on \ldots  \\
+    Item: & 123456789 & 0.7891011 & Some text that wraps to go to the next line and go on \ldots  \\
+    Item: & 123456789 & 0.7891011 & Some text that wraps to go to the next line and go on \ldots  \\
+    Item: & 123456789 & 0.7891011 & Some text that wraps to go to the next line and go on \ldots  \\
+ \end{xltabular}
+\endgroup
+
+%------------------------------------------------------
+\checkEndRefsection%%% Don't delete this! Command given at the end of each chapter
+%------------------------------------------------------
+
+
+%-----------------------------------------------------------------------------
+%******************* Bibliography handling *******************
+% Combined unnumbered Reference  chapter - automatically generated
+\checkMakeCombinedReferences%%% Don't delete this - can be moved last
+%-----------------------------------------------------------------------------
+
+
+
+%********************************************************************
+%********************** Named appendix A ***********************
+%********************************************************************
+\namedappendices{A}{Named first appendix}
+
+\checkBeginRefsection%%% Don't delete this! Command given at the start of each chapter
+
+\noindent\start \tcb{Start writing your appendix following the template and examples given here.}
+
+\tcb{Appendix material can be included here. First, a paragraph of text and then an example figure (fig.~\ref{fig:a1}).} \hl{If bibliography citations are required, then \cmd{checkBeginRefsection} and \cmd{checkEndRefsection} blocks can be added to each appendix as coded in the regular chapters (as included here). When coded, it will create the ``Reference'' section listings.} 
+
+%------------------------------------------------------
+\section{Appendix A - Section With Figure}
+\kant[9]
+
+\vo
+\myfigapt[-0.05in]{h!}{0.5}{example-image-golden}{A golden ratio rectangle image from the \texttt{mwe} package.}{A gray rectangle drawn with the golden ratio.}{fig:a1}	
+
+\vt
+\repeatN{58}
+
+%------------------------------------------------------
+\mysectop
+\section{Appendix A - Section With Non-floating xltabular Table}
+\tcb{A complete full-width table utilizing the tagging compatible ``xltabular'' package is shown below (table.~\ref{tab:a1}). It is also known that appendix tables are exclusive and should be coded using the ``\texttt{appendixtable}'' environment (as shown below)}.
+
+\vo
+\begin{appendixtable}[h]
+\caption{A complete full-width xltabular example --- Courtesy MMS.} \label{tab:a1}
+
+\captionsetup[table]{margin={1.5pt, 0cm}}% check if required 
+\renewcommand{\arraystretch}{0.5}
+\vh
+\tagpdfsetup{table/header-rows={1}}% for tagging the header row(s) {1,2}
+\begin{xltabular}{\textwidth}{
+>{\hsize=0.5\hsize\RaggedRight}X           |
+>{\hsize=1.2\hsize\Centering}X                |
+>{\hsize=1.3\hsize\RaggedLeft}X}
+
+\toprule
+First - left & Second - centered & Third {X} column right aligned\\
+\midrule
+a & b & c\\
+a & b & c\\
+\midrule
+a & b\\
+a & b & c\\
+\cmidrule(lr){2-3}
+& \multicolumn{2}{c}{The combined block of 2nd and 3rd columns}\\
+\cmidrule(lr){2-3}
+a & b & c\\
+d & e & f\\
+\bottomrule
+\multicolumn{3}{@{} p{\textwidth} @{}}{\vspace{0in}
+Note: In many cases, the word ``Note'' is not required. Again, the vertical lines are simply given for illustration purposes, as in professional tables, they are not used.}
+\end{xltabular}
+\end{appendixtable}
+
+
+\vrh
+\tcb{For other types of tables and figures, such as landscape tables, long tables, landscape long tables, landscape figures, subfigures, subfigures spanning multiple pages, and multiple figures in landscape, see NDSU-Thesis-Extended code and output.} 
+
+
+%------------------------------------------------------
+\subsection{Appendix A - Subsubsection}
+\repeatN{218}
+
+
+%------------------------------------------------------
+\section{Appendix A - Subsection With Listing}
+\tcb{See Listing~\ref{lis:21} preamble for information.} \repeatN{68}
+
+\vo
+% Step 1 of 2
+\mylisapcap[-0.25in]{Java code listing for finding all prime numbers from 1 to 100.}{lisa:1}
+
+% Step 2 of 2
+% Other options [font sizes] [frame=none, single] [numbers=none, left, right] [xleftmargin]
+\begin{mylisting}[fontsize=\normalsize, frame=single, numbers=none, xleftmargin=0pt]
+public class PrimeFinder {
+    public static void main(String[] args) {
+        int limit = 100;
+        System.out.println("Prime numbers from 1 to " + limit + ":");
+        for (int i = 1; i <= limit; i++) {
+            if (isPrime(i)) {
+                System.out.print(i + " ");
+            }
+        }
+    }
+
+    public static boolean isPrime(int n) {
+        if (n <= 1) return false;
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) return false;
+        }
+        return true;
+    }
+}
+\end{mylisting}
+
+%------------------------------------------------------
+\checkEndRefsection%%% Don't delete this! Command given at the end of each chapter
+%------------------------------------------------------
+
+
+
+%********************************************************************
+%********************** Named Appendix B **********************
+%********************************************************************
+\namedappendices{B}{Named second appendix}
+
+\checkBeginRefsection%%% Don't delete this! Command given at the start of each chapter
+
+\noindent\start \tcb{Start writing your appendix following the template and examples given here.}
+
+\tcb{Appendix material can be included here. First, including a figure (fig.~\ref{fig:ap2}).}
+
+%------------------------------------------------------
+\section{Appendix B - Section With Figure}
+\repeatN{79}
+
+\vh
+\myfigapt[-0.05in]{h!}{0.8}{utbmciadreport-ciad-frontbackground}{A stock picture from the TeXLive 2025 texmf-dist distribution from UTBM-CIAD report.}{A stock image from the TeXLive 2025 texmf-dist distribution from UTBM-CIAD showing a human and robotic hand meeting.}{fig:ap2}
+
+%------------------------------------------------------
+\mysectop
+\section{Appendix B - Section With Table}
+\tcb{Now coding another appendix table (table.~\ref{tab:b1}) that automatically spans the entire width using xltabular nested in appendixtable.}
+
+\voh
+\begin{appendixtable}[h]
+\centering
+\caption{Squares and cubes in named appendix table using \texttt{siunitx} and \label{tab:b1}
+\texttt{xltabular} packages.}
+\vh
+\tagpdfsetup{table/header-rows={1}}% for tagging the header row(s) {1,2}
+\begin{xltabular}{\textwidth}{l @{\hspace{0.8in}} XX r}
+\toprule
+Number & Square        & Cubes          & Fourth power\\
+\midrule
+11 	   & 121   			        & \num{1331} 		   & \num{14641}\\
+22 	   & 484  			        & \num{10648}		   & \num{234256}\\
+333 	   & \num{110889}             & \num{36926037}	   & \num{12296370321}\\
+\bottomrule
+\end{xltabular}
+\vr% shortcut = \vspace{-0.3in}
+\end{appendixtable}
+ 
+%------------------------------------------------------
+
+\subsection{Appendix B - Subsection}
+\repeatTN{my repeated sample filler text}{30}
+
+%------------------------------------------------------
+\checkEndRefsection%%% Don't delete this! Command given at the end of each chapter
+%------------------------------------------------------
+
+\closeappendices  % Refer to documentation Table 3 for proper closing 
+
+
+\end{document}
+
+%******************* END *******************
+%*********************************************
+%*********************************************
