@@ -51,6 +51,9 @@
 %
 %---------------------------------------------------------------------------------------------------------
 %  Update history
+%  Last updated: 2026-06-06;  LaTeX3 updates in May 2026 - chapter style - major changes in class 
+
+%  Last updated: 2026-06-06;  LaTeX3 updates in May 2026 - chapter style - major changes in class 
 %  Last updated: 2026-05-12;  LOA, LOS now simple list tagging compatible
 %  Last updated: 2026-05-11
 %  Last updated: 2026-04-26
@@ -522,10 +525,18 @@
 }}{}
 
 % Justification option for the whole document - default is justified nojustify is ragged-right format. NDSU default is "ragged-right" but allows "justified" format as well
-\newcommand{\justifytype}{none1}
+\newcommand{\justifytype}{none}
 \DeclareOption{nojustify}{\renewcommand{\justifytype}{nojustify}}
 \ProcessOptions*\relax 
 \ifthenelse{\equal{\justifytype}{nojustify}}{\AtBeginDocument{\raggedright}}{}
+
+% Darkmode option for the whole document - default is light mode, white background with black text. The dark mode is eye-friendly!
+\newcommand{\darkmodetype}{none}
+\DeclareOption{darkmode}{\renewcommand{\darkmodetype}{darkmode}}
+\ProcessOptions*\relax 
+\ifthenelse{\equal{\darkmodetype}{darkmode}}{\AtBeginDocument{
+\pagecolor{gray}}}{}
+
 
 % -----------------------------------------------------------------------
 % FONT DISPATCH TABLE — fontspec-based (LuaLaTeX).
@@ -740,7 +751,6 @@
 
 
 % Grid option for the whole document. Use showgrid in class - lighter color used
-
 \definecolor{mygridcol}{RGB}{169, 182, 205}% original
 
 \newcommand{\gridshow}{none7}
@@ -753,11 +763,26 @@ majorcolor=mygridcol, minorcolor=mygridcol!36, patternsize=0.1in]
 }{}
 
 
+% Dark mode grid option for the whole document. Use showgrid in class - lighter color used
+\newcommand{\dmgridshow}{none8}
+\DeclareOption{showgriddm}{\renewcommand{\dmgridshow}{showgriddm}}
+\ProcessOptions*\relax 
+\ifthenelse{\equal{\dmgridshow}{showgriddm}}
+{\RequirePackage[pattern=std, colorset=plumpad, 
+majorcolor=violet!70!black, minorcolor=mygridcol!68!black, patternsize=0.1in, 
+bgcolor={gray}]
+{gridpapers}
+}{}
+
 
 % Table of contents tweaks - capitalization and spacing
-\addto\captionsamerican{\renewcommand{\contentsname}{\vspace{-13pt}TABLE OF CONTENTS\vspace{-8pt}}}
+\addto\captionsamerican{\renewcommand{\contentsname}{TABLE OF CONTENTS\vspace{-0.5in}}}
 \addto\captionsamerican{\renewcommand{\listtablename}{\vspace{-13pt}LIST OF TABLES\vspace{12pt}}}
 \addto\captionsamerican{\renewcommand{\listfigurename}{\vspace{-13pt}LIST OF FIGURES\vspace{12pt}}}
+
+\renewcommand{\contentsname}{\vspace*{1.5in}TABLE OF CONTENTS}
+\renewcommand{\listtablename}{\vspace*{1.5in}LIST OF TABLES}
+\renewcommand{\listfigurename}{\vspace*{1.5in}LIST OF FIGURES}
 
 \renewcommand{\cftchapfont}{\normalfont}
 \renewcommand{\cftchappagefont}{\normalfont}
@@ -781,17 +806,22 @@ majorcolor=mygridcol, minorcolor=mygridcol!36, patternsize=0.1in]
 \DeclareTotalCounter{appendixscheme}
 \DeclareTotalCounter{appendixlisting}
 
-\DeclareFloatingEnvironment[fileext=los,placement={ht},listname={{\vspace{-13pt}}LIST OF SCHEMES\vspace{12pt}},name=Scheme]{scheme}% Igathi
 
-\DeclareFloatingEnvironment[fileext=lol,placement={ht},listname={{\vspace{-13pt}}LIST OF LISTINGS\vspace{12pt}},name=Listing]{listing}% Igathi
+\DeclareFloatingEnvironment[fileext=los,placement={ht},
+  listname={LIST OF SCHEMES},
+  name=Scheme]{scheme}
 
-\DeclareFloatingEnvironment[fileext=loat,placement={ht},listname={{\vspace{-13pt}}LIST OF APPENDIX TABLES\vspace{12pt}},name=Table]{appendixtable}
+\DeclareFloatingEnvironment[fileext=lol,placement={ht},
+  listname={LIST OF LISTINGS},
+  name=Listing]{listing}
 
-\DeclareFloatingEnvironment[fileext=loaf,placement={ht},listname={{\vspace{-13pt}}LIST OF APPENDIX FIGURES\vspace{12pt}},name=Figure]{appendixfigure}
+\DeclareFloatingEnvironment[fileext=loat,placement={ht},listname={LIST OF APPENDIX TABLES},name=Table]{appendixtable}
 
-\DeclareFloatingEnvironment[fileext=loas,placement={ht},listname={{\vspace{-13pt}}LIST OF APPENDIX SCHEMES\vspace{12pt}},name=Scheme]{appendixscheme}
+\DeclareFloatingEnvironment[fileext=loaf,placement={ht},listname={LIST OF APPENDIX FIGURES},name=Figure]{appendixfigure}
 
-\DeclareFloatingEnvironment[fileext=loal,placement={ht},listname={{\vspace{-13pt}}LIST OF APPENDIX LISTINGS\vspace{9pt}},name=Listing]{appendixlisting}
+\DeclareFloatingEnvironment[fileext=loas,placement={ht},listname={LIST OF APPENDIX SCHEMES},name=Scheme]{appendixscheme}
+
+\DeclareFloatingEnvironment[fileext=loal,placement={ht},listname={LIST OF APPENDIX LISTINGS},name=Listing]{appendixlisting}
 
 
 \captionsetup[appendixtable]
@@ -863,7 +893,6 @@ majorcolor=mygridcol, minorcolor=mygridcol!36, patternsize=0.1in]
 \newcommand{\myshorttitle}{ \@pdfstitle}% new to hold pdf file short title name
 
 
-
 % Committee information
 \newcommand\cchair[1]{\def\@cchair{#1\vspace{.05in}\hrule\vspace{.05in}
 	{\tiny Chair}\\}\vspace{.2 in}}
@@ -913,23 +942,35 @@ majorcolor=mygridcol, minorcolor=mygridcol!36, patternsize=0.1in]
 
 % Other frontmatter sections
 \newcommand\abstract[1]{\def\@abstract{%
-  \thesis@frontchapter{ABSTRACT}{\vspace{-4pt}ABSTRACT\vspace{-10pt}}%
-  \setstretch{1.9} #1}}
+  \thesis@frontchapter{ABSTRACT}%
+  {\vspace{-0.45in} {\bfseries\large\begin{center}ABSTRACT\end{center}}%
+  \vspace{-0.5in}}%
+  \setstretch{1.9} #1}%
+}
 \let\@abstract=\@empty
 
 \newcommand\acknowledgements[1]{\def\@acknowledgements{%
-  \thesis@frontchapter{ACKNOWLEDGEMENTS}{\vspace{0pt}ACKNOWLEDGEMENTS\vspace{-10pt}}%
- \setstretch{1.9} #1}}
+  \thesis@frontchapter{ACKNOWLEDGEMENTS}%
+  {\vspace{-0.5in} {\bfseries\large\begin{center}ACKNOWLEDGEMENTS\end{center}}%
+  \vspace{-0.5in}}%
+  \setstretch{1.9} #1}%
+}
 \let\@acknowledgements=\@empty
 
 \newcommand\dedication[1]{\def\@dedication{%
-  \thesis@frontchapter{DEDICATION}{\vspace{0pt}DEDICATION\vspace{-10pt}}%
-  \begin{center}\setstretch{1.9} #1\end{center}}}
+  \thesis@frontchapter{DEDICATION}%
+  {\vspace{-0.5in} {\bfseries\large\begin{center}DEDICATION\end{center}}%
+  \vspace{-0.5in}}%
+   \begin{center}\setstretch{1.9} #1\end{center}}
+}
 \let\@dedication=\@empty
 
 \newcommand\preface[1]{\def\@preface{%
-  \thesis@frontchapter{PREFACE}{\vspace{0pt}PREFACE\vspace{-10pt}}%
- \setstretch{1.9} #1}}
+  \thesis@frontchapter{PREFACE}%
+  {\vspace{-0.5in} {\bfseries\large\begin{center}PREFACE\end{center}}%
+  \vspace{-0.5in}}%
+  \setstretch{1.9} #1}%
+}
 \let\@preface=\@empty
 
 % LIST OF ABBREVIATIONS - Igathi
@@ -958,11 +999,10 @@ majorcolor=mygridcol, minorcolor=mygridcol!36, patternsize=0.1in]
 \newcommand\listofabbreviations[1]{%
 \def\@listofabbreviations{%
   \thesis@frontchapter{LIST OF ABBREVIATIONS}{\vspace{-0.0in}LIST OF ABBREVIATIONS}%
-  \vspace{-0.4in}
+  \vspace{-0.75in}
   \renewcommand{\arraystretch}{1.5}%
   \begin{singlespace}
   \xentrystretch{-0.1}
- % \begin{longtable}[l]{>{\hspace{-0.09in}}p{2.3in}<{\dotfill} @{} p{4.1in}}
   \begin{abbrevlist}
    #1
   \end{abbrevlist}
@@ -971,12 +1011,13 @@ majorcolor=mygridcol, minorcolor=mygridcol!36, patternsize=0.1in]
 }}
 \let\@listofabbreviations=\@empty
 
+
 % LIST OF SYMBOLS - Igathi
 % A 2-col longtable environment; Usage: $\alpha$ & The angle ($\dg$) - flowing over multipage
 \newcommand\listofsymbols[1]{%
 \def\@listofsymbols{%
   \thesis@frontchapter{LIST OF SYMBOLS}{\vspace{-0.0in}LIST OF SYMBOLS}%
-  \vspace{-0.4in}
+  \vspace{-0.75in}
   \renewcommand{\arraystretch}{1.5}%
   \begin{singlespace}
   \xentrystretch{-0.1}
@@ -1079,7 +1120,6 @@ majorcolor=mygridcol, minorcolor=mygridcol!36, patternsize=0.1in]
   #2%
 }
 
-
 \newlength{\standardchapnumwidth}
 \AtBeginDocument{\setlength{\standardchapnumwidth}{\cftchapnumwidth}}
 \AtBeginDocument{%
@@ -1127,28 +1167,29 @@ majorcolor=mygridcol, minorcolor=mygridcol!36, patternsize=0.1in]
   \@listofabbreviations
   \@listofsymbols
   % Appendix lists (no bookmarks needed — appear after mainmatter)
-  \iftotalappendixtables
-    \begin{singlespace}\listofappendixtables\end{singlespace}\fi
-  \iftotalappendixfigures
-    \begin{singlespace}\listofappendixfigures\end{singlespace}\fi
-  \iftotalappendixschemes
-    \begin{singlespace}\listofappendixschemes\end{singlespace}\fi
-  \iftotalappendixlistings
-    \begin{singlespace}\listofappendixlistings\end{singlespace}\fi
+\iftotalappendixtables
+  \clearpage\begin{singlespace}\listofappendixtables\end{singlespace}\fi
+\iftotalappendixfigures
+  \clearpage\begin{singlespace}\listofappendixfigures\end{singlespace}\fi
+\iftotalappendixschemes
+  \clearpage\begin{singlespace}\listofappendixschemes\end{singlespace}\fi
+\iftotalappendixlistings
+  \clearpage\begin{singlespace}\listofappendixlistings\end{singlespace}\fi        
   \mainmatter
 }
 
 
+% Item & Page listing 
 \pagestyle{plain}
-\addtocontents{lot}{\vspace{-8pt}\noindent\underline{Table}\hfill \underline{Page}\par}
-\addtocontents{lof}{\vspace{-8pt}\noindent\underline{Figure}\hfill \underline{Page}\par}
-\addtocontents{los}{\vspace{-8pt}\noindent\underline{Scheme}\hfill \underline{Page}\par}
-\addtocontents{lol}{\vspace{-8pt}\noindent\underline{Listing}\hfill \underline{Page}\par}
-\addtocontents{loat}{\vspace{-8pt}\noindent\underline{Table}\hfill \underline{Page}\par\vspace{-10pt}}
-\addtocontents{loaf}{\vspace{-8pt}\noindent\underline{Figure}\hfill \underline{Page}\par\vspace{-10pt}}
-\addtocontents{loas}{\vspace{-8pt}\noindent\underline{Scheme}\hfill \underline{Page}\par\vspace{-10pt}}
-\addtocontents{loal}{\vspace{-6pt}\noindent\underline{Listing}\hfill \underline{Page}\par\vspace{-10pt}}
-\addtocontents{loa}{\vspace{-6pt}\noindent\underline{Figure}\hfill \underline{Page}\par\vspace{-10pt}}  
+\addtocontents{lot}{\vspace{-0.35in}\noindent\underline{Table}\hfill \underline{Page}\par}
+\addtocontents{lof}{\vspace{-0.35in}\noindent\underline{Figure}\hfill \underline{Page}\par}
+\addtocontents{los}{\vspace{-0.35in}\noindent\underline{Scheme}\hfill \underline{Page}\par}
+\addtocontents{lol}{\vspace{-0.35in}\noindent\underline{Listing}\hfill \underline{Page}\par}
+\addtocontents{loat}{\vspace{-0.35in}\noindent\underline{Table}\hfill \underline{Page}\par}
+\addtocontents{loaf}{\vspace{-0.35in}\noindent\underline{Figure}\hfill \underline{Page}\par}
+\addtocontents{loas}{\vspace{-0.35in}\noindent\underline{Scheme}\hfill \underline{Page}\par}
+\addtocontents{loal}{\vspace{-0.35in}\noindent\underline{Listing}\hfill \underline{Page}\par}
+\addtocontents{loa}{\vspace{-0.35in}\noindent\underline{Figure}\hfill \underline{Page}\par}  
 
 
 % Uniform spacing of entries in LOSH 
@@ -1164,25 +1205,22 @@ majorcolor=mygridcol, minorcolor=mygridcol!36, patternsize=0.1in]
 \titleformat{\chapter}
     {\centering\normalfont\bfseries\setstretch{1.6}\vspace{-4pt}}
     {{\large\MakeUppercase{{\chaptertitlename}}\ }}{-0em}{\large\MakeUppercase}
-%    \titlespacing*{\chapter}{0pt}{-0.5\baselineskip}{0.4\baselineskip} 
     \titlespacing*{\chapter}{0pt}{-1\baselineskip}{0.4\baselineskip} 
-
-% Two versions based on "nonumber" - regular chapter heading
-\ifthenelse{\equal{\numbertype}{nonumber}}{  
-\newcommand{\myheading}[1]{\chapter[\uppercase{#1}]{{#1}\vspace{-12pt}}} 
-}{
-\newcommand{\myheading}[1]{\chapter[\uppercase{#1}]{\thechapter.~{#1}\vspace{-12pt}}}
-}
 
 % Two versions based on "nonumber" - paper style chapter heading 
 \ifthenelse{\equal{\numbertype}{nonumber}}{  
 \newcommand{\mypaperheading}[2]{
-\stepcounter{footnote}\chapter[\uppercase{#1}]{#1$\,^{\number\value{footnote}}$\vspace{-12pt}} \footnotetext{#2}
+\stepcounter{footnote}\vspace*{-0.5in}\chapter[\uppercase{#1}]{\uppercase{#1}$\,^{\number\value{footnote}}$\vspace{-0.5in}} \footnotetext{#2}
 }}
 {
-\newcommand{\mypaperheading}[2]{\stepcounter{footnote}\chapter[\uppercase{#1}]{\thechapter.~#1$\,^{\number\value{footnote}}$\vspace{-12pt}}\footnotetext{#2}
+\newcommand{\mypaperheading}[2]{\stepcounter{footnote}\vspace*{-1.25in}\chapter[\uppercase{#1}]{\thechapter.~\uppercase{#1}$\,^{\number\value{footnote}}$\vspace{-0.5in}}\footnotetext{#2}
 }}
 
+\ifthenelse{\equal{\numbertype}{nonumber}}{  
+\newcommand{\myheading}[1]{\clearpage\vspace*{-0.5in}\chapter[\uppercase{#1}]{\uppercase{#1}\vspace{-0.5in}}} 
+}{
+\newcommand{\myheading}[1]{\clearpage\vspace*{-1.25in}\chapter[\uppercase{#1}]{\thechapter.~\uppercase{#1}\vspace{-0.5in}}}
+}
 
 % NDSU - MAJOR HEADING - Centered, bold, All Caps, e.g., 1. MAJOR HEADING     
 \titleformat{\section}  
@@ -1246,12 +1284,13 @@ majorcolor=mygridcol, minorcolor=mygridcol!36, patternsize=0.1in]
 
 % Defined to handle BibLaTeX reference commands (individual and combined)
 \newcommand{\bibtitle}{References} % for BibLaTeX
+\newcommand{\bibTitle}{REFERENCES} % for BibLaTeX
 
 \newcommand{\makerefs}{
 \setlength{\bibhang}{0.5in}
 \ifbool{chapref}
 {\printbibliography[heading=subbibnumbered, title={\bibtitle}]}
-{\printbibliography[heading=bibintoc, title=\uppercase{\bibtitle}]}
+{\printbibliography[heading=bibintoc, title={\bibTitle}]}
 } % shortcut - section numbered; subbibintoc - unnumbered
 
 
@@ -1325,7 +1364,7 @@ majorcolor=mygridcol, minorcolor=mygridcol!36, patternsize=0.1in]
 % Usage: 	\namedappendices{A}{Appendix title}
 \newcommand{\namedappendices}[2]{ % for multiple appendices - updated Feb 19, 2026 - TOC hyperlink corrected
     \clearpage\phantomsection
-    \chapter*{APPENDIX #1. #2\vspace{-12pt}}
+    \chapter*{APPENDIX \uppercase{#1. #2}\vspace{-0.5in}}
     \setcounter{section}{0}
     \setcounter{equation}{0}
     \setcounter{appendixfigure}{0}
@@ -1362,10 +1401,10 @@ majorcolor=mygridcol, minorcolor=mygridcol!36, patternsize=0.1in]
 \renewcommand{\theappendixfigure}{}
 \renewcommand{\appendixtablename}{}
 \renewcommand{\theappendixtable}{}
-\begin{appendixfigure}[H]% required
+\begin{appendixfigure}[h!]% required
 \caption[]{}
 \end{appendixfigure}
-\begin{appendixtable}[H]
+\begin{appendixtable}[h!]
 \caption[]{}
 \end{appendixtable}
 \let\clearpage\relax% for multiple files
@@ -1376,7 +1415,7 @@ majorcolor=mygridcol, minorcolor=mygridcol!36, patternsize=0.1in]
 \newcommand{\closeappendixtables}{% Igathi
 \renewcommand{\appendixtablename}{}
 \renewcommand{\theappendixtable}{}
-\begin{appendixtable}[H]
+\begin{appendixtable}[h!]
 \caption[]{}
 \end{appendixtable}
 \vspace{-25ex}
@@ -1386,7 +1425,7 @@ majorcolor=mygridcol, minorcolor=mygridcol!36, patternsize=0.1in]
 \newcommand{\closeappendixfigures}{% Igathi
 \renewcommand{\appendixfigurename}{}
 \renewcommand{\theappendixfigure}{}
-\begin{appendixfigure}[H]
+\begin{appendixfigure}[h!]
 \caption[]{}
 \end{appendixfigure}
 \vspace{-25ex}
@@ -1396,7 +1435,7 @@ majorcolor=mygridcol, minorcolor=mygridcol!36, patternsize=0.1in]
 \newcommand{\closeappendixschemes}{% Igathi
 \renewcommand{\appendixschemename}{}
 \renewcommand{\theappendixscheme}{}
-\begin{appendixscheme}[H]
+\begin{appendixscheme}[h!]
 \caption[]{}
 \end{appendixscheme}
 \vspace{-25ex}
@@ -1406,7 +1445,7 @@ majorcolor=mygridcol, minorcolor=mygridcol!36, patternsize=0.1in]
 \newcommand{\closeappendixlistings}{% Igathi
 \renewcommand{\appendixlistingname}{}
 \renewcommand{\theappendixlisting}{\hspace{}}
-\begin{appendixlisting}[H]
+\begin{appendixlisting}[h!]
 \caption[]{}
 \end{appendixlisting}
 \vspace{-25ex}
@@ -1435,7 +1474,6 @@ majorcolor=mygridcol, minorcolor=mygridcol!36, patternsize=0.1in]
    \label{#6}
 \end{figure}
 }
-
 
 % Regular figure command with placement (htpbH as the first argument) and space between two floats for proper LOF spacing
 \newcommand{\myfigs}[7][0ex]{%3.5 earlier
@@ -1904,12 +1942,12 @@ majorcolor=mygridcol, minorcolor=mygridcol!36, patternsize=0.1in]
 % Usage \begin{mylinsting}[] ....your code.... \end{listing}
 
 \pgfkeys{
-  /mylisting/.is family,
-  /mylisting,
-  frame/.store in    = \mylistingFrame,
-  numbers/.store in  = \mylistingNumbers,
-  fontsize/.store in = \mylistingFontsize,
-  xleftmargin/.store in = \mylistingXleftmargin,
+  /mytlisting/.is family,
+  /mytlisting,
+  frame/.store in    = \mytlistingFrame,
+  numbers/.store in  = \mytlistingNumbers,
+  fontsize/.store in = \mytlistingFontsize,
+  xleftmargin/.store in = \mytlistingXleftmargin,
   % defaults
   frame    = single,
   numbers  = left,
@@ -1917,16 +1955,15 @@ majorcolor=mygridcol, minorcolor=mygridcol!36, patternsize=0.1in]
   xleftmargin = 2ex,
 }
 
-\newenvironment{mylisting}[1][]{%
-  \pgfkeys{/mylisting, #1}%
+\newenvironment{mytlisting}[1][]{%
+  \pgfkeys{/mytlisting, #1}%
   \singlespacing
-  \Verbatim[frame=\mylistingFrame, framerule=0.1mm,
-            numbers=\mylistingNumbers, numbersep=2pt,
-            xleftmargin=\mylistingXleftmargin, fontsize=\mylistingFontsize]%
+  \Verbatim[frame=\mytlistingFrame, framerule=0.1mm,
+            numbers=\mytlistingNumbers, numbersep=2pt,
+            xleftmargin=\mytlistingXleftmargin, fontsize=\mytlistingFontsize]%
 }{%
   \endVerbatim
 }
-
 
 
 % -----------------------------------------------------------------------
@@ -2182,6 +2219,270 @@ majorcolor=mygridcol, minorcolor=mygridcol!36, patternsize=0.1in]
 }
 
 
+
+%--------------------------------------------------------------------
+%%%%%%%%% New shortcuts   %%%%%%%%%
+%--------------------------------------------------------------------
+
+%%%%%%%%%% FIGURE %%%%%%%%%%%%
+
+% My tag figure: [1 before fig] {2 placement} {3 size} {4 file} [5 before caption] {6 caption} [7 after caption] {8 alt} {9 label} 
+\NewDocumentCommand{\mytfig}{ O{0.09in} m m m  O{0.025in}  m O{-0.08in} m m}{
+\vspace{#1}
+\begin{figure}[#2]
+    \centering 
+    \captionsetup{aboveskip = #5 plus 2pt minus 2pt, belowskip = 0pt} 
+    \includegraphics[width=#3\textwidth,alt={#8}]{#4}
+    \caption{#6} 
+    \label{#9}
+    \vspace{#7}
+\end{figure}
+}
+
+% My tag figure landscape: [1 before fig] {2 placement} {3 size} {4 file} [5 before caption] {6 caption} [7 after caption] {8 alt} {9 label} 
+\NewDocumentCommand{\mytfigls}{ O{0.09in} m m m  O{0.025in}  m O{-0.08in} m m}{
+\vspace{#1}
+\begin{landscape}
+\begin{figure}[#2]
+    \centering 
+    \captionsetup{aboveskip = #5 plus 2pt minus 2pt, belowskip = 0pt} 
+    \includegraphics[width=#3\textwidth,alt={#8}]{#4}
+    \caption{#6} 
+    \label{#9}
+    \vspace{#7}
+\end{figure}
+\end{landscape}
+}
+
+% My tag figure appendix: [1 before fig] {2 placement} {3 size} {4 file} [5 before caption] {6 caption} [7 after caption] {8 alt} {9 label} 
+\NewDocumentCommand{\mytfigap}{ O{0.09in} m m m  O{0.025in}  m O{-0.16in} m m}{
+\vspace{#1}
+\begin{appendixfigure}[#2]
+    \centering 
+    \captionsetup{aboveskip = #5 plus 2pt minus 2pt, belowskip = 0pt} 
+    \includegraphics[width=#3\textwidth,alt={#8}]{#4}
+    \caption{#6} 
+    \label{#9}
+    \vspace{#7}
+\end{appendixfigure}
+}
+
+% My tag figure appendix: [1 before fig] {2 placement} {3 size} {4 file} [5 before caption] {6 caption} [7 after caption] {8 alt} {9 label} 
+\NewDocumentCommand{\mytfiglsap}{ O{0.09in} m m m  O{0.025in}  m O{-0.08in} m m}{
+\vspace{#1}
+\begin{landscape}
+\begin{appendixfigure}[#2]
+    \centering 
+    \captionsetup{aboveskip = #5 plus 2pt minus 2pt, belowskip = 0pt} 
+    \includegraphics[width=#3\textwidth,alt={#8}]{#4}
+    \caption{#6} 
+    \label{#9}
+    \vspace{#7}
+\end{appendixfigure}
+\end{landscape}
+}
+
+
+
+%%%%%%%%%% SCHEME  %%%%%%%%%%%%
+
+% My tag scheme: [1 before fig] {2 placement} {3 size} {4 file} [5 before caption] {6 caption} [7 after caption] {8 alt} {9 label} 
+\NewDocumentCommand{\mytsch}{ O{0.09in} m m m  O{0.025in}  m O{-0.08in} m m}{
+\vspace{#1}
+\begin{scheme}[#2]
+    \centering 
+    \captionsetup{aboveskip = #5 plus 2pt minus 2pt, belowskip = 0pt} 
+    \includegraphics[width=#3\textwidth,alt={#8}]{#4}
+    \caption{#6} 
+    \label{#9}
+    \vspace{#7}
+\end{scheme}
+}
+
+
+% My tag scheme landscape: [1 before fig] {2 placement} {3 size} {4 file} [5 before caption] {6 caption} [7 after caption] {8 alt} {9 label} 
+\NewDocumentCommand{\mytschls}{ O{0.09in} m m m  O{0.025in}  m O{-0.08in} m m}{
+\vspace{#1}
+\begin{landscape}
+\begin{scheme}[#2]
+    \centering 
+    \captionsetup{aboveskip = #5 plus 2pt minus 2pt, belowskip = 0pt} 
+    \includegraphics[width=#3\textwidth,alt={#8}]{#4}
+    \caption{#6} 
+    \label{#9}
+    \vspace{#7}
+\end{scheme}
+\end{landscape}
+}
+
+% My tag scheme appendix: [1 before fig] {2 placement} {3 size} {4 file} [5 before caption] {6 caption} [7 after caption] {8 alt} {9 label} 
+\NewDocumentCommand{\mytschap}{ O{0.09in} m m m  O{0.025in}  m O{-0.08in} m m}{
+\vspace{#1}
+\begin{appendixscheme}[#2]
+    \centering 
+    \captionsetup{aboveskip = #5 plus 2pt minus 2pt, belowskip = 0pt} 
+    \includegraphics[width=#3\textwidth,alt={#8}]{#4}
+    \caption{#6} 
+    \label{#9}
+    \vspace{#7}
+\end{appendixscheme}
+}
+
+% My tag scheme appendix: [1 before fig] {2 placement} {3 size} {4 file} [5 before caption] {6 caption} [7 after caption] {8 alt} {9 label} 
+\NewDocumentCommand{\mytschlsap}{ O{0.09in} m m m  O{0.025in}  m O{-0.08in} m m}{
+\vspace{#1}
+\begin{landscape}
+\begin{appendixscheme}[#2]
+    \centering 
+    \captionsetup{aboveskip = #5 plus 2pt minus 2pt, belowskip = 0pt} 
+    \includegraphics[width=#3\textwidth,alt={#8}]{#4}
+    \caption{#6} 
+    \label{#9}
+    \vspace{#7}
+\end{appendixscheme}
+\end{landscape}
+}
+
+% My tag listing caption (Step 1 of 1): [1 before caption] {2 caption} [3 after caption] {4 label} 
+\NewDocumentCommand{\mytliscap}{ O{-0.1in} m O{-0.275in}  m }{
+\vspace{#1}
+\begin{listing}[h!]
+\caption{#2}% LOL entry and caption are same
+\label{#4}
+\end{listing}
+\vspace{#3}
+}
+
+% My tag listing caption appendix (Step 1 of 1): [1 before caption] {2 caption} [3 after caption] {4 label} 
+\NewDocumentCommand{\mytliscapap}{ O{-0.1in} m O{-0.275in}  m }{
+\vspace{#1}
+\begin{appendixlisting}[h!]
+\caption{#2}% LOAL entry and caption are same
+\label{#4}
+\end{appendixlisting}
+\vspace{#3}
+}
+
+
+%--------------------------------------------------------------------------------
+
+\NewDocumentCommand{\repText}{ O{36} }{
+{Text {\foreach \n in {1,...,#1}{text }}\ldots\xspace}% filler text
+}
+
+\NewDocumentCommand{\repInText}{ O{new text} O{17} }{
+{Start {\foreach \n in {1,...,#2}{#1 }}\ldots{end.}\xspace}% filler input text
+}
+
+%--------------------------------------------------------------------------------
+
+% New 
+\newcommand{\myteqn}[1]{
+{\vspace{-0.325in}\begin{equation} #1 \end{equation}\par\vspace{-0.13in}}}
+\WithSuffix\newcommand\myteqn*[1]{
+{\vspace{-0.325in}\begin{equation*}#1\end{equation*}\par\vspace{-0.13in}}}
+
+\newcommand{\mytfraceqn}[1]{
+{\vspace{-0.275in}\begin{equation} #1 \end{equation}\par\vspace{-0.1in}}}
+\WithSuffix\newcommand\mytfraceqn*[1]{
+{\vspace{-0.275in}\begin{equation*}#1\end{equation*}\par\vspace{-0.1in}}}
+
+\newcommand{\mytalign}[1]{
+{\vspace{-0.65in}\begin{align} #1 \end{align}\par\vspace{-0.3in}}}
+\WithSuffix\newcommand\mytalign*[1]{
+{\vspace{-0.65in}\begin{align*}#1\end{align*}\par\vspace{-0.3in}}}
+
+\newcommand{\mytgather}[1]{
+{\vspace{-0.65in}%\setlength{\jot}{-0.025in} 
+\begin{gather} #1 \end{gather}\par\vspace{-0.275in}}}
+\WithSuffix\newcommand\mytgather*[1]{
+{\vspace{-0.65in}%\setlength{\jot}{-0.025in} 
+\begin{gather*}#1\end{gather*}\par\vspace{-0.275in}}}
+
+\newcommand{\mytsplit}[1]{
+{\vspace{-0.57in}\setlength{\jot}{-0.15in}% required 
+\begin{equation} \begin{split} #1 \end{split}\end{equation}\par\vspace{-0.15in}}}
+\WithSuffix\newcommand\mytsplit*[1]{
+{\vspace{-0.57in}\setlength{\jot}{-0.15in}% required 
+\begin{equation*} \begin{split}#1\end{split}\end{equation*}\par\vspace{-0.15in}}}
+
+\newcommand{\mytmultline}[1]{
+{\vspace{-0.5in}\setlength{\jot}{-0.15in}% required 
+\begin{multline} #1 \end{multline}\par\vspace{-0.28in}}}
+\WithSuffix\newcommand\mytmultline*[1]{
+{\vspace{-0.5in}\setlength{\jot}{-0.15in}% required 
+\begin{multline*}#1\end{multline*}\par\vspace{-0.28in}}}
+
+
+%--------------------------------------------------------------------
+%%%%%%%%% New shortcuts End %%%%%%%%%
+%--------------------------------------------------------------------
+
+
+%-----------------------------------------------------------------------------------------------------
+%%%%%%%%% Latest Update Related Fix (2026-05-28)   %%%%%%%%%
+%-----------------------------------------------------------------------------------------------------
+
+\AddToHook{begindocument/before}{%
+  \EditInstance{heading}{chapter}{%
+    placement            = normal,%
+    before-vspace        = 0pt,%
+    after-penalty-vspace = 0pt,%
+    heading-decls        = \centering\parindent0pt\bfseries\large,%
+    title-decls          = ,%
+    number-format        = ,%
+    prefix               = ,%
+  }%
+  \expandafter\def\csname __head_title_format:n\endcsname#1{%
+    \MakeUppercase{#1}%
+  }%
+}%
+
+%-----------------------------------------------------------------------------------------------------
+
+\AtBeginDocument{%
+\ifbool{chapref}{}{\AtBeginBibliography{\vspace*{-0.5in}}}
+}
+
+%-----------------------------------------------------------------------------------------------------
+%%%%%%%%% Latest Update Related Fix (2026-05-28)   %%%%%%%%%
+%-----------------------------------------------------------------------------------------------------
+
+
+%%%%%%%%%%%%%%%%%%%%%
+% Other and previous shortcuts
+
+
+\newcommand{\myeqnt}[1]{
+{\vspace{-0.375in}\begin{equation} #1 \end{equation}\par\vspace{-0in}}}
+\WithSuffix\newcommand\myeqnt*[1]{
+{\vspace{-0.375in}\begin{equation*}#1\end{equation*}\par\vspace{-0in}}}
+
+\newcommand{\myfraceqnt}[1]{
+{\vspace{-0.275in}\begin{equation} #1 \end{equation}\par\vspace{0.05in}}}
+\WithSuffix\newcommand\myfraceqnt*[1]{
+{\vspace{-0.275in}\begin{equation*}#1\end{equation*}\par\vspace{0.05in}}}
+
+\newcommand{\myalignt}[1]{
+{\vspace{-0.375in}\begin{align} #1 \end{align}\par\vspace{0.05in}}}
+\WithSuffix\newcommand\myalignt*[1]{
+{\vspace{-0.375in}\begin{align*}#1\end{align*}\par\vspace{0.05in}}}
+
+\newcommand{\mygathert}[1]{
+{\vspace{-0.375in}\setlength{\jot}{-0.025in} 
+\begin{gather} #1 \end{gather}\par\vspace{0.05in}}}
+\WithSuffix\newcommand\mygathert*[1]{
+{\vspace{-0.375in}\setlength{\jot}{-0.025in} 
+\begin{gather*}#1\end{gather*}\par\vspace{0.05in}}}
+
+\newcommand{\mysplitt}[1]{
+{\vspace{-0.375in}\setlength{\jot}{-0.025in} 
+\begin{equation} \begin{split} #1 \end{split}\par\vspace{-0.3in}}}
+\WithSuffix\newcommand\mysplitt*[1]{
+{\vspace{-0.375in}\setlength{\jot}{-0.025in} 
+\begin{equation} \begin{split*}#1\end{split*}\par\vspace{-0.3in}}}
+
+
 % ------------------------- Some common shortcuts --------------------------------------
 
 \DeclareSIUnit{\USD}{\$}
@@ -2222,10 +2523,9 @@ majorcolor=mygridcol, minorcolor=mygridcol!36, patternsize=0.1in]
 \newcommand\cmd[1]{\textbackslash\texttt{#1}}  % for commands
 \newcommand\cmdd[1]{\textbackslash\texttt{#1}\{\ldots\!\}}  % for commands with ldots
 \newcommand\te[1]{\ensuremath\text{#1}}% text in eqation - shortcut
+
 \newcommand{\repeatN}[1]{Text {\foreach \n in {1,...,#1}{text }}\ldots\xspace}% filler text
 \newcommand{\repeatTN}[2]{Start {\foreach \n in {1,...,#2}{#1 }}\ldots{end.}\xspace}% filler text
-
-
 
 %-----------------------------------------------------------------------------------------------------
 %%%%%%%%%% Tagging Related Update Commands  %%%%%%%%%%

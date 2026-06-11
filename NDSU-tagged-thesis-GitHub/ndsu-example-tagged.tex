@@ -1,13 +1,15 @@
-%******************* Metadata for PDF tagging *** [Updated: 18-05-2026] *******************
+%******************* Metadata for PDF tagging *** [Updated: 10-06-2026] *******************
 \DocumentMetadata{
- tagging=on,
- lang=en-US,
- tagging-setup={math/setup=mathml-SE,math/alt/use},
- pdfversion=2.0,
- pdfstandard=ua-2,
- pdfstandard=a-4f,
- uncompress,
+  tagging=on,
+  lang=en-US,
+  tagging-setup={math/setup=mathml-SE,math/alt/use},
+  pdfversion=2.0,
+  pdfstandard=ua-2,% ua-1 is possible downgrate
+  pdfstandard=a-4f,% creates compliance with the PDF/A standard
+  uncompress,
+ % testphase={block=false},   % <-- required May 2026
 }
+
 %
 % Refer to documentation (ndsu-thesis-tagged-documentation....) for various options and commands
 % Use LuaTeX for compiling (LuaTeX+Biber+LuaTeX+LuaTeX for docs with bibliography)
@@ -18,11 +20,12 @@
 %***********************************************
 %***********************************************
 %******************* START *******************
-\documentclass[ms-thesis,mathdesign]{ndsu-thesis-tagged}% MS final, 12 pt
-%\documentclass[ms-thesis,mathdesign,chaprefs]{ndsu-thesis-tagged}% MS final, chap refs, 12 pt
-%\documentclass[ms-thesis,mathdesign,showgrid]{ndsu-thesis-tagged}% MS work, 12 pt
-%\documentclass{ndsu-thesis-tagged}% PhD final, 12 pt, computer modern
-%\documentclass[mathdesign,chapterrefs,showgrid]{ndsu-thesis-tagged}% PhD, chap refs, work
+%\documentclass[ms-thesis,mathdesign,chpterrefs]{ndsu-thesis-tagged}% MS final, 12 pt
+\documentclass[ms-thesis,mathdesign,chapterrefs,showgriddm]{ndsu-thesis-tagged}% MS work, chap refs, 12 pt, showgrid darkmode
+%\documentclass[ms-thesis,mathdesign,showgriddm]{ndsu-thesis-tagged}% MS work, 12 pt
+%\documentclass[showgriddm]{ndsu-thesis-tagged}% PhD final, 12 pt, computer modern
+%\documentclass[mathdesign,darkmode]{ndsu-thesis-tagged}% PhD final, 12 pt, computer modern
+%\documentclass[mathdesign,chapterrefs,showgriddm]{ndsu-thesis-tagged}% PhD, chap refs, work
 %\documentclass[mathdesign,chapterrefs]{ndsu-thesis-tagged}% PhD, final, chap refs, 12 pt
 
 %-------------------------------------------------------
@@ -39,6 +42,7 @@
 \DeclareSIUnit\ft{ft}
 \newcommand{\sqft}[1]{\qty{#1}{foot}$^2$\xspace}% have math outside of SI
 \newcommand{\cuft}[1]{\qty{#1}{\cubic\ft}\xspace}% SI standard commands
+
 
 
 %******************* First and second page material *******************
@@ -71,10 +75,10 @@ Dissertation template design and Important instructions for using the template:
 }
 \start\tcb{Students and users may utilize this example as a ``template.'' Make a copy and start working. Most of the codes required to write the thesis are employed in this example (*.tex file), and along with the accompanying ``Documentation'' of the ``\texttt{ndsu-thesis-tagged}'' class, all necessary commands, options, and functionalities to generate a dissertation are covered. As this \LaTeX{} class generates tagged PDF, it is ``future-proof'' and supports the creation of ``Accessible Documents.'' The showgrid option, useful for vertical spacing of items (reference: $\approx$3 grids = $\approx$0.3 in), can be removed for the final output. Use LuaTeX for compiling (LuaTeX+Biber+LuaTeX+LuaTeX for docs with bibliography) for better tagging functionality. By the way, the ``\textbf{blue text}'' or other \textcolor{magenta}{colored} text or \hl{highlights} are used to draw attention!}
 \\ \indent \tcm{This is the abstract for my thesis. The word limits: 350 for PhD and 150 for MS.} \\ 
-\indent\repeatN{79}
+\indent\repText[50]
 }%
 
-\acknowledgements{\start I acknowledge people here. \\ \tcb{\emph{Acknowledgements text should be placed here.}} \\ \indent\repeatN{100} \\ \indent\repeatN{80}
+\acknowledgements{\start I acknowledge people here. \\ \tcb{\emph{Acknowledgements text should be placed here.}} \\ \indent\repText[100] \\ \indent\repInText[my acknowledgement here][30]
 }%
 
 \dedication{\start This thesis is dedicated to my cat, Mr. Fluffles. \\ 
@@ -83,7 +87,7 @@ Dissertation template design and Important instructions for using the template:
 
 \preface{\start You can put a preface here. \\ 
 \tcb{\emph{This section is optional!}} \\ 
-\indent\repeatN{100} \\ \indent\repeatN{80}
+\indent\repText[120]
 }%
 
 \listofabbreviations{ % may use title case; tagged version; usage  \item[X]  -space-  def of X
@@ -116,7 +120,8 @@ Dissertation template design and Important instructions for using the template:
 %********************************************************************
 %******************* First chapter - paper style *******************
 %********************************************************************
-\mypaperheading{The First Chapter - Paper Style - Long title of this technical paper - PDF Tag H1}{ \hl{Footnote only for published paper.} Include citation for the peer-reviewed article + more information about the authors' contributions. Refer to NDSU dissertation resources for examples.}
+
+\mypaperheading{The First Chapter - Paper Style - Long title of this technical paper - PDF Tag H1}{\hl{Footnote only for published paper.} Include citation for the peer-reviewed article + more information about the authors' contributions. Refer to NDSU dissertation resources for examples.}
 
 \checkBeginRefsection%%% Don't delete this! Command given at the start of each chapter
 
@@ -124,31 +129,32 @@ Dissertation template design and Important instructions for using the template:
 
 %------------------------------------------------------
 \section{Abstract}
-Paper-styled chapters will have abstracts (PDF tag \tcb{H2}). \tcb{This \LaTeX{} \texttt{ndsu-thesis-tagged} class will automatically tag all elements (H1--H8, paragraph, caption, TH, TD, etc.) of the thesis (when instructions are followed properly)}. Abstract of this chapter goes here. Have your abstract text here. \repeatN{13}
+Paper-styled chapters will have abstracts (PDF tag \tcb{H2}). \tcb{This \LaTeX{} \texttt{ndsu-thesis-tagged} class will automatically tag all elements (H1--H8, paragraph, caption, TH, TD, etc.) of the thesis (when instructions are followed properly)}. Abstract of this chapter goes here. Have your abstract text here. \repText[10]
 
 %------------------------------------------------------
 \section{Section ($\Rightarrow$ 1st level; Title Case; Centered; Boldface) E.g., Science is Key Period}
-This is the first section of the thesis (1st level: 1.2. Section, PDF tag \tcb{H2}). \repeatN{22}
+This is the first section of the thesis (1st level: 1.2. Section, PDF tag \tcb{H2}). \repInText
 
 %------------------------------------------------------
 \section{Section E.g., Science is Key Period}
-This is the second section of the thesis (1st level: 1.3. Section, PDF tag \tcb{H2}). \repeatN{21}
+This is the second section of the thesis (1st level: 1.3. Section, PDF tag \tcb{H2}). \repText[18]
 
 %------------------------------------------------------
 \subsection{Subsection ($\Rightarrow$ 2nd level; Title Case; Left-justified; Boldface) E.g., Science is Key Period}
-This is the subsection text (2nd level: 1.3.1. Subsection, PDF tag \tcb{H3}). \repeatN{22}
+This is the subsection text (2nd level: 1.3.1. Subsection, PDF tag \tcb{H3}). \repInText[my `special' input text][11]
 
 %------------------------------------------------------
+\mysectop
 \subsubsection{Subsubsection ($\Rightarrow$ 3rd level; Sentence case; Left-justified; Boldface; Italics) E.g., Science is key period}
-This is the subsubsection text (3rd level: 1.3.1.1. Subsubsection, PDF tag \tcb{H4}). \repeatN{82}
+This is the subsubsection text (3rd level: 1.3.1.1. Subsubsection, PDF tag \tcb{H4}). \repText
 
 %------------------------------------------------------
 \paragraph{Paragraph ($\Rightarrow$ 4th level; Sentence case; Left-justified; No bold; Italics)  E.g., Science is key period}
-This is the paragraph text (4th level: 1.3.1.1.1. Paragraph, PDF tag \tcb{H6}). \repeatN{21}
+This is the paragraph text (4th level: 1.3.1.1.1. Paragraph, PDF tag \tcb{H6}). \repText[18]
 
 %------------------------------------------------------
 \subparagraph{Subparagraph ($\Rightarrow$ 5th level; Sentence case; Left-justified; No bold; Regular) E.g., Science is key period}
-This is the subparagraph text (5th level: 1.3.1.1.1.1. Paragraph, PDF tag \tcb{H7}). \repeatN{20}
+This is the subparagraph text (5th level: 1.3.1.1.1.1. Paragraph, PDF tag \tcb{H7}). \repText[20]
 
 %------------------------------------------------------
 \section{Tables and Figures}
@@ -173,17 +179,16 @@ Number & Month & Days\\
 \end{table}	
 
 \voh
-\repeatN{160}
+\repText[100]
 
 \tcb{Note: The vertical spacing around (before and after) the float element (figures, tables, schemes, etc.) should be similar to the regular text with ``double spacing'' the natural automatic spacing of \LaTeX. This is achieved using the \texttt{\textbackslash vspace\{\ldots\}} command with $+$ve or $-$ve arguments. Convenient shortcuts were defined. Observe the source code.}
 
 \tcb{Now the figure (\cref{fig:11}) illustrates an example figure from the \texttt{mwe} package.}
 
-\vh% shortcut = \vspace{-0.05in}
-\myfigst[-0.05in]{ht!}{0.6}{example-image-duck}{Caption for this example image in this first chapter using the tagged shortcut command \texttt{myfigst} that pulls the embedded text up.}{A yellow duck with a golden crown and pizza in the belly on a gray background.}{fig:11}{-0.1in}	
+\mytfig{ht!}{0.6}{example-image-duck}{Caption for this example image in this first chapter using the tagged shortcut command \texttt{mytfig} that has optional vertical spacing before and after the figure caption.}{A yellow duck with a golden crown and pizza in the belly on a gray background.}{fig:11}% all default options
 
 \vo% shortcut = \vspace{-0.1in}
-\repeatN{140}
+\repText[58]
 
 %------------------------------------------------------
 \section{Some References as Section or Combined}
@@ -252,27 +257,24 @@ Number 	& Name of month 	& Days 	& Season\\
 \endgroup
 
 \voh
-\repeatTN{filler text}{55}
+\repInText[filler text][55]
 
 %------------------------------------------------------
 \subsection{Minor Results}
-This is a subsection of the thesis (1st level: 2.2. Experimental Results). \repeatN{42}
+This is a subsection of the thesis (1st level: 2.2. Experimental Results). \repText[42]
 
 The \Cref{fig:21} is an example image with a command showing all arguments, including the optional caption placement. The example figure (\cref{fig:21}) is included in the \LaTeX{} class resources. 
 
-\vo
-\myfigt[-0.05in]{h!}{0.365}{frog}{Caption for this example image demonstrating an optional \qty{0.025}{in} vertical spacing. Compare this with a narrow caption spacing without an optional argument in \Cref{fig:11}.}{A green frog with a yellow chest that is ready to hop.}{fig:21}
+\mytfig{ht!}{0.365}{frog}[0pt]{Caption for this example image demonstrating an optional vertical spacing before and after the figure caption.}[-0.2in]{A green frog with a yellow chest that is ready to hop.}{fig:21}% after caption option used
 
-\vrh% shortcut = \vspace{-0.35in}
-\repeatTN{my filler text}{38}
+\repInText[my filler text][26]
 
 %------------------------------------------------------
 \mysectop% Header on top of page vertical adjustment  
 \section{Equations}
-\repeatN{59}
+\tcb{New shortcuts for equations were developed that work directly without any vspace adjustments, and they stay as separate paragraph items (natural flow). The shortcuts had the vspace(s) built in before and after the equations. If necessary,  additional vspace commands can be given around the equations.}\repText[11]
 
-\vh% when required added
-\myeqn{% shortcut for equation vertically spaced
+\myteqn{% shortcut for equation vertically spaced
 y = (mx + c) \times \text{NCF} \times S_\text{factor} \times c_p \times M_\text{p}
 \label{eq:lin}
 }
@@ -281,39 +283,44 @@ y = (mx + c) \times \text{NCF} \times S_\text{factor} \times c_p \times M_\text{
 
 Note how variables, abbreviations, and subscripts are coded in \cref{eq:lin}. Refer to the Extended Thesis to know more about equations and shortcuts. 
 
+\repText[59]
+
+\mytfraceqn{% shortcut for equation vertically spaced
+\mt{roots} = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+\label{eq:roots}
+}
+
+\hl{Note:} The ``roots'' should be technically upright and should not be $roots$---we know why, don't we?
+
 %------------------------------------------------------
 \section{Schemes}
-The shortcut was used to code the scheme (\cref{sch:21}), which is a substitute for the regular way using \texttt{includegraphics} command. \hl{Observe vertical spacing in source code; case of float between two paragraphs; shortcuts around the figure environment}: 
+The shortcut was used to code the scheme (\cref{sch:21}), which is a substitute for the regular way using \texttt{includegraphics} command.
+\repInText[my dummy text][48]
 
-\repeatTN{my dummy text}{48}
+\mytsch{ht!}{0.5}{LampFlowchart}[0pt]{Flowchart of controls of light bulb---A scheme---using myschst command.}{A flow diagram showing the steps of troubleshooting a lamp not working.}{sch:21}
 
-\vc{-0.6}% shortcut:  vc = \clearpage\vspace*{#1in}
-\myschst[-0.1in]{h!}{0.5}{LampFlowchart}{Flowchart of controls of light bulb---A scheme---using myschst command.}{A flow diagram showing the steps of troubleshooting a lamp not working.}{sch:21}{-0.15in}
-
-Check this! \hl{Observe vertical spacing in source code; case of float embedded in a paragraph; paragraph text vertical spacing adjusted by 7th argument} of \texttt{myschst} command). 
-
-\myfigst[-0.05in]{t!}{0.7}{frog}{Caption for this example image demonstrating an optional -0.08in vertical spacing. Compare this with a narrow caption spacing without an optional argument in \Cref{sch:21}.}{A large-sized green frog with a yellow chest that is ready to hop.}{fig:22}{-0.1in}
+\mytfig[0in]{t!}{0.7}{frog}[0.0in]{Caption for this example image demonstrating vertical spacing around caption.}[-0.05in]{A green frog with a yellow chest that is ready to hop.}{fig:22}
 
 \voh
-\repeatTN{filler text}{150} 
+\repInText[filler text][70] 
 
 \tcb{The (\cref{sch:21,fig:22,sch:22}) are good. And, stating this differently, all the \Cref{sch:21,fig:22,sch:22} are good too. Note that \Cref{sch:22} is in landscape mode.}
 
-\myschlst[-0.2in]{p}{0.65}{LampFlowchart}{Landscape scheme---Flowchart of controls of light bulb. Optional -0.2in vertical spacing was used. Landscape can be applied to tables, figures, and schemes; also, these can be coded in appendices.}{A flow diagram showing the steps of troubleshooting a lamp not working as a landscape page.}{sch:22}
+\mytschls{p}{0.65}{LampFlowchart}[-0.1in]{Landscape scheme---Flowchart of controls of light bulb. Landscape can be applied to tables, figures, and schemes; also, these can be coded in appendices.}{A flow diagram showing the steps of troubleshooting a lamp not working as a landscape page.}{sch:22}
 
-\repeatN{58}
+
+\repText[58]
 
 %------------------------------------------------------
 \section{Source Code Listing Inside Regular Chapters}
-\tcb{Listings of source codes are complicated. The excellent ``\texttt{listing}'' package is not compatible with tagging; therefore, we use a simpler yet versatile ``\texttt{fancyverb}'' package and developed the ``mylisting'' environment, applicable to both regular chapters and appendices. The strategy consists of two steps. (1) Code the caption with \cmd{myliscap} or \cmd{mylisapcap}, and (2) Code the actual listings with ``\texttt{mylisting}'' environment with their options [fontsize, frame, numbers, xleftmargin] coded with default. Follow the code below and in the appendix.}
+\tcb{Listings of source codes are complicated. The excellent ``\texttt{listing}'' package is not compatible with tagging; therefore, we use a simpler yet versatile ``\texttt{fancyverb}'' package and developed the ``mytlisting'' environment, applicable to both regular chapters and appendices. The strategy consists of two steps. (1) Code the caption with \cmd{myliscap} or \cmd{mylisapcap}, and (2) Code the actual listings with ``\texttt{mytlisting}'' environment with their options [fontsize, frame, numbers, xleftmargin] coded with default. Follow the code below and in the appendix.}
 
-\vo
 % Step 1 of 2
-\myliscap[-0.3in]{Python code listing for finding whether a given number is prime.}{lis:21}
+\mytliscap{Python2 code listing for finding whether a given number is prime.}{lis:21}
 
 % Step 2 of 2
 % Other options [font sizes] [frame=none, single] [numbers=none, left, right] [xleftmargin]
-\begin{mylisting}[fontsize=\small, frame=single, numbers=left]
+\begin{mytlisting}[fontsize=\small, frame=single, numbers=left]
 import math
 
 def is_prime(n):
@@ -327,9 +334,12 @@ def is_prime(n):
 
 # Example usage:
 print(is_prime(29))  # Output: True
-\end{mylisting}
+\end{mytlisting}
+
+\repText[75]
 
 %------------------------------------------------------
+\mysectop
 \section{Some References}
 Referring to all entries in the ``\texttt{mybib.bib}'' file to generate the citations here and the listing using the \texttt{\textbackslash citep\{\ldots\}} ``natbib'' command (cite parenthesis \citep{texbook,lcompanion,latex2e,knuth1984,lesk1977,amsthm2017,calvo2004using,cannayen2011latex,kopka2004guide,notso2021,bari2016identification}.
 
@@ -352,29 +362,66 @@ The same using \texttt{\textbackslash citet\{\ldots\}} command (cite text) in th
 
 %-----------------------------------------------------------------------------
 \section{Abbreviations, Variables, Subscripts, and Indices}
-\tcb{Equations should follow the established convention --- and loosely coding the equation and its elements is simply unprofessional. In general, such conventions, if not taken with specific care, will be overlooked, and the user feels no harm done. It was noticed that several published papers carry these mistakes---which will not make it right, and users should not follow a bad example.}
+\tcb{Equations should follow the established convention. Loosely coding the equation and its elements is unprofessional. In general, such conventions, if not carefully followed, will be overlooked, and the user will not perceive any harm. It has been observed that several published papers contain these mistakes, which will not rectify the situation. Users should not emulate such poor examples.}
 
+%-----------------------------------------------------------------------------
 \section{Some Examples of Correctly Formatted Equations}
 
-Some examples of correctly formatted equations. 
+(1) Some examples of correctly formatted equations. Here, all symbols are variable and in \textit{italics}. \:[Command: \cmdd{myteqn}]. The \Cref{eq:three} is a combined equation. 
 
-\myeqn{y = mx + c;  \quad\quad\quad E = m \times c^2}
+\myteqn{y = mx + c;  \quad\quad\quad 
+E = m \times c^2; \quad\quad\quad  
+\text{Sum} = \sum^{n}_{i = 1} x_i \label{eq:three}
+}
 
-Here, all symbols are variable and in \textit{italics}.
+(2) Equation with fractions formatted equations: \:[Command: \cmdd{mytfraceqn}]
 
-\myeqn{\text{Sum} = \sum^{n}_{i = 1} x_i}
+\mytfraceqn{% shortcut for equation vertically spaced
+\mt{roots} = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+\label{eq:roots}
+}
 
-Check the use of text, subscripts, and indices. 
+(3) Simple align eqns (collection of eqns. + alignment): \:[Command: \cmdd{mytalign}]
 
-\myalign{
-\text{Percent}_\text{change} & = \frac{V_\text{new} - V_\text{old}}{V_\text{old}} \times 100\\
-\text{Precision} &= \frac{\text{TP}}{\text{TP + FP}}\\
-\text{Recall} &= \frac{\text{TP}}{\text{TP + FN}}\\
-\text{F1 score} &= \frac{2\,(\text{Precision} \times \text{Recall})}{\text{Precision} + \text{Recall}}\\
-\text{CR}_\text{lim} & = B / \sum^{x}_{m = 1} \left(\frac{C_m}{\text{RfD}_m}\right) 
+\mytalign{
+\text{Percent}_\text{change} & = \frac{V_\text{new} - V_\text{old}}{V_\text{old}} \times 100 \label{eq:per}\\
+\text{Precision} &= \frac{\text{TP}}{\text{TP + FP}} \label{eq:pre}\\
+\text{F1 score} &= \frac{2\,(\text{Precision} \times \text{Recall})}{\text{Precision} + \text{Recall}} \label{eq:f1s}\\
+\text{CR}_\text{lim} & = B / \sum^{x}_{m = 1} \left(\frac{C_m}{\text{RfD}_m}\right) \\
+r^2 &= a^2 + b^2 \label{eq:sum}
 }
 
 Check the use of text, subscripts, variables, and indices. 
+
+(4) Simple gather equation (collection of equations): \: \:[Command: \cmdd{mytgather}] \repText[18]
+
+\mytgather{
+    (a + b)^2 = a^2 + 2ab + b^2 \\
+    2x - 5y = 8 \\
+    a^2 = b^2 + c^2 - d^2
+}
+
+(5) Simple split equation (single long equation that wraps and is aligned): \:[Command: \cmdd{mytsplit}]. \repText[14]
+
+\mytsplit{
+a & =b+c-d+e+f+g \\
+ & \quad +h-i+j\\
+ & \neq g+h\\
+ & = i + j + k + l + m + n + o + p
+ \label{eq11}
+}
+
+(6) Simple multline equation (single long equation that wraps not aligned): \:[Command: \cmdd{mytmultline}]. \repText[12]
+
+\mytmultline{
+\mt{Sum} = \sum = a+b+c+d+e+f+g+h+i+j+k+\\
+l+m+n+o+p+q+r+s+t+w+x+y+z
+\label{eq:mul}
+}
+
+All these types of equations have the ``starred'' versions that will not have the equation numbers (e.g., \cmdd{myteqn*}). All label commands (e.g., \cmd{label\{eq:line\}}, \cmd{label\{eq1\}}) are directly coded in the argument as shown. The equations can be cross-referenced in the \LaTeX{} way. The aligned labeled equations are: \cref{eq:per,eq:pre,eq:f1s,eq:sum}, split is: \cref{eq11}, and multiline is: \cref{eq:mul}. 
+
+\repInText[my input text][24]
 
 %--------------------------------------------
 \mysectop
@@ -431,8 +478,7 @@ Symbols T and $T$, and t and $t$ are technically different quantities. The same 
 \section{Equation and Definition---An Example}
 The loading and unloading time can be determined using the number of bales generated and the loading and unloading time (min) per bale inputs as follows:
 
-\vo
-\myalign{
+\mytalign{
 \te{Handling:}\quad T_\te{LU} & = \te{NB} \times (T_\te{L} + T_\te{U})/ 60 
 \label{tlu}\\
 \te{Overall:}\quad T_\te{OT} & = (T_\te{LU} + T_\te{C}) / 60 
@@ -484,7 +530,7 @@ The long table using xltabular (\cref{tab:32}) illustrates several functionaliti
     \endfoot    
 % 4 of 4
     \bottomrule
-    \multicolumn{4}{@{} p{\textwidth} @{}}{\vspace{-0.35in} \singlespacing The final footnote here. \repeatN{50}} \\
+    \multicolumn{4}{@{} p{\textwidth} @{}}{\vspace{-0.35in} \singlespacing The final footnote here. \repText[60]} \\
     \endlastfoot
     
 % Table data 
@@ -543,11 +589,9 @@ The long table using xltabular (\cref{tab:32}) illustrates several functionaliti
 \section{Appendix A - Section With Figure}
 \kant[9]
 
-\vo
-\myfigapt[-0.05in]{h!}{0.5}{example-image-golden}{A golden ratio rectangle image from the \texttt{mwe} package.}{A gray rectangle drawn with the golden ratio.}{fig:a1}	
+\mytfigap{h!}{0.45}{example-image-golden}{A golden ratio rectangle image from the \texttt{mwe} package.}{A gray rectangle drawn with the golden ratio.}{fig:a1}% all default options	
 
-\vt
-\repeatN{58}
+\repText[58]
 
 %------------------------------------------------------
 \mysectop
@@ -586,27 +630,25 @@ Note: In many cases, the word ``Note'' is not required. Again, the vertical line
 \end{xltabular}
 \end{appendixtable}
 
-
 \vrh
 \tcb{For other types of tables and figures, such as landscape tables, long tables, landscape long tables, landscape figures, subfigures, subfigures spanning multiple pages, and multiple figures in landscape, see NDSU-Thesis-Extended code and output.} 
 
 
 %------------------------------------------------------
 \subsection{Appendix A - Subsubsection}
-\repeatN{218}
+\repText[218]
 
 
 %------------------------------------------------------
 \section{Appendix A - Subsection With Listing}
-\tcb{See Listing~\ref{lis:21} preamble for information.} \repeatN{68}
+\tcb{See Listing~\ref{lis:21} preamble for information.} \repText[68]
 
-\vo
-% Step 1 of 2
-\mylisapcap[-0.25in]{Java code listing for finding all prime numbers from 1 to 100.}{lisa:1}
+% Step 1 of 2:    Code the listing appendix caption [before vspace] {caption} [after vspace]
+\mytliscapap{Java code listing for finding all prime numbers from 1 to 100.}{lisa:1}
 
-% Step 2 of 2
+% Step 2 of 2:    Code the listing using simpler mytlisting environment
 % Other options [font sizes] [frame=none, single] [numbers=none, left, right] [xleftmargin]
-\begin{mylisting}[fontsize=\normalsize, frame=single, numbers=none, xleftmargin=0pt]
+\begin{mytlisting}[fontsize=\normalsize, frame=single, numbers=none, xleftmargin=0pt]
 public class PrimeFinder {
     public static void main(String[] args) {
         int limit = 100;
@@ -626,7 +668,9 @@ public class PrimeFinder {
         return true;
     }
 }
-\end{mylisting}
+\end{mytlisting}
+
+\repText[38]
 
 %------------------------------------------------------
 \checkEndRefsection%%% Don't delete this! Command given at the end of each chapter
@@ -643,14 +687,13 @@ public class PrimeFinder {
 
 \noindent\start \tcb{Start writing your appendix following the template and examples given here.}
 
-\tcb{Appendix material can be included here. First, including a figure (fig.~\ref{fig:ap2}).}
+\tcb{Appendix material can be included here. First, including a figure (fig.~\ref{fig:b1}).}
 
 %------------------------------------------------------
 \section{Appendix B - Section With Figure}
-\repeatN{79}
+\repText[38]
 
-\vh
-\myfigapt[-0.05in]{h!}{0.8}{utbmciadreport-ciad-frontbackground}{A stock picture from the TeXLive 2025 texmf-dist distribution from UTBM-CIAD report.}{A stock image from the TeXLive 2025 texmf-dist distribution from UTBM-CIAD showing a human and robotic hand meeting.}{fig:ap2}
+\mytfigap[0.15in]{h!}{0.8}{utbmciadreport-ciad-frontbackground}[0pt]{A stock picture from the TeXLive 2025 texmf-dist distribution from UTBM-CIAD report.}[0pt]{A stock image from the TeXLive 2025 texmf-dist distribution from UTBM-CIAD showing a human and robotic hand meeting.}{fig:b1}
 
 %------------------------------------------------------
 \mysectop
@@ -677,9 +720,13 @@ Number & Square        & Cubes          & Fourth power\\
 \end{appendixtable}
  
 %------------------------------------------------------
+\subsection{Appendix B - Subsection with Scheme}
+\repInText[my repeated sample filler text][4]. An appendix scheme is shown in Scheme~\ref{sch:b1}.
 
-\subsection{Appendix B - Subsection}
-\repeatTN{my repeated sample filler text}{30}
+% Using only one optional argument - non-ambiguous optional argument.
+\mytschap[0.025in]{h!}{0.35}{LampFlowchart}{Flowchart of controls of light bulb---A scheme---using myschst command.}{A flow diagram showing the steps of troubleshooting a lamp not working.}{sch:b1}
+
+\repInText[my repeated sample filler text][4]
 
 %------------------------------------------------------
 \checkEndRefsection%%% Don't delete this! Command given at the end of each chapter
