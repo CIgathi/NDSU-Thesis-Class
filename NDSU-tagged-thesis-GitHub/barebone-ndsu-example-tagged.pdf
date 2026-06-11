@@ -524,7 +524,7 @@ BT
 /F15 9.96264 Tf
 1 0 0 1 293.949 195.706 Tm [<0067>]TJ
 /F20 11.47704 Tf
-1 0 0 1 297.151 195.706 Tm [(10,)]TJ
+1 0 0 1 297.151 195.706 Tm [(11,)]TJ
 /F15 9.96264 Tf
 1 0 0 1 313.104 195.706 Tm [<0067>]TJ
 /F20 11.47704 Tf
@@ -2269,7 +2269,7 @@ endobj
 << /DisplayDocTitle true  >>
 endobj
 143 0 obj
-<< /Subtype /text#2Fplain/Type /EmbeddedFile /Params<</ModDate (D:20260610) >> /Length 115 >>        
+<< /Subtype /text#2Fplain/Type /EmbeddedFile /Params<</ModDate (D:20260611) >> /Length 115 >>        
 stream
 The document was declared to be of type PDF/A-4f but hasn't any attachments. LaTeX therefore added this dummy file.
 endstream
@@ -2353,7 +2353,7 @@ endobj
 << /Type /Namespace /NS (https://www.latex-project.org/ns/book) /RoleMapNS 18 0 R  >>
 endobj
 19 0 obj
-<< /Type /Namespace /NS (data:,E39DB78F-29AA-CDCE-623E-103CEFE4A687)  >>
+<< /Type /Namespace /NS (data:,C23F5853-6C0D-D720-D0E7-A41DA8D80A31)  >>
 endobj
 8 0 obj
 [ 9 0 R 11 0 R 13 0 R 15 0 R 17 0 R 19 0 R  ]
@@ -2864,7 +2864,7 @@ stream
        <rdf:Bag>
         <rdf:li rdf:parseType="Resource">
          <pdfd:claimBy>LaTeX Project</pdfd:claimBy>
-         <pdfd:claimDate>2026-06-10</pdfd:claimDate>
+         <pdfd:claimDate>2026-06-11</pdfd:claimDate>
         </rdf:li>
        </rdf:Bag>
       </pdfd:claimData>
@@ -2875,7 +2875,7 @@ stream
        <rdf:Bag>
         <rdf:li rdf:parseType="Resource">
          <pdfd:claimBy>LaTeX Project</pdfd:claimBy>
-         <pdfd:claimDate>2026-06-10</pdfd:claimDate>
+         <pdfd:claimDate>2026-06-11</pdfd:claimDate>
         </rdf:li>
        </rdf:Bag>
       </pdfd:claimData>
@@ -2911,17 +2911,17 @@ stream
    </dc:language>
    <dc:date>
     <rdf:Seq>
-     <rdf:li>2026-06-10T21:42:55-05:00</rdf:li>
+     <rdf:li>2026-06-11T14:26:18-05:00</rdf:li>
     </rdf:Seq>
    </dc:date>
    <dc:format>application/pdf</dc:format>
    <dc:source>barebone-ndsu-example-tagged.tex</dc:source>
    <xmp:CreatorTool>LaTeX with hyperref</xmp:CreatorTool>
-   <xmp:CreateDate>2026-06-10T21:42:55-05:00</xmp:CreateDate>
-   <xmp:ModifyDate>2026-06-10T21:42:55-05:00</xmp:ModifyDate>
-   <xmp:MetadataDate>2026-06-10T21:42:55-05:00</xmp:MetadataDate>
+   <xmp:CreateDate>2026-06-11T14:26:18-05:00</xmp:CreateDate>
+   <xmp:ModifyDate>2026-06-11T14:26:18-05:00</xmp:ModifyDate>
+   <xmp:MetadataDate>2026-06-11T14:26:18-05:00</xmp:MetadataDate>
    <xmpMM:DocumentID>uuid:d7e7befe-11f8-4339-8c8c-4c5064ac42a3</xmpMM:DocumentID>
-   <xmpMM:InstanceID>uuid:d5ba54df-57f2-4e47-8b35-c7c1d7665432</xmpMM:InstanceID>
+   <xmpMM:InstanceID>uuid:133f6152-217c-4e4a-812b-16c8d822cabc</xmpMM:InstanceID>
    <prism:complianceProfile>three</prism:complianceProfile>
    <prism:pageCount>4</prism:pageCount>
   </rdf:Description>
@@ -3960,7 +3960,7 @@ xref
 0000130248 00000 n 
 0000130309 00000 n 
 trailer
-<< /Size 185 /Root 184 0 R /ID [ <C752DE7D89C63DD805BDF8F89980D66F> <C752DE7D89C63DD805BDF8F89980D66F> ] >>
+<< /Size 185 /Root 184 0 R /ID [ <30A225334B1E9B04DBBB14417541A723> <30A225334B1E9B04DBBB14417541A723> ] >>
 startxref
 130642
 %%EOF
