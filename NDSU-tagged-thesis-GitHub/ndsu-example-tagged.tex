@@ -1,18 +1,20 @@
-%******************* Metadata for PDF tagging *** [Updated: 10-06-2026] *******************
+%******************* Metadata for PDF tagging *** [Updated: 16-06-2026] *******************
 \DocumentMetadata{
   tagging=on,
   lang=en-US,
   tagging-setup={math/setup=mathml-SE,math/alt/use},
-  pdfversion=2.0,
-  pdfstandard=ua-2,% ua-1 is possible downgrate
+  pdfversion=2.0,% modern standard
+  pdfstandard=ua-2,% =ua-1 possible downgrade and compatible with older PDF 1.7
   pdfstandard=a-4f,% creates compliance with the PDF/A standard
   uncompress,
- % testphase={block=false},   % <-- required May 2026
+% testphase={block=false},  % safety valve - was required May 2026 (latex-lab-testphase-block v1.0a)
+%                                           % may be re-needed after future TeX Live updates
 }
-
 %
+%
+%***********************************************
 % Refer to documentation (ndsu-thesis-tagged-documentation....) for various options and commands
-% Use LuaTeX for compiling (LuaTeX+Biber+LuaTeX+LuaTeX for docs with bibliography)
+% Use LuaLaTeX for compiling (LuaLaTeX+Biber+LuaLaTeX+LuaTLaTeX for docs with bibliography)
 %
 % Created by C. Igathinathane <i.cannayen@nsdu.edu>,  ABEN, NDSU
 %
@@ -42,8 +44,6 @@
 \DeclareSIUnit\ft{ft}
 \newcommand{\sqft}[1]{\qty{#1}{foot}$^2$\xspace}% have math outside of SI
 \newcommand{\cuft}[1]{\qty{#1}{\cubic\ft}\xspace}% SI standard commands
-
-
 
 %******************* First and second page material *******************
 % Default 2-line title. Otherwise use \setlength{\droptitle}{Xin}; X = -1.57 for 1-line  and -1.47 for 3-line titles
@@ -441,26 +441,26 @@ All these types of equations have the ``starred'' versions that will not have th
 }
 \caption{Equation coding conventions --- Dos and dont's with examples} \label{tab:eq}\\[-0.15in]
 \toprule
-\textbf{Item}		& \textbf{Correct form---Do}		& \textbf{Wrong form---\textcolor{red!80!black}{Don't}}		& \textbf{Remarks}\\
+\textbf{Item}		& \textbf{Correct form---Do}		& \textbf{Wrong form---\textcolor{red!60!black}{Don't}}		& \textbf{Remarks}\\
 \midrule
-Abbrevia\-tions & ABEN, STD, TP, TN, FP, FN & \textcolor{red!80!black}{$ABEN, STD$, $TP, TN, FP$, $FN$} & Abbreviations, usually $>1$ letter long, should always be upright. This should be followed in regular text and in equations (use the \cmd{text\{\ldots\}} * in equations or math mode). Otherwise, it may be considered as a product of variables. \\
+Abbrevia\-tions & ABEN, STD, TP, TN, FP, FN & \textcolor{red!60!black}{$ABEN, STD$, $TP, TN, FP$, $FN$} & Abbreviations, usually $>1$ letter long, should always be upright. This should be followed in regular text and in equations (use the \cmd{text\{\ldots\}} * in equations or math mode). Otherwise, it may be considered as a product of variables. \\
 
 \cmidrule(lr){2-4}
-Variables & $T, P, V, t, v$ & \textcolor{red!80!black}{T, P, V, t, v} & Variables, usually 1 letter long, should always be typeset in italics. The italics font signifies technical symbols of variables (e.g., temperature, pressure, volume, time, velocity).\\ 
+Variables & $T, P, V, t, v$ & \textcolor{red!60!black}{T, P, V, t, v} & Variables, usually 1 letter long, should always be typeset in italics. The italics font signifies technical symbols of variables (e.g., temperature, pressure, volume, time, velocity).\\ 
 
 \cmidrule(lr){2-4}
 Subscripts and superscripts & $T_\text{avg}$, $\text{TP}_{\max}$, $\text{RMSE}_{\text{observed}}$, $v^\text{in}$, $t^\text{output}$, $P^\text{top}_\text{min}$ 
-& \textcolor{red!80!black}{$T_{avg}$, $\text{TP}_{max}$, $\text{RMSE}_{observed}$, $v^{in}$, $t^{output}$, $P^{top}_{min}$ } 
+& \textcolor{red!60!black}{$T_{avg}$, $\text{TP}_{max}$, $\text{RMSE}_{observed}$, $v^{in}$, $t^{output}$, $P^{top}_{min}$ } 
 & Subscripts and superscripts, usually $>1$ letter long, should always be typeset upright. \\[1ex] 
 
 \cmidrule(lr){2-4}
 Index & $i, j, k, l, m,$ $x_i, y_j, z_1, \theta_{23}$ 
-& \textcolor{red!80!black}{i, j, k, l, m,  $x_\text{i}, y_\text{j}, z_\textit{1}, \theta_\textit{23}$} 
+& \textcolor{red!60!black}{i, j, k, l, m,  $x_\text{i}, y_\text{j}, z_\textit{1}, \theta_\textit{23}$} 
 & Indices, usually 1 letter long, should be always be typeset in italics and not upright. However, numbers should always be upright.\\ 
 
 \cmidrule(lr){2-4}
 Standard operations & abs, $\sin, \cos,$  $\min, \max$
-& \textcolor{red!80!black}{$abs, sin, cos,$ $min, max$} 
+& \textcolor{red!60!black}{$abs, sin, cos,$ $min, max$} 
 & Standard operations are usually formatted upright. In \LaTeX{} when coded in ``math'' mode or equation environment, these operations will always come out upright. \\ 
 
 \cmidrule(lr){2-4}
@@ -487,7 +487,7 @@ The loading and unloading time can be determined using the number of bales gener
 
 \noindent where, $T_\te{LU}$ is total bale loading and unloading time (h), NB is number of bales, $T_\te{L}$ is the loading time per bale (min), $T_\te{U}$ is the unloading time per bale (min), $T_\te{OT}$ is the overall bale movement time (h), and $T_\te{C}$ is the bale collection time (min). 
 
-\tcb{Note the exact reproduction of the symbols in the definitions  (font and format; \textcolor{magenta}{no wrong mixup of upright and italics characters with technical symbols!}) that followed the \cref{tlu,tot} in the order of left to right and top to bottom. It is also recommended to use the units of the symbols during the definition. Also, notice the use of noindent with ``where''.}
+\tcb{Note the exact reproduction of the symbols in the definitions  (font and format; \textcolor{magenta}{no incorrect mixup of upright and italics characters with technical symbols!}) that followed the \cref{tlu,tot} in the order of left to right and top to bottom. It is also recommended to use the units of the symbols during the definition. Also, notice the use of noindent with ``where''.}
 
 
 %-----------------------------------------------------------------------------
@@ -724,7 +724,7 @@ Number & Square        & Cubes          & Fourth power\\
 \repInText[my repeated sample filler text][4]. An appendix scheme is shown in Scheme~\ref{sch:b1}.
 
 % Using only one optional argument - non-ambiguous optional argument.
-\mytschap[0.025in]{h!}{0.35}{LampFlowchart}{Flowchart of controls of light bulb---A scheme---using myschst command.}{A flow diagram showing the steps of troubleshooting a lamp not working.}{sch:b1}
+\mytschap[0.025in]{h!}{0.35}{LampFlowchart}{Flowchart of controls of light bulb---A scheme---using myschst command.}[-0.15in]{A flow diagram showing the steps of troubleshooting a lamp not working.}{sch:b1}
 
 \repInText[my repeated sample filler text][4]
 

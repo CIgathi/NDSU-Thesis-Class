@@ -1,16 +1,20 @@
-%******************* Metadata for PDF tagging *** [Updated: 18-05-2026] *******************
+%******************* Metadata for PDF tagging *** [Updated: 16-06-2026] *******************
 \DocumentMetadata{
- tagging=on,
- lang=en-US,
- tagging-setup={math/setup=mathml-SE,math/alt/use},
- pdfversion=2.0,
- pdfstandard=ua-2,
- pdfstandard=a-4f,
- uncompress,
+  tagging=on,
+  lang=en-US,
+  tagging-setup={math/setup=mathml-SE,math/alt/use},
+  pdfversion=2.0,% modern standard
+  pdfstandard=ua-2,% =ua-1 possible downgrade and compatible with older PDF 1.7
+  pdfstandard=a-4f,% creates compliance with the PDF/A standard
+  uncompress,
+% testphase={block=false},  % safety valve - was required May 2026 (latex-lab-testphase-block v1.0a)
+%                                           % may be re-needed after future TeX Live updates
 }
 %
+%
+%***********************************************
 % Refer to documentation (ndsu-thesis-tagged-documentation....) for various options and commands
-% Use LuaTeX for compiling (LuaTeX+Biber+LuaTeX+LuaTeX for docs with bibliography)
+% Use LuaLaTeX for compiling (LuaLaTeX+Biber+LuaLaTeX+LuaTLaTeX for docs with bibliography)
 %
 % Created by C. Igathinathane, (i.cannayen@nsdu.edu) ABEN, NDSU
 %
@@ -28,6 +32,8 @@
 % For numeric styles, viz., ieee, numeric, numeric-comp see documentation Sec. 
 
 \addbibresource{mybib.bib}% *.bib extension is necessary 
+
+\title{\voh My \LaTeX{} Thesis}
 
 
 %******************* Document start *******************

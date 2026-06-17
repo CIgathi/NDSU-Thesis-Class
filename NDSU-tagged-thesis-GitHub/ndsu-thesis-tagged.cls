@@ -51,8 +51,7 @@
 %
 %---------------------------------------------------------------------------------------------------------
 %  Update history
-%  Last updated: 2026-06-06;  LaTeX3 updates in May 2026 - chapter style - major changes in class 
-
+%  Last updated: 2026-06-16;  Checks for LuaLaTeX engine and issues a warning if not used
 %  Last updated: 2026-06-06;  LaTeX3 updates in May 2026 - chapter style - major changes in class 
 %  Last updated: 2026-05-12;  LOA, LOS now simple list tagging compatible
 %  Last updated: 2026-05-11
@@ -122,6 +121,21 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ProcessOptions*\relax
 \LoadClass[oneside,notitlepage,\@@ptsize]{book}
+
+
+% -----------------------------------------------------------------------
+\RequirePackage{iftex}
+\ifLuaTeX
+    % LuaLaTeX is being used - runs the file. Issue a warning in the console with other engines
+\else
+\errmessage{^^J^^J% newline character with TeX
+*********************************************************^^J% 
+Engine Error: This document requires LuaLaTeX to compile. ^^J%
+Please change your compiler engine and run again! ^^J%
+*********************************************************^^J}
+\fi
+% -----------------------------------------------------------------------
+
 
 % RequirePackage command and other essential packages used
 \RequirePackage{lmodern}   
