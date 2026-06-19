@@ -38,7 +38,7 @@ Usage:
 (5) This single example file contains all the prefatory, chapters, and appendices - that users can observe and input their content\
 (6) Use block comments and temporary end statements to focus on specific items (chapters, sections, paragraphs, etc.)\
 (7) Use the barebone-ndsu-example-tagged.tex for testing, and then move the contents\
-(8) Figures and bibliography can be appropriately stored and referenced in the source\
+(8) Figures and bibliography can be appropriately stored and referenced in the source
 
 Note: It is easier than you think to produce a professional-quality thesis, as numerous LaTeX theses are created by users daily.
 
