@@ -51,6 +51,7 @@
 %
 %---------------------------------------------------------------------------------------------------------
 %  Update history
+%  Last updated: 2026-09-09;  SI  units mode=math was set default when needed text used
 %  Last updated: 2026-06-16;  Checks for LuaLaTeX engine and issues a warning if not used
 %  Last updated: 2026-06-06;  LaTeX3 updates in May 2026 - chapter style - major changes in class 
 %  Last updated: 2026-05-12;  LOA, LOS now simple list tagging compatible
@@ -410,7 +411,9 @@ Please change your compiler engine and run again! ^^J%
 \RequirePackage{etoolbox}
 \RequirePackage{xtab}  % required for other commands
 \RequirePackage{siunitx}   % [binary-units = true]   
-\sisetup{detect-all}% maintain text font in SI items
+\sisetup{detect-all, mode=math}% maintain text font in SI items
+% making it default and when needed can use mode=text
+
 \RequirePackage{float}
 \RequirePackage[stable]{footmisc}% footnote in section and beyond
 \RequirePackage{pdflscape} 
@@ -2498,8 +2501,8 @@ bgcolor={gray}]
 
 
 % ------------------------- Some common shortcuts --------------------------------------
-
 \DeclareSIUnit{\USD}{\$}
+
 \definecolor{ndsugreen}{RGB}{0,72,51}
 \definecolor{ndsuyellow}{RGB}{251,205,22}
 
@@ -2516,6 +2519,7 @@ bgcolor={gray}]
 
 \newcommand\SU[2]{\qty[mode = text]{#1}{#2}\xspace} % redefined using qty
 \newcommand\su[1]{\unit[mode = text]{#1}\xspace} % redefined using unit
+
 
 \newcommand{\LX}{\LaTeX{}\xspace}% LaTeX logo
 \newcommand{\tb}{\textbackslash\xspace}%  text backslash
