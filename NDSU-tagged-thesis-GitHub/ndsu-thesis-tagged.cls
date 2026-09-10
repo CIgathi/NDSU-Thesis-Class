@@ -2513,7 +2513,7 @@ bgcolor={gray}]
 \newcommand\pr[1]{\qty[mode = text]{#1}{\percent}\xspace}
 \newcommand\dg[1]{\qty[mode = text]{#1}{\degreeCelsius}\xspace}
 
-\newcommand{\mlt}[1]{\qty{#1}{$\mu$\liter}\xspace}% for tagged micro liter in SI 
+\newcommand{\mlt}[1]{\qty[mode = text]{#1}{$\mu$\liter}\xspace}% for tagged micro liter in SI 
 \newcommand\dct[1]{\qty[mode = text]{#1}{\textdegree{C}}\xspace}% for tagged degree centigrade in SI
 \newcommand\dgt[1]{\qty[mode = text]{#1}{\textdegree{C}}\xspace}% for tagged 
 

@@ -24,6 +24,7 @@
 %******************* START *******************
 %\documentclass[ms-thesis,mathdesign,chpterrefs]{ndsu-thesis-tagged}% MS final, 12 pt
 \documentclass[ms-thesis,mathdesign,chapterrefs,showgriddm]{ndsu-thesis-tagged}% MS work, chap refs, 12 pt, showgrid darkmode
+%\documentclass[mathdesign,chapterrefs]{ndsu-thesis-tagged}% MS work, chap refs, 12 pt, showgrid darkmode
 %\documentclass[ms-thesis,mathdesign,showgriddm]{ndsu-thesis-tagged}% MS work, 12 pt
 %\documentclass[showgriddm]{ndsu-thesis-tagged}% PhD final, 12 pt, computer modern
 %\documentclass[mathdesign,darkmode]{ndsu-thesis-tagged}% PhD final, 12 pt, computer modern
@@ -38,6 +39,8 @@
 % For numeric styles, viz., ieee, numeric, numeric-comp see documentation Sec. 
 
 \addbibresource{mybib.bib}% *.bib extension is necessary 
+
+\newcommand{\figcite}[2]{#1} % arg 1: plain text, arg 2: real key, unused here but documents intent
 
 %***** SI units setup and a few custom unit commands *****
 \sisetup{group-separator = {,}}% thousands separator comma; space default
@@ -73,7 +76,7 @@ Dissertation template design and Important instructions for using the template:
 \item Read the ``\texttt{ndsu-thesis-tagged}'' class documentation to understand the available commands and features, which cannot be covered in this sample template.
 \end{itemize}
 }
-\start\tcb{Students and users may utilize this example as a ``template.'' Make a copy and start working. Most of the codes required to write the thesis are employed in this example (*.tex file), and along with the accompanying ``Documentation'' of the ``\texttt{ndsu-thesis-tagged}'' class, all necessary commands, options, and functionalities to generate a dissertation are covered. As this \LaTeX{} class generates tagged PDF, it is ``future-proof'' and supports the creation of ``Accessible Documents.'' The showgrid option, useful for vertical spacing of items (reference: $\approx$3 grids = $\approx$0.3 in), can be removed for the final output. Use LuaTeX for compiling (LuaTeX+Biber+LuaTeX+LuaTeX for docs with bibliography) for better tagging functionality. By the way, the ``\textbf{blue text}'' or other \textcolor{magenta}{colored} text or \hl{highlights} are used to draw attention!}
+\start\tcb{Students and users may utilize this example as a ``template.'' Make a copy and start working. Most of the code required to write the thesis is employed in this example (*.tex file), and along with the accompanying ``Documentation'' of the ``\texttt{ndsu-thesis-tagged}'' class, all necessary commands, options, and functionalities to generate a dissertation are covered. As this \LaTeX{} class generates tagged PDF, it is ``future-proof'' and supports the creation of ``Accessible Documents.'' The showgrid option, useful for vertical spacing of items (reference: $\approx$3 grids = $\approx$0.3 in), can be removed for the final output. Use LuaTeX for compiling (LuaTeX+Biber+LuaTeX+LuaTeX for docs with bibliography) for better tagging functionality. By the way, the ``\textbf{blue text}'' or other \textcolor{magenta}{colored} text or \hl{highlights} are used to draw attention!}
 \\ \indent \tcm{This is the abstract for my thesis. The word limits: 350 for PhD and 150 for MS.} \\ 
 \indent\repText[50]
 }%
@@ -109,6 +112,7 @@ Dissertation template design and Important instructions for using the template:
   \item[$r$]   	correlation coefficient (dimensionless) 
   \item[$R^2$]   	coefficient of determination (dimensionless) 
   \item[$t$]		time (\unit{\second}) 
+  \item[$T$]       temperature (\unit{\degreeCelsius})
   \item[\hl{*}]	\hl{Note: Items should be arranged in alphabetical order}
 }%
 
@@ -163,7 +167,7 @@ This is the third section of the thesis (1st level: 1.4. Section, PDF tag \tcb{H
 \voh% shortcut = \vspace{-0.15in}
 \begin{table}[ht!]
 \centering
-\caption{Table captions go at the top of the table. Compatible \texttt{tabular}. This was a long caption of the table included in the first chapter---so that we see how it breaks into another line and has a single spacing. Usually, tables are of full-width and are demonstrated subsequently.}
+\caption{Table captions go at the top of the table. Compatible \texttt{tabular}. This was a long caption of the table included in the first chapter---so that we see how it breaks into another line and has a single spacing. Usually, tables are full-width and are demonstrated subsequently.}
 \label{tab:1}
 \pvo
 \tagpdfsetup{table/header-rows={1}}% for tagging the header row(s) {1,2}
@@ -185,7 +189,7 @@ Number & Month & Days\\
 
 \tcb{Now the figure (\cref{fig:11}) illustrates an example figure from the \texttt{mwe} package.}
 
-\mytfig{ht!}{0.6}{example-image-duck}{Caption for this example image in this first chapter using the tagged shortcut command \texttt{mytfig} that has optional vertical spacing before and after the figure caption.}{A yellow duck with a golden crown and pizza in the belly on a gray background.}{fig:11}% all default options
+\mytfig[0.5in]{ht!}{0.6}{example-image-duck}{Caption for this example image in this first chapter using the tagged shortcut command \texttt{mytfig} that has optional vertical spacing before and after the figure caption.}{A yellow duck with a golden crown and pizza in the belly on a gray background.}{fig:11}% all default options
 
 \vo% shortcut = \vspace{-0.1in}
 \repText[58]
@@ -232,7 +236,7 @@ Number 	& Name of month 	& Days 	& Season\\
 \#5 		& May    			& 31		& Summer\\
 \#6 		& June   			& 30		& Summer\\
 \bottomrule\\[-10pt]
-\multicolumn{4}{@{}p{\textwidth}@{}}{The footnote is created using the multicolumn command spanning all the columns of the table. \tcb{The fontsize of the footnote should be the same as the table contents.}}
+\multicolumn{4}{@{}p{\textwidth}@{}}{The footnote is created using the multicolumn command spanning all the columns of the table. \tcb{The font size of the footnote should be the same as the table contents.}}
 \end{tabular}
 \end{table}	
 
@@ -252,7 +256,7 @@ Number 	& Name of month 	& Days 	& Season\\
 \#5 		& May    			& 31		& Summer\\
 \#6 		& June   			& 30		& Summer\\
 \bottomrule\\[-10pt]
-\multicolumn{4}{@{}p{\textwidth}@{}}{The footnote is created using the multicolumn command spanning all the columns of the table. \tcb{The fontsize of the footnote should be the same as the table contents.}}
+\multicolumn{4}{@{}p{\textwidth}@{}}{The footnote is created using the multicolumn command spanning all the columns of the table. \tcb{The font size of the footnote should be the same as the table contents.}}
 \end{xltabular}
 \endgroup
 
@@ -271,6 +275,30 @@ The \Cref{fig:21} is an example image with a command showing all arguments, incl
 
 %------------------------------------------------------
 \mysectop% Header on top of page vertical adjustment  
+\section{SI Units}
+\tcb{SI units work with LuaLaTeX as expected. The \cmd{qty}\{\ldots\}\{\ldots\} and  \cmd{unit}\{\ldots\} can be used. Refer to the \hl{siunitx} package documentation for a wealth of information. The units can be \hl{expanded or abbreviated}. Regular and shortcuts already defined can be used. A few examples are shown below:}
+
+\noindent\hspace{1ex} 
+\qty{2.998e8}{\m\per\s} \hspace{2ex} 
+\qty{100}{\degreeCelsius} = \dct{100} = \dgt{100} \hspace{2ex} 
+\qty{95}{\percent} = \pr{95} = \pt{95}  \hspace{2ex} \ang{360} 
+
+\noindent\hspace{1ex} 
+\unit{\kilo\meter\per\second} = \unit{\km\per\s}  \hspace{2ex} 
+\num{12345} = \num[group-separator = \ ]{12345} = \num[group-separator=]{12345}  \hspace{2ex} 
+\qty{72}{\ft} = \qty{72}{ft}   \hspace{2ex} 
+\qty{1}{section} = \qty{640}{acre}
+
+\noindent\hspace{1ex} 
+\unit{\USD}1 will not take you far, but \unit{\USD}\num{1000000} certainly will.  \hspace{2ex} 
+\qty{1}{gal} = \qty[group-separator=]{3.78541}{\liter} \hspace{2ex} 
+\qty{20}{pixel}
+
+\noindent\hspace{1ex} 
+Micro liter needs special treatment: \qty[mode = text]{20}{$\mu$\liter} = \mlt{20}.   \hspace{2ex} Others not: 
+\qty{725}{\milli\liter\per\second} = \qty{725}{\ml\per\s}
+
+%------------------------------------------------------
 \section{Equations}
 \tcb{New shortcuts for equations were developed that work directly without any vspace adjustments, and they stay as separate paragraph items (natural flow). The shortcuts had the vspace(s) built in before and after the equations. If necessary,  additional vspace commands can be given around the equations.}\repText[11]
 
@@ -279,12 +307,14 @@ y = (mx + c) \times \text{NCF} \times S_\text{factor} \times c_p \times M_\text{
 \label{eq:lin}
 }
 
-\noindent where $y$ is the dependent variable, $m$ is the slope, $x$ is the independent variable, $c$ is the $y$ intercept, NCF is the normalized conversion factor, $S_\text{factor}$ is the scale factor, $c_p$ is the specific heat capacity at constant pressure ($p$, variable), and $M_\text{p}$ is the mass of a proton (p, descriptive). 
+\noindent where $y$ is the dependent variable, $m$ is the slope, $x$ is the independent variable, $c$ is the $y$-intercept, NCF is the normalized conversion factor, $S_\text{factor}$ is the scale factor, $c_p$ is the specific heat capacity at constant pressure ($p$, variable), and $M_\text{p}$ is the mass of a proton (p, descriptive). 
 
 Note how variables, abbreviations, and subscripts are coded in \cref{eq:lin}. Refer to the Extended Thesis to know more about equations and shortcuts. 
 
 \repText[59]
 
+\mysectop% to take the equation to the top
+\pvh
 \mytfraceqn{% shortcut for equation vertically spaced
 \mt{roots} = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
 \label{eq:roots}
@@ -294,17 +324,17 @@ Note how variables, abbreviations, and subscripts are coded in \cref{eq:lin}. Re
 
 %------------------------------------------------------
 \section{Schemes}
-The shortcut was used to code the scheme (\cref{sch:21}), which is a substitute for the regular way using \texttt{includegraphics} command.
-\repInText[my dummy text][48]
+\tcb{The shortcut was used to code the scheme (\cref{sch:21}), which is a substitute for the regular way using \texttt{includegraphics} command.}
+\repInText[my dummy text][18]
 
-\mytsch{ht!}{0.5}{LampFlowchart}[0pt]{Flowchart of controls of light bulb---A scheme---using myschst command.}{A flow diagram showing the steps of troubleshooting a lamp not working.}{sch:21}
+\mytsch[-0.02in]{ht!}{0.5}{LampFlowchart}[0pt]{Flowchart of controls of light bulb---A scheme---using myschst command.}{A flow diagram showing the steps of troubleshooting a lamp not working.}{sch:21}
 
 \mytfig[0in]{t!}{0.7}{frog}[0.0in]{Caption for this example image demonstrating vertical spacing around caption.}[-0.05in]{A green frog with a yellow chest that is ready to hop.}{fig:22}
 
 \voh
 \repInText[filler text][70] 
 
-\tcb{The (\cref{sch:21,fig:22,sch:22}) are good. And, stating this differently, all the \Cref{sch:21,fig:22,sch:22} are good too. Note that \Cref{sch:22} is in landscape mode.}
+\tcb{The (\cref{sch:21,fig:22,sch:22}) are good. And, stated differently, all the \Cref{sch:21,fig:22,sch:22} are good too. Note that \Cref{sch:22} is in landscape mode.}
 
 \mytschls{p}{0.65}{LampFlowchart}[-0.1in]{Landscape scheme---Flowchart of controls of light bulb. Landscape can be applied to tables, figures, and schemes; also, these can be coded in appendices.}{A flow diagram showing the steps of troubleshooting a lamp not working as a landscape page.}{sch:22}
 
@@ -313,7 +343,7 @@ The shortcut was used to code the scheme (\cref{sch:21}), which is a substitute 
 
 %------------------------------------------------------
 \section{Source Code Listing Inside Regular Chapters}
-\tcb{Listings of source codes are complicated. The excellent ``\texttt{listing}'' package is not compatible with tagging; therefore, we use a simpler yet versatile ``\texttt{fancyverb}'' package and developed the ``mytlisting'' environment, applicable to both regular chapters and appendices. The strategy consists of two steps. (1) Code the caption with \cmd{myliscap} or \cmd{mylisapcap}, and (2) Code the actual listings with ``\texttt{mytlisting}'' environment with their options [fontsize, frame, numbers, xleftmargin] coded with default. Follow the code below and in the appendix.}
+\tcb{Listings of source code are complicated. The excellent ``\texttt{listing}'' package is not compatible with tagging; therefore, we use a simpler yet versatile ``\texttt{fancyverb}'' package and developed the ``mytlisting'' environment, applicable to both regular chapters and appendices. The strategy consists of two steps. (1) Code the caption with \cmd{myliscap} or \cmd{mylisapcap}, and (2) code the actual listings with ``\texttt{mytlisting}'' environment with their options [fontsize, frame, numbers, xleftmargin] coded with defaults. Follow the code below and in the appendix.}
 
 % Step 1 of 2
 \mytliscap{Python2 code listing for finding whether a given number is prime.}{lis:21}
@@ -367,7 +397,7 @@ The same using \texttt{\textbackslash citet\{\ldots\}} command (cite text) in th
 %-----------------------------------------------------------------------------
 \section{Some Examples of Correctly Formatted Equations}
 
-(1) Some examples of correctly formatted equations. Here, all symbols are variable and in \textit{italics}. \:[Command: \cmdd{myteqn}]. The \Cref{eq:three} is a combined equation. 
+(1) Some examples of correctly formatted equations. Here, all symbols are variables and in \textit{italics}. \:[Command: \cmdd{myteqn}]. The \Cref{eq:three} is a combined equation. 
 
 \myteqn{y = mx + c;  \quad\quad\quad 
 E = m \times c^2; \quad\quad\quad  
@@ -411,7 +441,7 @@ a & =b+c-d+e+f+g \\
  \label{eq11}
 }
 
-(6) Simple multline equation (single long equation that wraps not aligned): \:[Command: \cmdd{mytmultline}]. \repText[12]
+(6) Simple multiline equation (single long equation that wraps, not aligned): \:[Command: \cmdd{mytmultline}]. \repText[12]
 
 \mytmultline{
 \mt{Sum} = \sum = a+b+c+d+e+f+g+h+i+j+k+\\
@@ -419,7 +449,7 @@ l+m+n+o+p+q+r+s+t+w+x+y+z
 \label{eq:mul}
 }
 
-All these types of equations have the ``starred'' versions that will not have the equation numbers (e.g., \cmdd{myteqn*}). All label commands (e.g., \cmd{label\{eq:line\}}, \cmd{label\{eq1\}}) are directly coded in the argument as shown. The equations can be cross-referenced in the \LaTeX{} way. The aligned labeled equations are: \cref{eq:per,eq:pre,eq:f1s,eq:sum}, split is: \cref{eq11}, and multiline is: \cref{eq:mul}. 
+All these types of equations have the ``starred'' versions that will not have equation numbers (e.g., \cmdd{myteqn*}). All label commands (e.g., \cmd{label\{eq:line\}}, \cmd{label\{eq1\}}) are directly coded in the argument as shown. The equations can be cross-referenced in the \LaTeX{} way. The aligned labeled equations are: \cref{eq:per,eq:pre,eq:f1s,eq:sum}, split is: \cref{eq11}, and multiline is: \cref{eq:mul}. 
 
 \repInText[my input text][24]
 
@@ -446,7 +476,7 @@ All these types of equations have the ``starred'' versions that will not have th
 Abbrevia\-tions & ABEN, STD, TP, TN, FP, FN & \textcolor{red!60!black}{$ABEN, STD$, $TP, TN, FP$, $FN$} & Abbreviations, usually $>1$ letter long, should always be upright. This should be followed in regular text and in equations (use the \cmd{text\{\ldots\}} * in equations or math mode). Otherwise, it may be considered as a product of variables. \\
 
 \cmidrule(lr){2-4}
-Variables & $T, P, V, t, v$ & \textcolor{red!60!black}{T, P, V, t, v} & Variables, usually 1 letter long, should always be typeset in italics. The italics font signifies technical symbols of variables (e.g., temperature, pressure, volume, time, velocity).\\ 
+Variables & $T, P, V, t, v$ & \textcolor{red!60!black}{T, P, V, t, v} & Variables, usually 1 letter long, should always be typeset in italics. The italic font signifies technical symbols of variables (e.g., temperature, pressure, volume, time, velocity).\\ 
 
 \cmidrule(lr){2-4}
 Subscripts and superscripts & $T_\text{avg}$, $\text{TP}_{\max}$, $\text{RMSE}_{\text{observed}}$, $v^\text{in}$, $t^\text{output}$, $P^\text{top}_\text{min}$ 
@@ -456,12 +486,12 @@ Subscripts and superscripts & $T_\text{avg}$, $\text{TP}_{\max}$, $\text{RMSE}_{
 \cmidrule(lr){2-4}
 Index & $i, j, k, l, m,$ $x_i, y_j, z_1, \theta_{23}$ 
 & \textcolor{red!60!black}{i, j, k, l, m,  $x_\text{i}, y_\text{j}, z_\textit{1}, \theta_\textit{23}$} 
-& Indices, usually 1 letter long, should be always be typeset in italics and not upright. However, numbers should always be upright.\\ 
+& Indices, usually 1 letter long, should always be typeset in italics and not upright. However, numbers should always be upright.\\ 
 
 \cmidrule(lr){2-4}
 Standard operations & abs, $\sin, \cos,$  $\min, \max$
 & \textcolor{red!60!black}{$abs, sin, cos,$ $min, max$} 
-& Standard operations are usually formatted upright. In \LaTeX{} when coded in ``math'' mode or equation environment, these operations will always come out upright. \\ 
+& Standard operations are usually formatted upright. In \LaTeX{} when coded in ``math'' mode or an equation environment, these operations will always come out upright. \\ 
 
 \cmidrule(lr){2-4}
 Final thought!
@@ -485,15 +515,15 @@ The loading and unloading time can be determined using the number of bales gener
 \label{tot}
 }
 
-\noindent where, $T_\te{LU}$ is total bale loading and unloading time (h), NB is number of bales, $T_\te{L}$ is the loading time per bale (min), $T_\te{U}$ is the unloading time per bale (min), $T_\te{OT}$ is the overall bale movement time (h), and $T_\te{C}$ is the bale collection time (min). 
+\noindent where, $T_\te{LU}$ is the total bale loading and unloading time (h), NB is the number of bales, $T_\te{L}$ is the loading time per bale (min), $T_\te{U}$ is the unloading time per bale (min), $T_\te{OT}$ is the overall bale movement time (h), and $T_\te{C}$ is the bale collection time (min). 
 
-\tcb{Note the exact reproduction of the symbols in the definitions  (font and format; \textcolor{magenta}{no incorrect mixup of upright and italics characters with technical symbols!}) that followed the \cref{tlu,tot} in the order of left to right and top to bottom. It is also recommended to use the units of the symbols during the definition. Also, notice the use of noindent with ``where''.}
+\tcb{Note the exact reproduction of the symbols in the definitions  (font and format; \textcolor{magenta}{no incorrect mixup of upright and italic characters with technical symbols!}) that followed the \cref{tlu,tot} in the order of left to right and top to bottom. It is also recommended to use the units of the symbols during the definition. Also, notice the use of noindent with ``where''.}
 
 
 %-----------------------------------------------------------------------------
 \section{Longtable Using the Versatile and Compatible \texttt{xltabular} Package}
 
-The long table using xltabular (\cref{tab:32}) illustrates several functionalities. This non-floating table will start from any location it is coded (provided enough room for the headers). 
+The long table using xltabular (\cref{tab:32}) illustrates several functionalities. This non-floating table will start from any location where it is coded (provided enough room for the headers). 
 
 \vt% shortcut = \vspace{-0.2in}
 \begingroup
