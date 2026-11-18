@@ -1,14 +1,11 @@
-%******************* Metadata for PDF tagging *** [Updated: 16-06-2026] *******************
+%******************* Metadata for PDF tagging *** [Updated: 18-11-2026] *******************
 \DocumentMetadata{
   tagging=on,
   lang=en-US,
   tagging-setup={math/setup=mathml-SE,math/alt/use},
   pdfversion=2.0,% modern standard
   pdfstandard=ua-2,% =ua-1 possible downgrade and compatible with older PDF 1.7
-  pdfstandard=a-4f,% creates compliance with the PDF/A standard
-  uncompress,
-% testphase={block=false},  % safety valve - was required May 2026 (latex-lab-testphase-block v1.0a)
-%                                           % may be re-needed after future TeX Live updates
+  pdfstandard=a-4f% creates compliance with the PDF/A standard
 }
 %
 %
@@ -23,7 +20,8 @@
 %***********************************************
 %******************* START *******************
 %\documentclass[ms-thesis,mathdesign,chpterrefs]{ndsu-thesis-tagged}% MS final, 12 pt
-\documentclass[ms-thesis,mathdesign,chapterrefs,showgriddm]{ndsu-thesis-tagged}% MS work, chap refs, 12 pt, showgrid darkmode
+\documentclass[ms-thesis,mathdesign,chpterrefs,showgrid]{ndsu-thesis-tagged}% MS final, 12 pt, showgrid 
+%\documentclass[ms-thesis,mathdesign,chapterrefs,showgriddm]{ndsu-thesis-tagged}% MS work, chap refs, 12 pt, showgrid darkmode
 %\documentclass[mathdesign,chapterrefs]{ndsu-thesis-tagged}% MS work, chap refs, 12 pt, showgrid darkmode
 %\documentclass[ms-thesis,mathdesign,showgriddm]{ndsu-thesis-tagged}% MS work, 12 pt
 %\documentclass[showgriddm]{ndsu-thesis-tagged}% PhD final, 12 pt, computer modern
@@ -50,7 +48,7 @@
 
 %******************* First and second page material *******************
 % Default 2-line title. Otherwise use \setlength{\droptitle}{Xin}; X = -1.57 for 1-line  and -1.47 for 3-line titles
-\title{Example NDSU LaTeX Thesis Template for Automatic PDF Tagging in Masters and Doctoral Dissertations}
+\title{Test Simple Example NDSU LaTeX Thesis Template for Automatic PDF Tagging in Masters and Doctoral Dissertations}
 \author{Frank-Samuel Fargo Bison}
 \keywords{NDSU, Thesis, Dissertation, Accessible documents, Add your subject-specific keywords}
 \date{December 2026}
@@ -80,6 +78,7 @@ Dissertation template design and Important instructions for using the template:
 \\ \indent \tcm{This is the abstract for my thesis. The word limits: 350 for PhD and 150 for MS.} \\ 
 \indent\repText[50]
 }%
+
 
 \acknowledgements{\start I acknowledge people here. \\ \tcb{\emph{Acknowledgements text should be placed here.}} \\ \indent\repText[100] \\ \indent\repInText[my acknowledgement here][30]
 }%
@@ -345,11 +344,11 @@ Note how variables, abbreviations, and subscripts are coded in \cref{eq:lin}. Re
 \section{Source Code Listing Inside Regular Chapters}
 \tcb{Listings of source code are complicated. The excellent ``\texttt{listing}'' package is not compatible with tagging; therefore, we use a simpler yet versatile ``\texttt{fancyverb}'' package and developed the ``mytlisting'' environment, applicable to both regular chapters and appendices. The strategy consists of two steps. (1) Code the caption with \cmd{myliscap} or \cmd{mylisapcap}, and (2) code the actual listings with ``\texttt{mytlisting}'' environment with their options [fontsize, frame, numbers, xleftmargin] coded with defaults. Follow the code below and in the appendix.}
 
-% Step 1 of 2
+% Step 1 of 2:   Code the listing caption [before vspace] {caption} [after vspace] {label}
 \mytliscap{Python2 code listing for finding whether a given number is prime.}{lis:21}
 
-% Step 2 of 2
-% Other options [font sizes] [frame=none, single] [numbers=none, left, right] [xleftmargin]
+% Step 2 of 2    Code the listing using simpler mytlisting environment
+% Other options [fontsize=font sizes] [frame=none, single] [numbers=none, left, right] [xleftmargin=sizes]
 \begin{mytlisting}[fontsize=\small, frame=single, numbers=left]
 import math
 
@@ -523,7 +522,7 @@ The loading and unloading time can be determined using the number of bales gener
 %-----------------------------------------------------------------------------
 \section{Longtable Using the Versatile and Compatible \texttt{xltabular} Package}
 
-The long table using xltabular (\cref{tab:32}) illustrates several functionalities. This non-floating table will start from any location where it is coded (provided enough room for the headers). 
+The long table using xltabular (\cref{tab:32}) illustrates several functionalities. This non-floating table will start from any location where it is coded (provided enough room for the headers). The \texttt{tagpdfsetup} command is applied as usual for the longtables. 
 
 \vt% shortcut = \vspace{-0.2in}
 \begingroup
@@ -656,7 +655,7 @@ a & b & c\\
 d & e & f\\
 \bottomrule
 \multicolumn{3}{@{} p{\textwidth} @{}}{\vspace{0in}
-Note: In many cases, the word ``Note'' is not required. Again, the vertical lines are simply given for illustration purposes, as in professional tables, they are not used.}
+Note: In many cases, the word ``Note'' is not required. Again, the vertical lines are simply given for illustration purposes; in professional tables, they are not used.}
 \end{xltabular}
 \end{appendixtable}
 
@@ -673,11 +672,11 @@ Note: In many cases, the word ``Note'' is not required. Again, the vertical line
 \section{Appendix A - Subsection With Listing}
 \tcb{See Listing~\ref{lis:21} preamble for information.} \repText[68]
 
-% Step 1 of 2:    Code the listing appendix caption [before vspace] {caption} [after vspace]
+% Step 1 of 2:    Code the listing appendix caption [before vspace] {caption} [after vspace] {label}
 \mytliscapap{Java code listing for finding all prime numbers from 1 to 100.}{lisa:1}
 
 % Step 2 of 2:    Code the listing using simpler mytlisting environment
-% Other options [font sizes] [frame=none, single] [numbers=none, left, right] [xleftmargin]
+% Other options [fontsize=font sizes] [frame=none, single] [numbers=none, left, right] [xleftmargin=sizes]
 \begin{mytlisting}[fontsize=\normalsize, frame=single, numbers=none, xleftmargin=0pt]
 public class PrimeFinder {
     public static void main(String[] args) {
@@ -723,7 +722,7 @@ public class PrimeFinder {
 \section{Appendix B - Section With Figure}
 \repText[38]
 
-\mytfigap[0.15in]{h!}{0.8}{UTBM-CIAD}[0pt]{A stock picture from the TeXLive 2025 texmf-dist distribution from UTBM-CIAD report. Can be directly used `utbmciadreport-ciad-frontbackground' for file name if server links are working.}[0pt]{A stock image from the TeXLive 2025 texmf-dist distribution from UTBM-CIAD showing a human and robotic hand meeting.}{fig:b1}
+\mytfigap[0.15in]{h!}{0.8}{UTBM-CIAD}[0pt]{A stock picture from the TeXLive 2025 texmf-dist distribution from UTBM-CIAD report. Can be directly used `utbmciadreport-ciad-frontbackground' for the file name if server links are working.}[0pt]{A stock image from the TeXLive 2025 texmf-dist distribution from UTBM-CIAD showing a human and robotic hand meeting.}{fig:b1}
 
 %------------------------------------------------------
 \mysectop
@@ -739,11 +738,11 @@ public class PrimeFinder {
 \tagpdfsetup{table/header-rows={1}}% for tagging the header row(s) {1,2}
 \begin{xltabular}{\textwidth}{l @{\hspace{0.8in}} XX r}
 \toprule
-Number & Square        & Cubes          & Fourth power\\
+Number 	& Square        		& Cubes          		& Fourth power\\
 \midrule
-11 	   & 121   			        & \num{1331} 		   & \num{14641}\\
-22 	   & 484  			        & \num{10648}		   & \num{234256}\\
-333 	   & \num{110889}             & \num{36926037}	   & \num{12296370321}\\
+11 	   	& 121   			       & \num{1331} 		& \num{14641}\\
+22 	   	& 484  			       & \num{10648}		& \num{234256}\\
+333 	   	& \num{110889}          & \num{36926037}	& \num{12296370321}\\
 \bottomrule
 \end{xltabular}
 \vr% shortcut = \vspace{-0.3in}

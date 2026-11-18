@@ -35,15 +35,14 @@
 %  Use the following Metadata commands (above documentclass) for generating tagged PDF
 %---------------------------------------------------------------------------------------------------------
 %
-%%******************* Metadata for PDF tagging *** [Updated: 08-05-2026] *******************
+%%******************* Metadata for PDF tagging *** [Updated: 18-11-2026] *******************
 %\DocumentMetadata{
 % lang=en-US,
 % tagging=on,
 % tagging-setup={math/setup=mathml-SE,math/alt/use},
 % pdfversion=2.0,
 % pdfstandard=ua-2,
-% pdfstandard=a-4f,
-% uncompress
+% pdfstandard=a-4f
 %}
 %
 %
@@ -51,6 +50,7 @@
 %
 %---------------------------------------------------------------------------------------------------------
 %  Update history
+%  Last updated: 2026-11-18;  More tikzlibrary and shortcuts added. Metadata updated
 %  Last updated: 2026-09-09;  SI  units mode=math was set default when needed text used
 %  Last updated: 2026-06-16;  Checks for LuaLaTeX engine and issues a warning if not used
 %  Last updated: 2026-06-06;  LaTeX3 updates in May 2026 - chapter style - major changes in class 
@@ -407,7 +407,9 @@ Please change your compiler engine and run again! ^^J%
 \RequirePackage{tikz}
 \RequirePackage{pgfkeys}
 \RequirePackage{xparse}
-\usetikzlibrary{matrix, arrows, decorations.pathmorphing}
+\usetikzlibrary{matrix,arrows,arrows.meta,positioning,shapes.geometric,shadows,decorations.pathmorphing}
+\RequirePackage{array}
+
 \RequirePackage{etoolbox}
 \RequirePackage{xtab}  % required for other commands
 \RequirePackage{siunitx}   % [binary-units = true]   
@@ -1884,6 +1886,7 @@ bgcolor={gray}]
 \newcommand\dvspace[1]{\,\!\!\vspace{#1}}
 
 % Negative vspace commands
+\newcommand{\vq}{\vspace{-0.025in}}% vspace quarter -ve
 \newcommand{\vh}{\vspace{-0.05in}}% vspace half -ve
 \newcommand{\vo}{\vspace{-0.1in}}% vspace one-ve
 \newcommand{\voh}{\vspace{-0.15in}}% vspace one half -ve
@@ -1893,6 +1896,7 @@ bgcolor={gray}]
 \newcommand{\vrh}{\vspace{-0.35in}}% vspace three half -ve
 
 % Positive vspace commands -  required with tagged PDFs
+\newcommand{\pvq}{\vspace{0.025in}}% vspace quarter +ve
 \newcommand{\pvh}{\vspace{0.05in}}% vspace half +ve
 \newcommand{\pvo}{\vspace{0.1in}}% vspace one +ve
 \newcommand{\pvoh}{\vspace{0.15in}}% vspace one half +ve
@@ -2514,6 +2518,10 @@ bgcolor={gray}]
 \newcommand\dg[1]{\qty[mode = text]{#1}{\degreeCelsius}\xspace}
 
 \newcommand{\mlt}[1]{\qty[mode = text]{#1}{$\mu$\liter}\xspace}% for tagged micro liter in SI 
+
+\newcommand{\microunit}[2]{\qty[mode = text]{#1}{$\mu$#2}\xspace}% for tagged micro + any unit in SI 
+\newcommand{\microunitprefix}[3]{\qty[mode = text]{#1}{#2$\mu$#3}\xspace}% for tagged prefix + micro + any unit in SI 
+
 \newcommand\dct[1]{\qty[mode = text]{#1}{\textdegree{C}}\xspace}% for tagged degree centigrade in SI
 \newcommand\dgt[1]{\qty[mode = text]{#1}{\textdegree{C}}\xspace}% for tagged 
 
